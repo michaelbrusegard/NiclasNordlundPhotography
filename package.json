@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "fb": "^2.0.0"
-  },
   "name": "niclasnordlundphotography",
   "description": "We aim to make a photography website for our client Niclas Photography!",
   "version": "1.0.0",
