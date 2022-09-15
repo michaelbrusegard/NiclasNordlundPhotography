@@ -1,6 +1,6 @@
 const FB = require('fb')
 
-FB.api('/3381927852133032/albums?access_token=' + process.env.FACEBOOK_ACCESS_TOKEN, function(response) {
+FB.api('/'+ FACEBOOK_USER_ID + '/albums?access_token=' + process.env.FACEBOOK_ACCESS_TOKEN, function(response) {
     console.log(response)
     for (var i = 0; i < response.data.length; i ++) {
       var album = response.data[i];
