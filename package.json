@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "fb": "^2.0.0"
+  },
+  "name": "niclasnordlundphotography",
+  "description": "We aim to make a photography website for our client Niclas Photography!",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelbrusegard/NiclasNordlundPhotography.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelbrusegard/NiclasNordlundPhotography/issues"
+  },
+  "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme"
+}
