@@ -40,4 +40,4 @@ Informasjon for utbetaling med betalingsløsning
 7. Hvilken valuta til utbetaling (EUR/SEK/NOK)?
 8. Landet der du har bankkonto (Finland)?
     - IBAN nummer på kontoen du vil ha pengene utbetalt til
-Hvis du ønsker automatisk skatteutregning på det du skal selge kan det også ordnes igjennom stripe.
+Hvis du ønsker automatisk skatteutregning på det du skal selge kan det også ordnes igjennom stripe
