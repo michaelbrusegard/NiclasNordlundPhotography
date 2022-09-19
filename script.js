@@ -1,46 +1,17 @@
 window.fbAsyncInit = function() {
-    FB.init({
-        appId      : '1112651016296583',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v14.0'
-    });
-    let accessToken = 0
-    FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-          accessToken = response.authResponse.accessToken;
-        } 
-      } );
+  FB.init({
+    appId            : 1112651016296583,
+    autoLogAppEvents : true,
+    xfbml            : true,
+    version          : 'v15.0'
+  });
 
-    FB.api('/3381927852133032/albums' + '?access_token=' + accessToken, function(response) {
-        console.log(response.error)
-        for (var i=0; i<response.data.length; i++) {
-            var album = response.data[i];
-            if (album.id == '1396394877353016'){
-        
-              FB.api('/'+album.id+'/photos', function(photos){
-                if (photos && photos.data && photos.data.length){
-                  for (var j=0; j<photos.data.length; j++){
-                    var photo = photos.data[j];
-                    // photo.picture contain the link to picture
-                    var image = document.createElement('img');
-                    image.src = photo.picture;
-                    document.body.appendChild(image);
-                  }
-                }
-              });
-        
-              break;
-            }
-          }
-        });
-        
-    };
-
-    (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+  FB.api('/2298950123764149?access_token=EAAPz80CV2IcBAMY0xkn4pMoD5tTT4RmhcKpOoYPoXmZCVIiK6trEykcyrrEZAR8ibssw7aCZBOIuLC4o0PhiorxKzzXYCQPvho7zE4gtlfyZC8sKo8yMO2wzQbEhL0e1TCSRxKa77ZCyYdEqE9BM5vfv8zEymE0ZBt5os1XOF1ZAja6kige3QewZB8tBhzzZBXR45711OCUXzMMJjKZCtZB8IOonlmCZAv0ajrPYrdj2G4e6GAN5s2HpiwtDt5pRPrBvcqYZD', function(response) {
+    console.log(response)
+    console.log(n)
+    n = response.picture
+    let image = document.createElement('img');
+            image.src = n
+            document.body.appendChild(image);
+  });
+};
