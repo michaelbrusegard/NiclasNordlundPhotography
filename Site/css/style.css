@@ -13,7 +13,7 @@ body {
     background-color: lightblue;
 }
 
-/* Desktop Navigation bar */
+/* Navigation bar */
 
 .nav-container {
     background: white;
@@ -61,12 +61,14 @@ nav .desktop-nav li a:hover {
     width: 160px;
     background-repeat: no-repeat;
 }
+
 .link-shop {
     background: url('../img/shop.png');
     display: block;
     background-position: center;
-    height: 44px;
-    width: 15px;
+    height: 60px;
+    background-size: 44px;
+    width: 40px;
     background-repeat: no-repeat;
 }
 
@@ -87,87 +89,16 @@ nav .desktop-nav li a:hover {
 
 @media (max-width: 768px) {
     .nav-container .desktop-nav {
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0vh;
-        background: white;
-        justify-content: start;
-        overflow: hidden;
-    }
-
-    .nav-container.active .desktop-nav {
-        height: 100vh;
-    }
-
-    .nav-container .desktop-nav li {
-        width: 100%;
-        padding: 0 32px;
-    }
-
-    .nav-container .desktop-nav li:first-child {
-        margin-top: 120px;
-    }
-
-    .nav-container .desktop-nav .link-shop,
-    .nav-container .desktop-nav .link-signature {
         display: none;
     }
-
-    .nav-container .desktop-nav li a {
-        padding: 16px 0;
-        display: inline-block;
-        border-bottom: 1px solid black;
-    }
-
-    /* Mobile Navigation bar */
-
-    nav .mobile-nav {
+    .mobile-nav {
         display: flex;
-        width: 100%;
-        justify-content: space-between;
-        list-style: none;
     }
+}
 
-    nav .menu-icon-container {
-        width: 20px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    nav .menu-icon {
-        position: relative;
-        width: 100%;
-    }
-
-    nav .menu-icon .line-1,
-    nav .menu-icon .line-2 {
-        position: absolute;
-        height: 2px;
-        width: 100%;
-        border-radius: 50%;
-        background: black;
-    }
-
-    nav .menu-icon .line-1 {
-        top: -4px;
-    }
-
-    nav .menu-icon .line-2 {
-        top: 4px;
-    }
-
-    nav .menu-icon-container.active .menu-icon .line-1 {
-        top: 0;
-        transform: rotateZ(45deg);
-    }
-
-    nav .menu-icon-container.active .menu-icon .line-2 {
-        top: 0;
-        transform: rotateZ(-45deg);
-    }
+#fontTest {
+    font-family: 'Noto Sans Mono';
+    font-weight: 200;
+    font-size: larger;
+    color: black;
 }

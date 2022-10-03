@@ -25,11 +25,6 @@ section {
     padding: 20px;
 }
 
-a {
-color:white;
-text-decoration: none;
-}
-
 #cover {
     max-width: 750px;
     height: auto;
