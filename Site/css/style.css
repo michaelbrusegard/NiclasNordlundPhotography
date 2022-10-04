@@ -62,8 +62,8 @@ nav .desktop-nav li a:hover {
     background-repeat: no-repeat;
 }
 
-.link-shop {
-    background: url('../img/shop.png');
+.link-bag {
+    background: url('../img/bag.png');
     display: block;
     background-position: center;
     height: 60px;
