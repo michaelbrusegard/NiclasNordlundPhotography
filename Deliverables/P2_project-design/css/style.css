@@ -140,8 +140,8 @@ footer{
 
 .box {
     min-width: 400px;
-    min-height: 450px;
-    max-width:500px;
+    min-height: 400px;
+    max-width:400px;
     margin:10px;
     border: 3px solid #333;
     background-color:teal;
