@@ -62,6 +62,16 @@ nav .desktop-nav li a:hover {
     background-repeat: no-repeat;
 }
 
+.link-menu {
+    background: url('../img/menu.png');
+    display: block;
+    background-position: center;
+    height: 60px;
+    background-size: 44px;
+    width: 40px;
+    background-repeat: no-repeat;
+}
+
 .link-bag {
     background: url('../img/bag.png');
     display: block;
@@ -69,6 +79,16 @@ nav .desktop-nav li a:hover {
     height: 60px;
     background-size: 44px;
     width: 40px;
+    background-repeat: no-repeat;
+}
+
+.link-shopping {
+    background: url('../img/shopping.png');
+    display: block;
+    background-position: center;
+    height: 60px;
+    background-size: 44px;
+    width: 60px;
     background-repeat: no-repeat;
 }
 
@@ -91,8 +111,25 @@ nav .desktop-nav li a:hover {
     .nav-container .desktop-nav {
         display: none;
     }
-    .mobile-nav {
+
+    nav .mobile-nav {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        list-style: none;
+    }
+
+    nav .mobile-nav li a {
+        color: black;
+        text-decoration: none;
+        font-size: 22px;
+        opacity: 1;
+        transition: opacity 400ms;
+    }
+    
+    nav .mobile-nav li a:hover {
+        opacity: 0.6;
     }
 }
 
