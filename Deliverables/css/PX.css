@@ -25,14 +25,22 @@ section {
     padding: 20px;
 }
 
-img {
-    max-width: 750px;
-    height: auto;
+p, h4 {
+    text-align: left;
+}
+
+#coverPhoto {
+    max-width: 100%;
     border: 4px solid #555;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 20px;
     border-radius: 30px;
+}
+
+#boxCoverPhoto {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
 }
 
 figcaption {
@@ -48,10 +56,52 @@ th,td {
     padding: 5px;
 }
 
-table{
+table {
 display: table;
 border-collapse: separate;
 border-spacing: 2px;
 margin-bottom:20px;
+}
 
+.mockup {
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+}
+
+.planStructure ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+    text-align: left;
+}
+
+.planStructure li {
+    list-style-type: none;
+    border-left: 2px solid #FFFF;
+    margin-left: 1em;
+}
+
+.planStructure li div {
+    padding-left: 1em;
+    position: relative;
+}
+
+.planStructure li div::before {
+    content:'';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    bottom: 50%;
+    width: 0.75em;
+    border: 2px solid #FFFF;
+    border-top: 0 none transparent;
+    border-right: 0 none transparent;
+}
+
+.planStructure ul > li:last-child {
+    border-left: 2px solid transparent;
 }

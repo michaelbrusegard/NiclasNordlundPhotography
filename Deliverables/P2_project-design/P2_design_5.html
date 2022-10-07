@@ -16,10 +16,10 @@
     <header>
         <h1>P2 Project Design</h1>
         <h3>Otto Fearnley, Magnus Hansen Åsheim, Martin Vågseter Jakobsen, Erik Olsen Bøhle og Michael Brusegard</h3>
-        <h4>4. oktober 2022</h4>
+        <h3>4. oktober 2022</h3>
     </header>
-    <div>
-        <img id="cover" src="../img/duck.jpg" alt="Cover image">
+    <div id='boxCoverPhoto'>
+        <img id='coverPhoto' src='../img/duck.jpg' alt='Cover image'> 
     </div>
     <section>
         <h2>Administrative Details</h2>
@@ -61,7 +61,7 @@
             is connected, and how the shopping mode is somewhat isolated from the showcase mode.
         </p>
         <figure>
-            <img src="img/storyboard.PNG" alt="Navigation storyboard">
+            <img class="mockup" src="img/storyboard.png" alt="Navigation storyboard">
             <figcaption>
                 <b>Figure 1:</b> Preliminary website story board. Each box is color coded based on which category they 
                 belong to: green = showcase mode, yellow = shopping mode, blue = home page
@@ -82,15 +82,14 @@
             making it simple for the customers to use. The home page will contain information about Niclas, 
             and will be accessible from every single page on the website.
             
-            The font we have used is easy to read, while also looking a bit fancy. Kind of like his signature. 
+            The fonts we have used on the website is easy to read, while the category font is pretty similar to his signature, but also very readable.
             In the footer element, we will add all of Niclas' contact information, as well as social media so that 
             customers will be able to get updates on new photographies, calendars etc.
             The website will be responsive to smaller screens, which means it will be easier to use a mobile phone while looking/shopping.
-            
-           
+    
         </p>
         <figure>
-            <img src="../img/duck.jpg" alt="Generic features mockup">
+            <img class='mockup' src='mockups/empty.png' alt='empty.png'>
             <figcaption>
                 <b>Figure 2:</b> Generic features mockup
             </figcaption>
@@ -129,44 +128,162 @@ The website logo is Niclas' signature and the word "photography", and acts as a 
         <h2>Content</h2>
         <p>stuff</p>
         <h4>1. home.html</h4>
+        <figure>
+            <img class='mockup' src='mockups/home.png' alt='home.png'>
+            <figcaption>
+                <b>Figure 3:</b> Homepage
+            </figcaption>
+        </figure>
         <p>stuff</p>
-        <h4>2. landscapes.html</h4>
-        <p>stuff</p>
-        <h4>3. animals.html</h4>
-        <p>stuff</p>
-        <h4>4. portraits.html</h4>
-        <p>stuff</p>
-        <h4>5. weddings.html</h4>
-        <p>stuff</p>
-        <h4>6. calendars.html</h4>
-        <p>stuff</p>
-        <h4>7. shop.html</h4>
-        <p>stuff</p>
-        <h4>8. checkout.html</h4>
+        <h4>2. nature.html, animals.html, architectural.html, portrait.html, wedding.html, sport.html</h4>
+        <figure>
+            <img class='mockup' src='mockups/showcaseDesktop.png' alt='showcaseDesktop.png'>
+            <figcaption>
+                <b>Figure 4:</b> Showcase desktop page
+            </figcaption>
+        </figure>
+        <figure>
+            <img class='mockup' src='mockups/showcaseMobile.png' alt='showcaseMobile.png'>
+            <figcaption>
+                <b>Figure 5:</b> Showcase mobile page
+            </figcaption>
+        </figure>
+        <h4>3. shop.html</h4>
+        <figure>
+            <img class='mockup' src='mockups/checkout.png' alt='checkout.png'>
+            <figcaption>
+                <b>Figure 6:</b> Shop and checkout
+            </figcaption>
+        </figure>
         <p>stuff</p>
     </section>
     <br>
     <section>
         <h2>Minimum Requirements</h2>
         <p>stuff</p>
-        <h4>1. something.js</h4>
+        <h4>1. fadeOnScroll.js</h4>
         <p>stuff</p>
-        <h4>2. something.js</h4>
+        <h4>2. shoppingCart.js</h4>
         <p>stuff</p>
-        <h4>3. something.js</h4>
+        <h4>3. slideTransition.js</h4>
         <p>stuff</p>
-        <h4>4. something.js</h4>
+        <h4>4. quotesTyping.js</h4>
+        <p>stuff</p>
+        <h4>5. splashOnClick.js</h4>
+        <p>stuff</p>
+        <h4>6. checkoutSystem.js</h4>
         <p>stuff</p>
     </section>
     <br>
     <section>
         <h3>Plan</h3>
-        <p>stuff</p>
         <h4>Directory structure</h4>
-        <p> All project files are contained under a "Site" directory on the folk.ntnu servers. The project hieracrhy will be structured as follows:</p>
-        <p>stuff</p>
+        <p> All project files are contained under a "Site" directory on the folk.ntnu servers. The project hierarchy will be structured as follows:</p>
+        <div class='planStructure'>
+            <ul>
+                <li><div>home.html</div></li>
+                <li><div>nature.html</div></li>
+                <li><div>animals.html</div></li>
+                <li><div>architectural.html</div></li>
+                <li><div>portrait.html</div></li>
+                <li><div>wedding.html</div></li>
+                <li><div>sport.html</div></li>
+                <li><div>shop.html</div></li>
+                <li><div>css/</div>
+                    <ul>
+                        <li><div>home.css</div></li>
+                        <li><div>nav.css</div></li>
+                        <li><div>showcase.css</div></li>
+                        <li><div>shop.css</div></li>
+                    </ul>
+                </li>
+                <li><div>scripts/</div>
+                    <ul>
+                        <li><div>fadeOnScroll.js</div></li>
+                        <li><div>shoppingCart.js</div></li>
+                        <li><div>slideTransition.js</div></li>
+                        <li><div>quotesTyping.js</div></li>
+                        <li><div>splashOnClick.js</div></li>
+                        <li><div>checkoutSystem.js</div></li>
+                    </ul>
+                </li>
+                <li><div>img/</div>
+                <ul>
+                    <li><div>icons/</div>
+                        <ul>
+                            <li><div>signature.png</div></li>
+                            <li><div>bag.png</div></li>
+                            <li><div>menu_1.png</div></li>
+                            <li><div>menu_2.png</div></li>
+                            <li><div>cart.png</div></li>
+                        </ul>
+                    </li>
+                    <li><div>home/</div>
+                        <ul>
+                            <li><div>niclas.png</div></li>
+                            <li><div>home_1.jpg</div></li>
+                            <li><div>home_2.jpg</div></li>
+                            <li><div>...</div></li>
+                        </ul>
+                    </li>
+                    </li>
+                    <li><div>shop/</div>
+                        <ul>
+                            <li><div>shop_1(25x25).jpg</div></li>
+                            <li><div>shop_2(25x25).jpg</div></li>
+                            <li><div>...</div></li>
+                        </ul>
+                    </li>
+                    <li><div>photography/</div>
+                        <ul>
+                            <li><div>nature/</div>
+                                <ul>
+                                    <li><div>nature_1.jpg</div></li>
+                                    <li><div>nature_2.jpg</div></li>
+                                    <li><div>...</div></li>
+                                </ul>
+                            </li>
+                            <li><div>animals/</div>
+                                <ul>
+                                    <li><div>animals_1.jpg</div></li>
+                                    <li><div>animals_2.jpg</div></li>
+                                    <li><div>...</div></li>
+                                </ul>
+                            </li>
+                            <li><div>architectural/</div>
+                                <ul>
+                                    <li><div>architectural_1.jpg</div></li>
+                                    <li><div>architectural_2.jpg</div></li>
+                                    <li><div>...</div></li>
+                                </ul>
+                            </li>
+                            <li><div>portrait/</div>
+                                <ul>
+                                    <li><div>portrait_1.jpg</div></li>
+                                    <li><div>portrait_2.jpg</div></li>
+                                    <li><div>...</div></li>
+                                </ul>
+                            </li>
+                            <li><div>wedding/</div>
+                                <ul>
+                                    <li><div>wedding_1.jpg</div></li>
+                                    <li><div>wedding_2.jpg</div></li>
+                                    <li><div>...</div></li>
+                                </ul>
+                            </li>
+                            <li><div>sport/</div>
+                                <ul>
+                                    <li><div>sport_1.jpg</div></li>
+                                    <li><div>sport_2.jpg</div></li>
+                                    <li><div>...</div></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+            </ul>
+        </div>
+        
         <h4>Work Division and Deadlines</h4>
-        <p>The following table is copy pasted from the example project:</p>
         <table>
 			<thead>
 				<tr> 
@@ -175,115 +292,113 @@ The website logo is Niclas' signature and the word "photography", and acts as a 
 					<th> In charge </th>
 					<th> Deadline </th>
 				</tr>
-			
 			</thead>
 			
 			<tbody>
-				<tr>
-					<td>homepage.html</td>
-					<td>The homepage</td>
-					<td>Trond</td>
-					<td>04.11.2015</td>
+                <tr>
+					<td>icons</td>
+					<td>Generate icons with Dall-E 2 and photoshop them appropriately</td>
+					<td>Otto and Michael</td>
+					<td>17.10.2022</td>
 				</tr>
 				<tr>
-					<td>about.html</td>
-					<td>Brief biography about Nan Nan and the work that she does</td>
-					<td>Guttorm</td>
-					<td>04.11.2015</td>
+					<td>nature.html, animals.html, architectural.html, portrait.html, wedding.html, sport.html</td>
+					<td>Create display of the showcase pictures on their sites. Bigger pictures on landscape etc. Displayed after image width. Fade in animation for the photos.</td>
+					<td>Magnus</td>
+					<td>17.10.2022</td>
 				</tr>
-				<tr>
-					<td>inspirations.html</td>
-					<td>Information on Myanmar’s art and culture</td>
-					<td>Birgit</td>
-					<td>04.11.2015</td>
+                <tr>
+					<td>nav.css</td>
+					<td>Navigation bar styling</td>
+					<td>Michael</td>
+					<td>17.10.2022</td>
 				</tr>
-				<tr>
-					<td>artwork_paintings.html</td>
-					<td>Nan Nan's paintings</td>
-					<td>Trond</td>
-					<td>04.11.2015</td>
+                <tr>
+					<td>showcase images</td>
+					<td>Get the files for showcase images from Niclas</td>
+					<td>Michael</td>
+					<td>24.10.2022</td>
 				</tr>
-				<tr>
-					<td>artwork_design.html</td>
-					<td>Nan Nan's design and crafts</td>
-					<td>Ellen</td>
-					<td>04.14.2015</td>
+                <tr>
+					<td>showcase.css</td>
+					<td>Styling for showcase pages</td>
+					<td>Magnus</td>
+					<td>24.10.2022</td>
 				</tr>
-				<tr>
-					<td>atutu_childrenArtwork.html</td>
-					<td>Information on the children and display of their artwork</td>
-					<td>Birgit</td>
-					<td>04.14.2015</td>
+                <tr>
+					<td>fadeOnScroll.js</td>
+                    <td>Extra fancy effects when scrolling in items that can not be done in css</td>
+					<td>Otto</td>
+					<td>24.10.2022</td>
 				</tr>
-				<tr>
-					<td>atutu_aboutTheSchool.html</td>
-					<td>Information on the school and classes</td>
-					<td>Meltem</td>
-					<td>04.14.2015</td>
+                <tr>
+					<td>shop images</td>
+					<td>Get the files for shop images from Niclas and crop them to a small size</td>
+					<td>Michael</td>
+					<td>31.10.2022</td>
 				</tr>
-				<tr>
-					<td>atutu_volunteerAndDonate.html</td>
-					<td>Volunteer and donation information</td>
-					<td>Trond</td>
-					<td>04.14.2015</td>
-				</tr>
-				<tr>
-					<td>supportAndContactUs.html</td>
-					<td>Information on contacting and supporting Nan Nan and Atutu</td>
-					<td>Birgit</td>
-					<td>04.14.2015</td>
-				</tr>
-				<tr>
-					<td>headerLogo.png</td>
-					<td>Logo for the header: children's drawing edited on Photoshop</td>
-					<td>Ellen</td>
-					<td>04.15.2015</td>
-				</tr>
-				<tr>
-					<td>menu.part</td>
-					<td></td>
-					<td>Birgit</td>
-					<td>04.16.2015</td>
-				</tr>
-				<tr>
-					<td>randomImages.js</td>
-					<td>A Javascript to randomly display images of artwork 
-					and the school</td>
-					<td>Guttorm</td>
-					<td>04.18.2015</td>
-				</tr><tr>
-					<td>artWorkPrices.js</td>
-					<td>A Javascript using loops and arrays to correlate Nan Nan's
-					artwork with the respective prices</td>
-					<td>Trond</td>
-					<td>04.20.2015</td>
-				</tr>
-				<tr>
-					<td>rollOverMenu.js</td>
-					<td>A Javascript for a roll over menu when hovered upon</td>
-					<td>Guttorm</td>
-					<td>04.18.2015</td>
-				</tr>
-				<tr>
-					<td>imageSize.js</td>
-					<td>A JavaScript to add an interactive size attribute</td>
-					<td>Ellen</td>
-					<td>04.20.2015</td>
-				</tr>
-				<tr>
-					<td>styling.css</td>
-					<td>The CSS file containing all styling for the website</td>
+                <tr>
+					<td>home.html</td>
+					<td>Homepage with information about Niclas, quotes and best pictures. Also the footer with contact info easily accesible.</td>
 					<td>All</td>
-					<td>04.30.15</td>
+					<td>31.10.2022</td>
 				</tr>
 				<tr>
-					<td>Final controls</td>
-					<td>Double checking each file for errors, checking the javascript and css</td>
+					<td>shop.html</td>
+					<td>Create the checkout system with shopping display and checkout cart. Store prices and send to Stripe for checkout. (If there is time implement a webhook to send the bought images to the customer).</td>
+					<td>Martin and Michael</td>
+					<td>31.10.2022</td>
+				</tr>
+                <tr>
+					<td>shop.css</td>
+					<td>Shop styling</td>
 					<td>All</td>
-					<td>05.01.2015</td>
+					<td>31.10.2022</td>
+				</tr>
+                <tr>
+					<td>checkoutSystem.js</td>
+					<td>System for tracking which images are added to the shopping cart ready for purchase. 
+                        This information should be sent to the payment solution on Stripe</td>
+					<td>Martin</td>
+					<td>31.10.2022</td>
+				</tr>
+                <tr>
+					<td>quotesTyping.js</td>
+					<td>Text being "written" on the page </td>
+					<td>Magnus</td>
+					<td>31.10.2022</td>
+				</tr>
+				<tr>
+					<td>splashOnClick.js</td>
+					<td>Splash effect on nav bar when selecting showcase pages</td>
+					<td>Erik</td>
+					<td>31.10.2022</td>
+				</tr>
+                <tr>
+					<td>home.css</td>
+					<td>Homepage styling and generic styling</td>
+					<td>All</td>
+					<td>07.11.2022</td>
+				</tr>
+				<tr>
+					<td>shoppingCart.js</td>
+					<td>Red dot to indicate items in cart, and an animation from the item being dropped in the cart</td>
+					<td>Erik</td>
+					<td>07.11.2022</td>
+				</tr>
+				<tr>
+					<td>slideTransition.js</td>
+					<td>Animation when going from shopping->showcase or showcase->shopping</td>
+					<td>Martin and Michael</td>
+					<td>07.11.2022</td>
+				</tr>
+                <tr>
+					<td>Final check</td>
+					<td>Double check all files, make sure they are valid, no broken links, etc.</td>
+					<td>All</td>
+					<td>11.11.2022</td>
 				</tr>
 			</tbody>
-		
 		</table>
     </section>
 </body>
