@@ -92,24 +92,25 @@ nav .mobileNav {
     width: 60px;
 }
 
-.linkMenu1 {
+#linkMenu1 {
     background: url('../img/icons/menu_1.png');
     top: 40%;
 }
 
-.linkMenu2 {
+#linkMenu2 {
     background: url('../img/icons/menu_2.png');
     top: 60%;
 }
 
-.linkMenu1, .linkMenu2 {
+#linkMenu1, #linkMenu2 {
+    background-size: 40px;
+    width: 40px;
     height: 4px;
     position: absolute;
     transform: translateY(-50%);
 }
 
 .linkMenu {
-    background-size: 40px;
     width: 40px;
 }
 
