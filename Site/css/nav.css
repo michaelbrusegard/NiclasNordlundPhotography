@@ -94,16 +94,18 @@ nav .mobileNav {
 
 .linkMenu1 {
     background: url('../img/icons/menu_1.png');
+    top: 40%;
 }
 
 .linkMenu2 {
     background: url('../img/icons/menu_2.png');
+    top: 60%;
 }
 
 .linkMenu1, .linkMenu2 {
-    background-size: 40px;
-    width: 40px;
-    background-repeat: no-repeat;
+    height: 4px;
+    position: absolute;
+    transform: translateY(-50%);
 }
 
 .linkMenu {
@@ -112,7 +114,6 @@ nav .mobileNav {
 }
 
 .linkIcon {
-    /* background-color: blueviolet; */
     display: block;
     background-position: center;
     height: 60px;
