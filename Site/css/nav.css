@@ -1,9 +1,11 @@
-* ,
+*,
 *::after,
 *::before {
-    margin: 0; /* Removes the default margin and padding */
+    margin: 0;
+    /* Removes the default margin and padding */
     padding: 0;
-    box-sizing: border-box; /* Includes margin and padding in future width and height calculations */
+    box-sizing: border-box;
+    /* Includes margin and padding in width and height calculations */
 }
 
 /* Navigation bar */
@@ -26,7 +28,8 @@
     height: 100%;
 }
 
-nav .desktopNav, nav .mobileNav {
+nav .desktopNav,
+nav .mobileNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +37,8 @@ nav .desktopNav, nav .mobileNav {
     list-style: none;
 }
 
-nav .desktopNav li a, nav .mobileNav li a {
+nav .desktopNav li a,
+nav .mobileNav li a {
     color: black;
     text-decoration: none;
     font-family: 'Caveat', cursive;
@@ -45,12 +49,14 @@ nav .desktopNav li a, nav .mobileNav li a {
     transition: opacity 400ms;
 }
 
-nav .desktopNav li a:hover, nav .mobileNav li a:hover {
+nav .desktopNav li a:hover,
+nav .mobileNav li a:hover {
     opacity: 0.6;
 }
 
 nav .mobileNav {
-    display: none; /* Hidden */
+    display: none;
+    /* Hidden */
 }
 
 /* Adaptive size */
@@ -64,7 +70,8 @@ nav .mobileNav {
 
 @media (max-width: 768px) {
     nav .desktopNav {
-        display: none; /* Hidden */
+        display: none;
+        /* Hidden */
     }
 
     nav .mobileNav {
@@ -115,7 +122,8 @@ nav .mobileNav {
     bottom: 20px;
 }
 
-#menu1, #menu2 {
+#menu1,
+#menu2 {
     background-size: 40px;
     width: 40px;
     height: 4px;
@@ -124,21 +132,21 @@ nav .mobileNav {
 
 /* Menu icon animation */
 
-.linkMenu #menu1{
+.linkMenu #menu1 {
     transition: top 200ms ease-out 200ms, transform 200ms ease-in;
 }
 
-.linkMenu #menu2{
+.linkMenu #menu2 {
     transition: bottom 200ms ease-out 200ms, transform 200ms ease-in;
 }
 
-.linkMenu.clicked #menu1{
+.linkMenu.clicked #menu1 {
     top: 28px;
     transform: rotate(45deg);
     transition: top 200ms ease-in, transform 200ms ease-out 200ms;
 }
 
-.linkMenu.clicked #menu2{
+.linkMenu.clicked #menu2 {
     bottom: 28px;
     transform: rotate(-45deg);
     transition: bottom 200ms ease-in, transform 200ms ease-out 200ms;
