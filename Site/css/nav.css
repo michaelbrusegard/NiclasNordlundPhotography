@@ -151,3 +151,11 @@ nav .mobileNav {
     transform: rotate(-45deg);
     transition: bottom 200ms ease-in, transform 200ms ease-out 200ms;
 }
+
+.linkMenu.clicked:hover #menu1 {
+    transform: rotate(135deg);
+}
+
+.linkMenu.clicked:hover #menu2 {
+    transform: rotate(45deg);
+}
