@@ -46,7 +46,7 @@ nav .desktopNav li a, nav .mobileNav li a {
 }
 
 nav .desktopNav li a:hover, nav .mobileNav li a:hover {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 nav .mobileNav {
@@ -92,24 +92,6 @@ nav .mobileNav {
     width: 60px;
 }
 
-#linkMenu1 {
-    background: url('../img/icons/menu_1.png');
-    top: 40%;
-}
-
-#linkMenu2 {
-    background: url('../img/icons/menu_2.png');
-    top: 60%;
-}
-
-#linkMenu1, #linkMenu2 {
-    background-size: 40px;
-    width: 40px;
-    height: 4px;
-    position: absolute;
-    transform: translateY(-50%);
-}
-
 .linkMenu {
     width: 40px;
 }
@@ -119,4 +101,45 @@ nav .mobileNav {
     background-position: center;
     height: 60px;
     background-repeat: no-repeat;
+}
+
+/* Menu icon position */
+
+#menu1 {
+    background: url('../img/icons/menuLine1.png');
+    top: 20px;
+}
+
+#menu2 {
+    background: url('../img/icons/menuLine2.png');
+    bottom: 20px;
+}
+
+#menu1, #menu2 {
+    background-size: 40px;
+    width: 40px;
+    height: 4px;
+    position: absolute;
+}
+
+/* Menu icon animation */
+
+.linkMenu #menu1{
+    transition: top 200ms ease-out 200ms, transform 200ms ease-in;
+}
+
+.linkMenu #menu2{
+    transition: bottom 200ms ease-out 200ms, transform 200ms ease-in;
+}
+
+.linkMenu.clicked #menu1{
+    top: 28px;
+    transform: rotate(45deg);
+    transition: top 200ms ease-in, transform 200ms ease-out 200ms;
+}
+
+.linkMenu.clicked #menu2{
+    bottom: 28px;
+    transform: rotate(-45deg);
+    transition: bottom 200ms ease-in, transform 200ms ease-out 200ms;
 }
