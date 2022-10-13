@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    /* Removes the default margin and padding */
+    padding: 0;
+    box-sizing: border-box;
+    /* Includes margin and padding in width and height calculations */
+}
+
+/* Variables */
+
+:root {
+
+    /* nav.css */
+
+    --shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+
+
+  }
