@@ -1,7 +1,7 @@
 /* Navigation bar */
 
 .navContainer {
-    background: white;
+    background: var(--navColor);
     box-shadow: var(--shadow);
     height: 60px;
     z-index: 300;
@@ -23,20 +23,19 @@ nav .mobileNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
     list-style: none;
 }
 
 nav .desktopNav li a,
 nav .mobileNav li a {
-    color: black;
+    color: var(--fontColor);
     text-decoration: none;
     font-family: 'Caveat', cursive;
     font-weight: 400;
     font-size: 22px;
     filter: drop-shadow(var(--shadow));
     opacity: 1;
-    transition: opacity 400ms;
+    transition: opacity var(--transitionLength);
 }
 
 nav .desktopNav li a:hover,
@@ -63,27 +62,35 @@ nav .mobileNav {
         display: flex;
     }
 
+    /* Navigation menu */
+
     nav .desktopNav {
-        display: none; 
-        /* Hidden */
-
-
-        /* Navigation menu */
-
         flex-direction: column;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
-        background: lightgray;
+        height: 60px;
+        background: var(--navColor);
         justify-content: start;
         overflow: hidden;
         z-index: -1;
+        transition: all var(--transitionLength) ease-in;
     }
 
     nav .desktopNav.active {
-        display: flex;
+        height: 100vh;
+        background: var(--mobileNavMenuColor);
+    }
+
+    nav .mobileNav .linkBag {
+        transition: all var(--transitionLength) ease;
+    }
+
+    nav .mobileNav.active .linkBag {
+        transform: translateY(5px);
+        opacity: 0;
+        pointer-events: none;
     }
 
     nav .desktopNav li {
@@ -101,9 +108,10 @@ nav .mobileNav {
     }
 
     nav .desktopNav li a {
+        width: 100%;
         padding: 16px 0;
         display: inline-block;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--fontColor);
     }
 }
 
@@ -161,23 +169,23 @@ nav .mobileNav {
 /* Menu icon animation */
 
 .linkMenu #menu1 {
-    transition: top 200ms ease-out 200ms, transform 200ms ease-in;
+    transition: top calc(var(--transitionLength) / 2) ease-out calc(var(--transitionLength) / 2), transform calc(var(--transitionLength) / 2) ease-in;
 }
 
 .linkMenu #menu2 {
-    transition: bottom 200ms ease-out 200ms, transform 200ms ease-in;
+    transition: bottom calc(var(--transitionLength) / 2) ease-out calc(var(--transitionLength) / 2), transform calc(var(--transitionLength) / 2) ease-in;
 }
 
 .linkMenu.clicked #menu1 {
     top: 28px;
     transform: rotate(45deg);
-    transition: top 200ms ease-in, transform 200ms ease-out 200ms;
+    transition: top calc(var(--transitionLength) / 2) ease-in, transform calc(var(--transitionLength) / 2) ease-out calc(var(--transitionLength) / 2);
 }
 
 .linkMenu.clicked #menu2 {
     bottom: 28px;
     transform: rotate(-45deg);
-    transition: bottom 200ms ease-in, transform 200ms ease-out 200ms;
+    transition: bottom calc(var(--transitionLength) / 2) ease-in, transform calc(var(--transitionLength) / 2) ease-out calc(var(--transitionLength) / 2);
 }
 
 .linkMenu.clicked:hover #menu1 {
