@@ -1,3 +1,54 @@
-body {
+/* Navigation bar */
+
+@media (min-width: 768px) {
+    .linkBag {
+        background-position: left;
+        width: 120px;
+        line-height: 60px;
+        text-align: end;
+    }
+}
+
+nav .desktopNav .linkText,
+nav .mobileNav .linkMenu {
+    animation: transitionOut calc(var(--transitionLength) * 2);
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Navigation bar transition */
+
+@keyframes transitionOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* Page content */
+
+.pageContainer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
     background-color: lightgoldenrodyellow;
+    animation: transitionIn calc(var(--transitionLength) * 2);
+    animation-timing-function: ease-out;
+}
+
+/* Page transition */
+
+@keyframes transitionIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
