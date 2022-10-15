@@ -37,7 +37,7 @@ nav .mobileNav .linkMenu {
     position: fixed;
     background-color: lightgoldenrodyellow;
     animation: transitionIn calc(var(--transitionLength) * 2);
-    animation-timing-function: ease-out;
+    animation-timing-function: linear;
 }
 
 /* Page transition */
