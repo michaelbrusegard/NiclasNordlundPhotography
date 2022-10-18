@@ -3,10 +3,67 @@
 .pageContainer {
     height: 100%;
     width: 100%;
-    position: fixed;
+    position: absolute;
     background-color: lightseagreen;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
+}
+/* Image layout*/
+
+/* Nature and Wedding */
+.specialWrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
+    background-color: lightseagreen;
+}
+
+.specialWrapper > img {
+width: 90%;
+height: auto;
+border: 3px solid black;
+margin: 20px 20px 20px 20px;
+}
+#numberOne{
+    margin-top: 100px;
+}
+
+/* Showcase */
+.imgWrapper {
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items:center;
+    background-color: lightseagreen;
+
+}
+.imgWrapper > img {
+    width: 40%;
+    height: 30%;
+    border: 3px solid black;
+    margin: 20px 20px 20px 20px;
+    
+}
+
+
+/* Fade on scroll animation*/
+
+.imgWrapper{ 
+    -webkit-animation: fade 1.2s both;
+    -moz-animation: fade 1.2s both;
+    -o-animation: fade 1.2s both;
+    animation: fade 1.2s both;
+}
+@keyframes fade {
+0%{
+    opacity: 0;
+    transform: translateY(50px);
+}
+100%{
+    opacity: 1;
+    transform: translateY(0);
+}
 }
 
 /* Page transition */
