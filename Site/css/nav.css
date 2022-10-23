@@ -3,8 +3,8 @@
 .navContainer {
     background: var(--navColor);
     box-shadow: var(--shadow);
-    height: 60px;
-    z-index: 300;
+    height: var(--navContainerHeight);
+    z-index: var(--navZindex);
     position: fixed;
     right: 0;
     left: 0;
@@ -14,7 +14,7 @@
 .navContainer nav {
     width: 1000px;
     margin: 0 auto;
-    padding: 0 8px;
+    padding: 0 calc(var(--navPadding));
     height: 100%;
 }
 
@@ -32,7 +32,7 @@ nav .mobileNav li a {
     text-decoration: none;
     font-family: 'Caveat', cursive;
     font-weight: 400;
-    font-size: 22px;
+    font-size: var(--fontSize);
     filter: drop-shadow(var(--shadow));
     opacity: 1;
     transition: opacity var(--transitionLength);
@@ -52,7 +52,7 @@ nav .mobileNav {
 @media (max-width: 1100px) {
     .navContainer nav {
         width: 100%;
-        padding: 0 32px;
+        padding: 0 var(--navPadding);
     }
 }
 
@@ -69,7 +69,7 @@ nav .mobileNav {
         top: 0;
         left: 0;
         width: 100%;
-        height: 60px;
+        height: var(--navContainerHeight);
         background: var(--navColor);
         justify-content: start;
         overflow: hidden;
@@ -94,11 +94,11 @@ nav .mobileNav {
 
     nav .desktopNav li {
         width: 100%;
-        padding: 0 40px;
+        padding: 0 calc(var(--navPadding) + var(--navPadding) / 3);
     }
 
     nav .desktopNav li:first-child {
-        margin-top: 60px;
+        margin-top: var(--navContainerHeight);
     }
 
     nav .desktopNav .linkSignature,
@@ -108,7 +108,7 @@ nav .mobileNav {
 
     nav .desktopNav li a {
         width: 100%;
-        padding: 16px 0;
+        padding: calc(var(--navPadding) / 2) 0;
         display: inline-block;
         border-bottom: 1px solid var(--fontColor);
     }
@@ -118,30 +118,30 @@ nav .mobileNav {
 
 .linkSignature {
     background: url('../img/icons/signature.png');
-    background-size: 160px;
-    width: 160px;
+    background-size: calc(var(--menuIconSize) * 4);
+    width: calc(var(--menuIconSize) * 4);
 }
 
 .linkBag {
     background: url('../img/icons/bag.png');
-    background-size: 44px;
-    width: 40px;
+    background-size: calc(var(--menuIconSize) + 4px);
+    width: var(--menuIconSize);
 }
 
 .linkCart {
     background: url('../img/icons/cart.png');
-    background-size: 40px;
-    width: 40px;
+    background-size: var(--menuIconSize);
+    width: var(--menuIconSize);
 }
 
 .linkMenu {
-    width: 40px;
+    width: var(--menuIconSize);
 }
 
 .linkIcon {
     display: block;
     background-position: center;
-    height: 60px;
+    height: var(--navContainerHeight);
     background-repeat: no-repeat;
 }
 
@@ -149,19 +149,19 @@ nav .mobileNav {
 
 #menu1 {
     background: url('../img/icons/menuLine1.png');
-    top: 20px;
+    top: calc(var(--navContainerHeight) / 3);
 }
 
 #menu2 {
     background: url('../img/icons/menuLine2.png');
-    bottom: 20px;
+    bottom: calc(var(--navContainerHeight) / 3);
 }
 
 #menu1,
 #menu2 {
-    background-size: 40px;
-    width: 40px;
-    height: 4px;
+    background-size: var(--menuIconSize);
+    width: var(--menuIconSize);
+    height: var(--menuIconLineHeight);
     position: absolute;
 }
 
@@ -176,13 +176,13 @@ nav .mobileNav {
 }
 
 .linkMenu.clicked #menu1 {
-    top: 28px;
+    top: calc(var(--navContainerHeight) / 3 + var(--menuIconLineHeight) * 2);
     transform: rotate(45deg);
     transition: top calc(var(--transitionLength) / 2) ease-in, transform calc(var(--transitionLength) / 2) ease-out calc(var(--transitionLength) / 2);
 }
 
 .linkMenu.clicked #menu2 {
-    bottom: 28px;
+    bottom: calc(var(--navContainerHeight) / 3 + var(--menuIconLineHeight) * 2);
     transform: rotate(-45deg);
     transition: bottom calc(var(--transitionLength) / 2) ease-in, transform calc(var(--transitionLength) / 2) ease-out calc(var(--transitionLength) / 2);
 }
