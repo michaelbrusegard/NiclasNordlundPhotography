@@ -1,5 +1,6 @@
 /* Navigation bar */
 
+/*
 @media (min-width: 768px) {
     .linkBag {
         background-position: left;
@@ -8,26 +9,50 @@
         text-align: end;
     }
 }
+*/
 
-nav .desktopNav .linkText,
-nav .mobileNav .linkMenu {
-    animation: transitionOut calc(var(--transitionLength) * 2);
-    pointer-events: none;
-    opacity: 0;
+.linkSignature,
+.linkText,
+.linkMenu {
+    animation: transition calc(var(--transitionLength) * 2);
+}
+
+.linkBag {
+    animation: transitionBag calc(var(--transitionLength) * 2);
+    animation-timing-function: linear;
+}
+
+@media (min-width: 1100px) {
+    .linkBag {
+        animation: transitionBagWide calc(var(--transitionLength) * 2);
+        animation-timing-function: linear;
+    }
 }
 
 /* Navigation bar transition */
 
-@keyframes transitionOut {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
+@keyframes transition {
+    50% {
         opacity: 0;
-        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 0;
     }
 }
+
+
+@keyframes transitionBag {
+    to {
+        transform: translateX(calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize)));
+    }
+}
+
+@keyframes transitionBagWide {
+    to {
+        transform: translateX(calc(-1000px + var(--navPadding) * 2 + var(--menuIconSize)));
+    }
+}
+
 
 /* Page content */
 
