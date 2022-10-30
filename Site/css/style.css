@@ -13,13 +13,23 @@
 :root {
 
     /* nav.css */
+    --navZindex: 100;
 
     --navColor: white;
     --mobileNavMenuColor: lightgray;
+    --navPadding: 32px;
+    --navContainerHeight: 60px;
+
+    --menuIconSize: 40px;
+    --menuIconLineHeight: 4px;
+
+    --desktopNavSize: 1100px;
+    --mobileNavSize: 768px;
 
     /* General */
 
     --fontColor: black;
+    --fontSize: 22px;
     --shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
     --transitionLength: 400ms;
 }
