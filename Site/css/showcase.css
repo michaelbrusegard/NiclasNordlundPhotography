@@ -1,27 +1,27 @@
 /* Page content */
 
 #animals {
-  background: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/wallpaperAnimals.png);
 }
 
 #architectural {
-  background: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/wallpaperArchitectural.png);
 }
 
 #nature {
-  background: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/wallpaperNature.png);
 }
 
 #portrait {
-  background: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/wallpaperPortrait.png);
 }
 
 #sport {
-  background: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/wallpaperSport.png);
 }
 
 #wedding {
-  background: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/WallpaperWedding.png);
 }
 
 .pageContainer {
@@ -30,6 +30,8 @@
     position: absolute;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
+    background-repeat: repeat;
+    background-attachment: scroll;
     background-size: 100%;
     margin-top: var(--navContainerHeight);
 }
