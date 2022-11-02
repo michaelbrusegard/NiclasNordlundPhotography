@@ -62,9 +62,11 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    background-color: lightgoldenrodyellow;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
+    margin-top: var(--navContainerHeight);
+    background: url(../img/wallpapers/wallpaperGrass.png);
+    background-size: 100%;
     margin-top: var(--navContainerHeight);
 }
 
