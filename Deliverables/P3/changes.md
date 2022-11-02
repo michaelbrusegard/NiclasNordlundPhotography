@@ -2,3 +2,4 @@
 - ga nytt navn til menulines i icons
 - lagde nav.js for javascript til nav baren, visste ikke man trengte javascript til menu for eksempel.
 - Lagde fil style.css for å lagre css variabler i
+- lagde wallpapers folder for wallpaper bilder
