@@ -12,7 +12,7 @@
 
 :root {
 
-    /* nav.css */
+    /* Nav */
     --navZindex: 100;
 
     --navColor: white;
@@ -32,4 +32,9 @@
     --fontSize: 22px;
     --shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
     --transitionLength: 400ms;
+
+    /* Showcase */
+
+    --imageMargin: 20px;
+    --imageBorderRadius: 5px;
 }
