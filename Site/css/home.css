@@ -4,7 +4,8 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    background-color: lightblue;
+    background: url(../img/wallpapers/wallpaperWall2.png);
+    background-size: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
     margin-top: var(--navContainerHeight);
@@ -15,6 +16,7 @@ p {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: 200;
     font-size: 24;
+    color: white;
 }
 
 /* Page transition */
