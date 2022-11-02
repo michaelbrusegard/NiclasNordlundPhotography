@@ -7,51 +7,59 @@
     background-color: lightseagreen;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
-    margin-top:55px;
+    margin-top: var(--navContainerHeight);
 }
+
 /* Image layout*/
 
 /* Nature and Wedding */
+
 .specialWrapper{
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items:center;
+    align-items: center;
     background-color: lightseagreen;
 }
 
 .specialWrapper > img {
-width: 90%;
-height: auto;
-border-radius: 5px;
-margin: 20px 20px 20px 20px;
+  width: 90%;
+  height: auto;
+  border-radius: var(--imageBorderRadius);
+  margin: var(--imageMargin);
+  box-shadow: var(--shadow);
 }
+
 /* Showcase */
+
 .gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 20px 20px 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--imageMargin) / 2);
+  margin: var(--imageMargin);
+}
   
-  .gallery .column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.gallery .column {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--imageMargin) / 2);
+}
   
-  .image img {
-    width: 100%;
-    border-radius: 5px;
-    height: 100%;
-    object-fit: cover;
+.image img {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--imageBorderRadius);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+/* Media query for a three column display*/
+
+@media only screen and (min-width: 768px) {
+  .gallery {
+    flex-direction: row;
   }
-  /* Media query for a three column display*/
-  @media only screen and (min-width: 768px) {
-    .gallery {
-      flex-direction: row;
-    }
-  }
+}
 
 
 /* Page transition */
