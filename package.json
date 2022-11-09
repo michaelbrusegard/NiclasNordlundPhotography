@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/michaelbrusegard/NiclasNordlundPhotography/issues"
   },
-  "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme"
+  "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme",
+  "dependencies": {
+    "image-js": "^0.35.2"
+  }
 }
