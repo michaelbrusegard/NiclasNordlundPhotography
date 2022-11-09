@@ -6,3 +6,4 @@
 - added shop_images for bildene vi skal selge i shopen
 - separerte Display shop images fra quality images sånn at vi ikke viser full kvalitet bildene som skal selges på selve nettsiden
 - lagde prices.json i en shop mappe for prisene på bildene
+- lagde et js script createPrices.js for å extracte alle prisene fra filene Niclas sender
