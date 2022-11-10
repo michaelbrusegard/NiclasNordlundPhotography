@@ -17,13 +17,6 @@ const linkText = document.querySelector('.linkText');
 const linkSignature = document.querySelector('.linkSignature');
 
 linkBag.addEventListener("animationend", () => {
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    desktopNav.removeChild(desktopNav.firstElementChild);
-    mobileNav.removeChild(mobileNav.firstElementChild);
-    mobileNav.removeChild(mobileNav.firstElementChild);
+    
+    //Remove old nav bar items and replace with shop ones
 });

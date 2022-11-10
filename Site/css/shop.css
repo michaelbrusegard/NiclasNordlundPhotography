@@ -1,5 +1,5 @@
 /* Navigation bar */
-
+/* THIS IS THE NAV BAR WORK IN PROGRESS FOR BAG ICON ANIMATION
 /*
 @media (min-width: 768px) {
 
@@ -12,7 +12,7 @@
     }
 }
 */
-
+/*
 .linkSignature,
 .linkText,
 .linkMenu {
@@ -30,9 +30,9 @@
         animation-timing-function: linear;
     }
 }
-
+/*
 /* Navigation bar transition */
-
+/*
 @keyframes transition {
     50% {
         opacity: 0;
@@ -54,23 +54,72 @@
         transform: translateX(calc(-1000px + var(--navPadding) * 2 + var(--menuIconSize)));
     }
 }
-
+*/
 
 /* Page content */
 
 .pageContainer {
     height: 100%;
     width: 100%;
-    position: fixed;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
     margin-top: var(--navContainerHeight);
     background-image: url(../img/wallpapers/wallpaperGrass.png);
     background-repeat: no-repeat;
-    background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
     margin-top: var(--navContainerHeight);
+}
+
+#gridWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 10rem);
+    justify-content: center;
+    margin: var(--shopMargin);
+}
+
+.container {
+    background-color: blueviolet;
+    box-shadow: var(--shadow);
+    position: relative;
+    margin: var(--shopDisplayMargin);
+    border-radius: var(--imageBorderRadius);
+    height: 150px;
+    width: 150px;
+}
+
+.container:hover {
+    background-color: red;
+}
+
+.images {
+    border-radius: var(--imageBorderRadius);
+    margin: auto;
+    margin-top: calc(var(--imageMargin) / 2);
+    display: block;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.price {
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-weight: bolder;
+    font-size: var(--fontSize)
+}
+
+.name {
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-weight: normal;
+    font-size: calc(var(--fontSize) / 2)
+}
+
+@media (max-width: 768px) {
+    .gridWrapper {
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 /* Page transition */
