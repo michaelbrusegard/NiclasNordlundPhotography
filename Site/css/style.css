@@ -37,4 +37,9 @@
 
     --imageMargin: 20px;
     --imageBorderRadius: 5px;
+
+    /* Shop */
+
+    --shopMargin: 40px;
+    --shopDisplayMargin: 6px;
 }
