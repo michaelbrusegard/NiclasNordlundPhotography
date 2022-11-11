@@ -21,10 +21,16 @@ function calculateColumsRows() {
     return [colums, rows]
 }
 
+let scrolling = true;
+
 function scrollLoad() {
-    let [colums] = calculateColumsRows()
-    itemsToLoad += colums
-    loadItems()
+    if (scrolling === true) {
+        let [colums] = calculateColumsRows()
+        itemsToLoad += colums
+        loadItems()
+        scrolling = false
+    }
+    console.log("scrolling")
 }
 
 function windowLoad() {
@@ -60,7 +66,7 @@ function loadItems() {
 function createContainer(i) {
     // Images
     let img = document.createElement('img');
-    img.src = '../../Site/img/shopDisplayImages/' + i[0]
+    img.src = 'img/shopDisplayImages/' + i[0]
     img.classList.add('images')
 
     // Price
