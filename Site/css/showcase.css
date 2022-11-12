@@ -1,27 +1,27 @@
 /* Page content */
 
 #animals {
-  background-image: url(../img/wallpapers/wallpaperAnimals.png);
+  background-image: url(../img/wallpapers/wallpaperAnimals.jpg);
 }
 
 #architectural {
-  background-image: url(../img/wallpapers/wallpaperArchitectural.png);
+  background-image: url(../img/wallpapers/wallpaperArchitectural.jpg);
 }
 
 #nature {
-  background-image: url(../img/wallpapers/wallpaperNature.png);
+  background-image: url(../img/wallpapers/wallpaperNature.jpg);
 }
 
 #portrait {
-  background-image: url(../img/wallpapers/wallpaperPortrait.png);
+  background-image: url(../img/wallpapers/wallpaperPortrait.jpg);
 }
 
 #sport {
-  background-image: url(../img/wallpapers/wallpaperSport.png);
+  background-image: url(../img/wallpapers/wallpaperSport.jpg);
 }
 
 #wedding {
-  background-image: url(../img/wallpapers/WallpaperWedding.png);
+  background-image: url(../img/wallpapers/WallpaperWedding.jpg);
 }
 
 .pageContainer {
