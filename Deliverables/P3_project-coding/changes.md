@@ -8,3 +8,4 @@
 - lagde prices.json i en shop mappe for prisene på bildene
 - lagde et js script createPrices.js for å extracte alle prisene fra filene Niclas sender
 - la til shop.js for å lazy loade bildene til shopen. 
+- Separerte shop.js funksjoner i egne filer
