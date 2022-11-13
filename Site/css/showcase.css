@@ -84,6 +84,9 @@
   .gallery {
     flex-direction: row;
   }
+  .column {
+    width:33%;
+  }
 }
 
 

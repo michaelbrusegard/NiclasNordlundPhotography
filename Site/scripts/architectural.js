@@ -13,12 +13,7 @@ const column3Architectural = 19;
 // Runs when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     lazyload('architectural', architectural1, column1Architectural);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
     lazyload('architectural', architectural2, column2Architectural, 7);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
     lazyload('architectural', architectural3, column3Architectural, 13);
 });
+
