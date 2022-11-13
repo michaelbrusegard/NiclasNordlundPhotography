@@ -85,8 +85,8 @@
     position: relative;
     margin: var(--shopDisplayMargin);
     border-radius: var(--imageBorderRadius);
-    height: 150px;
-    width: 150px;
+    height: var(--imageContainerSize);
+    width: var(--imageContainerSize);
 }
 
 .container:hover {

@@ -1,5 +1,6 @@
+const gridWrapper = document.getElementById('gridWrapper');
 // Function that creates the div container for the shop
-function createContainer(wrapper,  pricesArray) {
+function createContainer(pricesArray) {
 
     // Images
     let img = document.createElement('img');
@@ -23,5 +24,5 @@ function createContainer(wrapper,  pricesArray) {
     div.appendChild(h2);
     div.appendChild(p);
     div.classList.add('container')
-    wrapper.appendChild(div);
+    gridWrapper.appendChild(div);
 }
