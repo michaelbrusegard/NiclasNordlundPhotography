@@ -1,4 +1,5 @@
-//Using the function for the portrait page
+//Using the function for the sport page
+//Assigning the end value and editing the start value for the function call to dictate number of images per column
 const sport1 = document.getElementsByClassName('column')[0];
 const column1Sport = 6;
 
@@ -8,6 +9,8 @@ const column2Sport = 11;
 const sport3 = document.getElementsByClassName('column')[2];
 const column3Sport = 18;
 
+
+// Runs when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     lazyload('sport', sport1, column1Sport, 1);
 });

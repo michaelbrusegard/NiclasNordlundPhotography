@@ -1,4 +1,5 @@
 //Using the function for the portrait page
+//Assigning the end value and editing the start value for the function call to dictate number of images per column
 const portrait1 = document.getElementsByClassName('column')[0];
 const column1Portrait = 5;
 
@@ -8,6 +9,7 @@ const column2Portrait = 11;
 const portrait3 = document.getElementsByClassName('column')[2];
 const column3Portrait = 16;
 
+// Runs when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     lazyload('portrait', portrait1, column1Portrait, 1);
 });
