@@ -81,12 +81,11 @@ function calculateRows() {
     // Container size
     const imageContainerSize = parseInt(style.getPropertyValue('--imageContainerSize').slice(0, -2));
     const shopDisplayMargin = parseInt(style.getPropertyValue('--shopDisplayMargin').slice(0, -2));
-    const shopMargin = parseInt(style.getPropertyValue('--shopMargin').slice(0, -2));
 
     // Nav height
     const navContainerHeight = parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2));
 
-    return Math.floor((window.innerHeight - navContainerHeight - 2 * shopMargin - shopDisplayMargin) / (imageContainerSize + shopDisplayMargin))
+    return Math.floor((window.innerHeight - navContainerHeight - shopDisplayMargin) / (imageContainerSize + shopDisplayMargin))
 }
 
 // Calculates how many items to load on window size change
@@ -99,8 +98,11 @@ function windowLoad() {
 
 // Calculates how many items to load on scroll
 function scrollLoad() {
+
+    // Checks when the window height plus the crolled distance is bigger than the body
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
         itemsToLoad += calculateColums()
+        console.log("bottom")
         loadItems()
     }
 }
