@@ -81,7 +81,7 @@
 }
 
 .container {
-    background-color: blueviolet;
+    background-color: white;
     box-shadow: var(--shadow);
     position: relative;
     margin: var(--shopDisplayMargin);
@@ -99,19 +99,23 @@
     margin: auto;
     margin-top: calc(var(--imageMargin) / 2);
     display: block;
-    height: 80px;
+    height: var(--imageSize);
 }
 
 .price {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: bolder;
-    font-size: var(--fontSize)
+    font-size: var(--fontSize);
+    margin-left: var(--textMargin);
+    margin-right: var(--textMargin);
 }
 
 .name {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: normal;
-    font-size: calc(var(--fontSize) / 2)
+    font-size: calc(var(--fontSize) / 2);
+    margin-left: var(--textMargin);
+    margin-right: var(--textMargin);
 }
 
 @media (max-width: 768px) {
