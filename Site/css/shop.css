@@ -92,17 +92,20 @@
 }
 
 .container {
-    background-color: white;
+    background-color: var(--expandedPageColor);
     box-shadow: var(--shadow);
     position: relative;
     margin: var(--shopDisplayMargin);
     border-radius: var(--imageBorderRadius);
     height: var(--imageContainerSize);
     width: var(--imageContainerSize);
+    box-shadow: var(--shadow);
+    transition: background-color var(--transitionLength) ease-in;
 }
 
 .container:hover {
-    background-color: red;
+    background-color: var(--hoverPageColor);
+    animation: tilt-shaking var(--transitionLength);
 }
 
 .images {
@@ -111,11 +114,12 @@
     margin-top: calc(var(--imageMargin) / 2);
     display: block;
     height: var(--imageSize);
+    max-width: calc(var(--imageSize) * 1.7);
 }
 
 .price {
     font-family: 'Noto Sans Mono', sans-serif;
-    font-weight: bolder;
+    font-weight: bold;
     font-size: var(--fontSize);
     margin-left: var(--textMargin);
     margin-right: var(--textMargin);
@@ -148,4 +152,13 @@
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+/* Shop items hover animation */
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
 }
