@@ -47,7 +47,7 @@ const files = [["Alfågel Ålands hav 300 euro.jpg","300"],
 // Checks when the document object model is done loading
 document.addEventListener('DOMContentLoaded', windowLoad);
 
-// Checks for changes to iniate loading more
+// Checks for changes to iniate loading of more photos
 window.addEventListener("scroll", scrollLoad);
 window.addEventListener("resize", windowLoad);
 window.addEventListener("orientationChange", windowLoad);
