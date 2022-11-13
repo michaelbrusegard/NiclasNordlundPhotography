@@ -1,4 +1,3 @@
-const gridWrapper = document.getElementById('gridWrapper');
 // Function that creates the div container for the shop
 function createContainer(pricesArray) {
 

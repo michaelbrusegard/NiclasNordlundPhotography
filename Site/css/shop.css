@@ -59,11 +59,11 @@
 /* Page content */
 
 .pageContainer {
+    position: relative;
     height: 100%;
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
-    margin-top: var(--navContainerHeight);
     background-image: url(../img/wallpapers/wallpaperShop.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -74,13 +74,25 @@
 
 #gridWrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 10rem);
+    grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopDisplayMargin)));
     justify-content: center;
-    margin: var(--shopMargin);
+    margin-left: var(--sideWrapperMargin);
+    margin-right: var(--sideWrapperMargin);
+}
+
+#checkoutMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    background-color: green;
+    min-height: 100px;
+    width: var(--checkoutWidth);
+    margin: var(--shopDisplayMargin);
 }
 
 .container {
-    background-color: blueviolet;
+    background-color: white;
     box-shadow: var(--shadow);
     position: relative;
     margin: var(--shopDisplayMargin);
@@ -98,20 +110,23 @@
     margin: auto;
     margin-top: calc(var(--imageMargin) / 2);
     display: block;
-    max-width: 100px;
-    max-height: 100px;
+    height: var(--imageSize);
 }
 
 .price {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: bolder;
-    font-size: var(--fontSize)
+    font-size: var(--fontSize);
+    margin-left: var(--textMargin);
+    margin-right: var(--textMargin);
 }
 
 .name {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: normal;
-    font-size: calc(var(--fontSize) / 2)
+    font-size: calc(var(--fontSize) / 2);
+    margin-left: var(--textMargin);
+    margin-right: var(--textMargin);
 }
 
 @media (max-width: 768px) {
