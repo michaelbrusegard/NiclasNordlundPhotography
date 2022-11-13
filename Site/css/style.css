@@ -40,6 +40,8 @@
 
     /* Shop */
 
+    --imageSize: 100px;
+    --textMargin: 10px;
     --shopMargin: 40px;
     --sideWrapperMargin: 40px;
     --shopDisplayMargin: 6px;

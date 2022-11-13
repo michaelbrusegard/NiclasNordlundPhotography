@@ -16,7 +16,7 @@ files.forEach(i => {
 // Some variables for context
 const imgLen = paths.length;
 let imgCur = 0;
-const shopDisplayImagesWidth = 100;
+const shopDisplayImagesWidth = 200;
 
 // Resize function
 async function resize(path) {
