@@ -1,7 +1,7 @@
 /* Navigation bar */
 
 .navContainer {
-    background: var(--navColor);
+    background: var(--pageColor);
     box-shadow: var(--shadow);
     height: var(--navContainerHeight);
     z-index: var(--navZindex);
@@ -70,7 +70,7 @@ nav .mobileNav {
         left: 0;
         width: 100%;
         height: var(--navContainerHeight);
-        background: var(--navColor);
+        background: var(--pageColor);
         justify-content: start;
         overflow: hidden;
         z-index: -1;
@@ -79,7 +79,7 @@ nav .mobileNav {
 
     nav .desktopNav.active {
         height: 100vh;
-        background: var(--mobileNavMenuColor);
+        background: var(--expandedPageColor);
     }
 
     nav .mobileNav .linkBag {

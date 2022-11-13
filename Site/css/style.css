@@ -12,11 +12,14 @@
 
 :root {
 
+    /* Page colors */
+    --pageColor: white;
+    --expandedPageColor: lightgray;
+    --hoverPageColor: gray;
+
     /* Nav */
     --navZindex: 100;
 
-    --navColor: white;
-    --mobileNavMenuColor: lightgray;
     --navPadding: 32px;
     --navContainerHeight: 60px;
 
@@ -40,12 +43,17 @@
 
     /* Shop */
 
-    --imageSize: 100px;
-    --textMargin: 10px;
     --shopMargin: 40px;
+
+        /* Grid */
     --sideWrapperMargin: 40px;
     --shopDisplayMargin: 6px;
-    --imageContainerSize: 150px;
+
+        /* Image container */
+    --textMargin: 10px;
+    --imageSize: 100px;
+    --imageContainerSize: 180px;
+
+        /* Checkout */
     --checkoutWidth: 300px;
-    --imageContainerSize: 200px;
 }
