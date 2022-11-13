@@ -64,11 +64,14 @@ let checkoutState = false;
 
 // Work in progress function!
 function toggleCheckout() {
+    const checkoutMenu = document.getElementById('checkoutMenu');
     if (checkoutState) {
         // remove stuff
+        checkoutMenu.style.visibility = 'hidden';
         console.log('checkout closed');
     } else {
         // add stuff
+        checkoutMenu.style.visibility = 'visible';
         console.log('checkout opened');
     }
     checkoutState = !checkoutState;

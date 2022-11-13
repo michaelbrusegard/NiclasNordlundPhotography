@@ -59,11 +59,11 @@
 /* Page content */
 
 .pageContainer {
+    position: relative;
     height: 100%;
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
-    margin-top: var(--navContainerHeight);
     background-image: url(../img/wallpapers/wallpaperShop.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -77,6 +77,17 @@
     grid-template-columns: repeat(auto-fit, 10rem);
     justify-content: center;
     margin: var(--shopMargin);
+}
+
+#checkoutMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    background-color: green;
+    min-height: 100px;
+    width: var(--checkoutWidth);
+    margin: var(--shopDisplayMargin);
 }
 
 .container {
