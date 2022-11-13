@@ -1,3 +1,10 @@
+// Fetching the checkout menu and shopping cart button elements
+const checkoutMenu = document.getElementById('checkoutMenu');
+const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
+
+// State of the checkout menu (true <=> open, false <=> closed)
+let checkoutState = false;
+
 // Checks when the document object model is done loading
 document.addEventListener('DOMContentLoaded', windowLoad);
 
@@ -7,26 +14,24 @@ window.addEventListener("resize", windowLoad);
 window.addEventListener("orientationChange", windowLoad);
 
 // Checks for clicks on the shopping cart icon (both desktop and mobile) to toggle the checkout menu
-const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 cartButtons.forEach(el => el.addEventListener('click', event => {
     event.preventDefault(); 
     toggleCheckout();
 }));
 
-// State of the checkout menu (true <=> open, false <=> closed)
-let checkoutState = false;
+// Updates the positioning of the checkout menu based on where the cart button is
+function alignCheckout() {
+    return
+}
 
-// Work in progress function!
+// Toggles the visibility of the checkout menu
 function toggleCheckout() {
-    const checkoutMenu = document.getElementById('checkoutMenu');
     if (checkoutState) {
-        // remove stuff
+        // Closes the checkout menu
         checkoutMenu.style.visibility = 'hidden';
-        console.log('checkout closed');
     } else {
-        // add stuff
+        // Opens the checkout menu
         checkoutMenu.style.visibility = 'visible';
-        console.log('checkout opened');
     }
     checkoutState = !checkoutState;
 }
