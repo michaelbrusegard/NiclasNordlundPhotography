@@ -41,7 +41,9 @@
     /* Shop */
 
     --shopMargin: 40px;
+    --sideWrapperMargin: 40px;
     --shopDisplayMargin: 6px;
     --imageContainerSize: 150px;
     --checkoutWidth: 300px;
+    --imageContainerSize: 200px;
 }
