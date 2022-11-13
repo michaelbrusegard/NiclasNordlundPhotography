@@ -4,6 +4,7 @@ const linkMenu = document.querySelector('.linkMenu');
 const mobileNav = document.querySelector('.mobileNav');
 const desktopNav = document.querySelector('.desktopNav');
 
+// Checks when menu is clicked
 linkMenu.addEventListener('click', () => {
     linkMenu.classList.toggle('clicked');
     desktopNav.classList.toggle('active');
@@ -19,4 +20,4 @@ const linkSignature = document.querySelector('.linkSignature');
 linkBag.addEventListener("animationend", () => {
     
     //Remove old nav bar items and replace with shop ones
-});
+}); 
