@@ -46,4 +46,4 @@ for (let i = 0; i < paths.length; i++) {
 }
 
 // Add array to json
-fs.writeFileSync("./prices.json", JSON.stringify(imgPrice));
+fs.writeFileSync('./prices.json', JSON.stringify(imgPrice));

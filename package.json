@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme",
   "dependencies": {
-    "image-js": "^0.35.2"
+    "image-js": "^0.35.2",
+    "image-size": "^1.0.2"
   }
 }

@@ -12,9 +12,9 @@
 }
 
 .navContainer nav {
-    width: 1000px;
+    width: var(--desktopNavSize);
     margin: 0 auto;
-    padding: 0 calc(var(--navPadding));
+    padding: 0 var(--navPadding);
     height: 100%;
 }
 
@@ -94,7 +94,7 @@ nav .mobileNav {
 
     nav .desktopNav li {
         width: 100%;
-        padding: 0 calc(var(--navPadding) + var(--navPadding) / 3);
+        padding: 0 calc(2 / 3 * var(--navPadding));
     }
 
     nav .desktopNav li:first-child {
