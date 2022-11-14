@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Loads page content correctly based on changes to the window
-window.addEventListener("scroll", scrollLoad());
+window.addEventListener("scroll", scrollLoad);
 window.addEventListener("resize", () => {
     windowLoad();
     alignCheckout();
