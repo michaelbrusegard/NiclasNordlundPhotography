@@ -55,5 +55,6 @@
     --imageContainerSize: 180px;
 
         /* Checkout */
-    --checkoutWidth: 300px;
+    --checkoutWidth: 384px;
+    --checkoutColor: red;
 }
