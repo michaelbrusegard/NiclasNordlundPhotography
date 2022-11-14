@@ -39,13 +39,15 @@ p {
     }
 }
 /* Carousel CSS START */
+
+
 .carousel {
-    width: 100vw;
-    height: 100vh;
+    width: 50vw;
+    height: 50vh;
     position: relative;
 }
 .carousel > ul {
-    margin: 0;
+    margin: 10;
     padding: 0;
     list-style: none;
 }
@@ -54,12 +56,18 @@ p {
     inset: 0;
     opacity: 0;
 }
-.slide > img {
+/* .carouselImg { */
+    /* width: fit-content; */
+/* } */
+
+.slide > .carouselImg {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 157%;
+    height: 157%;
+    
+    /*
     object-fit: cover;
-    object-position: center;
+    object-position: center;*/
 }
 
 .slide[data-active] {
@@ -92,6 +100,7 @@ p {
 
 .carousel-button.prev {
     left: 1rem;
+    
 }
 
 .carousel-button.next {
