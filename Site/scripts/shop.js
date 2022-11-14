@@ -36,34 +36,22 @@ cartButtons.forEach(el => el.addEventListener('click', event => {
 
 // Aligns the positioning of the checkout menu with the positioning of the cart button
 function alignCheckout() {
-    // New and current 'left' value of the checkout menu
-    let newCheckoutLeft = 0;
-    const currentCheckoutLeft = parseFloat(checkoutMenu.style.left.slice(0, -2));
-    console.log(`Current left: ${currentCheckoutLeft}px`);
-    const currentCheckoutRight = currentCheckoutLeft + 2 * checkoutWidth + checkoutMargin;
-    if (currentCheckoutRight > window.innerWidth) {
-        // The checkout menu is placed to the right
+    let newCheckoutRight = 0;
+    // Calculates the positioning of the checkout menu when aligned with the shopping cart button
+    cartButtons.forEach(el => {
+        const cartButtonLeft = el.getBoundingClientRect().x;
+        if (cartButtonLeft > 100) {
+            newCheckoutRight = window.innerWidth - (cartButtonLeft + cartButtonWidth + checkoutWidth / 2);
+        }
+    });
+    // If the positioning goes out of bounds, place the checkout menu in the upper right corner
+    if (newCheckoutRight <= 0){
         checkoutMenu.style.right = '0px';
-        checkoutMenu.style.left = 'auto';
-        console.log(`Top corner`);
-        //newCheckoutLeft = window.innerWidth - checkoutWidth;
-    } else {
-        checkoutMenu.style.right = 'auto';
-        // Places the checkout menu according to the 'left' value of the shopping cart button
-        cartButtons.forEach(el => {
-            const cartButtonLeft = el.getBoundingClientRect().x;
-            if (cartButtonLeft > 100) {
-                newCheckoutLeft = cartButtonLeft + (cartButtonWidth - checkoutWidth) / 2;
-                console.log(`New left: ${newCheckoutLeft}px`);
-            }
-        });
-        checkoutMenu.style.left = `${newCheckoutLeft}px`;
+    } 
+    // Otherwise, continue to align the menu with the shopping cart icon
+    else {
+        checkoutMenu.style.right = `${newCheckoutRight}px`;
     }
-    // console.log(`width1: ${currentCheckoutLeft + checkoutWidth}`);
-    // console.log(`width2: ${window.innerWidth}`);
-    
-    //console.log();
-    //const rightPosition = cartButtons;
 }
 
 // Toggles the visibility of the checkout menu
@@ -76,4 +64,8 @@ function toggleCheckout() {
         checkoutMenu.style.visibility = 'visible';
     }
     checkoutState = !checkoutState;
+}
+
+function addItemToCheckout() {
+    // code here
 }

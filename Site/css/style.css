@@ -56,4 +56,5 @@
 
         /* Checkout */
     --checkoutWidth: 384px;
+    --checkoutColor: red;
 }
