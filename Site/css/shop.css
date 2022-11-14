@@ -59,7 +59,6 @@
 /* Page content */
 
 .pageContainer {
-    position: relative;
     height: 100%;
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
@@ -81,14 +80,23 @@
 }
 
 #checkoutMenu {
-    position: absolute;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 0;
     right: 0;
-    visibility: hidden;
+    overflow: hidden;
     background-color: var(--checkoutColor);
-    min-height: 100px;
-    width: var(--checkoutWidth);
     margin: var(--shopDisplayMargin);
+    margin-top: calc(var(--shopDisplayMargin) + var(--navContainerHeight));
+    min-height: 0;
+    max-height: 0;
+    width: var(--checkoutWidth);
+    transition: max-height var(--transitionLength) ease-in-out;
+}
+
+#checkoutMenu.active {
+    max-height: calc(95% - var(--navContainerHeight));
 }
 
 .container {
