@@ -1,16 +1,3 @@
-// State of the checkout menu ('false' means 'closed', 'true' means 'open')
-let checkoutState = false
-
-// Fetching the checkout menu and shopping cart button elements
-const checkoutMenu = document.getElementById('checkoutMenu');
-const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
-
-// Style variables for the shopping cart button and checkout menu
-const style = getComputedStyle(document.body);
-const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
-const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
-const checkoutMargin = parseInt(style.getPropertyValue('--shopDisplayMargin').slice(0, -2));
-
 // Loads page content correctly when the DOM is done loading
 document.addEventListener('DOMContentLoaded', () => {
     windowLoad();
@@ -28,10 +15,22 @@ window.addEventListener("orientationChange", () => {
     alignCheckout();
 });
 
+// State of the checkout menu ('false' means 'closed', 'true' means 'open')
+let checkoutState = false
+
+// Fetching the checkout menu and shopping cart button elements
+const checkoutMenu = document.getElementById('checkoutMenu');
+const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
+
+// Style variables for the shopping cart button and checkout menu
+const style = getComputedStyle(document.body);
+const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
+const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
+
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {
-    event.preventDefault(); 
-    toggleCheckout();
+    event.preventDefault();
+    checkoutMenu.classList.toggle('active');
 }));
 
 // Aligns the positioning of the checkout menu with the positioning of the cart button
@@ -52,18 +51,6 @@ function alignCheckout() {
     else {
         checkoutMenu.style.right = `${newCheckoutRight}px`;
     }
-}
-
-// Toggles the visibility of the checkout menu
-function toggleCheckout() {
-    if (checkoutState) {
-        // Closes the checkout menu
-        checkoutMenu.style.visibility = 'hidden';
-    } else {
-        // Opens the checkout menu
-        checkoutMenu.style.visibility = 'visible';
-    }
-    checkoutState = !checkoutState;
 }
 
 function addItemToCheckout() {
