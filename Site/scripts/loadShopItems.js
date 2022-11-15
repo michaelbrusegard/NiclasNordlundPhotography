@@ -723,7 +723,13 @@ function scrollLoad() {
 
     // Checks when the window height plus the crolled distance is bigger than the body
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-        itemsToLoad += calculateColums()
+        itemsToLoad += 2 * calculateColums()
         loadItems()
     }
+}
+
+// Loads one new item when an item is added to the cart
+function checkoutLoad() {
+    itemsToLoad += 1
+    loadItems()
 }

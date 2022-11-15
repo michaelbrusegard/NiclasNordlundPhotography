@@ -1,28 +1,19 @@
-// When the DOM is done loading: loads new image containers and aligns checkout menu
-document.addEventListener('DOMContentLoaded', () => {
-    windowLoad();
-    alignCheckout();
-});
+// Fetching the checkout menu and shopping cart button elements
+const checkoutMenu = document.getElementById('checkoutMenu');
+const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
+const redDots = document.querySelectorAll('.redDot');
 
-// Changes to the window: loads new image containers and aligns checkout menu
-window.addEventListener("scroll", () => {
-    scrollLoad();
-});
-window.addEventListener("resize", () => {
-    windowLoad();
-    alignCheckout();
-});
-window.addEventListener("orientationChange", () => {
-    windowLoad();
-    alignCheckout();
-});
+// Keeping track of the checkout price total
+const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay'); 
+let checkoutTotal = 0;
 
-// Checks for clicks on the shopping cart icon to toggle the checkout menu
-cartButtons.forEach(el => el.addEventListener('click', event => {
-    event.preventDefault();
-    checkoutMenu.classList.toggle('active');
-<<<<<<< HEAD
-}));
+// Number of items in the shopping cart
+let itemNumber = 0;
+
+// Widths of the shopping cart button and checkout menu
+const style = getComputedStyle(document.body);
+const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
+const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
 
 // Aligns the positioning of the checkout menu with the positioning of the cart button
 function alignCheckout() {
@@ -54,12 +45,14 @@ function checkoutSystem(shopItem, itemPrice) {
     shopItem.classList.toggle('clicked');
     // Checkout price updated
     checkoutTotal += itemPrice;
-    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal} €`;
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
     // Item number updated
     itemNumber += 1;
     console.log(`Item number: ${itemNumber}`);
     // Shopping cart red dot animation plays
     redDotUpdate()
+    // Loads new items
+    checkoutLoad()
 
     // When a checkout item is removed:
     checkoutItem.addEventListener('click', () => {
@@ -68,7 +61,7 @@ function checkoutSystem(shopItem, itemPrice) {
         shopItem.classList.toggle('clicked');
         // Checkout price updated
         checkoutTotal -= itemPrice;
-        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal} €`;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
         // Item number updated
         itemNumber -= 1;
         console.log(`Item number: ${itemNumber}`);
@@ -81,6 +74,3 @@ function redDotUpdate() {
     // change inner html of a red dot element
     redDots.forEach(el => el.innerHTML = itemNumber);
 }
-=======
-}));
->>>>>>> bde1696 (Added checkout stuff into checkoutSystem.js)
