@@ -2,13 +2,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     windowLoad();
     alignCheckout();
-    //applyItemListener();
 });
 
 // Changes to the window: loads new image containers and aligns checkout menu
 window.addEventListener("scroll", () => {
     scrollLoad();
-    //applyItemListener();
 });
 window.addEventListener("resize", () => {
     windowLoad();
@@ -17,16 +15,19 @@ window.addEventListener("resize", () => {
 window.addEventListener("orientationChange", () => {
     windowLoad();
     alignCheckout();
-    //applyItemListener();
 });
 
 // Fetching the checkout menu and shopping cart button elements
 const checkoutMenu = document.getElementById('checkoutMenu');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
+const redDots = document.querySelectorAll('.redDot');
 
 // Keeping track of the checkout price total
 const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay'); 
 let checkoutTotal = 0;
+
+// Number of items in the shopping cart
+let itemNumber = 0;
 
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
@@ -61,20 +62,38 @@ function alignCheckout() {
 
 // Checkout system: add or remove items from the shop
 function checkoutSystem(shopItem, itemPrice) {
-    console.log(itemPrice);
-    // When a checkout item is added, the shop item disappears and the price is updated
+    // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
     checkoutItem.classList.toggle('checkout');
-    checkoutTotal += itemPrice;
-    console.log(checkoutTotal);
-    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
-    // When a checkout item is removed, the shop item re-appears and the price is updated
-    checkoutItem.addEventListener('click', () => {
-        checkoutItem.remove();
-        shopItem.classList.toggle('clicked');
-        checkoutTotal -= itemPrice;
-        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
-    });
+    // When a checkout item is added: shop item disappears
     checkoutMenu.prepend(checkoutItem);
     shopItem.classList.toggle('clicked');
+    // Checkout price updated
+    checkoutTotal += itemPrice;
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+    // Item number updated
+    itemNumber += 1;
+    console.log(`Item number: ${itemNumber}`);
+    // Shopping cart red dot animation plays
+    redDotUpdate()
+
+    // When a checkout item is removed:
+    checkoutItem.addEventListener('click', () => {
+        // Shop item re-appears
+        checkoutItem.remove();
+        shopItem.classList.toggle('clicked');
+        // Checkout price updated
+        checkoutTotal -= itemPrice;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+        // Item number updated
+        itemNumber -= 1;
+        console.log(`Item number: ${itemNumber}`);
+        // Shopping cart red dot animation plays
+        redDotUpdate()
+    });
+}
+
+function redDotUpdate() {
+    // change inner html of a red dot element
+    redDots.forEach(el => el.innerHTML = itemNumber);
 }
