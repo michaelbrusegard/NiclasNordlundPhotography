@@ -39,8 +39,11 @@ function alignCheckout() {
 function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
+    // Hide the shop item
+    shopItem.classList.toggle('hidden');
+    checkoutLoad();
     // Play the add-item animation
-    itemAnimation(shopItem, add=true);
+    //itemAnimation(shopItem, add=true);
     // Place the checkout item in the checkout menu
     checkoutItem.classList.add('checkout');
     checkoutMenu.prepend(checkoutItem);
@@ -56,7 +59,7 @@ function checkoutSystem(shopItem, itemPrice) {
         // Remove the checkout item
         checkoutItem.remove();
         // Play the remove-item animation
-        itemAnimation(animationItem, add=false);
+        //itemAnimation(animationItem, add=false);
         // Make the shop item visible
         shopItem.classList.toggle('hidden');
         // Update the red dot value
@@ -75,11 +78,13 @@ function itemAnimation(item, add=true) {
     rectItem = item.getBoundingClientRect();
     animationItem.style.left = rectItem.left;
     animationItem.style.top = rectItem.top;
+    /*
     // Hide the shop item
     //item.classList.toggle('hidden');
     //checkoutLoad();
-    console.log('animation start');
-    console.log(item);
+    //console.log('animation start');
+    //console.log(item);
+    */
     // Animation: calculate the transform parameters
     const itemX = (rectItem.left + rectItem.right) / 2;
     const itemY = (rectItem.bottom + rectItem.top) / 2;
@@ -105,7 +110,6 @@ function itemAnimation(item, add=true) {
     //item.style.transition='all var(--transitionLength)';
     animationItem.style.transition='all 1s';
     animationItem.style.zIndex='200';
-    animationItem.style.
 
     // Hide the item after the transition is finished
     /*
