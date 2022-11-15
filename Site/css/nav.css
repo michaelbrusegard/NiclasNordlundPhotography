@@ -49,7 +49,7 @@ nav .mobileNav {
 
 /* Adaptive size */
 
-@media (max-width: 1116px) {
+@media (max-width: 1100px) {
     .navContainer nav {
         width: 100%;
         padding: 0 var(--navPadding);
