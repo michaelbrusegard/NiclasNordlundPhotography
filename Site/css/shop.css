@@ -104,8 +104,7 @@
 }
 
 .container.hidden {
-    visibility: hidden;
-    /*display: none;*/
+    display: none;
 }
 
 .images {
@@ -164,7 +163,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    top: 0;
+    top: calc(var(--checkoutBorder) * -2);
     right: 0;
     overflow: hidden;
     background-color: var(--checkoutColor);
@@ -181,6 +180,7 @@
 }
 
 #checkoutMenu.active {
+    top: 0;
     overflow-y: auto;
     max-height: calc(95% - var(--navContainerHeight));
     margin-top: calc(var(--shopDisplayMargin) + var(--navContainerHeight));
@@ -200,10 +200,17 @@
 
 #checkoutTotalDisplay {
     margin: var(--shopDisplayMargin);
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: var(--fontSize);
+    font-weight: bold;
 }
 
 #checkoutButton {
     width: calc(var(--checkoutWidth) - 2 * var(--checkoutBorder));
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: var(--fontSize);
+    font-weight: bold;
+    
 }
 
 .container.checkout {
