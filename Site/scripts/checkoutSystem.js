@@ -35,42 +35,86 @@ function alignCheckout() {
     }
 }
 
-// Checkout system: add or remove items from the shop
+// Checkout system: add and remove items from the shop to the checkout menu
 function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
-    checkoutItem.classList.toggle('checkout');
-    // When a checkout item is added: shop item disappears
+    // Play the add-item animation
+    itemAnimation(shopItem, add=true);
+    // Place the checkout item in the checkout menu
+    checkoutItem.classList.add('checkout');
     checkoutMenu.prepend(checkoutItem);
-    shopItem.classList.toggle('clicked');
-    // Checkout price updated
-    checkoutTotal += itemPrice;
-    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
-    // Item number updated
+    // Update the red dot value
     itemNumber += 1;
-    console.log(`Item number: ${itemNumber}`);
-    // Shopping cart red dot animation plays
-    redDotUpdate()
-    // Loads new items
-    checkoutLoad()
-
+    redDots.forEach(el => el.innerHTML = itemNumber);
+    // Update checkout price
+    checkoutTotal += itemPrice;
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
+    
     // When a checkout item is removed:
     checkoutItem.addEventListener('click', () => {
-        // Shop item re-appears
+        // Remove the checkout item
         checkoutItem.remove();
-        shopItem.classList.toggle('clicked');
-        // Checkout price updated
-        checkoutTotal -= itemPrice;
-        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
-        // Item number updated
+        // Play the remove-item animation
+        itemAnimation(animationItem, add=false);
+        // Make the shop item visible
+        shopItem.classList.toggle('hidden');
+        // Update the red dot value
         itemNumber -= 1;
-        console.log(`Item number: ${itemNumber}`);
-        // Shopping cart red dot animation plays
-        redDotUpdate()
+        redDots.forEach(el => el.innerHTML = itemNumber);
+        // Update checkout price
+        checkoutTotal -= itemPrice;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
+        
     });
 }
 
-function redDotUpdate() {
-    // change inner html of a red dot element
-    redDots.forEach(el => el.innerHTML = itemNumber);
+function itemAnimation(item, add=true) {
+    // Clone the shop item into an animation item
+    const animationItem = item.cloneNode(true);
+    rectItem = item.getBoundingClientRect();
+    animationItem.style.left = rectItem.left;
+    animationItem.style.top = rectItem.top;
+    // Hide the shop item
+    //item.classList.toggle('hidden');
+    //checkoutLoad();
+    console.log('animation start');
+    console.log(item);
+    // Animation: calculate the transform parameters
+    const itemX = (rectItem.left + rectItem.right) / 2;
+    const itemY = (rectItem.bottom + rectItem.top) / 2;
+    console.log(`x=${itemX}, y=${itemY}`);
+    let buttonX = 0;
+    let buttonY = 0;
+    cartButtons.forEach(el => {
+        rectButton = el.getBoundingClientRect();
+        if (rectButton.left > 100) {
+            buttonX += (rectButton.left + rectButton.right) / 2;
+            buttonY += (rectButton.bottom + rectButton.top) / 2;
+        }
+    });
+    // Checking which way to run the animation
+    let direction = -1;
+    if (add) {direction = 1;}
+
+    const x = direction * (buttonX - itemX);
+    const y = direction * (buttonY - itemY);
+    // Apply transform to animation item
+    animationItem.style.transform=`translate(${x}px, ${y}px) scale(${(1 - direction) / 2}, ${(1 - direction) / 2})`;
+    console.log(animationItem.style.transform)
+    //item.style.transition='all var(--transitionLength)';
+    animationItem.style.transition='all 1s';
+    animationItem.style.zIndex='200';
+    animationItem.style.
+
+    // Hide the item after the transition is finished
+    /*
+    item.addEventListener('transitionend', () => {
+        console.log(item);
+        item.style.transform='none';
+        item.style.transition='background-color var(--transitionLength) ease-in';
+        item.classList.toggle('clicked');
+        console.log(item);
+    })
+    */
 }

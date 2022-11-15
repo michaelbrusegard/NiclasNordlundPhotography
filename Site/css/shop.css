@@ -98,8 +98,9 @@
     animation: tilt-shaking var(--transitionLength);
 }
 
-.container.clicked {
-    display: none;
+.container.hidden {
+    visibility: hidden;
+    /*display: none;*/
 }
 
 .images {
