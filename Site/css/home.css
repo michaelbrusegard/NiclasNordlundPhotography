@@ -23,7 +23,9 @@ body {
 p {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: 200;
+    color:lightgrey;
 }
+
 
 /* Page transition */
 
