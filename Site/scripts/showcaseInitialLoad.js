@@ -30,10 +30,3 @@ function getColumns() {
     return columns
   }
 }
-
-// Function to remove all child nodes of a parent
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
