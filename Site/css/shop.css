@@ -87,17 +87,42 @@
     right: 0;
     overflow: hidden;
     background-color: var(--checkoutColor);
+    border: solid;
+    border-width: var(--checkoutBorder);
+    border-radius: var(--imageBorderRadius);
+    border-color: var(--pageColor);
     margin: var(--shopDisplayMargin);
-    margin-top: calc(var(--shopDisplayMargin) + var(--navContainerHeight));
+    margin-top: 0;
     min-height: 0;
     max-height: 0;
     width: var(--checkoutWidth);
-    transition: max-height var(--transitionLength) ease-in-out;
+    transition: all var(--transitionLength) ease-in-out;
 }
 
 #checkoutMenu.active {
     overflow-y: auto;
     max-height: calc(95% - var(--navContainerHeight));
+    margin-top: calc(var(--shopDisplayMargin) + var(--navContainerHeight));
+}
+
+#checkoutMenu.active::-webkit-scrollbar {
+    display: none;
+}
+
+#checkoutElements {
+    background-color: var(--checkoutColor);
+    position: sticky;
+    border-top: solid var(--checkoutBorder);
+    border-color: var(--pageColor);
+    bottom: 0;
+}
+
+#checkoutTotalDisplay {
+    margin: var(--shopDisplayMargin);
+}
+
+#checkoutButton {
+    width: calc(var(--checkoutWidth) - 2 * var(--checkoutBorder));
 }
 
 .container {
@@ -117,8 +142,18 @@
     animation: tilt-shaking var(--transitionLength);
 }
 
-.container.added {
+.container.clicked {
     display: none;
+}
+
+.container.checkout {
+    width: calc(var(--checkoutWidth) - 2 * (var(--shopDisplayMargin) + var(--checkoutBorder)));
+    background-color: var(--expandedPageColor);
+    animation: none;
+}
+
+.container.checkout:hover {
+    background-color: var(--hoverPageColor);
 }
 
 .images {
