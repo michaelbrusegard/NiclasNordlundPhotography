@@ -24,6 +24,10 @@ window.addEventListener("orientationChange", () => {
 const checkoutMenu = document.getElementById('checkoutMenu');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 
+// Keeping track of the checkout price total
+const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay'); 
+let checkoutTotal = 0;
+
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
 const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
@@ -55,10 +59,22 @@ function alignCheckout() {
     }
 }
 
-function addItemToCheckout(item) {
-    //const checkoutItem = item.cloneNode(true);
-    console.log(item);
-    //console.log(checkoutItem);
-    //checkoutMenu.prepend(checkoutItem);
-    //checkoutMenu.prepend(item);
+// Checkout system: add or remove items from the shop
+function checkoutSystem(shopItem, itemPrice) {
+    console.log(itemPrice);
+    // When a checkout item is added, the shop item disappears and the price is updated
+    const checkoutItem = shopItem.cloneNode(true);
+    checkoutItem.classList.toggle('checkout');
+    checkoutTotal += itemPrice;
+    console.log(checkoutTotal);
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+    // When a checkout item is removed, the shop item re-appears and the price is updated
+    checkoutItem.addEventListener('click', () => {
+        checkoutItem.remove();
+        shopItem.classList.toggle('clicked');
+        checkoutTotal -= itemPrice;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+    });
+    checkoutMenu.prepend(checkoutItem);
+    shopItem.classList.toggle('clicked');
 }
