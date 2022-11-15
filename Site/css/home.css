@@ -22,7 +22,6 @@ p {
 
 
 /* Page transition */
-
 @keyframes transitionIn {
     from {
         opacity: 0;
@@ -34,6 +33,7 @@ p {
         transform: translateY(0);
     }
 }
+
 /* Carousel CSS START */
 
 
