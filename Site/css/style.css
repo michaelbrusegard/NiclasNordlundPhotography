@@ -8,6 +8,13 @@
     /* Includes margin and padding in width and height calculations */
 }
 
+
+/* Remove scrollbars */
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 /* Variables */
 
 :root {
