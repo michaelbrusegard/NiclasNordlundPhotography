@@ -70,7 +70,7 @@ function checkoutSystem(shopItem, itemPrice) {
     shopItem.classList.toggle('clicked');
     // Checkout price updated
     checkoutTotal += itemPrice;
-    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal} €`;
     // Item number updated
     itemNumber += 1;
     console.log(`Item number: ${itemNumber}`);
@@ -84,7 +84,7 @@ function checkoutSystem(shopItem, itemPrice) {
         shopItem.classList.toggle('clicked');
         // Checkout price updated
         checkoutTotal -= itemPrice;
-        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal} €`;
         // Item number updated
         itemNumber -= 1;
         console.log(`Item number: ${itemNumber}`);
