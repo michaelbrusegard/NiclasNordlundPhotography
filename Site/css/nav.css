@@ -124,7 +124,7 @@ nav .mobileNav {
 
 .linkBag {
     background: url('../img/icons/bag.png');
-    background-size: calc(var(--menuIconSize) + 4px);
+    background-size: calc(var(--menuIconSize));
     width: var(--menuIconSize);
 }
 
