@@ -3,13 +3,23 @@ function initialLoad(files) {
 
   // Variables
   const totalImages = files.length;
-  const columns = document.getElementsByClassName('column');
   const columnsMax = getColumns();
+  const gallery = document.getElementsByClassName('gallery')[0];
 
-  // Removes all images from columns
-  for (let i = 0; i < columns.length; i++) {
-    removeAllChildNodes(columns[i]);
+  // Removes all columns
+  for (let i = 0; i < columnsMax; i++) {
+    removeAllChildNodes(gallery)
   }
+
+  // Creates new column
+  for (let i = 0; i < columnsMax; i++) {
+    const newColumn = document.createElement('div');
+    newColumn.classList.add('column');
+    gallery.appendChild(newColumn);
+  }
+
+  // Gets all the new columns
+  const columns = document.getElementsByClassName('column');
 
   // Adds all images into correct columns based on how many columns there should be
   for (let i = 0; i < totalImages; i++) {
@@ -28,12 +38,5 @@ function getColumns() {
     return maxColumns
   } else {
     return columns
-  }
-}
-
-// Function to remove all child nodes of a parent
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
   }
 }

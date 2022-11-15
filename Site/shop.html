@@ -20,6 +20,7 @@
 
     <script defer src='scripts/nav.js'></script>
     <script defer src='scripts/checkoutSystem.js'></script>
+    <script defer src='scripts/shopNav.js'></script>
     <script defer src='scripts/createShopContainer.js'></script>
     <script defer src='scripts/loadShopItems.js'></script>
     <script defer src='scripts/shop.js'></script>
@@ -40,9 +41,10 @@
 <body>
     <header class='navContainer'>
 
-        <!-- Start of navigation bar -->
+        <!-- Start of shop navigation bar -->
 
-        <nav>
+        <nav class='shopNav'>
+
             <ul class='mobileNav'>
 
                 <!-- Start of Mobile navigation bar -->
@@ -61,6 +63,7 @@
                 <!-- End of Mobile navigation bar -->
 
             </ul>
+
             <ul class='desktopNav'>
 
                 <!-- Start of Desktop navigation bar -->
@@ -79,15 +82,20 @@
                 <!-- End of Desktop navigation bar -->
 
             </ul>
+
         </nav>
 
-        <!-- navbar that should be displayed before bag animation -->
-        <!-- <nav>
-            <ul class='mobileNav'> -->
+        <!-- End of shop navigation bar -->
+
+        <!-- Start of old navigation bar -->
+
+        <nav class='oldNav'>
+
+            <ul class='mobileNav'>
 
                 <!-- Start of Mobile navigation bar -->
 
-                <!-- <li>
+                <li>
                     <a href='#' class='linkIcon linkMenu'>
                         <div id='menu1'></div>
                         <div id='menu2'></div>
@@ -98,16 +106,17 @@
                 </li>
                 <li>
                     <a href='shop.html' class='linkIcon linkBag'></a>
-                </li> -->
+                </li>
 
                 <!-- End of Mobile navigation bar -->
 
-            <!-- </ul>
-            <ul class='desktopNav'> -->
+            </ul>
+
+            <ul class='desktopNav'>
 
                 <!-- Start of Desktop navigation bar -->
 
-                <!-- <li>
+                <li>
                     <a href='home.html' class='linkIcon linkSignature'></a>
                 </li>
                 <li>
@@ -130,14 +139,15 @@
                 </li>
                 <li>
                     <a href='shop.html' class='linkIcon linkBag'></a>
-                </li> -->
+                </li>
 
                 <!-- End of Desktop navigation bar -->
 
-            <!-- </ul>
-        </nav> -->
+            </ul>
 
-        <!-- End of navigation bar -->
+        </nav>
+
+        <!-- End of old navigation bar -->
 
     </header>
 
