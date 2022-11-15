@@ -24,4 +24,7 @@ function createContainer(pricesArray) {
     div.appendChild(p);
     div.classList.add('container')
     gridWrapper.appendChild(div);
+
+    // Apply checkout system interaction to the div item
+    div.addEventListener('click', () => {checkoutSystem(div, parseInt(pricesArray[1]))});
 }

@@ -42,19 +42,19 @@
     --imageBorderRadius: 5px;
 
     /* Shop */
-
     --shopMargin: 40px;
 
-        /* Grid */
+    /* Grid */
     --sideWrapperMargin: 40px;
     --shopDisplayMargin: 6px;
 
-        /* Image container */
+    /* Image container */
     --textMargin: 10px;
     --imageSize: 100px;
     --imageContainerSize: 180px;
 
-        /* Checkout */
+    /* Checkout */
     --checkoutWidth: 384px;
-    --checkoutColor: red;
+    --checkoutColor: gold;
+    --checkoutBorder: 8px;
 }
