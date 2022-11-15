@@ -16,14 +16,37 @@ document.addEventListener("DOMContentLoaded", ()=> {
     
 })
 
-const para2= document.getElementById("text2");
-const para2Text = `Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance
-photographer. Besides the photography itself, Niclas also creates pictures to hang on your wall, postcards,
-jigsaw puzzles and other products showing the beautiful landscapes, nature and animals of the Åland Islands.`
-//document.addEventListener("scroll", () => {
-//    writingText(para2Text);})
 
 
 
 
-        
+let listItems=[...document.getElementsByClassName("quotes")]
+
+let options = {
+    rootMargin: "-10%",
+    thresholdt: 0.0
+}
+
+let observer = new IntersectionObserver(showItem, options);
+function showItem(entries){
+    entries.forEach(entry =>{
+        if (entry.isIntersecting){
+            let letters = [...entry.target.querySelectorAll("span")];
+            letters.forEach((letter, idx) => {
+                setTimeout(() =>{
+                    letter.classList.add("active");
+                }, idx*70)
+            })
+            entry.target.children[0].classList.add("active");
+        }
+    })
+}
+
+listItems.forEach(item =>{
+    let newString="";
+    let itemText = item.children[0].innerText.split("");
+    itemText.map(letter => (newString += letter == " " ? `<span class=gap></span>` : `<span>${letter}</span>`));
+    item.innerHtml = newString;
+    observer.observe(item);
+
+})

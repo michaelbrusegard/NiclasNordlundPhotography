@@ -102,3 +102,46 @@ p {
     right: 1rem;
 }
 /* Carousel CSS END */
+
+
+/*Text transitioning*/
+:root{
+    --var-color-one: #f5efe1;
+    --var-color-two: #161616;
+  }
+  .quotes{
+    margin:0;
+    padding: 10px;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Noto Sans Mono', sans-serif;
+    color: var(--var-color-one);
+    display:flex;
+    overflow:hidden;
+    background-color: orange;
+    margin-bottom: 15rem;
+  }
+  .quoteHolder{
+    display:flex;
+    left:10%;
+    position:absolute;
+    flex-direction:column;
+    justify-content: flex-start;
+  }
+  
+
+  ul li span{
+    display:block;
+    margin:0.05rem;
+    transform: translateY(200%);
+
+  }
+  ul li span.active{
+    transform: translateY(0%);
+    transition: 1s ease-out;
+  }
+
+  .quotes:hover{
+    opacity: 0.5;
+    cursor:pointer;
+  }
