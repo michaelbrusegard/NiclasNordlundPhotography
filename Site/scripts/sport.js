@@ -1,24 +1,8 @@
-//Using the function for the sport page
-//Assigning the end value and editing the start value for the function call to dictate number of images per column
-const sport1 = document.getElementsByClassName('column')[0];
-const column1Sport = 6;
+const files = [["sport1.jpg",1600,1200],["sport10.jpg",1600,1200],["sport11.jpg",1700,956],["sport12.jpg",1700,956],["sport13.jpg",1700,1062],["sport14.jpg",1700,956],["sport15.jpg",1700,956],["sport16.jpg",1700,1133],["sport17.jpg",1600,1200],["sport18.jpg",1700,850],["sport2.jpg",1700,956],["sport3.jpg",1700,1062],["sport4.jpg",1700,1062],["sport5.jpg",1680,1200],["sport6.jpg",1700,1062],["sport7.jpg",1700,1062],["sport8.jpg",1600,1200],["sport9.jpg",1700,1133]]
+const columnSize = 384
+const maxColumns = 5
 
-const sport2 = document.getElementsByClassName('column')[1];
-const column2Sport = 11;
-
-const sport3 = document.getElementsByClassName('column')[2];
-const column3Sport = 18;
-
-
-// Runs when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    lazyload('sport', sport1, column1Sport, 1);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    lazyload('sport', sport2, column2Sport, 7);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    lazyload('sport', sport3, column3Sport, 12);
-});
+// Loads images into columns
+document.addEventListener('DOMContentLoaded', () => initialLoad(files));
+window.addEventListener('resize', () => initialLoad(files));
+window.addEventListener('orientationChange', () => initialLoad(files));
