@@ -1,11 +1,15 @@
-// Loads page content correctly when the DOM is done loading
+// When the DOM is done loading: loads new image containers and aligns checkout menu
 document.addEventListener('DOMContentLoaded', () => {
     windowLoad();
     alignCheckout();
+    //applyItemListener();
 });
 
-// Loads page content correctly based on changes to the window
-window.addEventListener("scroll", scrollLoad);
+// Changes to the window: loads new image containers and aligns checkout menu
+window.addEventListener("scroll", () => {
+    scrollLoad();
+    //applyItemListener();
+});
 window.addEventListener("resize", () => {
     windowLoad();
     alignCheckout();
@@ -13,16 +17,18 @@ window.addEventListener("resize", () => {
 window.addEventListener("orientationChange", () => {
     windowLoad();
     alignCheckout();
+    //applyItemListener();
 });
-
-// State of the checkout menu ('false' means 'closed', 'true' means 'open')
-let checkoutState = false
 
 // Fetching the checkout menu and shopping cart button elements
 const checkoutMenu = document.getElementById('checkoutMenu');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 
-// Style variables for the shopping cart button and checkout menu
+// Keeping track of the checkout price total
+const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay'); 
+let checkoutTotal = 0;
+
+// Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
 const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
 const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
@@ -44,15 +50,31 @@ function alignCheckout() {
         }
     });
     // If the positioning goes out of bounds, place the checkout menu in the upper right corner
-    if (newCheckoutRight <= 0){
+    if (newCheckoutRight <= 0) {
         checkoutMenu.style.right = '0px';
-    } 
+    }
     // Otherwise, continue to align the menu with the shopping cart icon
     else {
         checkoutMenu.style.right = `${newCheckoutRight}px`;
     }
 }
 
-function addItemToCheckout() {
-    // code here
+// Checkout system: add or remove items from the shop
+function checkoutSystem(shopItem, itemPrice) {
+    console.log(itemPrice);
+    // When a checkout item is added, the shop item disappears and the price is updated
+    const checkoutItem = shopItem.cloneNode(true);
+    checkoutItem.classList.toggle('checkout');
+    checkoutTotal += itemPrice;
+    console.log(checkoutTotal);
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+    // When a checkout item is removed, the shop item re-appears and the price is updated
+    checkoutItem.addEventListener('click', () => {
+        checkoutItem.remove();
+        shopItem.classList.toggle('clicked');
+        checkoutTotal -= itemPrice;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}`;
+    });
+    checkoutMenu.prepend(checkoutItem);
+    shopItem.classList.toggle('clicked');
 }

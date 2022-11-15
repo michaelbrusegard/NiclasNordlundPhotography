@@ -38,28 +38,9 @@
 
 /* Image layout*/
 
-/* Nature and Wedding */
-
-.specialWrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.specialWrapper > img {
-  width: 90%;
-  height: auto;
-  border-radius: var(--imageBorderRadius);
-  margin: var(--imageMargin);
-  box-shadow: var(--shadow);
-}
-
-/* Showcase */
-
 .gallery {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: calc(var(--imageMargin) / 2);
   margin: var(--imageMargin);
 }
@@ -77,18 +58,6 @@
   object-fit: cover;
   box-shadow: var(--shadow);
 }
-
-/* Media query for a three column display*/
-
-@media only screen and (min-width: 768px) {
-  .gallery {
-    flex-direction: row;
-  }
-  .column {
-    width:33%;
-  }
-}
-
 
 /* Page transition */
 
