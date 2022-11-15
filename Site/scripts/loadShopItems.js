@@ -102,7 +102,6 @@ function scrollLoad() {
     // Checks when the window height plus the crolled distance is bigger than the body
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
         itemsToLoad += calculateColums()
-        console.log("bottom")
         loadItems()
     }
 }

@@ -96,6 +96,7 @@
 }
 
 #checkoutMenu.active {
+    overflow-y: auto;
     max-height: calc(95% - var(--navContainerHeight));
 }
 
@@ -114,6 +115,10 @@
 .container:hover {
     background-color: var(--hoverPageColor);
     animation: tilt-shaking var(--transitionLength);
+}
+
+.container.added {
+    display: none;
 }
 
 .images {

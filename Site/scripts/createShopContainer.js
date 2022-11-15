@@ -24,4 +24,7 @@ function createContainer(pricesArray) {
     div.appendChild(p);
     div.classList.add('container')
     gridWrapper.appendChild(div);
+
+    // Add-to-cart eventlistener
+    div.addEventListener('click', () => {addItemToCheckout(div)});
 }
