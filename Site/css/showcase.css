@@ -48,8 +48,7 @@
 .gallery .column {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--imageMargin) / 2);
-  
+  gap: calc(var(--imageMargin) / 2);  
 }
   
 .image img {
