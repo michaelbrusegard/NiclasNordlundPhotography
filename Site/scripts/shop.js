@@ -22,3 +22,13 @@ cartButtons.forEach(el => el.addEventListener('click', event => {
     event.preventDefault();
     checkoutMenu.classList.toggle('active');
 }));
+
+// Eventlistener for scroll-back-to-top button
+const scrollTopButton = document.getElementById('arrow');
+scrollTopButton.addEventListener('click', event => {
+    event.preventDefault();
+    document.documentElement.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});

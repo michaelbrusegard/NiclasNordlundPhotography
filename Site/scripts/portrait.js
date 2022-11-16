@@ -84,6 +84,6 @@ const columnSize = 384
 const maxColumns = 5
 
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => initialLoad(files));
-window.addEventListener('resize', () => initialLoad(files));
-window.addEventListener('orientationChange', () => initialLoad(files));
+document.addEventListener('DOMContentLoaded', () => {initialLoad(files); fadeOnscroll()});
+window.addEventListener('resize', () => {initialLoad(files); fadeOnscroll()});
+window.addEventListener('orientationChange', () => {initialLoad(files); fadeOnscroll()});

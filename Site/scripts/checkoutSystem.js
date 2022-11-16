@@ -25,7 +25,7 @@ function alignCheckout() {
             newCheckoutRight = window.innerWidth - (cartButtonLeft + cartButtonWidth + checkoutWidth / 2);
         }
     });
-    // If the positioning goes out of bounds, place the checkout menu in the upper right corner
+    // If the positioning goes out of bounds, place it in the upper right corner
     if (newCheckoutRight <= 0) {
         checkoutMenu.style.right = '0px';
     }
