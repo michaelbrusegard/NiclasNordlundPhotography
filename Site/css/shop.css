@@ -225,6 +225,7 @@
     height: auto;
     background-color: var(--expandedPageColor);
     animation: none;
+    display: inline-block;
 }
 
 .container.checkout:hover {
