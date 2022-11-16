@@ -57,7 +57,7 @@
 
 @keyframes transitionBagWide {
     to {
-        transform: translateX(calc(-1100px + var(--navPadding) * 2 + var(--menuIconSize)));
+        transform: translateX(calc(-1 * var(--desktopNavSize) + var(--navPadding) * 2 + var(--menuIconSize)));
     }
 }
 

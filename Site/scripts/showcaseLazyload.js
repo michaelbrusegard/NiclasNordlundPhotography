@@ -12,7 +12,7 @@ function lazyload(file) {
   image.src = 'img/showcase/' + file[0];
   image.alt = file[0];
   image.loading = 'lazy';
-  imgDiv.classList.add("image");
+  imgDiv.classList.add('image');
 
   // Sets the html height and width so the image takes the same amount of space before it is loaded
   image.width = file[1];
