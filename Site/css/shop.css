@@ -97,6 +97,7 @@
     width: var(--imageContainerSize);
     box-shadow: var(--shadow);
     transition: background-color var(--transitionLength) ease-in;
+    user-select: none;
 }
 
 .container:hover {
@@ -163,6 +164,7 @@
     text-align: center;
     vertical-align: middle;
     line-height: 1.5em;
+    user-select: none;
 }
 
 #checkoutMenu {
