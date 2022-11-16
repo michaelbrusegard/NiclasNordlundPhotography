@@ -34,6 +34,7 @@
     background-attachment: scroll;
     background-size: 100%;
     margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
 }
 
 /* Image layout*/
@@ -43,6 +44,7 @@
   flex-direction: row;
   gap: calc(var(--imageMargin) / 2);
   margin: var(--imageMargin);
+  margin-bottom: calc(var(--navContainerHeight) + var(--imageMargin));
 }
   
 .gallery .column {
