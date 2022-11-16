@@ -41,7 +41,7 @@ nav .mobileNav li a {
 
 nav .desktopNav li a:hover,
 nav .mobileNav li a:hover {
-    opacity: 0.6;
+    opacity: var(--softOpacity);
 }
 
 nav .mobileNav {

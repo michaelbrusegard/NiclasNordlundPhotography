@@ -33,7 +33,6 @@
     background-repeat: repeat;
     background-attachment: scroll;
     background-size: 100%;
-    margin-top: var(--navContainerHeight);
     margin-bottom: var(--navContainerHeight);
 }
 
@@ -45,6 +44,7 @@
   gap: calc(var(--imageMargin) / 2);
   margin: var(--imageMargin);
   margin-bottom: calc(var(--navContainerHeight) + var(--imageMargin));
+  margin-top: calc(var(--navContainerHeight) + var(--imageMargin));;
 }
   
 .gallery .column {
@@ -66,8 +66,8 @@
 
 @keyframes transitionIn {
     from {
-        opacity: 0;
-        transform: translateY(-10px);
+        opacity: var(--softOpacity);
+        transform: translateY(var(--navContainerHeight));
     }
 
     to {
