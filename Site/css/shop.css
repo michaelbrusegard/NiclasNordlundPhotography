@@ -103,6 +103,11 @@
     animation: tilt-shaking var(--transitionLength);
 }
 
+.container.animation {
+    transition: transform var(--transitionLength) linear;
+    z-index: 2 * var(--navZindex);
+}
+
 .container.hidden {
     display: none;
 }
@@ -210,7 +215,7 @@
     font-family: 'Noto Sans Mono', sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
-    
+    box-shadow: var(--shadow);
 }
 
 .container.checkout {

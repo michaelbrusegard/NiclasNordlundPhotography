@@ -35,6 +35,7 @@ function alignCheckout() {
     }
 }
 
+// WORKING CODE WITHOUT ANIMATION
 // Checkout system: add and remove items from the shop to the checkout menu
 function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
@@ -42,8 +43,6 @@ function checkoutSystem(shopItem, itemPrice) {
     // Hide the shop item
     shopItem.classList.toggle('hidden');
     checkoutLoad();
-    // Play the add-item animation
-    //itemAnimation(shopItem, add=true);
     // Place the checkout item in the checkout menu
     checkoutItem.classList.add('checkout');
     checkoutMenu.prepend(checkoutItem);
@@ -58,8 +57,6 @@ function checkoutSystem(shopItem, itemPrice) {
     checkoutItem.addEventListener('click', () => {
         // Remove the checkout item
         checkoutItem.remove();
-        // Play the remove-item animation
-        //itemAnimation(animationItem, add=false);
         // Make the shop item visible
         shopItem.classList.toggle('hidden');
         // Update the red dot value
@@ -72,20 +69,24 @@ function checkoutSystem(shopItem, itemPrice) {
     });
 }
 
-function itemAnimation(item, add=true) {
-    // Clone the shop item into an animation item
-    const animationItem = item.cloneNode(true);
-    rectItem = item.getBoundingClientRect();
-    animationItem.style.left = rectItem.left;
-    animationItem.style.top = rectItem.top;
-    /*
-    // Hide the shop item
-    //item.classList.toggle('hidden');
-    //checkoutLoad();
-    //console.log('animation start');
-    //console.log(item);
-    */
+/*
+// TESTING CODE WITH ANIMATION
+// Checkout system: add and remove items from the shop to the checkout menu
+function checkoutSystem(shopItem, itemPrice) {
+    // Clone the shop item to a checkout item
+    const checkoutItem = shopItem.cloneNode(true);
+    // Place the checkout item in the checkout menu
+    checkoutItem.classList.toggle('checkout');
+    checkoutMenu.prepend(checkoutItem);
+    // Update the red dot value
+    itemNumber += 1;
+    redDots.forEach(el => el.innerHTML = itemNumber);
+    // Update checkout price
+    checkoutTotal += itemPrice;
+    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
+
     // Animation: calculate the transform parameters
+    rectItem = shopItem.getBoundingClientRect();
     const itemX = (rectItem.left + rectItem.right) / 2;
     const itemY = (rectItem.bottom + rectItem.top) / 2;
     console.log(`x=${itemX}, y=${itemY}`);
@@ -98,27 +99,58 @@ function itemAnimation(item, add=true) {
             buttonY += (rectButton.bottom + rectButton.top) / 2;
         }
     });
-    // Checking which way to run the animation
-    let direction = -1;
-    if (add) {direction = 1;}
+    const x = buttonX - itemX;
+    const y = buttonY - itemY;
+    
+    shopItem.classList.toggle('animation');
 
-    const x = direction * (buttonX - itemX);
-    const y = direction * (buttonY - itemY);
-    // Apply transform to animation item
-    animationItem.style.transform=`translate(${x}px, ${y}px) scale(${(1 - direction) / 2}, ${(1 - direction) / 2})`;
-    console.log(animationItem.style.transform)
-    //item.style.transition='all var(--transitionLength)';
-    animationItem.style.transition='all 1s';
-    animationItem.style.zIndex='200';
+    // Apply transform to shop item
+    shopItem.addEventListener('transitionrun', runAnimationOne());
+    shopItem.addEventListener('transitionend', endAnimationOne());
+    shopItem.style.transform=`translateX(${x}px) translateY(${y}px)`;
+    shopItem.removeEventListener('transitionrun', runAnimationOne);
+    shopItem.removeEventListener('transitionend', endAnimationOne);
+    
+    function runAnimationOne() {
+        shopItem.classList.toggle('animation');
+        console.log('animstart1');
+    }
 
-    // Hide the item after the transition is finished
-    /*
-    item.addEventListener('transitionend', () => {
-        console.log(item);
-        item.style.transform='none';
-        item.style.transition='background-color var(--transitionLength) ease-in';
-        item.classList.toggle('clicked');
-        console.log(item);
-    })
-    */
+    function endAnimationOne() {
+        shopItem.classList.toggle('animation');
+        shopItem.classList.toggle('hidden');
+        checkoutLoad();
+        console.log('animend1');
+    }
+
+    // When a checkout item is removed:
+    checkoutItem.addEventListener('click', () => {
+        // Remove the checkout item
+        checkoutItem.remove();
+        // Apply reverse transform to shop item
+        shopItem.classList.toggle('animation');
+        shopItem.addEventListener('transitionrun', runAnimationTwo());
+        shopItem.addEventListener('transitionend', endAnimationTwo())
+        shopItem.style.transform=`translateX(${0}px) translateY(${0}px)`;
+        shopItem.removeEventListener('transitionrun', runAnimationTwo);
+        shopItem.removeEventListener('transitionend', endAnimationTwo)
+        
+        function runAnimationTwo() {
+            shopItem.classList.toggle('animation');
+            shopItem.classList.toggle('hidden');
+            console.log('animstart2');
+        }
+        
+        function endAnimationTwo() {
+            console.log('animend2');
+        }
+
+        // Update the red dot value
+        itemNumber -= 1;
+        redDots.forEach(el => el.innerHTML = itemNumber);
+        // Update checkout price
+        checkoutTotal -= itemPrice;
+        checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
+    });
 }
+*/

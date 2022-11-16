@@ -63,5 +63,5 @@ body::-webkit-scrollbar {
     /* Checkout */
     --checkoutWidth: 384px;
     --checkoutColor: gold;
-    --checkoutBorder: 5px;
+    --checkoutBorder: 9px;
 }
