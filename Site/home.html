@@ -120,139 +120,139 @@
                 </ul>
             </div>
             Source: https://www.youtube.com/watch?v=9HcxHDS2w1s -->
-            <!--Carousel HTML code END-->
+        <!--Carousel HTML code END-->
 
         <!-- set height of div to one view height -->
-     
-    <div id="containerBig">
-        
-            <p class="text"id="text1">tekst1</p>
+
+        <div id="containerBig">
+
+            <p class="text" id="text1">tekst1</p>
             <p class="text" id="text2">tekst2</p>
             <p class="text" id="text3">test3</p>
 
-        <img src="img/home/niclas.png" alt="niclas" id="niclasImg">
-    </div>
+            <img src="img/home/niclas.png" alt="niclas" id="niclasImg">
+        </div>
         <script>
-    
-        //scrollSwitch
-        window.addEventListener("scroll", scrollSwitch);
-        function scrollSwitch(){
-       
-        var niclasPortrait = document.getElementById("niclasImg");
-        var carousel = document.getElementById("carousel");
-        var div = document.getElementById("containerBig");
-        var scrollPosition = window.scrollY;
-        
-        if (scrollPosition > 0 && scrollPosition < 50) {
-            console.log(scrollPosition)
-            index = 0;
-            console.log(index)
-            text1.style.display = "block";
-            text2.style.display = "none";
-            text3.style.display = "none";
-            carousel.visibility = "hidden"
-            
-            niclasPortrait.src = "img/home/niclas.png";
-        } else if (scrollPosition > 50 && scrollPosition < 100) {
-            index = 1;
-            console.log(index)
-            niclasPortrait.src = "img/home/niclas.png";
-        } else if (scrollPosition > 100 && scrollPosition < 199) {
-            index = 2;
-            console.log(index)
-            text3.style.display= "block"
-            niclasPortrait.src = "img/home/niclas.png";
-            div.style.visibility = "hidden"
-        } else if (scrollPosition > 300) {
-            index = 3;
-            console.log(index)
-            text1.style.display = "none"
-            text2.style.display = "none"
-            text3.style.display = "none"
-            div.style.visibility = "hidden"
-            niclasPortrait.style.visibility = "hidden"
 
-            //scroll position blir annerledes når ting blir fjerna
-            
-        }
+            //scrollSwitch
+            window.addEventListener("scroll", scrollSwitch);
+            function scrollSwitch() {
 
-    }
+                var niclasPortrait = document.getElementById("niclasImg");
+                var carousel = document.getElementById("carousel");
+                var div = document.getElementById("containerBig");
+                var scrollPosition = window.scrollY;
+
+                if (scrollPosition > 0 && scrollPosition < 50) {
+                    console.log(scrollPosition);
+                    index = 0;
+                    console.log(index);
+                    text1.style.display = "block";
+                    text2.style.display = "none";
+                    text3.style.display = "none";
+                    carousel.visibility = "hidden";
+
+                    niclasPortrait.src = "img/home/niclas.png";
+                } else if (scrollPosition > 50 && scrollPosition < 100) {
+                    index = 1;
+                    console.log(index);
+                    niclasPortrait.src = "img/home/niclas.png";
+                } else if (scrollPosition > 100 && scrollPosition < 199) {
+                    index = 2;
+                    console.log(index);
+                    text3.style.display = "block";
+                    niclasPortrait.src = "img/home/niclas.png";
+                    div.style.visibility = "hidden";
+                } else if (scrollPosition > 300) {
+                    index = 3;
+                    console.log(index);
+                    text1.style.display = "none";
+                    text2.style.display = "none";
+                    text3.style.display = "none";
+                    div.style.visibility = "hidden";
+                    niclasPortrait.style.visibility = "hidden";
+
+                    //scroll position blir annerledes når ting blir fjerna
+
+                }
+
+            }
 
 
         </script>
 
-                    <!--Carousel HTML code START-->
-                    <div class="sliderStart">
-                        <!-- Image slider START -->
-                            <div class="slider">
-                                <div class="slides">
-                                    <!-- radio buttons start -->
-                                    <input type="radio" name="radio-btn" id="radio1">
-                                    <input type="radio" name="radio-btn" id="radio2">
-                                    <input type="radio" name="radio-btn" id="radio3">
-                                    <input type="radio" name="radio-btn" id="radio4">
-                                    <input type="radio" name="radio-btn" id="radio5">
-                                    <input type="radio" name="radio-btn" id="radio6">
-                                    <input type="radio" name="radio-btn" id="radio7">
-                                    <input type="radio" name="radio-btn" id="radio8">
-                                    <!-- radio buttons end -->
-                                    <!-- slide images start -->
-                                    <div class="slide first">
-                                        <img src="img/home/home1.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home2.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home3.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home4.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home5.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home6.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home7.jpg" alt="">
-                                    </div>
-                                    <div class="slide">
-                                        <img src="img/home/home8.jpg" alt="">
-                                    </div>
-                                    <!-- slide images end -->
-                                    <!-- automatic navigatiion start -->
-                                    <div class="navigation-auto">
-                                        <div class="auto-btn1"></div>
-                                        <div class="auto-btn2"></div>
-                                        <div class="auto-btn3"></div>
-                                        <div class="auto-btn4"></div>
-                                        <div class="auto-btn5"></div>
-                                        <div class="auto-btn6"></div>
-                                        <div class="auto-btn7"></div>
-                                        <div class="auto-btn8"></div>
-                                    </div>
-                                    <!-- automatic navigation end -->
-                                </div>
-                                <!-- manual navigation start -->
-                                <div class="navigation-manual">
-                                    <label for="radio1" class="manual-btn"></label>
-                                    <label for="radio2" class="manual-btn"></label>
-                                    <label for="radio3" class="manual-btn"></label>
-                                    <label for="radio4" class="manual-btn"></label>
-                                    <label for="radio5" class="manual-btn"></label>
-                                    <label for="radio6" class="manual-btn"></label>
-                                    <label for="radio7" class="manual-btn"></label>
-                                    <label for="radio8" class="manual-btn"></label>
-                                </div>
-                                <!-- manual navigation end -->
-                            </div>
-                            <!-- image slider end -->
-                        </div>
-                                <!--Carousel HTML code END-->
-                                <!--Carousel slider source: https://www.youtube.com/watch?v=0wvrlOyGlq0 -->
-                                <!--Creator: "Coding Snow" on YouTube, Title: Image Slider - With Auto-play & Manual Navigation Buttons - Using CSS, HTML & Javascript -->
+        <!--Carousel HTML code START-->
+        <div class="sliderStart">
+            <!-- Image slider START -->
+            <div class="slider">
+                <div class="slides">
+                    <!-- radio buttons start -->
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+                    <input type="radio" name="radio-btn" id="radio5">
+                    <input type="radio" name="radio-btn" id="radio6">
+                    <input type="radio" name="radio-btn" id="radio7">
+                    <input type="radio" name="radio-btn" id="radio8">
+                    <!-- radio buttons end -->
+                    <!-- slide images start -->
+                    <div class="slide first">
+                        <img src="img/home/home1.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home2.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home3.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home4.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home5.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home6.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home7.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="img/home/home8.jpg" alt="">
+                    </div>
+                    <!-- slide images end -->
+                    <!-- automatic navigatiion start -->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                        <div class="auto-btn5"></div>
+                        <div class="auto-btn6"></div>
+                        <div class="auto-btn7"></div>
+                        <div class="auto-btn8"></div>
+                    </div>
+                    <!-- automatic navigation end -->
+                </div>
+                <!-- manual navigation start -->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                    <label for="radio5" class="manual-btn"></label>
+                    <label for="radio6" class="manual-btn"></label>
+                    <label for="radio7" class="manual-btn"></label>
+                    <label for="radio8" class="manual-btn"></label>
+                </div>
+                <!-- manual navigation end -->
+            </div>
+            <!-- image slider end -->
+        </div>
+        <!--Carousel HTML code END-->
+        <!--Carousel slider source: https://www.youtube.com/watch?v=0wvrlOyGlq0 -->
+        <!--Creator: "Coding Snow" on YouTube, Title: Image Slider - With Auto-play & Manual Navigation Buttons - Using CSS, HTML & Javascript -->
         <!-- End of page content -->
 
     </main>
@@ -260,7 +260,7 @@
     <footer class='footerContainer'>
 
         <!-- Start of footer -->
-    
+
         <ul class='footerList'>
             <li>
                 <a id='arrow' href='' class='linkIcon arrow'></a>
@@ -272,14 +272,14 @@
                 <a href='tel:+358400193300' class='linkIcon phone'></a>
             </li>
             <li>
-                <a href='https://www.instagram.com/nic.nord.photo/' class='linkIcon insta'></a>
-                <a href='https://www.facebook.com/niclasnordlundfotograf' class='linkIcon facebook'></a>
+                <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
+                <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
             </li>
         </ul>
-    
+
         <!-- End of footer -->
-    
-      </footer>
+
+    </footer>
 
 </body>
 
