@@ -13,10 +13,13 @@ files.forEach(i => {
     }
 });
 
-const ignorePaths = []
+// Added variables to modify amount of pictures to run through to avoid memory error
+const imgLen = paths.length;
+const ignorePaths = ['strand 100e_.jpg']
+const startIndex = 235;
+const endIndex = imgLen;
 
 // Some variables for context
-const imgLen = paths.length;
 let imgCur = 0;
 const shopDisplayImagesWidth = 300;
 
@@ -27,15 +30,15 @@ async function resize(path) {
     let grey = image
         .resize({ width: shopDisplayImagesWidth });
     imgCur += 1;
-    console.log('Resized image', path, imgCur + '/' + imgLen);
+    console.log('Resized image', path, imgCur + '/' + (endIndex - startIndex));
     return grey.save('../img/shopDisplayImages/' + path);
 }
 
 // Run function for each photo
-paths.forEach(value => {
-    if (!ignorePaths.includes(value)) {
-        resize(value);
+for (i = startIndex; i < endIndex; i++) {
+    if (!ignorePaths.includes(paths[i])) {
+        resize(paths[i]);
     } else {
-        console.log('Skipped image', value);
+        console.log('Skipped image', paths[i]);
     }
-});
+};
