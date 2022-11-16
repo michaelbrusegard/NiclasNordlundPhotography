@@ -4,6 +4,7 @@ function createContainer(pricesArray) {
     // Images
     let img = document.createElement('img');
     img.src = 'img/shopDisplayImages/' + pricesArray[0]
+    img.loading = 'lazy';
     img.alt = pricesArray[0];
     img.classList.add('images')
 

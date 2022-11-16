@@ -21,20 +21,16 @@ const pricesArray = [
         "180"
     ],
     [
-        "Ålands hav 1 180e_.jpg",
-        "180"
-    ],
-    [
         "Ålands hav 150e.jpg",
         "150"
     ],
     [
-        "Ålands hav 2 180e_.jpg",
-        "180"
-    ],
-    [
         "Ålands skärgård 80 euro.jpg",
         "80"
+    ],
+    [
+        "Bad hair day 120e.jpg",
+        "120"
     ],
     [
         "Champagne vid havet 120e_.jpg",
@@ -43,6 +39,10 @@ const pricesArray = [
     [
         "Champagne vid havet 150e_.jpg",
         "150"
+    ],
+    [
+        "Dalkarby träsk 125e.jpg",
+        "125"
     ],
     [
         "Det mörka havet 125e_.jpg",
@@ -55,6 +55,10 @@ const pricesArray = [
     [
         "Dirigenten 200e_.jpg",
         "200"
+    ],
+    [
+        "Ejder 100e.jpg",
+        "100"
     ],
     [
         "Ejder 125.jpg",
@@ -73,6 +77,18 @@ const pricesArray = [
         "150"
     ],
     [
+        "Ejder 155e.jpg",
+        "155"
+    ],
+    [
+        "Ejder 170e.jpg",
+        "170"
+    ],
+    [
+        "Ejder 180e.jpg",
+        "180"
+    ],
+    [
         "Ejder 2 150 euro.jpg",
         "150"
     ],
@@ -81,8 +97,32 @@ const pricesArray = [
         "250"
     ],
     [
+        "Ejder 300e.jpg",
+        "300"
+    ],
+    [
+        "Ejder 350e.jpg",
+        "350"
+    ],
+    [
+        "Ejder 355e.jpg",
+        "355"
+    ],
+    [
+        "Ejder 75e.jpg",
+        "75"
+    ],
+    [
         "Ejder 80e.jpg",
         "80"
+    ],
+    [
+        "Ejder 88e.jpg",
+        "88"
+    ],
+    [
+        "Ejder 90e.jpg",
+        "90"
     ],
     [
         "Ejder Kobba Klintar 250e_.jpg",
@@ -161,6 +201,22 @@ const pricesArray = [
         "110"
     ],
     [
+        "Guding 200e_.jpg",
+        "200"
+    ],
+    [
+        "Guding 250e_.jpg",
+        "250"
+    ],
+    [
+        "Gudingar 150ee.jpg",
+        "150"
+    ],
+    [
+        "Gudingar 200e.jpg",
+        "200"
+    ],
+    [
         "Hammarudda 150e_.jpg",
         "150"
     ],
@@ -189,7 +245,15 @@ const pricesArray = [
         "200"
     ],
     [
+        "Havet 100e.jpg",
+        "100"
+    ],
+    [
         "Havet 150.jpg",
+        "150"
+    ],
+    [
+        "Havet 150e.jpg",
         "150"
     ],
     [
@@ -217,8 +281,20 @@ const pricesArray = [
         "80"
     ],
     [
+        "Havsudde 170e.jpg",
+        "170"
+    ],
+    [
+        "Havsudde 180e.jpg",
+        "180"
+    ],
+    [
         "Havsörn 150e_.jpg",
         "150"
+    ],
+    [
+        "Havsörn i gryning 200e_.jpg",
+        "200"
     ],
     [
         "Havsörnsbo Lågskär 100 euro_.jpg",
@@ -227,6 +303,18 @@ const pricesArray = [
     [
         "Heart 180e_.jpg",
         "180"
+    ],
+    [
+        "Higland catle 100e_.jpg",
+        "100"
+    ],
+    [
+        "Higland catle 85e.jpg",
+        "85"
+    ],
+    [
+        "Higland catle 90e.jpg",
+        "90"
     ],
     [
         "Hot dogs 1  150e.jpg",
@@ -245,6 +333,66 @@ const pricesArray = [
         "50"
     ],
     [
+        "Höstmorgon 100e.jpg",
+        "100"
+    ],
+    [
+        "Höstmorgon 105e.jpg",
+        "105"
+    ],
+    [
+        "Höstmorgon 110e.jpg",
+        "110"
+    ],
+    [
+        "Höstmorgon 120e.jpg",
+        "120"
+    ],
+    [
+        "Höstmorgon 125e.jpg",
+        "125"
+    ],
+    [
+        "Höstmorgon 135e.jpg",
+        "135"
+    ],
+    [
+        "Höstmorgon 140e.jpg",
+        "140"
+    ],
+    [
+        "Höstmorgon 145e.jpg",
+        "145"
+    ],
+    [
+        "Höstmorgon 80e.jpg",
+        "80"
+    ],
+    [
+        "Is 100e.jpg",
+        "100"
+    ],
+    [
+        "Is 60e.jpg",
+        "60"
+    ],
+    [
+        "Is 65e.jpg",
+        "65"
+    ],
+    [
+        "Is 70e.jpg",
+        "70"
+    ],
+    [
+        "Is 80e.jpg",
+        "80"
+    ],
+    [
+        "Is 90e.jpg",
+        "90"
+    ],
+    [
         "Isbelagd strand 40e_.jpg",
         "40"
     ],
@@ -261,6 +409,10 @@ const pricesArray = [
         "200"
     ],
     [
+        "Kalv 90e.jpg",
+        "90"
+    ],
+    [
         "Kastelholms Slott Åland 250euro.jpg",
         "250"
     ],
@@ -275,14 +427,6 @@ const pricesArray = [
     [
         "Kattunge 1 180e.jpg",
         "180"
-    ],
-    [
-        "Kattunge 145.jpg",
-        "145"
-    ],
-    [
-        "Kattunge 150.jpg",
-        "150"
     ],
     [
         "Kattunge 2 180e.jpg",
@@ -361,6 +505,14 @@ const pricesArray = [
         "100"
     ],
     [
+        "Lövmatta 80e.jpg",
+        "80"
+    ],
+    [
+        "Lövmatta 85e.jpg",
+        "85"
+    ],
+    [
         "Marhällan 150 euro_.jpg",
         "150"
     ],
@@ -373,12 +525,28 @@ const pricesArray = [
         "100"
     ],
     [
+        "Marhällan fyr 180e.jpg",
+        "180"
+    ],
+    [
         "Marhällan Åland 150 euro.jpg",
         "150"
     ],
     [
         "Marhällan-Kobba Klintar 250euro_.jpg",
         "250"
+    ],
+    [
+        "Maskrosem 120e.jpg",
+        "120"
+    ],
+    [
+        "Maskrosem 150e.jpg",
+        "150"
+    ],
+    [
+        "Maskrosem 160e.jpg",
+        "160"
     ],
     [
         "Morgondis 40e.jpg",
@@ -395,6 +563,22 @@ const pricesArray = [
     [
         "Märkets fyr 180 euro_.jpg",
         "180"
+    ],
+    [
+        "Mårdhund 150e_.jpg",
+        "150"
+    ],
+    [
+        "Mårdhund 155e_.jpg",
+        "155"
+    ],
+    [
+        "Norrhavet 1  125e.jpg",
+        "125"
+    ],
+    [
+        "Norrhavet 2 125e.jpg",
+        "125"
     ],
     [
         "November vid havet 100e.jpg",
@@ -419,6 +603,10 @@ const pricesArray = [
     [
         "Ramslök 140e_.jpg",
         "140"
+    ],
+    [
+        "Ros 150e_.jpg",
+        "150"
     ],
     [
         "Roskarl 50e_.jpg",
@@ -489,16 +677,32 @@ const pricesArray = [
         "140"
     ],
     [
-        "Sjökvarteret Åland 200e_.jpg",
-        "200"
-    ],
-    [
         "Sjökvarteret Åland 80 euro.jpg",
         "80"
     ],
     [
         "Småskrake 40e.jpg",
         "40"
+    ],
+    [
+        "Solnedång i havet 120e_.jpg",
+        "120"
+    ],
+    [
+        "Solnedång i havet 160e_.jpg",
+        "160"
+    ],
+    [
+        "Solnedång i havet 200e_.jpg",
+        "200"
+    ],
+    [
+        "Solnedång norra Åland 140e.jpg",
+        "140"
+    ],
+    [
+        "Solnedång norra Åland 170e.jpg",
+        "170"
     ],
     [
         "Sothönan 125 e.jpg",
@@ -513,8 +717,28 @@ const pricesArray = [
         "180"
     ],
     [
+        "Sunset 100e_.jpg",
+        "100"
+    ],
+    [
         "Sunset 125 e.jpg",
         "125"
+    ],
+    [
+        "Sunshower 150e.jpg",
+        "150"
+    ],
+    [
+        "Sunshower 2  120e.jpg",
+        "120"
+    ],
+    [
+        "Svan 100e.jpg",
+        "100"
+    ],
+    [
+        "Svan i solnedgång 180e.jpg",
+        "180"
     ],
     [
         "Säl kökar 100e.jpg",
@@ -529,12 +753,28 @@ const pricesArray = [
         "80"
     ],
     [
+        "The rabbit 100e.jpg",
+        "100"
+    ],
+    [
         "Travhästar 40e_.jpg",
         "40"
     ],
     [
         "Travhästar 41e_.jpg",
         "41"
+    ],
+    [
+        "Trygghet 1  100e_.jpg",
+        "100"
+    ],
+    [
+        "Trygghet 2 125_.jpg",
+        "125"
+    ],
+    [
+        "Trygghet 3 130e.jpg",
+        "130"
     ],
     [
         "Tärna 200e_.jpg",
@@ -553,6 +793,10 @@ const pricesArray = [
         "180"
     ],
     [
+        "Vallmo 150e.jpg",
+        "150"
+    ],
+    [
         "Vid havet 100e.jpg",
         "100"
     ],
@@ -561,16 +805,36 @@ const pricesArray = [
         "100"
     ],
     [
+        "Vikings 1  80e_.jpg",
+        "80"
+    ],
+    [
+        "Vikings 2  120e_.jpg",
+        "120"
+    ],
+    [
+        "Vikings 2  80e_.jpg",
+        "80"
+    ],
+    [
         "Vinter hare 150e.jpg",
         "150"
+    ],
+    [
+        "Vinter vid havet 120e.jpg",
+        "120"
     ],
     [
         "Vinter Åland 150e.jpg",
         "150"
     ],
     [
-        "Vinter ålands hav 150e.jpg",
+        "Vintermorgon 150e.jpg",
         "150"
+    ],
+    [
+        "Vintermorgon 80e.jpg",
+        "80"
     ],
     [
         "Vinternatt 150e.jpg",
@@ -589,6 +853,22 @@ const pricesArray = [
         "310"
     ],
     [
+        "Våg 120e.jpg",
+        "120"
+    ],
+    [
+        "Våg 160e.jpg",
+        "160"
+    ],
+    [
+        "Våg 165.jpg",
+        "165"
+    ],
+    [
+        "Ziggy 200e.jpg",
+        "200"
+    ],
+    [
         "fjäder 100e.jpg",
         "100"
     ],
@@ -599,6 +879,10 @@ const pricesArray = [
     [
         "insjö Geta 150e.jpg",
         "150"
+    ],
+    [
+        "strand 100e_.jpg",
+        "100"
     ],
     [
         "svan 150 e.jpg",
@@ -655,6 +939,10 @@ const pricesArray = [
     [
         "Äppel 40e.jpg",
         "40"
+    ],
+    [
+        "Åda 80e.jpg",
+        "80"
     ],
     [
         "Ådor med ungar 100e_.jpg",

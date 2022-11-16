@@ -13,14 +13,17 @@ files.forEach(i => {
     }
 });
 
+const ignorePaths = []
+
 // Some variables for context
 const imgLen = paths.length;
 let imgCur = 0;
-const shopDisplayImagesWidth = 200;
+const shopDisplayImagesWidth = 300;
 
 // Resize function
 async function resize(path) {
     let image = await Image.load('../img/shopQualityImages/' + path);
+    console.log('Current image', path);
     let grey = image
         .resize({ width: shopDisplayImagesWidth });
     imgCur += 1;
@@ -30,5 +33,9 @@ async function resize(path) {
 
 // Run function for each photo
 paths.forEach(value => {
-    resize(value);
+    if (!ignorePaths.includes(value)) {
+        resize(value);
+    } else {
+        console.log('Skipped image', value);
+    }
 });
