@@ -124,15 +124,60 @@
 
         <!-- set height of div to one view height -->
      
-<div style="position:fixed">
-        <div class="text"><p id="text1"></p></div>
-        <p class="text" id="text2"></p>
-        <p class="text" id="text3"></p>
+    <div id="containerBig">
+        
+            <p class="text"id="text1">tekst1</p>
+            <p class="text" id="text2">tekst2</p>
+            <p class="text" id="text3">test3</p>
 
-        <img style="position:fixed; right:0px; bottom:60px" src="img/home/niclas.png" alt="niclas" id="niclasImg"></div>
+        <img src="img/home/niclas.png" alt="niclas" id="niclasImg">
+    </div>
         <script>
-            document.getElementById("niclasImg").style.width = "40vw";
-            document.getElementById("niclasImg").style.height = auto;
+    
+        //scrollSwitch
+        window.addEventListener("scroll", scrollSwitch);
+        function scrollSwitch(){
+       
+        var niclasPortrait = document.getElementById("niclasImg");
+        var carousel = document.getElementById("carousel");
+        var div = document.getElementById("containerBig");
+        var scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 0 && scrollPosition < 50) {
+            console.log(scrollPosition)
+            index = 0;
+            console.log(index)
+            text1.style.display = "block";
+            text2.style.display = "none";
+            text3.style.display = "none";
+            carousel.visibility = "hidden"
+            
+            niclasPortrait.src = "img/home/niclas.png";
+        } else if (scrollPosition > 50 && scrollPosition < 100) {
+            index = 1;
+            console.log(index)
+            niclasPortrait.src = "img/home/niclas.png";
+        } else if (scrollPosition > 100 && scrollPosition < 199) {
+            index = 2;
+            console.log(index)
+            text3.style.display= "block"
+            niclasPortrait.src = "img/home/niclas.png";
+            div.style.visibility = "hidden"
+        } else if (scrollPosition > 300) {
+            index = 3;
+            console.log(index)
+            text1.style.display = "none"
+            text2.style.display = "none"
+            text3.style.display = "none"
+            div.style.visibility = "hidden"
+            niclasPortrait.style.visibility = "hidden"
+
+            //scroll position blir annerledes når ting blir fjerna
+            
+        }
+
+    }
+
 
         </script>
 
