@@ -15,7 +15,7 @@ files.forEach(i => {
 
 // Added variables to modify amount of pictures to run through to avoid memory error
 const imgLen = paths.length;
-const ignorePaths = ['strand 100e_.jpg']
+const ignorePaths = ['strand 100e_.jpg', 'Våg 165.jpg', 'Sunshower 150e.jpg', 'Trygghet 2 125_.jpg']
 const startIndex = 235;
 const endIndex = imgLen;
 
