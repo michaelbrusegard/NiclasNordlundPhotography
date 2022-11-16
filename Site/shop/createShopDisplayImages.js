@@ -13,10 +13,17 @@ files.forEach(i => {
     }
 });
 
-// Added variables to modify amount of pictures to run through to avoid memory error
-const imgLen = paths.length;
+// Paths with issues
 const ignorePaths = ['strand 100e_.jpg', 'Våg 165.jpg', 'Sunshower 150e.jpg', 'Trygghet 2 125_.jpg']
-const startIndex = 235;
+const extraPaths = ['  Kökar 100e_.jpg']
+
+// Gets the paths length before and after adding extras
+const oldImgLen = paths.length;
+extraPaths.forEach(i => {paths.push(i)});
+const imgLen = paths.length;
+
+// Index
+const startIndex = oldImgLen;
 const endIndex = imgLen;
 
 // Some variables for context
