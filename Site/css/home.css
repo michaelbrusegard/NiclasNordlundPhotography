@@ -84,7 +84,7 @@ p {
 }
 
 .manual-btn{
-    border: 2px solid #40D3DC;
+    border: 2px solid gray;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -96,7 +96,7 @@ p {
 }
 
 .manual-btn:hover{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio1:checked ~ .first{
@@ -144,7 +144,7 @@ p {
 }
 
 .navigation-auto div{
-    border: 2px solid #40D3DC;
+    border: 2px solid gray;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
@@ -155,35 +155,35 @@ p {
 }
 
 #radio1:checked ~ .navigation-auto .auto-btn1{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio2:checked ~ .navigation-auto .auto-btn2{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio3:checked ~ .navigation-auto .auto-btn3{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio4:checked ~ .navigation-auto .auto-btn4{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio5:checked ~ .navigation-auto .auto-btn5{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio6:checked ~ .navigation-auto .auto-btn6{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio7:checked ~ .navigation-auto .auto-btn7{
-    background: #40D3DC;
+    background: gray;
 }
 
 #radio8:checked ~ .navigation-auto .auto-btn8{
-    background: #40D3DC;
+    background: gray;
 }
 /* CSS for automatic navigation END */
 /* Carousel CSS END */
