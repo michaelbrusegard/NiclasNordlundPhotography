@@ -49,8 +49,7 @@
   display: flex;
   flex-direction: column;
   gap: calc(var(--imageMargin) / 2);
-  
-}
+    }
   
 .image img {
   height: 100%;
@@ -58,6 +57,7 @@
   border-radius: var(--imageBorderRadius);
   object-fit: cover;
   box-shadow: var(--shadow);
+  
 }
 
 /* Page transition */
