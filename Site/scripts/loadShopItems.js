@@ -693,10 +693,6 @@ const pricesArray = [
         "160"
     ],
     [
-        "Solnedång i havet 200e_.jpg",
-        "200"
-    ],
-    [
         "Solnedång norra Åland 140e.jpg",
         "140"
     ],

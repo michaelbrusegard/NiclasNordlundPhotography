@@ -24,6 +24,7 @@ nav .mobileNav {
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    user-select: none;
 }
 
 nav .desktopNav li a,
