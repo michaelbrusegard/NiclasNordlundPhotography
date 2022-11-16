@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navigatedFrom.endsWith('sport.html') || 
     navigatedFrom.endsWith('wedding.html')) {
 
-        history.pushState(str, "", "shop.html");
         // Runs the animation for the old navigation bar
         let oldNav = mobileOrDesktopNav() + 2
         linkBag[oldNav].classList.add('linkBagAnimation')
