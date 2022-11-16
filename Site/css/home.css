@@ -11,25 +11,62 @@
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
     margin-top: var(--navContainerHeight);
-    padding: 10%;
+    padding: var(--navContainerHeight);
 }
 
 p {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: 200;
-    color:lightgrey;
-    
+    color:#fff;
 }
 
+.niclas{
+  width:200%;
+  height:auto;
+  margin-left:25%;
+}
+#niclas{
+  max-height: 100%;
+  max-width:100%;
+}
+#text1{
+  width:100%;
+}
+
+.homeContainer{
+height: calc(100vh - 3 * var(--navContainerHeight));
+display:flex;
+flex-direction: row;
+}
+.quote{
+width:5000px;
+height:auto;
+font-size:1em;
+
+}
+
+/*Adaptive size*/
+@media (max-width: 768px) {
+  .homeContainer{
+    flex-direction:column-reverse
+  }
+  
+  .quote{
+    width:100%;
+    font-size:1em;
+    height:200px;
+  }
+  .niclas{
+    height:50%;
+    margin-left:250px;
+    height: 300px;
+    margin-top:-50px;
+  }
+  
+}
 
 /* Page transition */
 
-.quote{
-    margin-top: var(--navContainerHeight);
-    height:500px;
-    width: 500px;
-    
-}
 
 /* Carousel CSS START */
 
@@ -103,7 +140,7 @@ p {
 /* Carousel CSS END */
 
 
-/* Text transitions START */
+/* Text transitions START
 :root{
     --var-color-one: #f5efe1;
     --var-color-two: #161616;
@@ -145,4 +182,4 @@ p {
     cursor:pointer;
   }
 
-/* Text transitions END*/
+Text transitions END*/
