@@ -27,18 +27,15 @@ p {
     color:#fff;
 }
 
-.niclas{
-  width:100%;
-  height:auto;
-  margin-left:25%;
+#niclasImg{
+position:fixed; 
+right: 0px; 
+bottom:60px;
+width:40vw;
+height:auto;
 }
-#niclas{
-  max-height: 100%;
-  max-width:100%;
-}
-#text1{
-  width:100%;
-}
+
+
 
 .homeContainer{
 height: calc(100vh - 3 * var(--navContainerHeight));
@@ -70,6 +67,10 @@ font-size:1em;
     margin-top:-50px;
   }
   
+}
+
+.containerBig{
+    width:100px;
 }
 
 /* Page transition */
