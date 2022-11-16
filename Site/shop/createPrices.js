@@ -45,5 +45,7 @@ for (let i = 0; i < paths.length; i++) {
     imgPrice.push([paths[i], prices[i]]);
 }
 
+console.log('Amount of prices', imgPrice.length);
+
 // Add array to json
 fs.writeFileSync('./prices.json', JSON.stringify(imgPrice));

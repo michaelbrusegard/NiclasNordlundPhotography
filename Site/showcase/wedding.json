@@ -1,1 +1,17 @@
-[["wedding1.jpg",1133,1700],["wedding2.jpg",1700,1063],["wedding3.jpg",1700,1133]]
+[
+    [
+        "wedding01.jpg",
+        1133,
+        1700
+    ],
+    [
+        "wedding02.jpg",
+        1700,
+        1063
+    ],
+    [
+        "wedding03.jpg",
+        1700,
+        1133
+    ]
+]

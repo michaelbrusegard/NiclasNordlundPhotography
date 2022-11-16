@@ -74,6 +74,7 @@
     background-position: center;
     background-size: cover;
     margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
 }
 
 /* Shopping */
@@ -103,7 +104,12 @@
     animation: tilt-shaking var(--transitionLength);
 }
 
-.container.clicked {
+.container.animation {
+    transition: transform var(--transitionLength) linear;
+    z-index: 2 * var(--navZindex);
+}
+
+.container.hidden {
     display: none;
 }
 
@@ -163,7 +169,7 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    top: 0;
+    top: calc(var(--checkoutBorder) * -2);
     right: 0;
     overflow: hidden;
     background-color: var(--checkoutColor);
@@ -180,8 +186,9 @@
 }
 
 #checkoutMenu.active {
+    top: 0;
     overflow-y: auto;
-    max-height: calc(95% - var(--navContainerHeight));
+    max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopDisplayMargin)));
     margin-top: calc(var(--shopDisplayMargin) + var(--navContainerHeight));
 }
 
@@ -199,10 +206,17 @@
 
 #checkoutTotalDisplay {
     margin: var(--shopDisplayMargin);
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: var(--fontSize);
+    font-weight: bold;
 }
 
 #checkoutButton {
     width: calc(var(--checkoutWidth) - 2 * var(--checkoutBorder));
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: var(--fontSize);
+    font-weight: bold;
+    box-shadow: var(--shadow);
 }
 
 .container.checkout {

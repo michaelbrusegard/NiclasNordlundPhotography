@@ -103,7 +103,7 @@ p {
 /* Carousel CSS END */
 
 
-/*Text transitioning
+/* Text transitions START */
 :root{
     --var-color-one: #f5efe1;
     --var-color-two: #161616;
@@ -144,4 +144,5 @@ p {
     opacity: 0.5;
     cursor:pointer;
   }
-  */
+
+/* Text transitions END*/
