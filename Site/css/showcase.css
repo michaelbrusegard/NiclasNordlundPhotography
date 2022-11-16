@@ -75,3 +75,87 @@
         transform: translateY(0);
     }
 }
+
+/* Fade on scroll class selectors */
+
+.fadeInFromBottom {
+  animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
+}
+
+.fadeInFromRight {
+  animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
+}
+
+.fadeInFromLeft {
+  animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
+}
+
+.fadeInFromRightBottom {
+  animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
+}
+
+.fadeInFromLeftBottom {
+  animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
+}
+
+/* Fade on scroll animations */
+
+@keyframes fadeInFromBottom {
+  from {
+      opacity: 0;
+      transform: translateY(var(--imageMargin));
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInFromRight {
+  from {
+      opacity: 0;
+      transform: translateX(var(--imageMargin));
+  }
+
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInFromLeft {
+  from {
+      opacity: 0;
+      transform: translateX(calc(-1 * var(--imageMargin)));
+  }
+
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInFromRightBottom {
+  from {
+      opacity: 0;
+      transform: translate(var(--imageMargin), var(--imageMargin));
+  }
+
+  to {
+      opacity: 1;
+      transform: translate(0, 0);
+  }
+}
+
+@keyframes fadeInFromLeftBottom {
+  from {
+      opacity: 0;
+      transform: translate(calc(-1 * var(--imageMargin)), var(--imageMargin));
+  }
+
+  to {
+      opacity: 1;
+      transform: translate(0, 0);
+  }
+}
