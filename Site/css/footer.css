@@ -55,7 +55,7 @@
 
 .arrow {
     background: url('../img/icons/uparrow.png');
-    background-size: calc(var(--menuIconSize)/2);
+    background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
@@ -67,7 +67,7 @@
 
 .phone {
     background: url('../img/icons/phone.png');
-    background-size: calc(var(--menuIconSize)* 2/3);
+    background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 

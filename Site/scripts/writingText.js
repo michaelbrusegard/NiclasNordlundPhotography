@@ -7,22 +7,62 @@ jigsaw puzzles and other products showing the beautiful landscapes, nature and a
 
 const text3 = "In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs."
 
-function writingText(){
-    if (i<text2.length){
-        document.getElementById("text1").innerHTML += text2.charAt(i);;
+
+
+const fullText= `Born in Mariehamn in 1965, Niclas always had an interest in animals and nature.
+
+Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance photographer. Besides the photography itself, Niclas also creates pictures to hang on your wall, postcards, jigsaw puzzles and other products showing the beautiful landscapes, nature and animals of the Åland Islands.
+
+In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs.`
+
+
+let allText = [text1, text2, text3]
+
+var j=0
+var k=0
+
+function writingText1(){
+    if (i<text1.length){
+        document.getElementById("text1").innerHTML += text1.charAt(i);
         i++;
-        setTimeout(writingText, 75);
-    }
+        setTimeout(writingText1, 75);
 }
+}
+
+function writingText2(){
+    
+    if (j<text2.length){
+        document.getElementById("text2").innerHTML += text2.charAt(j);
+        j++;
+        setTimeout(writingText2, 75);
+}
+}
+
+function writingText3(){
+    
+    if (k<text3.length){
+        document.getElementById("text3").innerHTML += text3.charAt(k);
+        k++;
+        setTimeout(writingText3, 75);
+}
+}
+
+
+
+
+    
+        
+        
 
 
 console.log(document.getElementById("text1"))
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    writingText(text1)
-    writingText(text2);
-    writingText(text3);
+    writingText1(text1);
+    writingText2(text2);
+    writingText3(text3);
 })
+
 
 /*
 let listItems=[...document.getElementsByClassName("quotes")]
@@ -57,3 +97,12 @@ listItems.forEach(item =>{
 })
 */
 
+/*
+function writingText(){
+    if (i<fullText.length){
+        document.getElementById("text1").innerHTML += fullText.charAt(i);
+        i++;
+        setTimeout(writingText, 75);
+    }
+}
+*/
