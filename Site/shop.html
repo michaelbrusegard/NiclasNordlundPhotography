@@ -20,14 +20,14 @@
     <!-- Scripts -->
 
     <script defer src='scripts/nav.js'></script>
-    <script defer src='scripts/shopNav.js'></script>
+    <script defer src='scripts/slideTransition.js'></script>
     <script defer src='scripts/checkoutSystem.js'></script>
     <script defer src='scripts/loadShopItems.js'></script>
     <script defer src='scripts/shop.js'></script>
 
     <!-- Favicon -->
 
-    <link rel='icon' type='image/png-icon' href='img/icons/favicon.png'>
+    <link rel='icon' type='image/png-icon' href='img/symbols/favicon.png'>
 
     <!-- Fonts -->
 
@@ -43,14 +43,14 @@
 
         <!-- Start of shop navigation bar -->
 
-        <nav class='shopNav'>
+        <nav id='shopNav'>
 
             <ul class='mobileNav'>
 
                 <!-- Start of Mobile navigation bar -->
 
                 <li>
-                    <a href='shop.html' class='linkIcon linkBag'></a>
+                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
                 </li>
                 <li>
                     <a href='home.html' class='linkIcon linkSignature'></a>
@@ -69,7 +69,7 @@
                 <!-- Start of Desktop navigation bar -->
 
                 <li>
-                    <a href='shop.html' class='linkIcon linkBag'></a>
+                    <a href='#' onclick ='setBagLink();' class='linkIcon linkBag'></a>
                 </li>
                 <li>
                     <a href='home.html' class='linkIcon linkSignature'></a>
@@ -87,9 +87,9 @@
 
         <!-- End of shop navigation bar -->
 
-        <!-- Start of old navigation bar -->
+        <!-- Start of navigation bar -->
 
-        <nav class='oldNav'>
+        <nav id='nav'>
 
             <ul class='mobileNav'>
 
@@ -147,7 +147,7 @@
 
         </nav>
 
-        <!-- End of old navigation bar -->
+        <!-- End of navigation bar -->
 
     </header>
 
@@ -165,35 +165,36 @@
 
         <!-- End of page content -->
 
+        <footer class='footerContainer'>
+
+            <!-- Start of footer -->
+        
+            <div class='footerDiv'>
+        
+                <ul class='footerList'>
+                    <li>
+                        <a id='arrow' href='' class='linkIcon arrow'></a>
+                    </li>
+                    <li>
+                        <a href='mailto:nic.nord@hotmail.com' class='linkIcon email'></a>
+                    </li>
+                    <li>
+                        <a href='tel:+358400193300' class='linkIcon phone'></a>
+                    </li>
+                    <li>
+                        <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
+                        <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
+                    </li>
+                </ul>
+        
+            </div>
+        
+            <!-- End of footer -->
+        
+          </footer>
+
     </main>
 
-    <footer class='footerContainer'>
-
-        <!-- Start of footer -->
-
-        <div class='footerDiv'>
-
-            <ul class='footerList'>
-                <li>
-                    <a id='arrow' href='' class='linkIcon arrow'></a>
-                </li>
-                <li>
-                    <a href='mailto:nic.nord@hotmail.com' class='linkIcon email'></a>
-                </li>
-                <li>
-                    <a href='tel:+358400193300' class='linkIcon phone'></a>
-                </li>
-                <li>
-                    <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
-                    <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
-                </li>
-            </ul>
-
-        </div>
-
-        <!-- End of footer -->
-
-    </footer>
 </body>
 
 </html>

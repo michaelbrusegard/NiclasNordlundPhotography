@@ -1097,31 +1097,58 @@ const checkoutMenu = document.getElementById('checkoutMenu');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 const redDots = document.querySelectorAll('.redDot');
 
-// Keeping track of the checkout price total
+// Keeping track of the checkout elements
+const checkoutButton = document.getElementById('checkoutButton');
 const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay');
-let checkoutTotal = 0;
-
-// Number of items in the shopping cart
+let addedItems = [];
 let itemNumber = 0;
+let checkoutTotal = 0;
 
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
 const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
 const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
 
+// Variables for slide transition
+const nav = document.getElementById('nav');
+const shopNav = document.getElementById('shopNav');
+const navigatedFromShowcaseOrHome = ['home.html', 'nature.html', 'animals.html', 'architectural.html', 'portrait.html', 'sport.html', 'wedding.html'];
+let navigatedFrom = document.referrer
+
 // When the DOM is done loading: loads new image containers and aligns checkout menu
-document.addEventListener('DOMContentLoaded', () => {windowLoad(); alignCheckout();});
+document.addEventListener('DOMContentLoaded', () => {slideTransition(shopNav, nav, navigatedFromShowcaseOrHome); windowLoad(); alignCheckout();});
 
 // Changes to the window: loads new image containers and aligns checkout menu
 window.addEventListener("scroll", () => {scrollLoad();});
 window.addEventListener("resize", () => {windowLoad(); alignCheckout();});
 window.addEventListener("orientationChange", () => {windowLoad(); alignCheckout();});
 
+// Adds ending part of animation
+getLinkBag(getCurrentNavElement(nav)).addEventListener('animationend', () => {animationEndOnNavElements(shopNav, nav)});
+
+// Check when the current bag icons are clicked
+Array.from(shopNav.children).forEach(el => {getLinkBag(el).addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
+
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {
+    alignCheckout();
     event.preventDefault();
     checkoutMenu.classList.toggle('active');
 }));
+
+// Logs the current checkout items to alert
+checkoutButton.addEventListener('click', () => {
+    let n = 1;
+    let alertString = `Total number of items: ${itemNumber}\n\n`
+    for (const item of addedItems) {
+        const name = item.children[2].innerHTML
+        const price = item.children[1].innerHTML;
+        alertString += `Item ${n}: \nName: ${name}\nPrice: ${price}\n\n`;
+        n += 1;
+    }
+    alertString += `Total cost at checkout: ${checkoutTotal}€`;
+    alert(alertString);
+});
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButton.addEventListener('click', event => {

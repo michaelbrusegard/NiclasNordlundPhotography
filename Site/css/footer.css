@@ -2,7 +2,6 @@
 
 .footerContainer {
     background: var(--pageColor);
-    box-shadow: var(--shadow);
     height: var(--navContainerHeight);
     z-index: var(--navZindex);
     position: fixed;
@@ -27,7 +26,12 @@
     list-style: none;
 }
 
+.footerList li {
+    height: var(--navContainerHeight);
+}
+
 .footerList li a {
+    padding: calc(var(--navPadding) / 2) 0;
     color: var(--fontColor);
     text-decoration: none;
     font-family: 'Caveat', cursive;
@@ -60,31 +64,31 @@
 /* Icons */
 
 .arrow {
-    background: url('../img/icons/arrow.png');
+    background: url('../img/symbols/arrow.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .email {
-    background: url('../img/icons/email.png');
+    background: url('../img/symbols/email.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .phone {
-    background: url('../img/icons/phone.png');
+    background: url('../img/symbols/phone.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .insta {
-    background: url('../img/icons/instagram.png');
+    background: url('../img/symbols/instagram.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .facebook {
-    background: url('../img/icons/facebook.png');
+    background: url('../img/symbols/facebook.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
