@@ -16,7 +16,7 @@ Photography was always there as a hobby, but in 2018, he took the step to become
 In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs.`;
 
 
-let allText = [text1, text2, text3];
+// let allText = [text1, text2, text3];
 
 var j = 0;
 var k = 0;
@@ -30,20 +30,18 @@ function writingText1() {
 }
 
 function writingText2() {
-
     if (j < text2.length) {
         document.getElementById("text2").innerHTML += text2.charAt(j);
         j++;
-        setTimeout(writingText2, 75);
+        setTimeout(writingText2);
     }
 }
 
 function writingText3() {
-
     if (k < text3.length) {
         document.getElementById("text3").innerHTML += text3.charAt(k);
         k++;
-        setTimeout(writingText3, 75);
+        setTimeout(writingText3);
     }
 }
 
@@ -59,9 +57,12 @@ console.log(document.getElementById("text1"));
 
 document.addEventListener("DOMContentLoaded", () => {
     writingText1(text1);
-    writingText2(text2);
-    writingText3(text3);
-})
+    printedText1.style.visibility = "visible";
+    carouselChildren.style.visibility ="hidden";
+})    
+    //these should be on scroll instead
+    
+
 
 
 /*
