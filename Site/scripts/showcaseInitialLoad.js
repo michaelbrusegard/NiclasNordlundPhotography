@@ -7,7 +7,7 @@ function initialLoad(files) {
   const gallery = document.getElementsByClassName('gallery')[0];
 
   // Removes all columns
-  removeAllChildNodes(gallery)
+  removeAllChildNodes(gallery);
 
   // Creates new column
   for (let i = 0; i < columnsMax; i++) {
@@ -28,7 +28,7 @@ function initialLoad(files) {
 
 // Finds the shortest column
 function shortestColumn(columns) {
-  let shortestColumn = 0 
+  let shortestColumn = 0;
   // For every column
   for (let i = 0; i < columns.length; i++) {
     const columnHeight = getColumnHeight(columns[i]);
@@ -43,9 +43,9 @@ function shortestColumn(columns) {
 
 // Calculates the column height using image height
 function getColumnHeight(column) {
-  let columnHeight = 0
+  let columnHeight = 0;
   for (let i = 0; i < column.childElementCount; i++) {
-    columnHeight += column.childNodes[i].firstChild.height
+    columnHeight += column.childNodes[i].firstChild.height;
   }
   return columnHeight;
 }
@@ -53,12 +53,12 @@ function getColumnHeight(column) {
 // Gets how many columns there is space for
 function getColumns() {
   const windowWidth = window.innerWidth;
-  const columns = Math.floor(windowWidth / columnSize)
+  const columns = Math.floor(windowWidth / columnSize);
   if (columns === 0) {
-    return 1
+    return 1;
   } else if (columns > maxColumns) {
-    return maxColumns
+    return maxColumns;
   } else {
-    return columns
+    return columns;
   }
 }

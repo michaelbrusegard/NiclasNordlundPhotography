@@ -34,7 +34,7 @@ function handleIntersection(entries) {
                     entry.target.classList.add('fadeInFromLeft');
                 } else if (parent === columns[1]) {
                     entry.target.classList.add('fadeInFromLeftBottom');
-                } else if (parent === columns[2]){
+                } else if (parent === columns[2]) {
                     entry.target.classList.add('fadeInFromRightBottom');
                 } else {
                     entry.target.classList.add('fadeInFromRight');
@@ -44,9 +44,9 @@ function handleIntersection(entries) {
                     entry.target.classList.add('fadeInFromLeft');
                 } else if (parent === columns[1]) {
                     entry.target.classList.add('fadeInFromLeftBottom');
-                } else if (parent === columns[2]){
+                } else if (parent === columns[2]) {
                     entry.target.classList.add('fadeInFromBottom');
-                } else if (parent === columns[3]){
+                } else if (parent === columns[3]) {
                     entry.target.classList.add('fadeInFromRightBottom');
                 } else {
                     entry.target.classList.add('fadeInFromRight');

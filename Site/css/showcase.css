@@ -25,15 +25,15 @@
 }
 
 .pageContainer {
-    height: auto;
-    width: 100%;
-    position: absolute;
-    animation: transitionIn calc(var(--transitionLength) * 2);
-    animation-timing-function: ease-in;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-size: 100%;
-    margin-bottom: var(--navContainerHeight);
+  height: auto;
+  width: 100%;
+  position: absolute;
+  animation: transitionIn calc(var(--transitionLength) * 2);
+  animation-timing-function: ease-in;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: 100%;
+  margin-bottom: var(--navContainerHeight);
 }
 
 /* Image layout*/
@@ -44,15 +44,16 @@
   gap: calc(var(--imageMargin) / 2);
   margin: var(--imageMargin);
   margin-bottom: calc(var(--navContainerHeight) + var(--imageMargin));
-  margin-top: calc(var(--navContainerHeight) + var(--imageMargin));;
+  margin-top: calc(var(--navContainerHeight) + var(--imageMargin));
+  ;
 }
-  
+
 .gallery .column {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--imageMargin) / 2);  
+  gap: calc(var(--imageMargin) / 2);
 }
-  
+
 .image img {
   height: 100%;
   width: 100%;
@@ -65,15 +66,15 @@
 /* Page transition */
 
 @keyframes transitionIn {
-    from {
-        opacity: var(--softOpacity);
-        transform: translateY(var(--navContainerHeight));
-    }
+  from {
+    opacity: var(--softOpacity);
+    transform: translateY(var(--navContainerHeight));
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Fade on scroll class selectors */
@@ -102,60 +103,60 @@
 
 @keyframes fadeInFromBottom {
   from {
-      opacity: 0;
-      transform: translateY(var(--imageMargin));
+    opacity: 0;
+    transform: translateY(var(--imageMargin));
   }
 
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes fadeInFromRight {
   from {
-      opacity: 0;
-      transform: translateX(var(--imageMargin));
+    opacity: 0;
+    transform: translateX(var(--imageMargin));
   }
 
   to {
-      opacity: 1;
-      transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @keyframes fadeInFromLeft {
   from {
-      opacity: 0;
-      transform: translateX(calc(-1 * var(--imageMargin)));
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--imageMargin)));
   }
 
   to {
-      opacity: 1;
-      transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @keyframes fadeInFromRightBottom {
   from {
-      opacity: 0;
-      transform: translate(var(--imageMargin), var(--imageMargin));
+    opacity: 0;
+    transform: translate(var(--imageMargin), var(--imageMargin));
   }
 
   to {
-      opacity: 1;
-      transform: translate(0, 0);
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 
 @keyframes fadeInFromLeftBottom {
   from {
-      opacity: 0;
-      transform: translate(calc(-1 * var(--imageMargin)), var(--imageMargin));
+    opacity: 0;
+    transform: translate(calc(-1 * var(--imageMargin)), var(--imageMargin));
   }
 
   to {
-      opacity: 1;
-      transform: translate(0, 0);
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
