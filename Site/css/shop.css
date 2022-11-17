@@ -186,6 +186,7 @@
 }
 
 #checkoutMenu.active {
+    z-index: 300;
     top: 0;
     overflow-y: auto;
     max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopDisplayMargin)));
@@ -225,7 +226,7 @@
 }
 
 .container.inCart {
-    z-index: 300;
+    z-index: 200;
     animation: add-to-cart var(--transitionLength);
     animation-timing-function: ease-out;
 }
