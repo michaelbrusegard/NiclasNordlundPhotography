@@ -2,7 +2,6 @@
 
 .footerContainer {
     background: var(--pageColor);
-    box-shadow: var(--shadow);
     height: var(--navContainerHeight);
     z-index: var(--navZindex);
     position: fixed;
@@ -27,7 +26,12 @@
     list-style: none;
 }
 
+.footerList li {
+    height: var(--navContainerHeight);
+}
+
 .footerList li a {
+    padding: calc(var(--navPadding) / 2) 0;
     color: var(--fontColor);
     text-decoration: none;
     font-family: 'Caveat', cursive;

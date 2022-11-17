@@ -33,7 +33,14 @@
   background-repeat: repeat;
   background-attachment: scroll;
   background-size: 100%;
-  margin-bottom: var(--navContainerHeight);
+}
+
+main {
+  position: relative;
+}
+
+.footerContainer {
+  position: absolute;
 }
 
 /* Image layout*/
@@ -45,7 +52,6 @@
   margin: var(--imageMargin);
   margin-bottom: calc(var(--navContainerHeight) + var(--imageMargin));
   margin-top: calc(var(--navContainerHeight) + var(--imageMargin));
-  ;
 }
 
 .gallery .column {
