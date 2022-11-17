@@ -1097,12 +1097,13 @@ const checkoutMenu = document.getElementById('checkoutMenu');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 const redDots = document.querySelectorAll('.redDot');
 
-// Keeping track of the checkout price total
+// Keeping track of the checkout elements
+const checkoutButton = document.getElementById('checkoutButton');
 const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay');
+let addedItems = [];
+let itemNumber = 0;
 let checkoutTotal = 0;
 
-// Number of items in the shopping cart
-let itemNumber = 0;
 
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
@@ -1123,6 +1124,19 @@ cartButtons.forEach(el => el.addEventListener('click', event => {
     event.preventDefault();
     checkoutMenu.classList.toggle('active');
 }));
+
+// Logs the current checkout items to the console
+checkoutButton.addEventListener('click', () => {
+    let n = 1;
+    console.log(`Total number of items: ${itemNumber}`)
+    for (const item of addedItems) {
+        const name = item.children[2].innerHTML
+        const price = item.children[1].innerHTML;
+        console.log(`${n}. Name: ${name}\nPrice: ${price}`);
+        n += 1;
+    }
+    console.log(`Total cost at checkout: ${checkoutTotal}€`)
+});
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButton.addEventListener('click', event => {
