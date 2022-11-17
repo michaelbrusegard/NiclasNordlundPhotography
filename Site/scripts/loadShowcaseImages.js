@@ -45,7 +45,7 @@ function findShortestColumn(columns) {
 function calculateColumnHeight(column) {
   let columnHeight = 0;
   for (let i = 0; i < column.childElementCount; i++) {
-    columnHeight += column.childNodes[i].firstChild.height;
+    columnHeight += files[i][2];
   }
   return columnHeight;
 }

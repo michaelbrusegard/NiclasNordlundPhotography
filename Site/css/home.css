@@ -50,7 +50,7 @@ p {
 } */
 
 .homeContainer {
-    height: calc(100vh - 3 * var(--navContainerHeight));
+    height: calc(100% - 3 * var(--navContainerHeight));
     display: flex;
     flex-direction: row;
 }
@@ -63,6 +63,7 @@ p {
 }
 
 /*Adaptive size*/
+
 @media (max-width: 768px) {
     .homeContainer {
         flex-direction: column-reverse
@@ -85,7 +86,71 @@ p {
 
 
 
-/* Page transition */
+/* Slide transition */
+
+.fadeOutAnimation {
+    animation: fadeOut calc(var(--transitionLength) * 2) linear;
+}
+
+.fadeInAnimation {
+    animation: fadeIn var(--transitionLength) linear;
+}
+
+.linkBagAnimation {
+    animation: transitionBag calc(var(--transitionLength) * 2) linear;
+}
+
+@media (min-width: 1100px) {
+    .linkBagAnimation {
+        animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+    }
+}
+
+#nav {
+    display: none;
+}
+
+#shopNav {
+    visibility: hidden;
+}
+
+/* Navigation bar animations */
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes transitionBag {
+    to {
+        transform: translateX(calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize))));
+    }
+}
+
+@keyframes transitionBagWide {
+    to {
+        transform: translateX(calc(var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))));
+    }
+}
 
 
 /* Carousel CSS START */
