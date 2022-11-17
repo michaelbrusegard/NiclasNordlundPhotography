@@ -1119,6 +1119,7 @@ window.addEventListener("orientationChange", () => {windowLoad(); alignCheckout(
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {
+    alignCheckout();
     event.preventDefault();
     checkoutMenu.classList.toggle('active');
 }));
