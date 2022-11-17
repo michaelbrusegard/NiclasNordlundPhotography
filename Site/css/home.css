@@ -38,7 +38,7 @@ p {
 
 
 .homeContainer {
-    height: calc(100vh - 3 * var(--navContainerHeight));
+    height: calc(100% - 3 * var(--navContainerHeight));
     display: flex;
     flex-direction: row;
 }
