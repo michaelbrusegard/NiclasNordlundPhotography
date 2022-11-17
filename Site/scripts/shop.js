@@ -57,6 +57,10 @@ const pricesArray = [
         "200"
     ],
     [
+        "Eckerö post & Tullhus 100e_.jpg",
+        "100"
+    ],
+    [
         "Ejder 100e.jpg",
         "100"
     ],
@@ -153,6 +157,10 @@ const pricesArray = [
         "55"
     ],
     [
+        "Fiskelycka 80e.jpg",
+        "80"
+    ],
+    [
         "Fiskestugor Rannörarna  100e_.jpg",
         "100"
     ],
@@ -231,6 +239,14 @@ const pricesArray = [
     [
         "Hammarudda 80e.jpg",
         "80"
+    ],
+    [
+        "Hamnsundet 80e.jpg",
+        "80"
+    ],
+    [
+        "Hamnsundet 85e.jpg",
+        "85"
     ],
     [
         "Hav 80e_.jpg",
@@ -413,6 +429,26 @@ const pricesArray = [
         "90"
     ],
     [
+        "Kastelholm 120e_.jpg",
+        "120"
+    ],
+    [
+        "Kastelholm 130e_.jpg",
+        "130"
+    ],
+    [
+        "Kastelholm 190e.jpg",
+        "190"
+    ],
+    [
+        "Kastelholm 200e_.jpg",
+        "200"
+    ],
+    [
+        "Kastelholm 220e_.jpg",
+        "220"
+    ],
+    [
         "Kastelholms Slott Åland 250euro.jpg",
         "250"
     ],
@@ -431,6 +467,14 @@ const pricesArray = [
     [
         "Kattunge 2 180e.jpg",
         "180"
+    ],
+    [
+        "Källskär 50e_.jpg",
+        "50"
+    ],
+    [
+        "Källskär 60e_.jpg",
+        "60"
     ],
     [
         "Kobba Klintar 100e.jpg",
@@ -455,6 +499,14 @@ const pricesArray = [
     [
         "Kobba klintar 100e_.jpg",
         "100"
+    ],
+    [
+        "Kökar Karlby 50e.jpg",
+        "50"
+    ],
+    [
+        "Kökar Karlby 80e.jpg",
+        "80"
     ],
     [
         "Kväll vid havet 125 e.jpg",
@@ -485,6 +537,18 @@ const pricesArray = [
         "60"
     ],
     [
+        "Kökar Karlby 120e.jpg",
+        "120"
+    ],
+    [
+        "Kökar Karlby 180e.jpg",
+        "180"
+    ],
+    [
+        "Kökar Karlby 70e.jpg",
+        "70"
+    ],
+    [
         "Kökar strandkål 140e.jpg",
         "140"
     ],
@@ -495,6 +559,18 @@ const pricesArray = [
     [
         "Kökar älg  250e.jpg",
         "250"
+    ],
+    [
+        "Lemland kor på bete 125e.jpg",
+        "125"
+    ],
+    [
+        "Lemströms kanal 150e_.jpg",
+        "150"
+    ],
+    [
+        "Lemströms kanal 200e_.jpg",
+        "200"
     ],
     [
         "Lugn & Ro Åland 500 euro.jpg",
@@ -535,6 +611,14 @@ const pricesArray = [
     [
         "Marhällan-Kobba Klintar 250euro_.jpg",
         "250"
+    ],
+    [
+        "Mariehamn 100e.jpg",
+        "100"
+    ],
+    [
+        "Mariehamn 160e.jpg",
+        "160"
     ],
     [
         "Maskrosem 120e.jpg",
@@ -653,8 +737,40 @@ const pricesArray = [
         "140"
     ],
     [
+        "Saggö 81e.jpg",
+        "81"
+    ],
+    [
+        "Saggö 85e.jpg",
+        "85"
+    ],
+    [
+        "Saggö 86e.jpg",
+        "86"
+    ],
+    [
+        "Saggö 80e.jpg",
+        "80"
+    ],
+    [
+        "Sailor 125e.jpg",
+        "125"
+    ],
+    [
+        "Sailor 130e.jpg",
+        "130"
+    ],
+    [
         "Sandstrand  Kökar 100e_.jpg",
         "100"
+    ],
+    [
+        "Signildskär 125e.jpg",
+        "125"
+    ],
+    [
+        "Silverskär 180e_.jpg",
+        "180"
     ],
     [
         "Sjökvarteret 150e.jpg",
@@ -681,6 +797,10 @@ const pricesArray = [
         "80"
     ],
     [
+        "Skärgårdsfärja 80e_.jpg",
+        "80"
+    ],
+    [
         "Småskrake 40e.jpg",
         "40"
     ],
@@ -699,6 +819,10 @@ const pricesArray = [
     [
         "Solnedång norra Åland 170e.jpg",
         "170"
+    ],
+    [
+        "Sommarbad 130e.jpg",
+        "130"
     ],
     [
         "Sothönan 125 e.jpg",
@@ -793,6 +917,10 @@ const pricesArray = [
         "150"
     ],
     [
+        "Våg 165.jpg",
+        "165"
+    ],
+    [
         "Vid havet 100e.jpg",
         "100"
     ],
@@ -857,10 +985,6 @@ const pricesArray = [
         "160"
     ],
     [
-        "Våg 165.jpg",
-        "165"
-    ],
-    [
         "Ziggy 200e.jpg",
         "200"
     ],
@@ -875,6 +999,14 @@ const pricesArray = [
     [
         "insjö Geta 150e.jpg",
         "150"
+    ],
+    [
+        "morgon vid Lumparn 150e_.jpg",
+        "150"
+    ],
+    [
+        "morgon vid Lumparn 180e_.jpg",
+        "180"
     ],
     [
         "strand 100e_.jpg",

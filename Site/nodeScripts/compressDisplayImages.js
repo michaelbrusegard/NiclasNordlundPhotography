@@ -14,7 +14,7 @@ files.forEach(i => {
 });
 
 // Paths with issues
-const ignorePaths = ['strand 100e_.jpg', 'Våg 165.jpg', 'Sunshower 150e.jpg', 'Trygghet 2 125_.jpg'];
+const ignorePaths = ['strand 100e_.jpg', 'Våg 165.jpg', 'Sunshower 150e.jpg', 'Trygghet 2 125_.jpg', 'Mariehamn 100e.jpg', 'Sailor 125e.jpg'];
 const extraPaths = [];
 
 // Gets the paths length before and after adding extras
