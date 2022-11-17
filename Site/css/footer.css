@@ -54,7 +54,7 @@
 /* Icons */
 
 .arrow {
-    background: url('../img/icons/uparrow.png');
+    background: url('../img/icons/arrow.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
