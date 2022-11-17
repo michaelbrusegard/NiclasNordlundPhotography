@@ -288,12 +288,10 @@
 
 @keyframes add-to-cart {
     from {
-        opacity: 1;
         transform: translate(0, 0) scale(1, 1);
     }
 
     to {
-        opacity: var(--addToCartOpacity);
         transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
     }
 }
