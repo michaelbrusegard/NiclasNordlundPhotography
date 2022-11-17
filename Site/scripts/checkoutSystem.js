@@ -40,6 +40,7 @@ function checkoutSystem(shopItem, itemPrice) {
     shopItem.style.setProperty('--addToCartX', `${x}px`);
     shopItem.style.setProperty('--addToCartY', `${y}px`);
     // Move shop item into cart
+    addedItems.push(shopItem);
     shopItem.classList.toggle('inCart')
     shopItem.addEventListener('animationend', () => {
         shopItem.style.display = 'none';
@@ -70,6 +71,7 @@ function checkoutSystem(shopItem, itemPrice) {
         checkoutItem.addEventListener('transitionend', () => {
             checkoutItem.remove(); 
         }, {once: true});
+        addedItems.pop();
         // Update the red dot value
         itemNumber -= 1;
         redDots.forEach(el => el.innerHTML = itemNumber);
