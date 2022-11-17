@@ -101,7 +101,16 @@ const files = [
 const columnSize = 384;
 const maxColumns = 5;
 
+// Variables for slide transition
+const nav = document.getElementById('nav');
+const shopNav = document.getElementById('shopNav');
+const navigatedFromShop = ['shop.html'];
+let navigatedFrom = document.referrer
+
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => { loadImages(files); showcaseFadeOnscroll(); });
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadImages(files); showcaseFadeOnscroll(); });
 window.addEventListener('resize', () => { loadImages(files); showcaseFadeOnscroll(); });
 window.addEventListener('orientationChange', () => { loadImages(files); showcaseFadeOnscroll(); });
+
+// Adds ending part of animation
+getLinkBag(getCurrentNavElement(shopNav)).addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});

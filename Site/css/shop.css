@@ -1,12 +1,4 @@
-/* Navigation bar */
-
-.shopNav {
-    display: none;
-}
-
-.linkText {
-    visibility: hidden;
-}
+/* Slide transition */
 
 .fadeOutAnimation {
     animation: fadeOut calc(var(--transitionLength) * 2) linear;
@@ -26,7 +18,15 @@
     }
 }
 
-/* Navigation bar transition */
+#shopNav {
+    display: none;
+}
+
+#nav {
+    visibility: hidden;
+}
+
+/* Navigation bar animations */
 
 @keyframes fadeOut {
     0% {
