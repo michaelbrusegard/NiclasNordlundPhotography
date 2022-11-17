@@ -20,6 +20,7 @@
   <!-- Scripts -->
 
   <script defer src='scripts/nav.js'></script>
+  <script defer src='scripts/slideTransition.js'></script>
   <script defer src='scripts/loadShowcaseImages.js'></script>
   <script defer src='scripts/fadeOnScroll.js'></script>
   <script defer src='scripts/portrait.js'></script>
@@ -40,66 +41,115 @@
 <body>
   <header class='navContainer'>
 
+    <!-- Start of shop navigation bar -->
+
+    <nav id='shopNav'>
+
+        <ul class='mobileNav'>
+
+            <!-- Start of Mobile navigation bar -->
+
+            <li>
+                <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
+            </li>
+            <li>
+                <a href='home.html' class='linkIcon linkSignature'></a>
+            </li>
+            <li>
+                <a href='' class='linkIcon linkCart'></a>
+                <p class='redDot'>0</p>
+            </li>
+
+            <!-- End of Mobile navigation bar -->
+
+        </ul>
+
+        <ul class='desktopNav'>
+
+            <!-- Start of Desktop navigation bar -->
+
+            <li>
+                <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
+            </li>
+            <li>
+                <a href='home.html' class='linkIcon linkSignature'></a>
+            </li>
+            <li>
+                <a href='' class='linkIcon linkCart'></a>
+                <p class='redDot'>0</p>
+            </li>
+
+            <!-- End of Desktop navigation bar -->
+
+        </ul>
+
+    </nav>
+
+    <!-- End of shop navigation bar -->
+
     <!-- Start of navigation bar -->
 
-    <nav>
-      <ul class='mobileNav'>
+    <nav id='nav'>
 
-        <!-- Start of Mobile navigation bar -->
+        <ul class='mobileNav'>
 
-        <li>
-          <a href='#' class='linkIcon linkMenu'>
-            <div id='menu1'></div>
-            <div id='menu2'></div>
-          </a>
-        </li>
-        <li>
-          <a href='home.html' class='linkIcon linkSignature'></a>
-        </li>
-        <li>
-          <a href='shop.html' class='linkIcon linkBag'></a>
-        </li>
+            <!-- Start of Mobile navigation bar -->
 
-        <!-- End of Mobile navigation bar -->
+            <li>
+                <a href='#' class='linkIcon linkMenu'>
+                    <div id='menu1'></div>
+                    <div id='menu2'></div>
+                </a>
+            </li>
+            <li>
+                <a href='home.html' class='linkIcon linkSignature'></a>
+            </li>
+            <li>
+                <a href='shop.html' class='linkIcon linkBag'></a>
+            </li>
 
-      </ul>
-      <ul class='desktopNav'>
+            <!-- End of Mobile navigation bar -->
 
-        <!-- Start of Desktop navigation bar -->
+        </ul>
 
-        <li>
-          <a href='home.html' class='linkIcon linkSignature'></a>
-        </li>
-        <li>
-          <a href='nature.html'>Nature</a>
-        </li>
-        <li>
-          <a href='animals.html'>Animals</a>
-        </li>
-        <li>
-          <a href='architectural.html'>Architectural</a>
-        </li>
-        <li>
-          <a href='portrait.html'>Portrait</a>
-        </li>
-        <li>
-          <a href='wedding.html'>Wedding</a>
-        </li>
-        <li>
-          <a href='sport.html'>Sport</a>
-        </li>
-        <li>
-          <a href='shop.html' class='linkIcon linkBag'></a>
-        </li>
+        <ul class='desktopNav'>
 
-        <!-- End of Desktop navigation bar -->
+            <!-- Start of Desktop navigation bar -->
 
-      </ul>
+            <li>
+                <a href='home.html' class='linkIcon linkSignature'></a>
+            </li>
+            <li>
+                <a href='nature.html' class='linkText'>Nature</a>
+            </li>
+            <li>
+                <a href='animals.html' class='linkText'>Animals</a>
+            </li>
+            <li>
+                <a href='architectural.html' class='linkText'>Architectural</a>
+            </li>
+            <li>
+                <a href='portrait.html' class='linkText'>Portrait</a>
+            </li>
+            <li>
+                <a href='wedding.html' class='linkText'>Wedding</a>
+            </li>
+            <li>
+                <a href='sport.html' class='linkText'>Sport</a>
+            </li>
+            <li>
+                <a href='shop.html' class='linkIcon linkBag'></a>
+            </li>
+
+            <!-- End of Desktop navigation bar -->
+
+        </ul>
+
     </nav>
 
     <!-- End of navigation bar -->
 
-  </header>
+</header>
 
   <main id='portrait' class='pageContainer'>
 
