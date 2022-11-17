@@ -1,13 +1,18 @@
-const linkMenu = document.querySelector('.linkMenu');
-const mobileNav = document.querySelector('.mobileNav');
-const desktopNav = document.querySelector('.desktopNav');
-
 // Checks when menu is clicked
-linkMenu.addEventListener('click', () => {
-  linkMenu.classList.toggle('clicked');
-  desktopNav.classList.toggle('active');
-  mobileNav.classList.toggle('active');
-});
+function mobileMenu(menu, nav) {
+  menu.classList.toggle('clicked');
+  nav.children[0].classList.toggle('active');
+  nav.children[1].classList.toggle('active');
+}
+
+// Returns the mobile nav element if it is mobile and desktop if it is desktop
+function getCurrentNavElement(nav) {
+  if (isMobileNav()) {
+      return nav.children[0]
+  } else {
+      return nav.children[1]
+  }
+}
 
 // Function to remove all child nodes of a parent
 function removeAllChildNodes(parent) {
