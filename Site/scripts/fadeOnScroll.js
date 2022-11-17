@@ -1,4 +1,4 @@
-function fadeOnscroll() {
+function showcaseFadeOnscroll() {
     const observer = new IntersectionObserver(handleIntersection);
     const images = document.getElementsByClassName('image');
     for (i = 0; i < images.length; i++) {

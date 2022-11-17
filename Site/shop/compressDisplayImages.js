@@ -2,7 +2,7 @@
 // This is a simple "run once script" to compress the shop images for display on the webpage
 
 const fs = require('fs');
-const files = fs.readdirSync('../img/shopQualityImages');
+const files = fs.readdirSync('../img/shopQuality');
 const { Image } = require('image-js');
 const paths = [];
 
@@ -32,13 +32,13 @@ const shopDisplayImagesWidth = 300;
 
 // Resize function
 async function resize(path) {
-    let image = await Image.load('../img/shopQualityImages/' + path);
+    let image = await Image.load('../img/shopQuality/' + path);
     console.log('Current image', path);
     let grey = image
         .resize({ width: shopDisplayImagesWidth });
     imgCur += 1;
     console.log('Resized image', path, imgCur + '/' + (endIndex - startIndex));
-    return grey.save('../img/shopDisplayImages/' + path);
+    return grey.save('../img/shopDisplay/' + path);
 }
 
 // Run function for each photo

@@ -1,3 +1,4 @@
+// Array for image path and dimensions
 const files = [
     [
         "sport01.jpg",
@@ -90,10 +91,12 @@ const files = [
         850
     ]
 ];
+
+// Column variables
 const columnSize = 384;
 const maxColumns = 5;
 
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => { initialLoad(files); fadeOnscroll(); });
-window.addEventListener('resize', () => { initialLoad(files); fadeOnscroll(); });
-window.addEventListener('orientationChange', () => { initialLoad(files); fadeOnscroll(); });
+document.addEventListener('DOMContentLoaded', () => { loadImages(files); showcaseFadeOnscroll()(); });
+window.addEventListener('resize', () => { loadImages(files); showcaseFadeOnscroll()(); });
+window.addEventListener('orientationChange', () => { loadImages(files); showcaseFadeOnscroll()(); });

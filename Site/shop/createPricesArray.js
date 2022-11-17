@@ -2,7 +2,7 @@
 // This is a simple "run once script" to extract the price and filename from the way Niclas gives us his photos
 
 const fs = require('fs');
-const files = fs.readdirSync('../img/shopQualityImages');
+const files = fs.readdirSync('../img/shopQuality');
 const paths = [];
 const prices = [];
 
