@@ -33,7 +33,7 @@ function writingText2() {
     if (j < text2.length) {
         document.getElementById("text2").innerHTML += text2.charAt(j);
         j++;
-        setTimeout(writingText2);
+        setTimeout(writingText2, 75);
     }
 }
 
@@ -41,7 +41,7 @@ function writingText3() {
     if (k < text3.length) {
         document.getElementById("text3").innerHTML += text3.charAt(k);
         k++;
-        setTimeout(writingText3);
+        setTimeout(writingText3, 75);
     }
 }
 
