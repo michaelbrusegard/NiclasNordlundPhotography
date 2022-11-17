@@ -1,20 +1,3 @@
-// Fetching the checkout menu and shopping cart button elements
-const checkoutMenu = document.getElementById('checkoutMenu');
-const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
-const redDots = document.querySelectorAll('.redDot');
-
-// Keeping track of the checkout price total
-const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay');
-let checkoutTotal = 0;
-
-// Number of items in the shopping cart
-let itemNumber = 0;
-
-// Widths of the shopping cart button and checkout menu
-const style = getComputedStyle(document.body);
-const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
-const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
-
 // Aligns the positioning of the checkout menu with the positioning of the cart button
 function alignCheckout() {
     let newCheckoutRight = 0;
