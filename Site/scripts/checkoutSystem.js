@@ -50,9 +50,12 @@ function checkoutSystem(shopItem, itemPrice) {
     // Place the checkout item in the checkout menu
     checkoutItem.classList.add('checkout');
     checkoutMenu.prepend(checkoutItem);
-    // Update the red dot value
+    // Update the red dot element
     itemNumber += 1;
-    redDots.forEach(el => el.innerHTML = itemNumber);
+    redDots.forEach(el => {
+        el.innerHTML = itemNumber;
+        el.style.backgroundColor = 'red';
+    });
     // Update checkout price
     checkoutTotal += itemPrice;
     checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
@@ -77,7 +80,12 @@ function checkoutSystem(shopItem, itemPrice) {
         addedItems.pop();
         // Update the red dot value
         itemNumber -= 1;
-        redDots.forEach(el => el.innerHTML = itemNumber);
+        redDots.forEach(el => {
+            el.innerHTML = itemNumber;
+            if (itemNumber == 0){
+                el.style.backgroundColor = 'darkgrey';
+            }
+        });
         // Update checkout price
         checkoutTotal -= itemPrice;
         checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
