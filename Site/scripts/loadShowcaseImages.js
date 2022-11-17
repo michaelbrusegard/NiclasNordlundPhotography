@@ -56,8 +56,6 @@ function getColumns() {
   const columns = Math.floor(windowWidth / columnSize);
   if (columns === 0) {
     return 1;
-  } else if (columns > maxColumns) {
-    return maxColumns;
   } else {
     return columns;
   }
