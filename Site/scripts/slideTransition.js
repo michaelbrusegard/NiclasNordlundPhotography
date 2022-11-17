@@ -28,15 +28,6 @@ function isNavigatedFrom(navigatedFromArray) {
     return false;
 }
 
-// Returns the mobile nav element if it is mobile and desktop if it is desktopå
-function getCurrentNavElement(nav) {
-    if (isMobileNav()) {
-        return nav.children[0]
-    } else {
-        return nav.children[1]
-    }
-}
-
 function animationStartOnNavElements(nav) {
     // For all elements inside current nav
     for (let i = 0; i < nav.childElementCount; i++) {
