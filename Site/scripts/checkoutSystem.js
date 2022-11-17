@@ -23,6 +23,7 @@ function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
     // Calculate animation variables
+    const addScroll = window.scrollY
     rectItem = shopItem.getBoundingClientRect();
     const itemX = (rectItem.left + rectItem.right) / 2;
     const itemY = (rectItem.bottom + rectItem.top) / 2;
@@ -58,6 +59,8 @@ function checkoutSystem(shopItem, itemPrice) {
     // When a checkout item is clicked:
     checkoutItem.addEventListener('click', () => {
         // Move shop item back into to the shop
+        newy = y + (window.scrollY - addScroll)
+        shopItem.style.setProperty('--addToCartY', `${newy}px`);
         shopItem.style.display = 'block';
         shopItem.style.animationDirection = 'reverse';
         shopItem.addEventListener('animationend', () => {
