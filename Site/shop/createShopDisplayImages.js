@@ -14,12 +14,12 @@ files.forEach(i => {
 });
 
 // Paths with issues
-const ignorePaths = ['strand 100e_.jpg', 'Våg 165.jpg', 'Sunshower 150e.jpg', 'Trygghet 2 125_.jpg']
-const extraPaths = []
+const ignorePaths = ['strand 100e_.jpg', 'Våg 165.jpg', 'Sunshower 150e.jpg', 'Trygghet 2 125_.jpg'];
+const extraPaths = [];
 
 // Gets the paths length before and after adding extras
 const oldImgLen = paths.length;
-extraPaths.forEach(i => {paths.push(i)});
+extraPaths.forEach(i => { paths.push(i); });
 const imgLen = paths.length;
 
 // Index

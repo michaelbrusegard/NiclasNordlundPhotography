@@ -948,31 +948,31 @@ const pricesArray = [
         "Örnen & Kråkan 300e_.jpg",
         "300"
     ]
-]
+];
 
 // Wrapper div
 const gridWrapper = document.getElementById('gridWrapper');
 
 // Variables
-let itemsToLoad = 0
-let itemsLoaded = 0
+let itemsToLoad = 0;
+let itemsLoaded = 0;
 
 // Function that initiates loading
 function loadItems() {
 
     // Avoids trying to load more photos than exists
     if (itemsToLoad > pricesArray.length) {
-        itemsToLoad = pricesArray.length
+        itemsToLoad = pricesArray.length;
     }
 
     // Avoids trying to load more photos if enough photos are loaded already
-    if (itemsToLoad <= itemsLoaded) { return }
+    if (itemsToLoad <= itemsLoaded) { return; }
 
     // Loads the display photos and the corresponding name and price and adds them to the correct elements
     for (let i = itemsLoaded; i < itemsToLoad; i++) {
-        createContainer(pricesArray[i])
+        createContainer(pricesArray[i]);
     }
-    itemsLoaded = itemsToLoad
+    itemsLoaded = itemsToLoad;
 }
 
 // Functions that calculates how many colums there are
@@ -982,7 +982,7 @@ function calculateColums() {
 
 // Function that calculates how many rows there is space for given the innerHeight
 function calculateRows() {
-    const style = getComputedStyle(document.body)
+    const style = getComputedStyle(document.body);
 
     // Container size
     const imageContainerSize = parseInt(style.getPropertyValue('--imageContainerSize').slice(0, -2));
@@ -991,15 +991,15 @@ function calculateRows() {
     // Nav height
     const navContainerHeight = parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2));
 
-    return Math.floor((window.innerHeight - navContainerHeight - shopDisplayMargin) / (imageContainerSize + shopDisplayMargin))
+    return Math.floor((window.innerHeight - navContainerHeight - shopDisplayMargin) / (imageContainerSize + shopDisplayMargin));
 }
 
 // Calculates how many items to load on window size change
 function windowLoad() {
-    colums = calculateColums()
-    rows = calculateRows()
-    itemsToLoad = rows * colums + colums
-    loadItems()
+    colums = calculateColums();
+    rows = calculateRows();
+    itemsToLoad = rows * colums + colums;
+    loadItems();
 }
 
 // Calculates how many items to load on scroll
@@ -1007,13 +1007,13 @@ function scrollLoad() {
 
     // Checks when the window height plus the crolled distance is bigger than the body
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-        itemsToLoad += 2 * calculateColums()
-        loadItems()
+        itemsToLoad += 2 * calculateColums();
+        loadItems();
     }
 }
 
 // Loads one new item when an item is added to the cart
 function checkoutLoad() {
-    itemsToLoad += 1
-    loadItems()
+    itemsToLoad += 1;
+    loadItems();
 }

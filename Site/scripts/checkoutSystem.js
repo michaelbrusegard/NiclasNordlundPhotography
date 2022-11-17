@@ -4,7 +4,7 @@ const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 const redDots = document.querySelectorAll('.redDot');
 
 // Keeping track of the checkout price total
-const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay'); 
+const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay');
 let checkoutTotal = 0;
 
 // Number of items in the shopping cart
@@ -52,7 +52,7 @@ function checkoutSystem(shopItem, itemPrice) {
     // Update checkout price
     checkoutTotal += itemPrice;
     checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
-    
+
     // When a checkout item is removed:
     checkoutItem.addEventListener('click', () => {
         // Remove the checkout item
@@ -65,7 +65,7 @@ function checkoutSystem(shopItem, itemPrice) {
         // Update checkout price
         checkoutTotal -= itemPrice;
         checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
-        
+
     });
 }
 

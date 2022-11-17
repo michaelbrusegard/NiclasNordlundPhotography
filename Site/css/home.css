@@ -24,53 +24,55 @@
 p {
     font-family: 'Noto Sans Mono', sans-serif;
     font-weight: 200;
-    color:#fff;
+    color: #fff;
 }
 
-#niclasImg{
-position:fixed; 
-right: 0px; 
-bottom:60px;
-width:40vw;
-height:auto;
+#niclasImg {
+    position: fixed;
+    right: 0px;
+    bottom: 60px;
+    width: 40vw;
+    height: auto;
 }
 
 
 
-.homeContainer{
-height: calc(100vh - 3 * var(--navContainerHeight));
-display:flex;
-flex-direction: row;
+.homeContainer {
+    height: calc(100vh - 3 * var(--navContainerHeight));
+    display: flex;
+    flex-direction: row;
 }
-.quote{
-width:5000px;
-height:auto;
-font-size:1em;
+
+.quote {
+    width: 5000px;
+    height: auto;
+    font-size: 1em;
 
 }
 
 /*Adaptive size*/
 @media (max-width: 768px) {
-  .homeContainer{
-    flex-direction:column-reverse
-  }
-  
-  .quote{
-    width:100%;
-    font-size:1em;
-    height:200px;
-  }
-  .niclas{
-    height:50%;
-    margin-left:250px;
-    height: 300px;
-    margin-top:-50px;
-  }
-  
+    .homeContainer {
+        flex-direction: column-reverse
+    }
+
+    .quote {
+        width: 100%;
+        font-size: 1em;
+        height: 200px;
+    }
+
+    .niclas {
+        height: 50%;
+        margin-left: 250px;
+        height: 300px;
+        margin-top: -50px;
+    }
+
 }
 
-.containerBig{
-    width:100px;
+.containerBig {
+    width: 100px;
 }
 
 /* Page transition */
@@ -79,7 +81,7 @@ font-size:1em;
 /* Carousel CSS START */
 
 
-.sliderStart{
+.sliderStart {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -88,36 +90,36 @@ font-size:1em;
     align-items: center;
 }
 
-.slider{
+.slider {
     width: 800px;
     height: 500px;
     border-radius: 20px;
     overflow: hidden;
 }
 
-.slides{
+.slides {
     width: 500%;
     height: 500px;
     display: flex;
 }
 
-.slides input{
+.slides input {
     display: none;
 }
 
-.slide{
+.slide {
     width: 20%;
     transition: 2s;
 }
 
-.slide img{
+.slide img {
     width: 800px;
     height: 500px;
 }
 
 /* CSS for manual slide navigation */
 
-.navigation-manual{
+.navigation-manual {
     position: absolute;
     width: 800px;
     margin-top: -40px;
@@ -125,7 +127,7 @@ font-size:1em;
     justify-content: center;
 }
 
-.manual-btn{
+.manual-btn {
     border: 2px solid gray;
     padding: 5px;
     border-radius: 10px;
@@ -133,50 +135,51 @@ font-size:1em;
     transition: 1s;
 }
 
-.manual-btn:not(:last-child){
+.manual-btn:not(:last-child) {
     margin-right: 40px;
 }
 
-.manual-btn:hover{
+.manual-btn:hover {
     background: gray;
 }
 
-#radio1:checked ~ .first{
+#radio1:checked~.first {
     margin-left: 0;
 }
 
-#radio2:checked ~ .first{
+#radio2:checked~.first {
     margin-left: -20%;
 }
 
-#radio3:checked ~ .first{
+#radio3:checked~.first {
     margin-left: -40%;
 }
 
-#radio4:checked ~ .first{
+#radio4:checked~.first {
     margin-left: -60%;
 }
 
-#radio5:checked ~ .first{
+#radio5:checked~.first {
     margin-left: -80%;
 }
 
-#radio6:checked ~ .first{
+#radio6:checked~.first {
     margin-left: -100%;
 }
 
-#radio7:checked ~ .first{
+#radio7:checked~.first {
     margin-left: -120%;
 }
 
-#radio8:checked ~ .first{
+#radio8:checked~.first {
     margin-left: -140%;
 }
+
 /* CSS for manual slide navigation END */
 
 /* CSS for automatic navigation */
 
-.navigation-auto{
+.navigation-auto {
     position: absolute;
     display: flex;
     width: 800px;
@@ -185,48 +188,49 @@ font-size:1em;
 
 }
 
-.navigation-auto div{
+.navigation-auto div {
     border: 2px solid gray;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
 }
 
-.navigation-auto div:not(:last-child){
+.navigation-auto div:not(:last-child) {
     margin-right: 40px;
 }
 
-#radio1:checked ~ .navigation-auto .auto-btn1{
+#radio1:checked~.navigation-auto .auto-btn1 {
     background: gray;
 }
 
-#radio2:checked ~ .navigation-auto .auto-btn2{
+#radio2:checked~.navigation-auto .auto-btn2 {
     background: gray;
 }
 
-#radio3:checked ~ .navigation-auto .auto-btn3{
+#radio3:checked~.navigation-auto .auto-btn3 {
     background: gray;
 }
 
-#radio4:checked ~ .navigation-auto .auto-btn4{
+#radio4:checked~.navigation-auto .auto-btn4 {
     background: gray;
 }
 
-#radio5:checked ~ .navigation-auto .auto-btn5{
+#radio5:checked~.navigation-auto .auto-btn5 {
     background: gray;
 }
 
-#radio6:checked ~ .navigation-auto .auto-btn6{
+#radio6:checked~.navigation-auto .auto-btn6 {
     background: gray;
 }
 
-#radio7:checked ~ .navigation-auto .auto-btn7{
+#radio7:checked~.navigation-auto .auto-btn7 {
     background: gray;
 }
 
-#radio8:checked ~ .navigation-auto .auto-btn8{
+#radio8:checked~.navigation-auto .auto-btn8 {
     background: gray;
 }
+
 /* CSS for automatic navigation END */
 /* Carousel CSS END */
 

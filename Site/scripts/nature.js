@@ -84,11 +84,11 @@ const files = [
         1700,
         904
     ]
-]
-const columnSize = 384 * 1.5
-const maxColumns = 3
+];
+const columnSize = 384 * 1.5;
+const maxColumns = 3;
 
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => {initialLoad(files); fadeOnscroll()});
-window.addEventListener('resize', () => {initialLoad(files); fadeOnscroll()});
-window.addEventListener('orientationChange', () => {initialLoad(files); fadeOnscroll()});
+document.addEventListener('DOMContentLoaded', () => { initialLoad(files); fadeOnscroll(); });
+window.addEventListener('resize', () => { initialLoad(files); fadeOnscroll(); });
+window.addEventListener('orientationChange', () => { initialLoad(files); fadeOnscroll(); });
