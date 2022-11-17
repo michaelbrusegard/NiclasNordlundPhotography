@@ -1128,14 +1128,15 @@ cartButtons.forEach(el => el.addEventListener('click', event => {
 // Logs the current checkout items to the console
 checkoutButton.addEventListener('click', () => {
     let n = 1;
-    console.log(`Total number of items: ${itemNumber}`)
+    let alertString = `Total number of items: ${itemNumber}\n\n`
     for (const item of addedItems) {
         const name = item.children[2].innerHTML
         const price = item.children[1].innerHTML;
-        console.log(`${n}. Name: ${name}\nPrice: ${price}`);
+        alertString += `Item ${n}: \nName: ${name}\nPrice: ${price}\n\n`;
         n += 1;
     }
-    console.log(`Total cost at checkout: ${checkoutTotal}€`)
+    alertString += `Total cost at checkout: ${checkoutTotal}€`;
+    alert(alertString);
 });
 
 // Eventlistener for scroll-back-to-top button
