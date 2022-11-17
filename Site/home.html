@@ -22,6 +22,7 @@
     <script defer src='scripts/nav.js'></script>
     <script defer src="scripts/homeCarousel.js"></script>
     <script defer src="scripts/writingText.js"></script>
+    <script defer src="scripts/scrollHome.js"></script>
 
     <!-- Favicon -->
 
@@ -124,65 +125,17 @@
 
         <!-- set height of div to one view height -->
 
-        <div id="containerBig">
+        <div style="height:600px"id="containerBig">
 
-            <p class="text" id="text1">tekst1</p>
-            <p class="text" id="text2">tekst2</p>
-            <p class="text" id="text3">test3</p>
+            <p class="text" id="text1">Tekst 1 </p>
+            <p class="text" id="text2">Tekst 2 </p>
+            <p class="text" id="text3">Tekst 3 </p>
 
             <img src="img/home/niclas.png" alt="niclas" id="niclasImg">
         </div>
-        <script>
-
-            //scrollSwitch
-            window.addEventListener("scroll", scrollSwitch);
-            function scrollSwitch() {
-
-                var niclasPortrait = document.getElementById("niclasImg");
-                var carousel = document.getElementById("carousel");
-                var div = document.getElementById("containerBig");
-                var scrollPosition = window.scrollY;
-
-                if (scrollPosition > 0 && scrollPosition < 50) {
-                    console.log(scrollPosition);
-                    index = 0;
-                    console.log(index);
-                    text1.style.display = "block";
-                    text2.style.display = "none";
-                    text3.style.display = "none";
-                    carousel.visibility = "hidden";
-
-                    niclasPortrait.src = "img/home/niclas.png";
-                } else if (scrollPosition > 50 && scrollPosition < 100) {
-                    index = 1;
-                    console.log(index);
-                    niclasPortrait.src = "img/home/niclas.png";
-                } else if (scrollPosition > 100 && scrollPosition < 199) {
-                    index = 2;
-                    console.log(index);
-                    text3.style.display = "block";
-                    niclasPortrait.src = "img/home/niclas.png";
-                    div.style.visibility = "hidden";
-                } else if (scrollPosition > 300) {
-                    index = 3;
-                    console.log(index);
-                    text1.style.display = "none";
-                    text2.style.display = "none";
-                    text3.style.display = "none";
-                    div.style.visibility = "hidden";
-                    niclasPortrait.style.visibility = "hidden";
-
-                    //scroll position blir annerledes når ting blir fjerna
-
-                }
-
-            }
-
-
-        </script>
 
         <!--Carousel HTML code START-->
-        <div class="sliderStart">
+        <div id="sliderStart" class="sliderStart">
             <!-- Image slider START -->
             <div class="slider">
                 <div class="slides">
@@ -222,7 +175,7 @@
                         <img src="img/home/home8.jpg" alt="">
                     </div>
                     <!-- slide images end -->
-                    <!-- automatic navigatiion start -->
+                    <!-- automatic navigation start -->
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>

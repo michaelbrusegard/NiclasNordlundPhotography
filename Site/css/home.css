@@ -16,9 +16,14 @@
 
 .text {
     /* background color is for testing */
-    background-color: #40D3DC;
+    font-size: x-large;
     height: 50vh;
     width: 50vw;
+    position:fixed;
+    visibility: hidden;
+    top: 30%;
+    left: 20%;
+
 }
 
 p {
@@ -36,6 +41,13 @@ p {
 }
 
 
+.sliderStart {
+    visibility: hidden;
+}
+
+/* .sliderStart *{
+    visibility: hidden;
+} */
 
 .homeContainer {
     height: calc(100vh - 3 * var(--navContainerHeight));
@@ -71,9 +83,7 @@ p {
 
 }
 
-.containerBig {
-    width: 100px;
-}
+
 
 /* Page transition */
 
