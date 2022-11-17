@@ -108,15 +108,6 @@
     animation: tilt-shaking var(--transitionLength);
 }
 
-.container.animation {
-    transition: transform var(--transitionLength) linear;
-    z-index: 2 * var(--navZindex);
-}
-
-.container.hidden {
-    display: none;
-}
-
 .images {
     border-radius: var(--imageBorderRadius);
     margin: auto;
@@ -171,13 +162,17 @@
 }
 
 #checkoutMenu {
+    background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
     position: fixed;
     display: flex;
     flex-direction: column;
     top: calc(var(--checkoutBorder) * -2);
     right: 0;
     overflow: hidden;
-    background-color: var(--checkoutColor);
     border: solid;
     border-width: var(--checkoutBorder);
     border-radius: var(--imageBorderRadius);
@@ -202,7 +197,12 @@
 }
 
 #checkoutElements {
-    background-color: var(--checkoutColor);
+    background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
     position: sticky;
     border-top: solid var(--checkoutBorder);
     border-color: var(--pageColor);
@@ -224,20 +224,32 @@
     box-shadow: var(--shadow);
 }
 
+.container.inCart {
+    z-index: 300;
+    animation: add-to-cart var(--transitionLength);
+    animation-timing-function: ease-out;
+}
+
 .container.checkout {
     width: calc(var(--checkoutWidth) - 2 * (var(--shopDisplayMargin) + var(--checkoutBorder)));
     padding-bottom: var(--shopDisplayMargin);
     height: auto;
     background-color: var(--expandedPageColor);
-    animation: none;
     display: inline-block;
+    animation: transitionIn var(--transitionLength);
+    animation-timing-function: ease-in;
+}
+
+.container.checkout.deleted {
+    transition: opacity var(--transitionLength) ease-in;
+    opacity: 0;
 }
 
 .container.checkout:hover {
     background-color: var(--hoverPageColor);
 }
 
-/* Page transition */
+/* Page/checkout item transition */
 
 @keyframes transitionIn {
     from {
@@ -269,5 +281,19 @@
 
     100% {
         transform: rotate(0deg);
+    }
+}
+
+/* Shop item added to cart animation */
+
+@keyframes add-to-cart {
+    from {
+        opacity: 1;
+        transform: translate(0, 0) scale(1, 1);
+    }
+
+    to {
+        opacity: var(--addToCartOpacity);
+        transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
     }
 }
