@@ -87,3 +87,15 @@ function createContainer(file) {
 
   return imgDiv;
 }
+
+// Button that scrolls the window to the top
+const scrollTopButton = document.getElementById('arrow');
+
+// Eventlistener for scroll-back-to-top button
+scrollTopButton.addEventListener('click', event => {
+    event.preventDefault();
+    document.documentElement.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
