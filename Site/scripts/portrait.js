@@ -87,6 +87,6 @@ const columnSize = 384;
 const maxColumns = 5;
 
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => { loadImages(files); showcaseFadeOnscroll()(); });
-window.addEventListener('resize', () => { loadImages(files); showcaseFadeOnscroll()(); });
-window.addEventListener('orientationChange', () => { loadImages(files); showcaseFadeOnscroll()(); });
+document.addEventListener('DOMContentLoaded', () => { loadImages(files); showcaseFadeOnscroll(); });
+window.addEventListener('resize', () => { loadImages(files); showcaseFadeOnscroll(); });
+window.addEventListener('orientationChange', () => { loadImages(files); showcaseFadeOnscroll(); });
