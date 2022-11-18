@@ -50,7 +50,6 @@ body::-webkit-scrollbar {
     --imageBorderRadius: 5px;
 
     /* Shop */
-    --shopMargin: 40px;
 
     /* Grid */
     --sideWrapperMargin: 40px;
@@ -58,11 +57,11 @@ body::-webkit-scrollbar {
 
     /* Image container */
     --textMargin: 10px;
-    --imageSize: 100px;
-    --imageContainerSize: 180px;
+    --imageSize: 96px;
+    --imageContainerSize: 175px;
 
     /* Checkout */
-    --checkoutWidth: 364px;
+    --checkoutWidth: 362px;
     --checkoutBorder: 8px;
     --redDotColorEmpty: darkgrey;
     --redDotColorNormal: red;
