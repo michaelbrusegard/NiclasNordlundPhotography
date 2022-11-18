@@ -20,8 +20,11 @@
     <!-- Scripts -->
 
     <script defer src='scripts/nav.js'></script>
+    <script defer src='scripts/slideTransition.js'></script>
     <script defer src="scripts/homeCarousel.js"></script>
     <script defer src="scripts/writingText.js"></script>
+    <script defer src="scripts/scrollHome.js"></script>
+    <script defer src="scripts/home.js"></script>
 
     <!-- Favicon -->
 
@@ -39,9 +42,56 @@
 <body>
     <header class='navContainer'>
 
+        <!-- Start of shop navigation bar -->
+
+        <nav id='shopNav'>
+
+            <ul class='mobileNav'>
+
+                <!-- Start of Mobile navigation bar -->
+
+                <li>
+                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
+                </li>
+                <li>
+                    <a href='home.html' class='linkIcon linkSignature'></a>
+                </li>
+                <li>
+                    <a href='' class='linkIcon linkCart'></a>
+                    <p class='redDot'>0</p>
+                </li>
+
+                <!-- End of Mobile navigation bar -->
+
+            </ul>
+
+            <ul class='desktopNav'>
+
+                <!-- Start of Desktop navigation bar -->
+
+                <li>
+                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
+                </li>
+                <li>
+                    <a href='home.html' class='linkIcon linkSignature'></a>
+                </li>
+                <li>
+                    <a href='' class='linkIcon linkCart'></a>
+                    <p class='redDot'>0</p>
+                </li>
+
+                <!-- End of Desktop navigation bar -->
+
+            </ul>
+
+        </nav>
+
+        <!-- End of shop navigation bar -->
+
         <!-- Start of navigation bar -->
 
-        <nav>
+        <nav id='nav'>
+
             <ul class='mobileNav'>
 
                 <!-- Start of Mobile navigation bar -->
@@ -62,6 +112,7 @@
                 <!-- End of Mobile navigation bar -->
 
             </ul>
+
             <ul class='desktopNav'>
 
                 <!-- Start of Desktop navigation bar -->
@@ -70,22 +121,22 @@
                     <a href='home.html' class='linkIcon linkSignature'></a>
                 </li>
                 <li>
-                    <a href='nature.html'>Nature</a>
+                    <a href='nature.html' class='linkText'>Nature</a>
                 </li>
                 <li>
-                    <a href='animals.html'>Animals</a>
+                    <a href='animals.html' class='linkText'>Animals</a>
                 </li>
                 <li>
-                    <a href='architectural.html'>Architectural</a>
+                    <a href='architectural.html' class='linkText'>Architectural</a>
                 </li>
                 <li>
-                    <a href='portrait.html'>Portrait</a>
+                    <a href='portrait.html' class='linkText'>Portrait</a>
                 </li>
                 <li>
-                    <a href='wedding.html'>Wedding</a>
+                    <a href='wedding.html' class='linkText'>Wedding</a>
                 </li>
                 <li>
-                    <a href='sport.html'>Sport</a>
+                    <a href='sport.html' class='linkText'>Sport</a>
                 </li>
                 <li>
                     <a href='shop.html' class='linkIcon linkBag'></a>
@@ -94,6 +145,7 @@
                 <!-- End of Desktop navigation bar -->
 
             </ul>
+
         </nav>
 
         <!-- End of navigation bar -->
@@ -104,65 +156,17 @@
 
         <!-- set height of div to one view height -->
 
-        <div id="containerBig">
+        <div style="height:600px"id="containerBig">
 
-            <p class="text" id="text1">tekst1</p>
-            <p class="text" id="text2">tekst2</p>
-            <p class="text" id="text3">test3</p>
+            <p class="text" id="text1"></p>
+            <p class="text" id="text2"></p>
+            <p class="text" id="text3"></p>
 
             <img src="img/home/niclas.png" alt="niclas" id="niclasImg">
         </div>
-        <script>
-
-            //scrollSwitch
-            window.addEventListener("scroll", scrollSwitch);
-            function scrollSwitch() {
-
-                var niclasPortrait = document.getElementById("niclasImg");
-                var carousel = document.getElementById("carousel");
-                var div = document.getElementById("containerBig");
-                var scrollPosition = window.scrollY;
-
-                if (scrollPosition > 0 && scrollPosition < 50) {
-                    console.log(scrollPosition);
-                    index = 0;
-                    console.log(index);
-                    text1.style.display = "block";
-                    text2.style.display = "none";
-                    text3.style.display = "none";
-                    carousel.visibility = "hidden";
-
-                    niclasPortrait.src = "img/home/niclas.png";
-                } else if (scrollPosition > 50 && scrollPosition < 100) {
-                    index = 1;
-                    console.log(index);
-                    niclasPortrait.src = "img/home/niclas.png";
-                } else if (scrollPosition > 100 && scrollPosition < 199) {
-                    index = 2;
-                    console.log(index);
-                    text3.style.display = "block";
-                    niclasPortrait.src = "img/home/niclas.png";
-                    div.style.visibility = "hidden";
-                } else if (scrollPosition > 300) {
-                    index = 3;
-                    console.log(index);
-                    text1.style.display = "none";
-                    text2.style.display = "none";
-                    text3.style.display = "none";
-                    div.style.visibility = "hidden";
-                    niclasPortrait.style.visibility = "hidden";
-
-                    //scroll position blir annerledes når ting blir fjerna
-
-                }
-
-            }
-
-
-        </script>
 
         <!--Carousel HTML code START-->
-        <div class="sliderStart">
+        <div id="sliderStart" class="sliderStart">
             <!-- Image slider START -->
             <div class="slider">
                 <div class="slides">
@@ -206,7 +210,7 @@
                         <img src="img/home/home8.jpg" alt="">
                     </div>
                     <!-- slide images end -->
-                    <!-- automatic navigatiion start -->
+                    <!-- automatic navigation start -->
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
@@ -273,8 +277,23 @@
             <!-- Start of footer -->
         
             <div class='footerDiv'>
-        
-                <ul class='footerList'>
+                <ul class='desktopFooter'>
+                    <li>
+                        <a id='arrow' href='' class='linkIcon arrow'></a>
+                    </li>
+                    <li>
+                        <a href='mailto:nic.nord@hotmail.com' class='footerText'>Email: nic.nord@hotmail.com</a>
+                    </li>
+                    
+                    <li>
+                        <a href='tel:+358400193300' class='footerText'>Tlf: +35 840 0193 300</a>
+                    </li>
+                    <li>
+                        <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
+                        <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
+                    </li>
+                </ul>
+                <ul class='mobileFooter'>
                     <li>
                         <a id='arrow' href='' class='linkIcon arrow'></a>
                     </li>

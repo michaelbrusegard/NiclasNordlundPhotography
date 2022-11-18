@@ -20,6 +20,7 @@
     <!-- Scripts -->
 
     <script defer src='scripts/nav.js'></script>
+    <script defer src='scripts/slideTransition.js'></script>
     <script defer src='scripts/loadShowcaseImages.js'></script>
     <script defer src='scripts/fadeOnScroll.js'></script>
     <script defer src='scripts/wedding.js'></script>
@@ -40,9 +41,56 @@
 <body>
     <header class='navContainer'>
 
+        <!-- Start of shop navigation bar -->
+
+        <nav id='shopNav'>
+
+            <ul class='mobileNav'>
+
+                <!-- Start of Mobile navigation bar -->
+
+                <li>
+                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
+                </li>
+                <li>
+                    <a href='home.html' class='linkIcon linkSignature'></a>
+                </li>
+                <li>
+                    <a href='' class='linkIcon linkCart'></a>
+                    <p class='redDot'>0</p>
+                </li>
+
+                <!-- End of Mobile navigation bar -->
+
+            </ul>
+
+            <ul class='desktopNav'>
+
+                <!-- Start of Desktop navigation bar -->
+
+                <li>
+                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
+                </li>
+                <li>
+                    <a href='home.html' class='linkIcon linkSignature'></a>
+                </li>
+                <li>
+                    <a href='' class='linkIcon linkCart'></a>
+                    <p class='redDot'>0</p>
+                </li>
+
+                <!-- End of Desktop navigation bar -->
+
+            </ul>
+
+        </nav>
+
+        <!-- End of shop navigation bar -->
+
         <!-- Start of navigation bar -->
 
-        <nav>
+        <nav id='nav'>
+
             <ul class='mobileNav'>
 
                 <!-- Start of Mobile navigation bar -->
@@ -63,6 +111,7 @@
                 <!-- End of Mobile navigation bar -->
 
             </ul>
+
             <ul class='desktopNav'>
 
                 <!-- Start of Desktop navigation bar -->
@@ -71,22 +120,22 @@
                     <a href='home.html' class='linkIcon linkSignature'></a>
                 </li>
                 <li>
-                    <a href='nature.html'>Nature</a>
+                    <a href='nature.html' class='linkText'>Nature</a>
                 </li>
                 <li>
-                    <a href='animals.html'>Animals</a>
+                    <a href='animals.html' class='linkText'>Animals</a>
                 </li>
                 <li>
-                    <a href='architectural.html'>Architectural</a>
+                    <a href='architectural.html' class='linkText'>Architectural</a>
                 </li>
                 <li>
-                    <a href='portrait.html'>Portrait</a>
+                    <a href='portrait.html' class='linkText'>Portrait</a>
                 </li>
                 <li>
-                    <a href='wedding.html'>Wedding</a>
+                    <a href='wedding.html' class='linkText'>Wedding</a>
                 </li>
                 <li>
-                    <a href='sport.html'>Sport</a>
+                    <a href='sport.html' class='linkText'>Sport</a>
                 </li>
                 <li>
                     <a href='shop.html' class='linkIcon linkBag'></a>
@@ -95,6 +144,7 @@
                 <!-- End of Desktop navigation bar -->
 
             </ul>
+
         </nav>
 
         <!-- End of navigation bar -->
@@ -114,8 +164,23 @@
             <!-- Start of footer -->
         
             <div class='footerDiv'>
-        
-                <ul class='footerList'>
+                <ul class='desktopFooter'>
+                    <li>
+                        <a id='arrow' href='' class='linkIcon arrow'></a>
+                    </li>
+                    <li>
+                        <a href='mailto:nic.nord@hotmail.com' class='footerText'>Email: nic.nord@hotmail.com</a>
+                    </li>
+                    
+                    <li>
+                        <a href='tel:+358400193300' class='footerText'>Tlf: +35 840 0193 300</a>
+                    </li>
+                    <li>
+                        <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
+                        <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
+                    </li>
+                </ul>
+                <ul class='mobileFooter'>
                     <li>
                         <a id='arrow' href='' class='linkIcon arrow'></a>
                     </li>
@@ -135,7 +200,7 @@
         
             <!-- End of footer -->
         
-          </footer>
+        </footer>
 
     </main>
 

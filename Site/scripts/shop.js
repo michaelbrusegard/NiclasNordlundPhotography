@@ -1084,6 +1084,7 @@ const pricesArray = [
 
 // Wrapper div for shop items
 const gridWrapper = document.getElementById('gridWrapper');
+const observeGridItems = new IntersectionObserver(shopFadeOnscroll);
 
 // Variables for logic around how many items that need loading
 let itemsToLoad = 0;
@@ -1104,19 +1105,32 @@ let addedItems = [];
 let itemNumber = 0;
 let checkoutTotal = 0;
 
-
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
 const cartButtonWidth = parseInt(style.getPropertyValue('--menuIconSize').slice(0, -2));
 const checkoutWidth = parseInt(style.getPropertyValue('--checkoutWidth').slice(0, -2));
 
+// Variables for slide transition
+const nav = document.getElementById('nav');
+const shopNav = document.getElementById('shopNav');
+const navigatedFromShowcaseOrHome = ['home.html', 'nature.html', 'animals.html', 'architectural.html', 'portrait.html', 'sport.html', 'wedding.html'];
+let navigatedFrom = document.referrer
+
 // When the DOM is done loading: loads new image containers and aligns checkout menu
-document.addEventListener('DOMContentLoaded', () => {windowLoad(); alignCheckout();});
+document.addEventListener('DOMContentLoaded', () => {slideTransition(shopNav, nav, navigatedFromShowcaseOrHome); windowLoad(); alignCheckout();});
 
 // Changes to the window: loads new image containers and aligns checkout menu
 window.addEventListener("scroll", () => {scrollLoad();});
 window.addEventListener("resize", () => {windowLoad(); alignCheckout();});
 window.addEventListener("orientationChange", () => {windowLoad(); alignCheckout();});
+
+// Adds ending part of animation
+getLinkIcon(getCurrentNavElement(nav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(shopNav, nav)});
+getLinkIcon(getCurrentNavElement(nav), 'linkText').addEventListener('animationend', () => {removeAnimationEndOnNavElements(nav)});
+
+
+// Check when the current bag icons are clicked
+Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {
@@ -1125,7 +1139,7 @@ cartButtons.forEach(el => el.addEventListener('click', event => {
     checkoutMenu.classList.toggle('active');
 }));
 
-// Logs the current checkout items to the console
+// Logs the current checkout items to alert
 checkoutButton.addEventListener('click', () => {
     let n = 1;
     let alertString = `Total number of items: ${itemNumber}\n\n`
