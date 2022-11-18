@@ -156,8 +156,7 @@
 }
 
 @media (max-width: 768px) {
-    .gridWrapper {
-        justify-content: center;
+    #gridWrapper {
         margin-left: 0;
         margin-right: 0;
     }
