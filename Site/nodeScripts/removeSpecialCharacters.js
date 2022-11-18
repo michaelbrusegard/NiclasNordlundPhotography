@@ -28,7 +28,5 @@ paths.forEach((i, s) => {
     console.log('Replaced', i, 'with', name, s + '/' + imgLen)
 
     // Rename the file
-    fs.rename(path + i, path + name, function(err) {
-        if ( err ) console.log('ERROR: ' + err);
-    });
+    fs.rename(path + i, path + name);
 })
