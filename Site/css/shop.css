@@ -1,12 +1,4 @@
-/* Navigation bar */
-
-.shopNav {
-    display: none;
-}
-
-.linkText {
-    visibility: hidden;
-}
+/* Slide transition */
 
 .fadeOutAnimation {
     animation: fadeOut calc(var(--transitionLength) * 2) linear;
@@ -26,7 +18,15 @@
     }
 }
 
-/* Navigation bar transition */
+#shopNav {
+    display: none;
+}
+
+#nav {
+    visibility: hidden;
+}
+
+/* Navigation bar animations */
 
 @keyframes fadeOut {
     0% {
@@ -64,6 +64,27 @@
     }
 }
 
+/* Fade on scroll class selector */
+
+.scaleFadeIn {
+    pointer-events: none;
+    animation: scaleFadeIn calc(var(--transitionLength) + 3 * var(--transitionLength) * var(--variedScaleFadeIn)) ease-out;
+}
+
+/* Fade on scroll animations */
+
+@keyframes scaleFadeIn {
+    from {
+        opacity: calc(var(--softOpacity) / 3);
+        transform: scale(0.9, 0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
 /* Page content */
 
 .pageContainer {
@@ -78,6 +99,7 @@
     background-size: cover;
     margin-top: var(--navContainerHeight);
     margin-bottom: var(--navContainerHeight);
+    min-height: 100vh;
 }
 
 /* Shopping */
@@ -153,8 +175,8 @@
     width: 1.5em;
     height: 1.5em;
     border-radius: 1.5em;
-    background-color: darkgrey;
-    color: white;
+    background-color: var(--redDotColorEmpty);
+    color: var(--pageColor);
     text-align: center;
     vertical-align: middle;
     line-height: 1.5em;
@@ -186,6 +208,7 @@
 }
 
 #checkoutMenu.active {
+    z-index: var(--checkoutMenuZindex);
     top: 0;
     overflow-y: auto;
     max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopDisplayMargin)));
@@ -225,7 +248,7 @@
 }
 
 .container.inCart {
-    z-index: 300;
+    z-index: var(--checkoutAnimationZindex);
     animation: add-to-cart var(--transitionLength);
     animation-timing-function: ease-out;
 }
@@ -253,7 +276,7 @@
 
 @keyframes transitionIn {
     from {
-        opacity: 0;
+        opacity: var(--softOpacity);
     }
 
     to {

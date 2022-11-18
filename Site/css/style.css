@@ -62,7 +62,10 @@ body::-webkit-scrollbar {
     --imageContainerSize: 180px;
 
     /* Checkout */
-    --checkoutWidth: 384px;
-    --checkoutColor: gold;
+    --checkoutWidth: 364px;
     --checkoutBorder: 8px;
+    --redDotColorEmpty: darkgrey;
+    --redDotColorNormal: red;
+    --checkoutMenuZindex: 300;
+    --checkoutAnimationZindex: 200;
 }

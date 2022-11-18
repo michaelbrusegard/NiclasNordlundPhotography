@@ -29,6 +29,7 @@ nav .mobileNav {
 
 nav .desktopNav li a,
 nav .mobileNav li a {
+    height: var(--navContainerHeight);
     color: var(--fontColor);
     text-decoration: none;
     font-family: 'Caveat', cursive;

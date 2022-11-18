@@ -16,9 +16,14 @@
 
 .text {
     /* background color is for testing */
-    background-color: #40D3DC;
+    font-size: x-large;
     height: 50vh;
     width: 50vw;
+    position:fixed;
+    visibility: hidden;
+    top: 30%;
+    left: 20%;
+
 }
 
 p {
@@ -36,6 +41,13 @@ p {
 }
 
 
+.sliderStart {
+    visibility: hidden;
+}
+
+/* .sliderStart *{
+    visibility: hidden;
+} */
 
 .homeContainer {
     height: calc(100% - 3 * var(--navContainerHeight));
@@ -51,6 +63,7 @@ p {
 }
 
 /*Adaptive size*/
+
 @media (max-width: 768px) {
     .homeContainer {
         flex-direction: column-reverse
@@ -71,11 +84,73 @@ p {
 
 }
 
-.containerBig {
-    width: 100px;
+
+
+/* Slide transition */
+
+.fadeOutAnimation {
+    animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
-/* Page transition */
+.fadeInAnimation {
+    animation: fadeIn var(--transitionLength) linear;
+}
+
+.linkBagAnimation {
+    animation: transitionBag calc(var(--transitionLength) * 2) linear;
+}
+
+@media (min-width: 1100px) {
+    .linkBagAnimation {
+        animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+    }
+}
+
+#nav {
+    display: none;
+}
+
+#shopNav {
+    visibility: hidden;
+}
+
+/* Navigation bar animations */
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes transitionBag {
+    to {
+        transform: translateX(calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize))));
+    }
+}
+
+@keyframes transitionBagWide {
+    to {
+        transform: translateX(calc(var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))));
+    }
+}
 
 
 /* Carousel CSS START */
