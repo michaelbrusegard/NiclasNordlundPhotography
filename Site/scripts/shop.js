@@ -1126,11 +1126,11 @@ window.addEventListener("orientationChange", () => {windowLoad(); alignCheckout(
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(nav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(shopNav, nav)});
-getLinkIcon(getCurrentNavElement(nav), 'linkText').addEventListener('animationend', () => {removeAnimationEndOnNavElements(nav)});
+getLinkIcon(getCurrentNavElement(nav), 'linkSignature').addEventListener('animationend', () => {removeAnimationEndOnNavElements(nav)});
 
 
 // Check when the current bag icons are clicked
-Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
+Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome); console.log('noe')});});
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {
