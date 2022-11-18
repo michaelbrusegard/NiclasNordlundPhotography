@@ -64,6 +64,26 @@
     }
 }
 
+/* Fade on scroll class selector */
+
+.scaleFadeIn {
+    animation: scaleFadeIn calc(var(--transitionLength) * 2) ease-in;
+}
+
+/* Fade on scroll animations */
+
+@keyframes scaleFadeIn {
+    from {
+        opacity: var(--softOpacity);
+        transform: scale(0.8, 0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
 /* Page content */
 
 .pageContainer {

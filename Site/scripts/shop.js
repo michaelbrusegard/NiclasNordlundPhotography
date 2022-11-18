@@ -1084,6 +1084,7 @@ const pricesArray = [
 
 // Wrapper div for shop items
 const gridWrapper = document.getElementById('gridWrapper');
+const observeGridItems = new IntersectionObserver(shopFadeOnscroll);
 
 // Variables for logic around how many items that need loading
 let itemsToLoad = 0;
@@ -1124,10 +1125,12 @@ window.addEventListener("resize", () => {windowLoad(); alignCheckout();});
 window.addEventListener("orientationChange", () => {windowLoad(); alignCheckout();});
 
 // Adds ending part of animation
-getLinkBag(getCurrentNavElement(nav)).addEventListener('animationend', () => {animationEndOnNavElements(shopNav, nav)});
+getLinkIcon(getCurrentNavElement(nav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(shopNav, nav)});
+getLinkIcon(getCurrentNavElement(nav), 'linkText').addEventListener('animationend', () => {removeAnimationEndOnNavElements(nav)});
+
 
 // Check when the current bag icons are clicked
-Array.from(shopNav.children).forEach(el => {getLinkBag(el).addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
+Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {

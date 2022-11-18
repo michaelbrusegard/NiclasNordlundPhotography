@@ -57,13 +57,25 @@ function animationEndOnNavElements(newNav, oldNav) {
     }
 }
 
-// Returns the bag icon that currently runs the animation
-function getLinkBag(nav) {
+function removeAnimationEndOnNavElements(newNav) {
+    const nav = getCurrentNavElement(newNav)
     // For all elements inside current nav
     for (let i = 0; i < nav.childElementCount; i++) {
         const navElement = nav.children[i]
-        // Check if it is linkbag
-        if (navElement.firstElementChild.className.endsWith('linkBag')) {
+        // Remove fade in animation except for bag icon
+        if (!navElement.firstElementChild.className.endsWith('linkBag')) {
+            navElement.firstElementChild.classList.remove('fadeInAnimation');
+        }     
+    }
+}
+
+// Returns the link icon that currently runs the animation
+function getLinkIcon(nav, name) {
+    // For all elements inside current nav
+    for (let i = 0; i < nav.childElementCount; i++) {
+        const navElement = nav.children[i]
+        // Check if it is linkicon
+        if (navElement.firstElementChild.className.endsWith(name)) {
             return navElement.firstElementChild
         }   
     }
