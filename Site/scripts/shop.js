@@ -1091,7 +1091,7 @@ let itemsToLoad = 0;
 let itemsLoaded = 0;
 
 // Button that scrolls the window to the top
-const scrollTopButton = document.getElementById('arrow');
+const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Fetching the checkout menu and shopping cart button elements
 const checkoutMenu = document.getElementById('checkoutMenu');
@@ -1154,10 +1154,11 @@ checkoutButton.addEventListener('click', () => {
 });
 
 // Eventlistener for scroll-back-to-top button
-scrollTopButton.addEventListener('click', event => {
+scrollTopButtons.forEach(el => {
+    el.addEventListener('click', event => {
     event.preventDefault();
     document.documentElement.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
-});
+})});
