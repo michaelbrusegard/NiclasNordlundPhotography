@@ -111,7 +111,7 @@ const menu = document.querySelector('.linkMenu');
 
 
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadImages(files); addImagesFadeOnScroll(); });
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadImages(files); });
 window.addEventListener('resize', () => { loadImages(files);});
 window.addEventListener('orientationChange', () => { loadImages(files);});
 
@@ -120,7 +120,7 @@ window.addEventListener('scroll', () => {addImagesFadeOnScroll();});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
-getLinkIcon(getCurrentNavElement(shopNav), 'linkCart').addEventListener('animationend', () => {removeAnimationEndOnNavElements(shopNav)});
+getLinkIcon(getCurrentNavElement(shopNav), 'linkSignature').addEventListener('animationend', () => {removeAnimationEndOnNavElements(shopNav)});
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});

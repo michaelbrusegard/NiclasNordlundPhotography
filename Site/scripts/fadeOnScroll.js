@@ -7,7 +7,6 @@ function addImagesFadeOnScroll() {
     // Add the observer to every image
     for (i = 0; i < images.length; i++) {
         observer.observe(images[i]);
-        console.log('test')
     }
 }
 
@@ -90,6 +89,7 @@ function showcaseFadeOnscroll(entries) {
 function shopFadeOnscroll(items) {
     items.map((item => {
         if (item.isIntersecting) {
+            // Makes the animation time different for every element to add variation
             item.target.style.setProperty('--variedScaleFadeIn', Math.random())
             item.target.classList.add('scaleFadeIn');
             item.target.addEventListener('animationend', () => {
