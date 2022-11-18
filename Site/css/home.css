@@ -314,6 +314,8 @@ p {
 @media screen and (max-width: 921px){
 .sliderStart {
     display: none;
+    margin: 0;
+    padding: 0;
 }
 
 .horizontal_slider {
@@ -324,9 +326,12 @@ p {
     padding: 20px;
     box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
 
-.horizontal_slider::-webkit-scrollbar{
-    display: none;
+.horizontal_slider::-webkit-scrollbar-thumb{
+    background: #333;
 }
 
 .hSlider_Container {
