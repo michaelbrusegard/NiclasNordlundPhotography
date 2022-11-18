@@ -67,15 +67,16 @@
 /* Fade on scroll class selector */
 
 .scaleFadeIn {
-    animation: scaleFadeIn calc(var(--transitionLength) * 2) ease-in;
+    pointer-events: none;
+    animation: scaleFadeIn calc(var(--transitionLength) + 3 * var(--transitionLength) * var(--variedScaleFadeIn)) ease-out;
 }
 
 /* Fade on scroll animations */
 
 @keyframes scaleFadeIn {
     from {
-        opacity: var(--softOpacity);
-        transform: scale(0.8, 0.8);
+        opacity: calc(var(--softOpacity) / 3);
+        transform: scale(0.9, 0.9);
     }
 
     to {
@@ -274,7 +275,7 @@
 
 @keyframes transitionIn {
     from {
-        opacity: 0;
+        opacity: var(--softOpacity);
     }
 
     to {

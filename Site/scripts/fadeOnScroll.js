@@ -90,9 +90,11 @@ function showcaseFadeOnscroll(entries) {
 function shopFadeOnscroll(items) {
     items.map((item => {
         if (item.isIntersecting) {
+            item.target.style.setProperty('--variedScaleFadeIn', Math.random())
             item.target.classList.add('scaleFadeIn');
-        } else {
-            item.target.classList.remove('scaleFadeIn');
+            item.target.addEventListener('animationend', () => {
+                item.target.classList.remove('scaleFadeIn');
+            })
         }
     }))
 }
