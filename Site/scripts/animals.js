@@ -111,7 +111,7 @@ const menu = document.querySelector('.linkMenu');
 
 
 // Loads images into columns
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadImages(files); addImagesFadeOnScroll(); });
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadImages(files); });
 window.addEventListener('resize', () => { loadImages(files);});
 window.addEventListener('orientationChange', () => { loadImages(files);});
 
