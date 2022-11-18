@@ -99,6 +99,7 @@
     background-size: cover;
     margin-top: var(--navContainerHeight);
     margin-bottom: var(--navContainerHeight);
+    min-height: 100vh;
 }
 
 /* Shopping */

@@ -33,6 +33,7 @@
   background-repeat: repeat;
   background-attachment: scroll;
   background-size: 100%;
+  min-height: 100vh;
 }
 
 main {
