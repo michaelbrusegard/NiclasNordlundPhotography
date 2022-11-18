@@ -7,7 +7,6 @@ function addImagesFadeOnScroll() {
     // Add the observer to every image
     for (i = 0; i < images.length; i++) {
         observer.observe(images[i]);
-        console.log('test')
     }
 }
 
