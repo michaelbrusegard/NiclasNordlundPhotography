@@ -87,13 +87,14 @@ function createContainer(file) {
 }
 
 // Button that scrolls the window to the top
-const scrollTopButton = document.getElementById('arrow');
+const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Eventlistener for scroll-back-to-top button
-scrollTopButton.addEventListener('click', event => {
-    event.preventDefault();
-    document.documentElement.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+scrollTopButtons.forEach(el => {
+  el.addEventListener('click', event => {
+  event.preventDefault();
+  document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+})});
