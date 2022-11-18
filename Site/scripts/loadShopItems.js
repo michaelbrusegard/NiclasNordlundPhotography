@@ -91,6 +91,9 @@ function createContainer(pricesArray) {
     div.classList.add('container');
     gridWrapper.appendChild(div);
 
+    // Add observer for fade on scroll effect
+    observeGridItems.observe(div);
+
     // Apply checkout system interaction to the div item
     div.addEventListener('click', () => { checkoutSystem(div, parseInt(pricesArray[1])); });
 }

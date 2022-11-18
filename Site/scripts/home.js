@@ -11,7 +11,8 @@ const menu = document.querySelector('.linkMenu');
 document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop)});
 
 // Adds ending part of animation
-getLinkBag(getCurrentNavElement(shopNav)).addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
+getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
+getLinkIcon(getCurrentNavElement(shopNav), 'linkCart').addEventListener('animationend', () => {removeAnimationEndOnNavElements(shopNav)});
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});
