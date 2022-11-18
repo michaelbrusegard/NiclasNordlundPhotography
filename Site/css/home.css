@@ -80,6 +80,9 @@ p {
 
 /* Carousel CSS START */
 
+.horizontal_slider {
+    display: none;
+}
 
 .sliderStart {
     margin: 0;
@@ -136,7 +139,7 @@ p {
 }
 
 .manual-btn:not(:last-child) {
-    margin-right: 40px;
+    margin-right: 30px;
 }
 
 .manual-btn:hover {
@@ -196,7 +199,7 @@ p {
 }
 
 .navigation-auto div:not(:last-child) {
-    margin-right: 40px;
+    margin-right: 30px;
 }
 
 #radio1:checked~.navigation-auto .auto-btn1 {
@@ -231,9 +234,52 @@ p {
     background: gray;
 }
 
+/* Mobile device slider */
+
+@media screen and (max-width: 921px){
+.sliderStart {
+    display: none;
+}
+
+.horizontal_slider {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.horizontal_slider::-webkit-scrollbar{
+    display: none;
+}
+
+.hSlider_Container {
+    display: block;
+    white-space: nowrap;
+}
+
+.hslider_item {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.hslider_item img {
+    max-height: 250px;
+    width: auto;
+    object-fit: cover;
+}
+
+.navigation-manual, .navigation-auto {
+    display: none; 
+}
+
+}
+
+
 /* CSS for automatic navigation END */
 /* Carousel CSS END */
-
+/* -------------------------------------------------------- */
 
 /* Text transitions START
 :root{
