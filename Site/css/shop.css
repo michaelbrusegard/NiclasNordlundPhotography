@@ -153,8 +153,8 @@
     width: 1.5em;
     height: 1.5em;
     border-radius: 1.5em;
-    background-color: darkgrey;
-    color: white;
+    background-color: var(--redDotColorEmpty);
+    color: var(--pageColor);
     text-align: center;
     vertical-align: middle;
     line-height: 1.5em;
@@ -186,7 +186,7 @@
 }
 
 #checkoutMenu.active {
-    z-index: 300;
+    z-index: var(--checkoutMenuZindex);
     top: 0;
     overflow-y: auto;
     max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopDisplayMargin)));
@@ -226,7 +226,7 @@
 }
 
 .container.inCart {
-    z-index: 200;
+    z-index: var(--checkoutAnimationZindex);
     animation: add-to-cart var(--transitionLength);
     animation-timing-function: ease-out;
 }
