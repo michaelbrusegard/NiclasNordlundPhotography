@@ -14,7 +14,7 @@ function getCurrentNavElement(nav) {
   }
 }
 
-// Function to remove all child nodes of a parent
+// Function to remove all child nodes of a parent (credit: https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/)
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
@@ -32,7 +32,7 @@ function isMobileNav() {
   // Gets the css variable for mobile size
   const style = getComputedStyle(document.body);
   const mobileNavSize = parseInt(style.getPropertyValue('--mobileNavSize').slice(0, -2));
-  // Gets the sreen width
+  // Gets the screen width
   const screenWidth = window.innerWidth;
   // Compares screen width to the mobile size
   if (mobileNavSize > screenWidth) {

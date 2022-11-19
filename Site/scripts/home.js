@@ -7,12 +7,35 @@ let navigatedFrom = document.referrer
 // Variable for mobile menu
 const menu = document.querySelector('.linkMenu');
 
-// Loads images into columns
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop)});
+// Loading style from CSS variables
+const style = getComputedStyle(document.body);
+
+// Gets the image container
+const imageDaddy = document.querySelector('#imageDaddy')
+
+// Animation when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); });
+
+window.addEventListener("resize", () => {getNiclasLeftPx();});
+window.addEventListener("orientationChange", () => {getNiclasLeftPx();});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
 getLinkIcon(getCurrentNavElement(shopNav), 'linkCart').addEventListener('animationend', () => {removeAnimationEndOnNavElements(shopNav)});
 
+// Checks when imageCarousel is clicked
+imageDaddy.addEventListener('click', () => {imageCarousel()})
+
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});
+
+// Button that scrolls down to the bottom of the window
+const scrollDownButtons = document.querySelectorAll('.arrow');
+
+// Eventlistener for scroll-down button
+scrollDownButtons.forEach(el => {
+  el.addEventListener('click', event => {
+  event.preventDefault();
+  window.scrollTo(0, scrollMaxValue());
+  });
+});
