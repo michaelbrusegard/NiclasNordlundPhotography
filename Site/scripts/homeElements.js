@@ -5,14 +5,16 @@ Besides the photography itself, Niclas also creates pictures to hang on your wal
 showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 "In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs."]
 
-// Adjusts the speed of the typing animations
+// Adjust the speed parameters of the typing animations
 const slowTyping = 35;
 const fastTyping = 10;
-let timeOutLength = slowTyping;
+const runDelay = 500;
+let lastExecution = 0;
 let clickNumber = 0;
+let timeOutLength = slowTyping;
 
 // Adjust how close the scroll value is to the bottom with each new mode
-const scrollDistance = 0.7;
+const scrollDistance = 200;
 
 // Getting home elements
 const quoteElement = document.getElementById('quote');
@@ -56,7 +58,7 @@ window.addEventListener("scroll", () => {
 
 // Writes the initial text and sets a high scrollY on DOM load
 document.addEventListener('DOMContentLoaded', () => {
-    window.scrollTo(0, scrollMaxValue() * scrollDistance);
+    window.scrollTo(0, scrollMaxValue() - scrollDistance);
     writeText();
 })
 
@@ -74,7 +76,11 @@ function switchMode() {
     homeModeIndex = (homeModeIndex + 1) % modeMax;
     console.log(homeModeIndex)
     // Reset scroll position
-    window.scrollTo(0, scrollMaxValue() * scrollDistance);
+    if (homeModeIndex == 3) {
+        window.scrollTo(0, 0); 
+    } else {
+        window.scrollTo(0, scrollMaxValue() - scrollDistance);
+    }
     console.log(`new home index: ${homeModeIndex}`)
     // The different modes based on the index change transition
     if (homeModeIndex == 0) {
@@ -120,7 +126,10 @@ function quoteImagesTransition() {
 
 // Typing effect function
 async function writeText() {
-    // Run only if the function is not already running
+    if ((lastExecution + runDelay) > Date.now()) {
+        return;
+    }
+    lastExecution = Date.now();
     const currentMode = homeModeIndex; 
     // Loops through the text and types it out
     const textString = quoteText[homeModeIndex];
