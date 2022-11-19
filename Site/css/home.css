@@ -146,10 +146,10 @@
 }
 
 #contentContainer {
-    margin-top: var(--navContainerHeight);
-    margin-bottom: var(--navContainerHeight);
-    height: 190vh;
-    width: 100%;
+    padding-top: var(--navContainerHeight);
+    padding-bottom: var(--navContainerHeight);
+    height: 100vh;
+    width: 100vw;
 }
 
 .hidden {
@@ -177,29 +177,33 @@ p {
 }
 
 #imageDaddy {
+    position: relative;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    margin-left: var(--sideWrapperMargin);
-    margin-right: var(--sideWrapperMargin);
     transition: all var(--transitionLength) linear;
+    user-select: none;
 }
 
 #imageDaddy img {
     position: absolute;
     visibility: hidden;
     pointer-events: none;
-    width: 100px;
+    width: 100%;
+    height: 100%; 
+    object-fit: contain;
+    border-radius: var(--imageBorderRadius);
+    box-shadow: var(--shadow);
+    user-select: none;
 } 
 
 .imageIn {
-    visibility: visible;
-    animation: slideIn calc(var(--transitionLength) * 2);
+    animation: slideIn var(--transitionLength);
     animation-timing-function: ease-in;
 }
 
 .imageOut {
-    animation: slideOut calc(var(--transitionLength) * 2);
+    animation: slideOut var(--transitionLength);
     animation-timing-function: ease-out;
 }
 
@@ -213,9 +217,6 @@ p {
     #niclasImg {
         height: 80vh;
     }
-    #contentContainer { /*Test*/
-        height: 1200vh;
-    }
 }
 
 @media (max-width: 768px) {
@@ -228,8 +229,5 @@ p {
         right: 0 auto;
         max-width: 70vw;
         font-size: large;
-    }
-    #contentContainer { /*Test*/
-        height: 600vh;
     }
 }
