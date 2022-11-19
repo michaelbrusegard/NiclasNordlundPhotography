@@ -30,7 +30,6 @@ const scrollDownButtons = document.querySelectorAll('.arrow');
 scrollDownButtons.forEach(el => {
   el.addEventListener('click', event => {
   event.preventDefault();
-  document.documentElement.scrollTo({
-      top: scrollMaxValue()
+  window.scrollTo(0, scrollMaxValue());
   });
-})});
+});
