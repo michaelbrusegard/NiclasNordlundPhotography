@@ -14,7 +14,7 @@ function getCurrentNavElement(nav) {
   }
 }
 
-// Function to remove all child nodes of a parent
+// Function to remove all child nodes of a parent (credit: https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/)
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
