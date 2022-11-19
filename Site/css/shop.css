@@ -92,14 +92,18 @@
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
-    background-image: url(../img/wallpapers/wallpaperShop.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    margin-top: var(--navContainerHeight);
-    margin-bottom: var(--navContainerHeight);
     min-height: 100vh;
+}
+
+/* Wallpaper */
+
+#wallpaperShop {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url(../img/wallpapers/wallpaperShop.jpg) center center no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
 
 /* Shopping */
@@ -108,6 +112,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopDisplayMargin)));
     justify-content: center;
+    margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
 }
@@ -193,8 +199,6 @@
 
 #checkoutMenu {
     background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     position: fixed;
@@ -231,10 +235,8 @@
 #checkoutElements {
     background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
-
     position: sticky;
     border-top: solid var(--checkoutBorder);
     border-color: var(--pageColor);
@@ -294,6 +296,7 @@
 }
 
 /* Shop items hover animation */
+
 @keyframes tilt-shaking {
     0% {
         transform: rotate(0deg);

@@ -82,6 +82,8 @@ function getColumns() {
   const columns = Math.floor(windowWidth / columnSize);
   if (columns === 0) {
     return 1;
+  } else if (columns >= maxNumberColumns) {
+    return maxNumberColumns;
   } else {
     return columns;
   }
@@ -108,6 +110,9 @@ function createContainer(file) {
 
   // Adds image to the div
   imgDiv.appendChild(image);
+
+  // Add observer for fade on scroll effect
+  addImagesFadeOnScroll.observe(imgDiv);
 
   return imgDiv;
 }
