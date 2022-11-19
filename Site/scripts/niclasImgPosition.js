@@ -13,6 +13,7 @@ function getNiclasLeftPx() {
     const niclasLeftPxBig = desktopNavSize - imgWidth / 2 + (screenWidth - desktopNavSize) / 2;
     const niclasLeftPxSmall = screenWidth / 2 - imgWidth / 2
 
+    // Sets image postiion based on screen size and orientation
     if (screenWidth > (desktopNavSize + imgWidth)) {
         niclasImg.style.left = String(niclasLeftPxBig) + 'px';
     } else if ((screenWidth < mobileNavSize) && isPortraitOrientation()) {
@@ -22,6 +23,7 @@ function getNiclasLeftPx() {
     }
 }
 
+// Finds out if the orientation landscape or portrait
 function isPortraitOrientation(){
     const orientation = window.innerWidth > window.innerHeight ? false : true;
     return orientation;
