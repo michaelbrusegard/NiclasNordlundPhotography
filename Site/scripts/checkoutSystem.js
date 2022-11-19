@@ -45,19 +45,17 @@ function checkoutSystem(shopItem, itemPrice) {
     shopItem.classList.toggle('inCart')
     shopItem.addEventListener('animationend', () => {
         shopItem.style.display = 'none';
-        // Update the red dot element
-        itemNumber += 1;
-        redDots.forEach(el => {
-            el.innerHTML = itemNumber;
-            if (itemNumber == 1) {
-                el.style.display = 'block';
-            }
-        });
         checkoutLoad();
     }, {once: true})
     // Place the checkout item in the checkout menu
     checkoutItem.classList.add('checkout');
     checkoutMenu.prepend(checkoutItem);
+    // Update the red dot element
+    itemNumber += 1;
+    redDots.forEach(el => {
+        el.innerHTML = itemNumber;
+        el.style.opacity = 1;
+    });
     // Update checkout price
     checkoutTotal += itemPrice;
     checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
@@ -84,8 +82,8 @@ function checkoutSystem(shopItem, itemPrice) {
         itemNumber -= 1;
         redDots.forEach(el => {
             el.innerHTML = itemNumber;
-            if (itemNumber == 0) {
-                el.style.display = 'none';
+            if (itemNumber == 0){
+                el.style.opacity = 0;
             }
         });
         // Update checkout price

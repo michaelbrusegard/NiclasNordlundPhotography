@@ -195,7 +195,7 @@
     vertical-align: middle;
     line-height: 1.5em;
     user-select: none;
-    display: none;
+    opacity: 0;
 }
 
 #checkoutMenu {

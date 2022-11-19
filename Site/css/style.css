@@ -49,7 +49,7 @@ body::-webkit-scrollbar {
     --imageBorderRadius: 5px;
 
     /* Home */
-    --quoteZindex: 200;
+    --quoteZindex: 50;
 
     /* Grid */
     --sideWrapperMargin: 40px;
