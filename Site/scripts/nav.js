@@ -32,7 +32,7 @@ function isMobileNav() {
   // Gets the css variable for mobile size
   const style = getComputedStyle(document.body);
   const mobileNavSize = parseInt(style.getPropertyValue('--mobileNavSize').slice(0, -2));
-  // Gets the sreen width
+  // Gets the screen width
   const screenWidth = window.innerWidth;
   // Compares screen width to the mobile size
   if (mobileNavSize > screenWidth) {
