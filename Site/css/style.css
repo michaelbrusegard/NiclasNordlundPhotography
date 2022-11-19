@@ -45,11 +45,11 @@ body::-webkit-scrollbar {
     --softOpacity: 0.6;
 
     /* Showcase */
-
     --imageMargin: 20px;
     --imageBorderRadius: 5px;
 
-    /* Shop */
+    /* Home */
+    --quoteZindex: 200;
 
     /* Grid */
     --sideWrapperMargin: 40px;
@@ -64,6 +64,6 @@ body::-webkit-scrollbar {
     --checkoutWidth: 362px;
     --checkoutBorder: 8px;
     --redDotColor: red;
-    --checkoutMenuZindex: 300;
+    --checkoutMenuZindex: 90;
     --checkoutAnimationZindex: 200;
 }
