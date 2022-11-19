@@ -59,6 +59,7 @@ window.addEventListener("scroll", () => {
 // Writes the initial text and sets a high scrollY on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, scrollMaxValue() - scrollDistance);
+    imageDaddy.classList.toggle("hidden");
     writeText();
 })
 

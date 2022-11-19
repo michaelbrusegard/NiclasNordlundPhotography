@@ -10,18 +10,17 @@ const menu = document.querySelector('.linkMenu');
 // Loading style from CSS variables
 const style = getComputedStyle(document.body);
 
-// Animation when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); });
+let imageDisplayed = 0
 
-window.addEventListener("resize", () => {getNiclasLeftPx();});
-window.addEventListener("orientationChange", () => {getNiclasLeftPx();});
+// Animation when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); imageCarousel()});
+
+window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); });
+window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); });
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
 getLinkIcon(getCurrentNavElement(shopNav), 'linkCart').addEventListener('animationend', () => {removeAnimationEndOnNavElements(shopNav)});
-
-// Checks when imageCarousel is clicked
-imageDaddy.addEventListener('click', () => {imageCarousel()})
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});
