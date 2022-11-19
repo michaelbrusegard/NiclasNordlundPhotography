@@ -141,6 +141,7 @@
     visibility: hidden;
     top: 30%;
     left: 20%;
+    user-select: none;
 }
 
 p {
