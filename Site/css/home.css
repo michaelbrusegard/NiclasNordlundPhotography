@@ -137,15 +137,25 @@
     }
 }
 
-#text {
+#contentContainer {
+    height: 100vh;
+    width: 100vh;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+#quote {
     font-size: x-large;
+    z-index: var(--quoteZindex);
     height: 50vh;
-    width: 50vw;
+    width: 40vw;
     position: fixed;
-    visibility: hidden;
     top: 30%;
     left: 20%;
     user-select: none;
+    transition: all var(--transitionLength) ease-out;
 }
 
 p {
@@ -155,10 +165,11 @@ p {
 }
 
 #imageDaddy {
+    display: inline-flex;
     margin: var(--sideWrapperMargin);
     height: 100px;
     width: 100px;
-
+    transition: all var(--transitionLength) linear;
 }
 
 #imageDaddy img {
@@ -167,3 +178,7 @@ p {
     pointer-events: none;
     width: 80%;
 } 
+
+.arrow {
+    transform: rotate(180deg);
+}

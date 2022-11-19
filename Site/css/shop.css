@@ -217,7 +217,9 @@
     min-height: 0;
     max-height: 0;
     width: var(--checkoutWidth);
-    transition: max-height var(--transitionLength) ease-in-out, margin-top var(--transitionLength) ease-in-out;
+    transition: max-height, margin-top;
+    transition-timing-function: ease-out;
+    transition-duration: var(--transitionLength) ;
     user-select: none;
 }
 
