@@ -193,6 +193,7 @@ p {
 .slide img {
     width: 800px;
     height: 500px;
+    border-radius: 20px;
 }
 
 /* CSS for manual slide navigation */
