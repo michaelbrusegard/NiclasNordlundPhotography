@@ -92,14 +92,23 @@
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
+    margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
+    min-height: 100vh;
+}
+
+/* Wallpaper */
+
+#wallpaperShop {
     background-image: url(../img/wallpapers/wallpaperShop.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    margin-top: var(--navContainerHeight);
-    margin-bottom: var(--navContainerHeight);
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
 }
 
 /* Shopping */
@@ -193,8 +202,6 @@
 
 #checkoutMenu {
     background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     position: fixed;
@@ -231,10 +238,8 @@
 #checkoutElements {
     background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
-
     position: sticky;
     border-top: solid var(--checkoutBorder);
     border-color: var(--pageColor);

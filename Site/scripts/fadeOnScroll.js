@@ -1,15 +1,3 @@
-// Function that adds an observer to all the showcase images
-function addImagesFadeOnScroll() {
-    // Create an observer for showcaseFadeOnscroll
-    const observer = new IntersectionObserver(showcaseFadeOnscroll);
-    // Get all images on showcase
-    const images = document.getElementsByClassName('image');
-    // Add the observer to every image
-    for (i = 0; i < images.length; i++) {
-        observer.observe(images[i]);
-    }
-}
-
 // Adds fade on scroll effect in an observer
 function showcaseFadeOnscroll(entries) {
     // Goes over every entry that is observed
