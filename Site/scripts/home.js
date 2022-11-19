@@ -10,9 +10,6 @@ const menu = document.querySelector('.linkMenu');
 // Loading style from CSS variables
 const style = getComputedStyle(document.body);
 
-// Gets the image container
-const imageDaddy = document.querySelector('#imageDaddy')
-
 // Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); });
 
@@ -28,14 +25,3 @@ imageDaddy.addEventListener('click', () => {imageCarousel()})
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});
-
-// Button that scrolls down to the bottom of the window
-const scrollDownButtons = document.querySelectorAll('.arrow');
-
-// Eventlistener for scroll-down button
-scrollDownButtons.forEach(el => {
-  el.addEventListener('click', event => {
-  event.preventDefault();
-  window.scrollTo(0, scrollMaxValue());
-  });
-});

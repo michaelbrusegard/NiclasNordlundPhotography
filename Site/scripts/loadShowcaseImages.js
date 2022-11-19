@@ -22,39 +22,52 @@ function loadImages(files) {
   // Adds all images into correct columns based on how many columns there should be and which one is the shortest
   for (let i = 0; i < totalImages; i++) {
     const img = createContainer(files[i]);
-    const shortestColumn = findShortestColumn(columns);
-    console.log(shortestColumn);
-    columns[shortestColumn].appendChild(img);
+    columns[i % columnsMax].appendChild(img);
   }
 }
 
-// Finds the shortest column
-function findShortestColumn(columns) {
-  let shortestColumn = 0;
-  // For every column
-  for (let i = 0; i < columns.length; i++) {
-    const columnHeight = calculateColumnHeight(columns[i]);
-    const shortestColumnHeight = calculateColumnHeight(columns[shortestColumn]);
-    // Compares current column size to the shortest one and if it is shorter set it as the shortest column
-    if (columnHeight < shortestColumnHeight) {
-      shortestColumn = i;
-    }
-  }
-  return shortestColumn;
-}
+// let bigPhoto = false
+// let currentImg = 0
+// for (let i = 0; i < totalImages; i++) {
+//   const img = createContainer(files[i]);
+//   if (bigPhoto) {
+//     currentImg += 1
+//   }
+//   columns[currentImg % columnsMax].appendChild(img);
+//   bigPhoto = false
+//   if (files[i][1] < files[i][2]) {
+//     bigPhoto = true;
+//   }
+// }
 
-// Calculates the column height using image height
-function calculateColumnHeight(column) {
-  let columnHeight = 0;
-  for (let i = 0; i < column.childElementCount; i++) {
-    console.log(`Image width: ${files[i][1]}`);
-    console.log(`Image height: ${files[i][2]}`);
-    console.log(`Column height: ${columnHeight} before`);
-    columnHeight += files[i][2];
-    console.log(`Column height: ${columnHeight} after`);
-  }
-  return columnHeight;
-}
+
+// // Finds the shortest column
+// function findColumn(columns) {
+//   let shortestColumn = 0;
+//   // For every column
+//   for (let i = 0; i < columns.length; i++) {
+//     const columnHeight = calculateColumnHeight(columns[i]);
+//     const shortestColumnHeight = calculateColumnHeight(columns[shortestColumn]);
+//     // Compares current column size to the shortest one and if it is shorter set it as the shortest column
+//     if (columnHeight < shortestColumnHeight) {
+//       shortestColumn = i;
+//     }
+//   }
+//   return shortestColumn;
+// }
+
+// // Calculates the column height using image height
+// function calculateColumnHeight(column) {
+//   let columnHeight = 0;
+//   for (let i = 0; i < column.childElementCount; i++) {
+//     console.log(`Image width: ${files[i][1]}`);
+//     console.log(`Image height: ${files[i][2]}`);
+//     console.log(`Column height: ${columnHeight} before`);
+//     columnHeight += files[i][2];
+//     console.log(`Column height: ${columnHeight} after`);
+//   }
+//   return columnHeight;
+// }
 
 /*
 // Calculates the column height using image height

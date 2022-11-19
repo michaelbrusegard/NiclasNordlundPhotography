@@ -142,6 +142,18 @@ async function writeText() {
     }
 }
 
+// Button that scrolls down to the bottom of the window
+const scrollDownButtons = document.querySelectorAll('.arrow');
+
+// Eventlistener for scroll-down button
+scrollDownButtons.forEach(el => {
+  el.addEventListener('click', event => {
+  event.preventDefault();
+  window.scrollTo(0, scrollMaxValue());
+  });
+});
+
+
 /*
 // Quote-to-images switch (or vice versa)
 function contentTransition(currentContent, newContent) {
