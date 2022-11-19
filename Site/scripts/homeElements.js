@@ -14,7 +14,7 @@ const printedText1 = document.getElementById("text1");
 const printedText2 = document.getElementById("text2");
 const printedText3 = document.getElementById("text3");
 const containerBig = document.getElementById("containerBig");
-const carousel = document.getElementById("sliderStart");
+const carousel = document.getElementById("imageDaddy");
 
 // Writes the initial text on DOM load
 document.addEventListener("DOMContentLoaded", () => {

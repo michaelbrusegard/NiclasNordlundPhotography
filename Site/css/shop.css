@@ -189,12 +189,13 @@
     width: 1.5em;
     height: 1.5em;
     border-radius: 1.5em;
-    background-color: var(--redDotColorEmpty);
+    background-color: var(--redDotColor);
     color: var(--pageColor);
     text-align: center;
     vertical-align: middle;
     line-height: 1.5em;
     user-select: none;
+    display: none;
 }
 
 #checkoutMenu {
