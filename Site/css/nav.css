@@ -25,6 +25,7 @@ nav .mobileNav {
     align-items: center;
     list-style: none;
     user-select: none;
+    height: 100%;
 }
 
 nav .desktopNav li a,
@@ -200,4 +201,21 @@ nav .mobileNav {
 
 .linkMenu.clicked:hover #menu2 {
     transform: rotate(45deg);
+}
+
+/* Checkout red dot */
+
+.redDot {
+    position: fixed;
+    top: 0.1em;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 1.5em;
+    background-color: var(--redDotColor);
+    color: var(--pageColor);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5em;
+    user-select: none;
+    opacity: 0;
 }
