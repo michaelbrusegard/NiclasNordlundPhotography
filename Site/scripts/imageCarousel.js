@@ -4,12 +4,12 @@ function imageCarousel() {
     const intervalTime = 5000
 
     newImage(images, imageDisplayed)
-    // let timer = setInterval(function() {autoImage(images)}, intervalTime);
+    let timer = setInterval(function() {autoImage(images)}, intervalTime);
 
     daddy.addEventListener('click', () => {
-        //clearInterval(timer)
+        clearInterval(timer)
         autoImage(images)
-        // timer = setInterval(function() {autoImage(images)}, intervalTime);
+        timer = setInterval(function() {autoImage(images)}, intervalTime);
     })
 }
 
