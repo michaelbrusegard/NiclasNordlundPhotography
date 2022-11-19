@@ -7,7 +7,7 @@ let navigatedFrom = document.referrer
 // Variable for mobile menu
 const menu = document.querySelector('.linkMenu');
 
-// Loads images into columns
+// Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop)});
 
 // Adds ending part of animation
@@ -16,3 +16,4 @@ getLinkIcon(getCurrentNavElement(shopNav), 'linkCart').addEventListener('animati
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});
+
