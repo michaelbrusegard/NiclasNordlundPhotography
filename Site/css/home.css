@@ -3,15 +3,22 @@
 .pageContainer {
     height: 100%;
     width: 100%;
-    background-image: url(../img/wallpapers/wallpaperHome.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
     margin-top: var(--navContainerHeight);
-    padding: var(--navContainerHeight);
+}
+
+/* Wallpaper */
+
+#wallpaperHome {
+    background-image: url(../img/wallpapers/wallpaperHome.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .text {
@@ -41,7 +48,7 @@ p {
 }
 
 
-.sliderStart {
+.sliderStart {
     visibility: hidden;
 }
 
