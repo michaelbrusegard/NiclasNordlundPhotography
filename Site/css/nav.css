@@ -77,6 +77,11 @@ nav .mobileNav {
         overflow: hidden;
         z-index: -1;
         transition: all var(--transitionLength) ease-in;
+        overflow-y: auto;
+    }
+
+    nav .desktopNav::-webkit-scrollbar {
+        display: none;
     }
 
     nav .desktopNav.active {

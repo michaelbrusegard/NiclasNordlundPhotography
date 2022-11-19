@@ -8,7 +8,10 @@ let navigatedFrom = document.referrer
 const menu = document.querySelector('.linkMenu');
 
 // Animation when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop)});
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); });
+
+window.addEventListener("resize", () => {getNiclasLeftPx();});
+window.addEventListener("orientationChange", () => {getNiclasLeftPx();});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
