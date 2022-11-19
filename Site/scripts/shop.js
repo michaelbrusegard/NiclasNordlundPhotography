@@ -1102,6 +1102,7 @@ const redDots = document.querySelectorAll('.redDot');
 const checkoutButton = document.getElementById('checkoutButton');
 const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay');
 let addedItems = [];
+let checkoutMenuClicks = 0;
 let itemNumber = 0;
 let checkoutTotal = 0;
 
@@ -1130,13 +1131,25 @@ getLinkIcon(getCurrentNavElement(nav), 'linkSignature').addEventListener('animat
 
 
 // Check when the current bag icons are clicked
-Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome); console.log('noe')});});
+Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {
+    event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome); console.log('noe')});});
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {
-    alignCheckout();
     event.preventDefault();
+    alignCheckout();
+    // Check which scale we want to set the new z-index with
+    checkoutMenuClicks += 1;
+    let scale = 1;
+    if (checkoutMenuClicks % 2 == 1) {
+        scale = 3;
+    }
+    // Toggle the menu
     checkoutMenu.classList.toggle('active');
+    checkoutMenu.addEventListener('transitionend', () => {
+        checkoutMenu.style.setProperty('--checkoutMenuZindex',
+            `${style.getPropertyValue('--checkoutMenuZindex')*scale}`);
+    }, {once: true});
 }));
 
 // Logs the current checkout items to alert

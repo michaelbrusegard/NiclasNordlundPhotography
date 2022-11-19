@@ -54,7 +54,7 @@ function checkoutSystem(shopItem, itemPrice) {
     itemNumber += 1;
     redDots.forEach(el => {
         el.innerHTML = itemNumber;
-        el.style.backgroundColor = style.getPropertyValue('--redDotColorNormal');
+        el.style.opacity = 1;
     });
     // Update checkout price
     checkoutTotal += itemPrice;
@@ -83,7 +83,7 @@ function checkoutSystem(shopItem, itemPrice) {
         redDots.forEach(el => {
             el.innerHTML = itemNumber;
             if (itemNumber == 0){
-                el.style.backgroundColor = style.getPropertyValue('--redDotColorEmpty');
+                el.style.opacity = 0;
             }
         });
         // Update checkout price

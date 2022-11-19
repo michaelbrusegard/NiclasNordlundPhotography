@@ -92,14 +92,18 @@
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
-    background-image: url(../img/wallpapers/wallpaperShop.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    margin-top: var(--navContainerHeight);
-    margin-bottom: var(--navContainerHeight);
     min-height: 100vh;
+}
+
+/* Wallpaper */
+
+#wallpaperShop {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url(../img/wallpapers/wallpaperShop.jpg) center center no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
 
 /* Shopping */
@@ -108,6 +112,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopDisplayMargin)));
     justify-content: center;
+    margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
 }
@@ -177,24 +183,8 @@
 
 /* Checkout */
 
-.redDot {
-    position: fixed;
-    top: 0.1em;
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 1.5em;
-    background-color: var(--redDotColorEmpty);
-    color: var(--pageColor);
-    text-align: center;
-    vertical-align: middle;
-    line-height: 1.5em;
-    user-select: none;
-}
-
 #checkoutMenu {
     background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     position: fixed;
@@ -212,7 +202,9 @@
     min-height: 0;
     max-height: 0;
     width: var(--checkoutWidth);
-    transition: max-height var(--transitionLength) ease-in-out, margin-top var(--transitionLength) ease-in-out;
+    transition: max-height, margin-top;
+    transition-timing-function: ease-out;
+    transition-duration: var(--transitionLength) ;
     user-select: none;
 }
 
@@ -231,10 +223,8 @@
 #checkoutElements {
     background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
     background-size: cover;
-
     position: sticky;
     border-top: solid var(--checkoutBorder);
     border-color: var(--pageColor);
@@ -294,6 +284,7 @@
 }
 
 /* Shop items hover animation */
+
 @keyframes tilt-shaking {
     0% {
         transform: rotate(0deg);
