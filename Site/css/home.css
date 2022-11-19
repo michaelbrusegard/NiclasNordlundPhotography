@@ -86,12 +86,6 @@
     }
 }
 
-/* Adaptive size */
-
-@media (min-width: 1100px) {}
-
-@media (max-width: 768px) {}
-
 /* Page transition */
 
 @keyframes transitionIn {
@@ -110,22 +104,36 @@
     }
 
     100% {
-        transform: translateX(0px) scale(1);
+        transform: translateX(0) scale(1);
     }
 }
 
 /* Niclas image */
 
-#content {
+#niclasImg {
     position: fixed;
     bottom: var(--navContainerHeight);
+    aspect-ratio: 1 / 1;
     right: 0;
-    height: 300px;
-    width: 300px;
+    height: 65vh;
     background: url(../img/home/niclas.png) center center no-repeat;
     background-size: cover;
     animation: slideIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
+}
+
+/* Adaptive size */
+
+@media (min-width: 1100px) {
+    #niclasImg {
+        height: 80vh;
+    }
+}
+
+@media (max-width: 768px) {
+    #niclasImg {
+        height: 50vh;
+    }
 }
 
 
@@ -150,13 +158,6 @@ p {
     color: #fff;
 }
 
-#niclasImg {
-    position: fixed;
-    right: 0px;
-    bottom: 60px;
-    width: 40vw;
-    height: auto;
-}
 
 
 .sliderStart {
