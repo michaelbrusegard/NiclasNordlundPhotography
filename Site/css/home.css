@@ -6,6 +6,7 @@
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
     margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
 }
 
 /* Wallpaper */
