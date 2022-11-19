@@ -12,14 +12,11 @@
 /* Wallpaper */
 
 #wallpaperHome {
-    background-image: url(../img/wallpapers/wallpaperHome.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
+    position: fixed;
     height: 100%;
     width: 100%;
-    position: fixed;
+    background: url(../img/wallpapers/wallpaperShop.jpg) center center no-repeat;
+    background-size: cover;
 }
 
 .text {
