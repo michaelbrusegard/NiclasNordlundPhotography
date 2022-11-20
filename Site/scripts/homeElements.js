@@ -52,8 +52,8 @@ async function writeText(element, quoteIndex) {
 }
 
 function observeHome() {
-    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.8 });
-    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.8 });
+    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.5 });
+    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.5 });
     carouselObserver.observe(imageDaddy);
     for (let i = 0; i < quotesDaddy.length; i++) {
         quotesObserver.observe(quotesDaddy[i]);
@@ -90,10 +90,10 @@ function textPosition() {
         if (isPortraitOrientation()) {
             quoteElements[i].style.left = "5%";
             quoteElements[i].style.top = "10%";
-            quoteElements[i].style.width = "80%";
+            quoteElements[i].style.width = "90%";
         } else if (isMobileNav() && !isPortraitOrientation()) {
             quoteElements[i].style.left = "5%";
-            quoteElements[i].style.top = "30%";
+            quoteElements[i].style.top = "15%";
             quoteElements[i].style.width = "80%";
         } else {
             quoteElements[i].style.left = "5%";
