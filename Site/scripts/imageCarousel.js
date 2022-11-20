@@ -54,7 +54,7 @@ function imagePosition() {
         if (isPortraitOrientation()) {
             image.style.paddingLeft = "5%";
             image.style.paddingRight = "5%";
-            image.style.paddingBottom = "50%";
+            image.style.paddingBottom = "70%";
             image.style.paddingTop = "5%";
         } else {
             image.style.paddingLeft = "5%";

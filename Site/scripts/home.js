@@ -57,10 +57,10 @@ for (const element of quotesDaddy) {
 }
 
 // Animation when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); textPosition(); observeHome(); imageCarousel(); });
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); textPosition(); observeHome(); imageCarousel(); elementsPosition(); });
 
-window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); textPosition();});
-window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); textPosition();});
+window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); textPosition(); elementsPosition(); });
+window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); textPosition(); elementsPosition();});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
@@ -76,8 +76,5 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 scrollTopButtons.forEach(el => {
   el.addEventListener('click', event => {
   event.preventDefault();
-  document.documentElement.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-  });
+  quotesDaddy[0].scrollIntoView({ behavior: "smooth" });
 })});
