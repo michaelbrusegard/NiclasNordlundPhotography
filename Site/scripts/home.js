@@ -76,8 +76,5 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 scrollTopButtons.forEach(el => {
   el.addEventListener('click', event => {
   event.preventDefault();
-  document.documentElement.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-  });
+  quotesDaddy[0].scrollIntoView({ behavior: "smooth" });
 })});
