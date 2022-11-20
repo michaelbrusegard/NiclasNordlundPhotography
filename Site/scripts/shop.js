@@ -1129,10 +1129,9 @@ window.addEventListener("orientationChange", () => {windowLoad(); alignCheckout(
 getLinkIcon(getCurrentNavElement(nav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(shopNav, nav)});
 getLinkIcon(getCurrentNavElement(nav), 'linkSignature').addEventListener('animationend', () => {removeAnimationEndOnNavElements(nav)});
 
-
 // Check when the current bag icons are clicked
 Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {
-    event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome); console.log('noe')});});
+    event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach(el => el.addEventListener('click', event => {

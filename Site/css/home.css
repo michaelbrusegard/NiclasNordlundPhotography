@@ -156,12 +156,14 @@
     opacity: 0;
 }
 
-#quote {
+.quotes {
+    background-color: red;
     font-size: x-large;
+    margin-bottom: auto;
+    margin-top: auto;
     z-index: var(--quoteZindex);
-    height: auto;
-    max-width: 35vw;
-    position: fixed;
+    height: 100vh;
+    width: auto;
     top: 30%;
     left: 20%;
     user-select: none;
@@ -201,10 +203,6 @@ p {
 .imageOut {
     animation: slideOut calc(var(--transitionLength) * 2);
     animation-timing-function: ease-out;
-}
-
-.arrow {
-    transform: rotate(180deg);
 }
 
 /* Adaptive size */
