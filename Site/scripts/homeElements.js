@@ -52,8 +52,8 @@ async function writeText(element, quoteIndex) {
 }
 
 function observeHome() {
-    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 1.0 });
-    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 1.0 });
+    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.8 });
+    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.8 });
     carouselObserver.observe(imageDaddy);
     for (let i = 0; i < quotesDaddy.length; i++) {
         quotesObserver.observe(quotesDaddy[i]);
