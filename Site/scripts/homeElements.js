@@ -19,8 +19,8 @@ async function writeText(element, quoteIndex) {
 
 // Creates observers for home elements and starts observing them
 function observeHome() {
-    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.5 });
-    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.5 });
+    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.9 });
+    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.9 });
     const bottomObserver = new IntersectionObserver(observeBottom);
     carouselObserver.observe(imageDaddy);
     bottomObserver.observe(scrolledBottom);
@@ -44,6 +44,7 @@ function observeCarousel(items) {
 function observeQuotes(items) {
     items.map((item => {
         if (item.isIntersecting) {
+            timeOutLength = slowTyping;
             item.target.classList.remove('hidden');
             for (i = 0; i < quotesDaddy.length; i++) {
                 if (item.target === quotesDaddy[i]) {
@@ -52,6 +53,8 @@ function observeQuotes(items) {
                 }
             }
         } else {
+            console.log('iskrem2')
+            timeOutLength = transitionTyping;
             item.target.classList.add('hidden');
         }
     }));

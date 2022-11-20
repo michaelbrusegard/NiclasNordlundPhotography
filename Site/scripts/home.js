@@ -38,6 +38,7 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 // Adjust the speed parameters of the typing animations
 const slowTyping = 32;
 const fastTyping = 4;
+const transitionTyping = 0;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
@@ -45,20 +46,26 @@ let isFinishedTyping = Array(4).fill(false);
 
 
 // Adjust the speed of the typing animation
-for (const element of quotesDaddy) {
-    element.addEventListener('click', () => {
-        if (isFast) {
-            timeOutLength = slowTyping;
-            isFast = false;
-        } else {
-            timeOutLength = fastTyping;
-            isFast = true;
-        }
-    });
-}
+// for (const element of quotesDaddy) {
+//     element.addEventListener('click', () => {
+//         if (isFast) {
+//             timeOutLength = slowTyping;
+//             isFast = false;
+//         } else {
+//             timeOutLength = fastTyping;
+//             isFast = true;
+//         }
+//     });
+// }
+/*
+contentContainer.addEventListener('scroll', () => {
+ console.log('scrolling')
+  timeOutLength = fastTyping;
+})
+*/
 
 // Animation when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); textPosition(); observeHome(); imageCarousel(); elementsPosition(); });
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); textPosition(); imageCarousel(); elementsPosition(); observeHome(); });
 
 window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); textPosition(); elementsPosition(); });
 window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); textPosition(); elementsPosition();});
