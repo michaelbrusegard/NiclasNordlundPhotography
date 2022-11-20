@@ -67,3 +67,12 @@ function textPosition() {
         }
     }
 }
+
+function elementsPosition() {
+    const containerHeight = String(window.innerHeight - 2 * parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2)) + 'px')
+    imageDaddy.style.height = containerHeight
+    console.log(containerHeight)
+    for (let i = 0; i < quotesDaddy.length; i++) {
+        quotesDaddy[i].style.height = containerHeight
+    }
+}

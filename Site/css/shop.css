@@ -93,6 +93,8 @@
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: linear;
     min-height: 100vh;
+    margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
 }
 
 /* Wallpaper */
@@ -112,8 +114,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopDisplayMargin)));
     justify-content: center;
-    margin-top: var(--navContainerHeight);
-    margin-bottom: var(--navContainerHeight);
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
 }

@@ -5,6 +5,8 @@
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
+    margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
 }
 
 /* Wallpaper */
@@ -147,10 +149,8 @@
 }
 
 #contentContainer {
-    padding-top: var(--navContainerHeight);
-    padding-bottom: var(--navContainerHeight);
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
@@ -164,10 +164,9 @@
 }
 
 .quotesDaddy {
+    background-color: red;
     position: relative;
-    margin-bottom: var(--navContainerHeight);
-    margin-top: var(--navContainerHeight);
-    height: 100vh;
+    width: 100vw;
     width: auto;
     user-select: none;
     transition: all var(--transitionLength) ease-out;
@@ -187,10 +186,10 @@
 }
 
 #imageDaddy {
+    background-color: blueviolet;
     position: relative;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    width: 100vw;
     transition: opacity var(--transitionLength) linear;
     user-select: none;
     scroll-snap-align: start;
