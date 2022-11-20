@@ -25,3 +25,16 @@ imageDaddy.addEventListener('click', () => {imageCarousel()})
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {mobileMenu(menu, nav)});
+
+// Button that scrolls the window to the top
+const scrollTopButtons = document.querySelectorAll('.arrow');
+
+// Eventlistener for scroll-back-to-top button
+scrollTopButtons.forEach(el => {
+  el.addEventListener('click', event => {
+  event.preventDefault();
+  document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+})});

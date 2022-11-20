@@ -1,3 +1,10 @@
+/*
+
+INFO: We use quoteObserver and daddyObserver to load
+new content when it intersects with the window
+
+*/
+
 // Text to be displayed on the home page
 const quoteText = ["Born in Mariehamn in 1965, Niclas always had an interest in animals and nature.",
 `Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance photographer. 
@@ -8,23 +15,82 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 // Adjust the speed parameters of the typing animations
 const slowTyping = 35;
 const fastTyping = 10;
-const runDelay = 500;
-let lastExecution = 0;
 let clickNumber = 0;
 let timeOutLength = slowTyping;
 
-// Adjust how close the scroll value is to the bottom with each new mode
-const scrollDistance = 200;
-
 // Getting home elements
-const quoteElement = document.getElementById('quote');
 const contentContainer = document.getElementById('contentContainer');
+const quoteElements = document.getElementsByClassName('quotes');
 const imageDaddy = document.getElementById('imageDaddy');
 
-// Index for switching between home page modes
-const modeMax = 4;
-let homeModeIndex = 0;
+// Adjust the speed of the typing animation
+for (const element of quoteElements) {
+    element.addEventListener('click', () => {
+    clickNumber += 1;
+    if (clickNumber % 2 == 1) {
+        timeOutLength = fastTyping;
+    } else { 
+        timeOutLength = slowTyping;
+    }
+})}
 
+// Writes the initial text
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded');
+    window.scrollTo(0, 0);
+    writeText(quoteElements[0]);
+});
+
+// Typing effect function
+async function writeText(element) {
+    // Loops through the text and types it out
+    const textString = quoteText[0];
+    for (let i = 0; i < textString.length; i++) {
+        element.innerHTML += textString.charAt(i);
+        await new Promise(r => setTimeout(r, timeOutLength));
+    }
+}
+
+// Intersection observer for quote elements
+const quoteObserver = new IntersectionObserver((elements) => {
+    elements.map((el) => {
+        // Fade in and start typing
+        if (el.isIntersecting) {
+            el.target.classList.toggle('hidden');
+            el.target.addEventListener('transitionend', () => {writeText(el.target);}, {once: true});
+        } 
+        // Fade out and remove text
+        else {
+            el.target.classList.toggle('hidden');
+            el.target.addEventListener('transitionend', () => {el.target.innerHTML = '';}, {once: true});
+        }
+    });
+});
+
+// Intersection observer for image carousel
+const daddyObserver = new IntersectionObserver((elements) => {
+    for (const el of elements) {
+        // Fade in and start carousel animation
+        if (el.isIntersecting) {
+            el.target.classList.toggle('hidden');
+            el.target.addEventListener('transitionend', () => {console.log('start animation');}, {once: true});
+        }
+        // Stop animation and fade out
+        else {
+            console.log('stop animation');
+            el.target.classList.toggle('hidden');
+        }
+    }  
+});
+
+// Applying observers to home element
+for (const element of quoteElements) {
+    quoteObserver.observe(element);
+}
+daddyObserver.observe(imageDaddy);
+
+/*
+/*
 // Getting the scroll max value for the page (credit: https://stackoverflow.com/questions/17688595/)
 const scrollMaxValue = () => {
     const body = document.body;
@@ -40,16 +106,68 @@ const scrollMaxValue = () => {
     return documentHeight - windowHeight;
 };
 
-// Adjust the speed of the typing animation
-quoteElement.addEventListener('click', () => {
-    clickNumber += 1;
-    if (clickNumber % 2 == 1) {
-        timeOutLength = fastTyping;
-    } else { 
-        timeOutLength = slowTyping;
+// Switch mode on scroll
+window.addEventListener("scroll", () => {
+    // Checking if we have reached a minimum scroll value (and not at the bottom)
+    if ((window.pageYOffset == scrollMaxValue()) && (homeModeIndex !== 3)) {
+        console.log('down active');
+        switchMode(indexChange=+1);
+    } 
+    // Checking if we have reached a maximum scroll value (and not at the top)
+    else if ((window.pageYOffset == 0) && (homeModeIndex !== 0)) {
+        console.log('up active');
+        switchMode(indexChange=-1);
     }
-})
+});
 
+// Switch mode
+function switchMode(indexChange) {
+    // Updating home mode index
+    homeModeIndex += indexChange;
+    console.log(`new home index: ${homeModeIndex}`)
+    // Loading a new mode
+    if (homeModeIndex == 3) {
+        imagesQuoteTransition(indexChange);
+    } else if ((homeModeIndex == 2) && (indexChange > 0)) {
+        imagesQuoteTransition(indexChange);
+    } else {
+        quoteQuoteTransition(indexChange);
+    }
+}
+
+// Quote-to-quote switch
+function quoteQuoteTransition(indexChange) {
+    quoteElements[homeModeIndex - indexChange].classList.toggle('hidden');
+    quoteElements[homeModeIndex - indexChange].addEventListener('transitionend', () => {
+        quoteElements[homeModeIndex - indexChange].innerHTML = '';
+        quoteElements[homeModeIndex].classList.toggle('hidden');
+        quoteElements[homeModeIndex].addEventListener('transitionend', () => {
+            writeText();
+        }, {once: true})
+    }, {once: true});
+}
+
+// Images-to-quote switch (and vice versa)
+function imagesQuoteTransition(indexChange) {
+    if (indexChange > 0) {
+        quoteElements[homeModeIndex].classList.toggle('hidden');
+        quoteElements[homeModeIndex].addEventListener('transitionend', () => {
+            quoteElements[homeModeIndex].innerHTML = '';
+            imageDaddy.classList.toggle('hidden');
+        }, {once: true});
+    } else {
+        imageDaddy.classList.toggle('hidden');
+        imageDaddy.addEventListener('transitionend', () => {
+            quoteElements[homeModeIndex].classList.toggle('hidden');
+            quoteElements[homeModeIndex].addEventListener('transitionend', () => {
+                writeText();
+            }, {once: true})
+        }, {once: true});
+    }
+}
+*/
+
+/* 
 // Switch mode on scroll
 window.addEventListener("scroll", () => {
     scrollSwitch();
@@ -68,92 +186,7 @@ function scrollSwitch() {
         console.log('down active');
         switchMode();
     }
-}
-
-// Switch mode
-function switchMode() {
-    // Update home mode index
-    homeModeIndex = (homeModeIndex + 1) % modeMax;
-    console.log(homeModeIndex)
-    // Reset scroll position
-    if (homeModeIndex == 3) {
-        window.scrollTo(0, 0); 
-    } else {
-        window.scrollTo(0, scrollMaxValue() - scrollDistance);
-    }
-    console.log(`new home index: ${homeModeIndex}`)
-    // The different modes based on the index change transition
-    if (homeModeIndex == 0) {
-        imagesQuoteTransition();
-    } else if (homeModeIndex == 3) {
-        quoteImagesTransition();
-    } else {
-        quoteQuoteTransition();
-    }
-}
-
-// Quote-to-quote switch
-function quoteQuoteTransition() {
-    quoteElement.classList.toggle('hidden');
-    quoteElement.addEventListener('transitionend', () => {
-        quoteElement.innerHTML = '';
-        quoteElement.classList.toggle('hidden');
-        quoteElement.addEventListener('transitionend', () => {
-            writeText();
-        }, {once: true})
-    }, {once: true});
-}
-
-// Images-to-quote switch
-function imagesQuoteTransition() {
-    imageDaddy.classList.toggle('hidden');
-    imageDaddy.addEventListener('transitionend', () => {
-        quoteElement.classList.toggle('hidden');
-        quoteElement.addEventListener('transitionend', () => {
-            writeText();
-        }, {once: true})
-    }, {once: true});
-}
-
-// Quote-to-images switch
-function quoteImagesTransition() {
-    quoteElement.classList.toggle('hidden');
-    quoteElement.addEventListener('transitionend', () => {
-        quoteElement.innerHTML = '';
-        imageDaddy.classList.toggle('hidden');
-    }, {once: true});
-}
-
-// Typing effect function
-async function writeText() {
-    if ((lastExecution + runDelay) > Date.now()) {
-        return;
-    }
-    lastExecution = Date.now();
-    const currentMode = homeModeIndex; 
-    // Loops through the text and types it out
-    const textString = quoteText[homeModeIndex];
-    for (let i = 0; i < textString.length; i++) {
-        if (currentMode !== homeModeIndex) {
-            break
-        }
-        quoteElement.innerHTML += textString.charAt(i);
-        await new Promise(r => setTimeout(r, timeOutLength));
-    }
-}
-
-// Button that scrolls down to the bottom of the window
-const scrollDownButtons = document.querySelectorAll('.arrow');
-
-// Eventlistener for scroll-down button
-scrollDownButtons.forEach(el => {
-  el.addEventListener('click', event => {
-  event.preventDefault();
-  window.scrollTo(0, scrollMaxValue());
-  });
-});
-
-
+*/
 /*
 // Quote-to-images switch (or vice versa)
 function contentTransition(currentContent, newContent) {
@@ -235,4 +268,83 @@ function carouselAnimation(interval) {
         }
     }, interval);
 }
+*/
+
+/*
+// Intersection observer that actives a mode switch upon new intersections
+const io = new IntersectionObserver((elements, io) => {
+    const targetList = [];
+    let index = 0;
+    elements.forEach((el) => {
+        console.log(el.target);
+        console.log(el.isIntersecting);
+        if (el.isIntersecting) {
+            console.log(el.target);
+            switchMode(index);
+        }
+        index += 1;
+    });
+});
+
+// Start by observing only the 2nd quote
+io.observe(quoteElements[1]);
+
+// Switch between modes on the home page
+function switchMode (changeIndex) {
+    console.log(`activated item index: ${changeIndex}`);
+    console.log(`home mode index: ${homeModeIndex}`);
+    
+    const downScroll = (changeIndex == 0);
+    // Downscroll from top
+    if ((homeModeIndex == 0) && (downScroll)) {
+        console.log(`thing: ${quoteElements[homeModeIndex + 1]}`);
+        console.log(quoteElements[homeModeIndex + 1]);
+        io.unobserve(quoteElements[homeModeIndex + 1]);
+        
+        io.observe(quoteElements[homeModeIndex + 2]);
+        io.observe(quoteElements[homeModeIndex]);
+    } 
+    // Upscroll to top
+    else if ((homeModeIndex == 0) && (!downScroll)) {
+        io.unobserve(quoteElements[homeModeIndex + 1]);
+        io.unobserve(quoteElements[homeModeIndex - 1]);
+        io.observe(quoteElements[homeModeIndex]);
+    } 
+    // Downscroll in quotes section
+    else if ((0 < homeModeIndex < (modeMax - 1)) && (downScroll)) {
+        io.unobserve(quoteElements[homeModeIndex + 1]);
+        io.unobserve(quoteElements[homeModeIndex - 1]);
+        
+        io.observe(quoteElements[homeModeIndex + 2]);
+        io.observe(quoteElements[homeModeIndex]);
+    } 
+    // Upscroll in quotes section
+    else if ((0 < homeModeIndex < (modeMax - 1)) && (!downScroll)) {
+        io.unobserve(quoteElements[homeModeIndex + 1]);
+        io.unobserve(quoteElements[homeModeIndex - 1]);
+        
+        io.observe(quoteElements[homeModeIndex]);
+        io.observe(quoteElements[homeModeIndex - 2]);
+    }
+    // Downscroll to images
+    else if ((homeModeIndex == (modeMax - 1)) && (downScroll)) {
+        io.unobserve(quoteElements[homeModeIndex + 1]);
+        io.unobserve(quoteElements[homeModeIndex - 1]);
+        
+        io.observe(imageDaddy);
+        io.observe(quoteElements[homeModeIndex]);
+    }
+    // Upscroll from images
+    else if ((0 < homeModeIndex < (modeMax - 1)) && (!downScroll)) {
+        io.unobserve(quoteElements[homeModeIndex + 1]);
+        io.unobserve(quoteElements[homeModeIndex - 1]);
+        
+        io.observe(quoteElements[homeModeIndex]);
+        io.observe(quoteElements[homeModeIndex - 2]);
+    }
+    else {return}
+    // Update home index
+    (downScroll) ? homeModeIndex += 1 : homeModeIndex -= 1;
+}
+
 */
