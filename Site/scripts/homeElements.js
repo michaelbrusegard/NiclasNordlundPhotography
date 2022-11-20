@@ -16,6 +16,7 @@ async function writeText(element, quoteIndex) {
     }
 }
 
+// Adds intersection observers for quotes and the carousel  
 function observeHome() {
     const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.5 });
     const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.5 });
@@ -25,6 +26,7 @@ function observeHome() {
     }
 }
 
+// Observes 
 function observeCarousel(items) {
     items.map((item => {
         if (item.isIntersecting) {
