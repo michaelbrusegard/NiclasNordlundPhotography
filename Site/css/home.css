@@ -166,8 +166,8 @@
 .quotesDaddy {
     position: relative;
     width: 100vw;
-    user-select: none;
     transition: all var(--transitionLength) ease-out;
+    user-select: none;
     scroll-snap-align: start;
     scroll-snap-stop: always;
 }
@@ -180,14 +180,13 @@
     font-weight: bold;
     color: #fff;
     backdrop-filter: blur(0px); 
-    border-radius: 20vw;
 }
 
 #imageDaddy {
     position: relative;
     align-items: center;
     width: 100vw;
-    transition: opacity var(--transitionLength) linear;
+    transition: opacity var(--transitionLength) var(--transitionLength) linear;
     user-select: none;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -204,6 +203,11 @@
     box-shadow: var(--shadow);
     user-select: none;
 } 
+
+#scrolledBottom {
+    width: 100vw;
+    height: 100vh; 
+}
 
 .imageIn {
     animation: slideIn var(--transitionLength);
