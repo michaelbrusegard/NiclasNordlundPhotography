@@ -52,15 +52,15 @@ function imagePosition() {
     images.forEach(image => {
         // Change the padding based on if it is portrait or landscape
         if (isPortraitOrientation()) {
-            image.style.paddingLeft = "2%";
-            image.style.paddingRight = "4%";
+            image.style.paddingLeft = "5%";
+            image.style.paddingRight = "5%";
             image.style.paddingBottom = "50%";
             image.style.paddingTop = "5%";
         } else {
             image.style.paddingLeft = "5%";
             image.style.paddingRight = "30%";
-            image.style.paddingBottom = "4%";
-            image.style.paddingTop = "2%";
+            image.style.paddingBottom = "5%";
+            image.style.paddingTop = "5%";
         }
     });
 }

@@ -4,9 +4,7 @@ function getNiclasLeftPx() {
     const screenWidth = window.innerWidth;
 
     // Get nav bar size
-    const style = getComputedStyle(document.body);
     const desktopNavSize = parseInt(style.getPropertyValue('--desktopNavSize').slice(0, -2));
-    const mobileNavSize = parseInt(style.getPropertyValue('--mobileNavSize').slice(0, -2));
 
     const imgWidth = niclasImg.clientWidth;
     // Calculate and set value
@@ -16,7 +14,7 @@ function getNiclasLeftPx() {
     // Sets image postiion based on screen size and orientation
     if (screenWidth > (desktopNavSize + imgWidth)) {
         niclasImg.style.left = String(niclasLeftPxBig) + 'px';
-    } else if ((screenWidth < mobileNavSize) && isPortraitOrientation()) {
+    } else if (isMobileNav() && isPortraitOrientation()) {
         niclasImg.style.left = String(niclasLeftPxSmall) + 'px';
     } else {
         niclasImg.style.left = 'auto';
