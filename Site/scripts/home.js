@@ -10,6 +10,13 @@ const menu = document.querySelector('.linkMenu');
 // Loading style from CSS variables
 const style = getComputedStyle(document.body);
 
+// Getting home elements
+const contentContainer = document.getElementById('contentContainer');
+
+// Gets the divs with the quotes and the quotes p
+const quotesDaddy = document.querySelectorAll('.quotesDaddy')
+const quoteElements = document.querySelectorAll('.quotesDaddy p');
+
 // Gets the div containing the images and the images
 const imageDaddy = document.querySelector('#imageDaddy')
 const images = document.querySelectorAll('#imageDaddy img');
@@ -19,10 +26,10 @@ const intervalTime = 5000
 let imageDisplayed = 0
 
 // Animation when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); imageCarousel()});
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); getNiclasLeftPx(); imagePosition(); textPosition(); observeHome(); imageCarousel(); });
 
-window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); });
-window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); });
+window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); textPosition();});
+window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); textPosition();});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});

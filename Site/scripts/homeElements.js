@@ -1,93 +1,140 @@
-/*
-
-INFO: We use quoteObserver and daddyObserver to load
-new content when it intersects with the window
-
-*/
 
 // Text to be displayed on the home page
 const quoteText = ["Born in Mariehamn in 1965, Niclas always had an interest in animals and nature.",
-`Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance photographer. 
+    `Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance photographer. 
 Besides the photography itself, Niclas also creates pictures to hang on your wall, postcards, jigsaw puzzles and other products 
 showing the beautiful landscapes, nature and animals of the Åland Islands.`,
-"In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs."]
+    "In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs."];
 
 // Adjust the speed parameters of the typing animations
 const slowTyping = 35;
-const fastTyping = 10;
-let clickNumber = 0;
+const fastTyping = 5;
 let timeOutLength = slowTyping;
+let isFast = false;
+let isTyping = false;
+let isFinishedTyping = [false, false, false];
 
-// Getting home elements
-const contentContainer = document.getElementById('contentContainer');
-const quoteElements = document.getElementsByClassName('quotes');
-const imageDaddy = document.getElementById('imageDaddy');
 
 // Adjust the speed of the typing animation
 for (const element of quoteElements) {
     element.addEventListener('click', () => {
-    clickNumber += 1;
-    if (clickNumber % 2 == 1) {
-        timeOutLength = fastTyping;
-    } else { 
-        timeOutLength = slowTyping;
-    }
-})}
+        if (isFast) {
+            timeOutLength = slowTyping;
+            isFast = false;
+        } else {
+            timeOutLength = fastTyping;
+            isFast = true;
+        }
+    });
+}
 
 // Writes the initial text
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded');
     window.scrollTo(0, 0);
-    writeText(quoteElements[0]);
+    writeText(quoteElements[0], 0);
 });
 
 // Typing effect function
-async function writeText(element) {
+async function writeText(element, quoteIndex) {
     // Loops through the text and types it out
-    const textString = quoteText[0];
-    for (let i = 0; i < textString.length; i++) {
-        element.innerHTML += textString.charAt(i);
-        await new Promise(r => setTimeout(r, timeOutLength));
+    if ((!isTyping) && (!isFinishedTyping[quoteIndex])) {
+        isTyping = true;
+        element.innerHTML = '';
+        const textString = quoteText[quoteIndex];
+        for (let i = 0; i < textString.length; i++) {
+            element.innerHTML += textString.charAt(i);
+            await new Promise(r => setTimeout(r, timeOutLength));
+        }
+        isTyping = false;
+        isFinishedTyping[quoteIndex] = true;
     }
 }
 
-// Intersection observer for quote elements
-const quoteObserver = new IntersectionObserver((elements) => {
-    elements.map((el) => {
-        // Fade in and start typing
-        if (el.isIntersecting) {
-            el.target.classList.toggle('hidden');
-            el.target.addEventListener('transitionend', () => {writeText(el.target);}, {once: true});
-        } 
-        // Fade out and remove text
-        else {
-            el.target.classList.toggle('hidden');
-            el.target.addEventListener('transitionend', () => {el.target.innerHTML = '';}, {once: true});
-        }
-    });
-});
-
-// Intersection observer for image carousel
-const daddyObserver = new IntersectionObserver((elements) => {
-    for (const el of elements) {
-        // Fade in and start carousel animation
-        if (el.isIntersecting) {
-            el.target.classList.toggle('hidden');
-            el.target.addEventListener('transitionend', () => {console.log('start animation');}, {once: true});
-        }
-        // Stop animation and fade out
-        else {
-            console.log('stop animation');
-            el.target.classList.toggle('hidden');
-        }
-    }  
-});
-
-// Applying observers to home element
-for (const element of quoteElements) {
-    quoteObserver.observe(element);
+function observeHome() {
+    const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 1.0 });
+    const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 1.0 });
+    carouselObserver.observe(imageDaddy);
+    for (let i = 0; i < quotesDaddy.length; i++) {
+        quotesObserver.observe(quotesDaddy[i]);
+    }
 }
-daddyObserver.observe(imageDaddy);
+
+function observeCarousel(items) {
+    items.map((item => {
+        if (item.isIntersecting) {
+            item.target.classList.remove('hidden');
+        } else {
+            item.target.classList.add('hidden');
+        }
+    }));
+}
+
+function observeQuotes(items) {
+    items.map((item => {
+        if (item.isIntersecting) {
+            item.target.classList.remove('hidden');
+            for (i = 0; i < quotesDaddy.length; i++) {
+                if (item.target === quotesDaddy[i]) {
+                    writeText(quoteElements[i], i);
+                }
+            }
+        } else {
+            item.target.classList.add('hidden');
+        }
+    }));
+}
+
+function textPosition() {
+    for (let i = 0; i < quoteElements.length; i++) {
+        if (isPortraitOrientation()) {
+            quoteElements[i].style.left = "5%";
+            quoteElements[i].style.top = "10%";
+            quoteElements[i].style.width = "80%";
+        } else if (isMobileNav() && !isPortraitOrientation()) {
+            quoteElements[i].style.left = "5%";
+            quoteElements[i].style.top = "30%";
+            quoteElements[i].style.width = "80%";
+        } else {
+            quoteElements[i].style.left = "5%";
+            quoteElements[i].style.top = "30%";
+            quoteElements[i].style.width = "50%";
+        }
+    }
+}
+
+// // Intersection observer for quote elements
+// const quoteObserver = new IntersectionObserver((elements) => {
+//     elements.map((el) => {
+//         // Fade in and start typing
+//         if (el.isIntersecting) {
+//             el.target.classList.toggle('hidden');
+//             el.target.addEventListener('transitionend', () => { writeText(el.target, 0); }, { once: true });
+//         }
+//         // Fade out and remove text
+//         else {
+//             el.target.classList.toggle('hidden');
+//             el.target.addEventListener('transitionend', () => { el.target.innerHTML = ''; }, { once: true });
+//         }
+//     });
+// });
+
+// // Intersection observer for image carousel
+// const daddyObserver = new IntersectionObserver((elements) => {
+//     for (const el of elements) {
+//         // Fade in and start carousel animation
+//         if (el.isIntersecting) {
+//             console.log("test");
+//             el.target.classList.toggle('hidden');
+//             el.target.addEventListener('transitionend', () => { console.log('start animation'); }, { once: true });
+//         }
+//         // Stop animation and fade out
+//         else {
+//             console.log('stop animation');
+//             el.target.classList.toggle('hidden');
+//         }
+//     }
+// });
 
 /*
 /*
@@ -112,7 +159,7 @@ window.addEventListener("scroll", () => {
     if ((window.pageYOffset == scrollMaxValue()) && (homeModeIndex !== 3)) {
         console.log('down active');
         switchMode(indexChange=+1);
-    } 
+    }
     // Checking if we have reached a maximum scroll value (and not at the top)
     else if ((window.pageYOffset == 0) && (homeModeIndex !== 0)) {
         console.log('up active');
@@ -167,7 +214,7 @@ function imagesQuoteTransition(indexChange) {
 }
 */
 
-/* 
+/*
 // Switch mode on scroll
 window.addEventListener("scroll", () => {
     scrollSwitch();
@@ -202,7 +249,7 @@ function contentTransition(currentContent, newContent) {
 // Typing effect function
 async function writeText(textString, id, timeOut) {
     // Run only if the function is not already running
-    if(!writeText.isRunning) {  
+    if(!writeText.isRunning) {
         const textElement = document.getElementById(id);
         // Loops through the text and types it out
         for (let i = 0; i < textString.length; i++) {
@@ -211,7 +258,7 @@ async function writeText(textString, id, timeOut) {
         }
         await new Promise(r => setTimeout(r, timeOut));
         writeText.isRunning = true;
-    } else { 
+    } else {
     }
 }
 
