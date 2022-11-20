@@ -143,6 +143,7 @@
     animation: niclasIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
     z-index: 10;
+    pointer-events: none;
 }
 
 #contentContainer {
