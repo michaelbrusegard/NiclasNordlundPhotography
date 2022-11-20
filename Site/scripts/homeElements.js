@@ -1,4 +1,5 @@
 // Typing effect function
+//https://www.w3schools.com/howto/howto_js_typewriter.asp
 async function writeText(element, quoteIndex) {
     // Loops through the text and types it out
     if ((!isTyping) && (!isFinishedTyping[quoteIndex])) {
