@@ -186,7 +186,7 @@
     position: relative;
     align-items: center;
     width: 100vw;
-    transition: opacity var(--transitionLength) var(--transitionLength) linear;
+    transition: opacity var(--transitionLength) linear;
     user-select: none;
     scroll-snap-align: start;
     scroll-snap-stop: always;
