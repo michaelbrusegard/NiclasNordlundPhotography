@@ -12,10 +12,10 @@ const style = getComputedStyle(document.body);
 
 // Gets the div containing the images and the images
 const imageDaddy = document.querySelector('#imageDaddy')
-const images = document.querySelectorAll('#imageDaddy img');
+const images = document.querySelectorAll('#imageDaddy .image');
 
 // Interval time for the carousel in ms and which images is displayed
-const intervalTime = 5000
+const intervalTime = 8000
 let imageDisplayed = 0
 
 // Animation when DOM is loaded

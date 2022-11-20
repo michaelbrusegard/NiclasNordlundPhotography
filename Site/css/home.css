@@ -146,8 +146,8 @@
 }
 
 #contentContainer {
-    padding-top: var(--navContainerHeight);
-    padding-bottom: var(--navContainerHeight);
+    margin-top: var(--navContainerHeight);
+    margin-bottom: var(--navContainerHeight);
     height: 100vh;
     width: 100vw;
 }
@@ -178,24 +178,51 @@ p {
 
 #imageDaddy {
     position: relative;
-    align-items: center;
     height: 100%;
     width: 100%;
     transition: all var(--transitionLength) linear;
     user-select: none;
 }
 
-#imageDaddy img {
+#imageDaddy .image {
     position: absolute;
     visibility: hidden;
     pointer-events: none;
-    width: 100%;
-    height: 100%; 
-    object-fit: contain;
-    border-radius: var(--imageBorderRadius);
-    box-shadow: var(--shadow);
-    user-select: none;
-} 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#home1 {
+    background-image: url(../img/home/home1.jpg);
+}
+
+#home2 {
+    background-image: url(../img/home/home2.jpg);
+}
+
+#home3 {
+    background-image: url(../img/home/home3.jpg);
+}
+
+#home4 {
+    background-image: url(../img/home/home4.jpg);
+}
+
+#home5 {
+    background-image: url(../img/home/home5.jpg);
+}
+
+#home6 {
+    background-image: url(../img/home/home6.jpg);
+}
+
+#home7 {
+    background-image: url(../img/home/home7.jpg);
+}
+
+#home8 {
+    background-image: url(../img/home/home8.jpg);
+}
 
 .imageIn {
     animation: slideIn var(--transitionLength);
