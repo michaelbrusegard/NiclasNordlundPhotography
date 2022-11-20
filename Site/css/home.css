@@ -149,8 +149,8 @@
 }
 
 #contentContainer {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
@@ -166,7 +166,6 @@
 .quotesDaddy {
     position: relative;
     width: 100vw;
-    width: auto;
     user-select: none;
     transition: all var(--transitionLength) ease-out;
     scroll-snap-align: start;
