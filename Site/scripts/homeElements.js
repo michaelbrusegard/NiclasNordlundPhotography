@@ -1,10 +1,10 @@
 
 // Text to be displayed on the home page
-const quoteText = ["Born in Mariehamn in 1965, Niclas always had an interest in animals and nature.",
-    `Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance photographer. 
-Besides the photography itself, Niclas also creates pictures to hang on your wall, postcards, jigsaw puzzles and other products 
+const quoteText = ['Born in Mariehamn in 1965, Niclas always had an interest in animals and nature.', 
+'Photography was always there as a hobby, but in 2018, he took the step to become a full time freelance photographer.',
+`Besides the photography itself, Niclas also creates pictures to hang on your wall, postcards, jigsaw puzzles and other products 
 showing the beautiful landscapes, nature and animals of the Åland Islands.`,
-    "In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs."];
+'In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs.'];
 
 // Adjust the speed parameters of the typing animations
 const slowTyping = 32;
@@ -12,7 +12,7 @@ const fastTyping = 8;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
-let isFinishedTyping = [false, false, false];
+let isFinishedTyping = Array(4).fill(false);
 
 
 // Adjust the speed of the typing animation
