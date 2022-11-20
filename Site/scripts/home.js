@@ -14,11 +14,11 @@ const style = getComputedStyle(document.body);
 const contentContainer = document.getElementById('contentContainer');
 
 // Gets the divs with the quotes and the quotes p
-const quotesDaddy = document.querySelectorAll('.quotesDaddy')
+const quotesDaddy = document.querySelectorAll('.quotesDaddy');
 const quoteElements = document.querySelectorAll('.quotesDaddy p');
 
 // Gets the div containing the images and the images
-const imageDaddy = document.querySelector('#imageDaddy')
+const imageDaddy = document.querySelector('#imageDaddy');
 const images = document.querySelectorAll('#imageDaddy img');
 
 // Interval time for the carousel in ms and which images is displayed

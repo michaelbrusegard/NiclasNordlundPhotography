@@ -7,8 +7,8 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
     "In 2022, he received the award for Post Card Artist of the Year in Finland, and today he has around 40 different post card designs."];
 
 // Adjust the speed parameters of the typing animations
-const slowTyping = 35;
-const fastTyping = 5;
+const slowTyping = 32;
+const fastTyping = 8;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
@@ -16,14 +16,16 @@ let isFinishedTyping = [false, false, false];
 
 
 // Adjust the speed of the typing animation
-for (const element of quoteElements) {
+for (const element of document.querySelectorAll('.quotesDaddy')) {
     element.addEventListener('click', () => {
         if (isFast) {
             timeOutLength = slowTyping;
             isFast = false;
+            console.log('slow');
         } else {
             timeOutLength = fastTyping;
             isFast = true;
+            console.log('fast');
         }
     });
 }
@@ -31,7 +33,6 @@ for (const element of quoteElements) {
 // Writes the initial text
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded');
-    window.scrollTo(0, 0);
     writeText(quoteElements[0], 0);
 });
 
