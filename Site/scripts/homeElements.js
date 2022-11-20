@@ -21,7 +21,9 @@ async function writeText(element, quoteIndex) {
 function observeHome() {
     const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.5 });
     const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.5 });
+    const bottomObserver = new IntersectionObserver(observeBottom);
     carouselObserver.observe(imageDaddy);
+    bottomObserver.observe(scrolledBottom);
     for (let i = 0; i < quotesDaddy.length; i++) {
         quotesObserver.observe(quotesDaddy[i]);
     }
@@ -55,6 +57,15 @@ function observeQuotes(items) {
     }));
 }
 
+// Observing scrolled bottom div
+function observeBottom(items) {
+    items.map((item => {
+        if (item.isIntersecting) {
+            scrollTo(0, 0);
+        } 
+    }));
+}
+
 // Adjust the text position based on screen width and orientation
 function textPosition() {
     for (let i = 0; i < quoteElements.length; i++) {
@@ -77,8 +88,7 @@ function textPosition() {
 // Adjust the element height based on innerheight minus navbar and footer
 function elementsPosition() {
     const containerHeight = String(window.innerHeight - 2 * parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2))) + 'px';
-    imageDaddy.style.height = containerHeight
-    console.log(containerHeight)
+    imageDaddy.style.height = containerHeight;
     for (let i = 0; i < quotesDaddy.length; i++) {
         quotesDaddy[i].style.height = containerHeight
     }

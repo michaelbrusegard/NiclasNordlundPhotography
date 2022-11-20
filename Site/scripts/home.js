@@ -21,6 +21,9 @@ const quoteElements = document.querySelectorAll('.quotesDaddy p');
 const imageDaddy = document.querySelector('#imageDaddy');
 const images = document.querySelectorAll('#imageDaddy img');
 
+// Gets bottom div
+const scrolledBottom = document.querySelector('#scrolledBottom');
+
 // Interval time for the carousel in ms and which images is displayed
 const intervalTime = 5000
 let imageDisplayed = 0
@@ -34,7 +37,7 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 
 // Adjust the speed parameters of the typing animations
 const slowTyping = 32;
-const fastTyping = 8;
+const fastTyping = 4;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
@@ -47,11 +50,9 @@ for (const element of quotesDaddy) {
         if (isFast) {
             timeOutLength = slowTyping;
             isFast = false;
-            console.log('slow');
         } else {
             timeOutLength = fastTyping;
             isFast = true;
-            console.log('fast');
         }
     });
 }
