@@ -231,11 +231,31 @@
     bottom: 0;
 }
 
-#checkoutTotalDisplay {
+#checkoutInfo {
+    display: flex;
     margin: var(--shopDisplayMargin);
     font-family: 'Noto Sans Mono', sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
+    justify-content: space-between;
+}
+
+#checkoutTotalDisplay {
+    display: inline-block;
+}
+
+#infoButton {
+    right: 0;
+    display: inline-block;
+    background-color: var(--pageColor);
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 1.5em;
+    text-align: center;
+}
+
+#infoButton:hover {
+    background-color: var(--expandedPageColor);
 }
 
 #checkoutButton {

@@ -1095,8 +1095,10 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Fetching the checkout menu and shopping cart button elements
 const checkoutMenu = document.getElementById('checkoutMenu');
+const infoButton = document.getElementById('infoButton');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 const redDots = document.querySelectorAll('.redDot');
+const infoText = 'INFO: Upon purchase you will receive a full quality digital copy of the photo.';
 
 // Keeping track of the checkout elements
 const checkoutButton = document.getElementById('checkoutButton');
@@ -1150,6 +1152,10 @@ cartButtons.forEach(el => el.addEventListener('click', event => {
             `${style.getPropertyValue('--checkoutMenuZindex')*scale}`);
     }, {once: true});
 }));
+
+infoButton.addEventListener('click', () => {
+    alert(infoText);
+})
 
 // Logs the current checkout items to alert
 checkoutButton.addEventListener('click', () => {
