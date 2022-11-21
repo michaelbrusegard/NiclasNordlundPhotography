@@ -8,15 +8,13 @@ async function writeText(element, quoteIndex) {
         for (let i = 0; i < textString.length; i++) {
             if (quotesDaddy[quoteIndex].className.endsWith('hidden')) {
                 element.innerHTML = textString
-                nextIndex = quoteIndex + 1;
                 break
             }
             element.innerHTML += textString.charAt(i);
             await new Promise(r => setTimeout(r, timeOutLength));
         }
-        nextIndex = quoteIndex + 1;
         if (!isFast) {
-            setTimeout(() => {scrollToNextQuote(nextIndex)}, intervalTime)
+            setTimeout(() => {scrollToNextQuote(currentIndex + 1)}, intervalTime)
         }
 
         timeOutLength = slowTyping;
