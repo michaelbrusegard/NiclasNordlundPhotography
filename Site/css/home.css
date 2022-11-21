@@ -179,6 +179,7 @@
     font-weight: bold;
     color: #fff;
     backdrop-filter: blur(0px); 
+    filter: drop-shadow(var(--shadow));
 }
 
 #imageDaddy {
