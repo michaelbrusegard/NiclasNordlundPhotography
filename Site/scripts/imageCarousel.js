@@ -48,19 +48,29 @@ function removeImage(index) {
 
 // Function to adjust the images position
 function imagePosition() {
+    // Size variables
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+    const navContainerHeight = parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2))
+
+    // Padding
+    const generalWidthPadding = String(0.05 * windowWidth) + "px";
+    const generalHeightPadding = String(0.05 * windowHeight + navContainerHeight) + "px";
+    const specialWidthPadding = String(0.40 * windowWidth) + "px";
+    const specialHeightPadding = String(0.40 * windowHeight + navContainerHeight) + "px";
     // For every image
     images.forEach(image => {
         // Change the padding based on if it is portrait or landscape
         if (isPortraitOrientation()) {
-            image.style.paddingLeft = "5%";
-            image.style.paddingRight = "5%";
-            image.style.paddingBottom = "65%";
-            image.style.paddingTop = "5%";
+            image.style.paddingLeft = generalWidthPadding;
+            image.style.paddingRight = generalWidthPadding;
+            image.style.paddingBottom = specialHeightPadding;
+            image.style.paddingTop = generalHeightPadding;
         } else {
-            image.style.paddingLeft = "5%";
-            image.style.paddingRight = "30%";
-            image.style.paddingBottom = "5%";
-            image.style.paddingTop = "5%";
+            image.style.paddingLeft = generalWidthPadding;
+            image.style.paddingRight = specialWidthPadding;
+            image.style.paddingBottom = generalHeightPadding;
+            image.style.paddingTop = generalHeightPadding;
         }
     });
 }
