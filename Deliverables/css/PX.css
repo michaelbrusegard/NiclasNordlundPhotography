@@ -29,6 +29,18 @@ p, ul, h4 {
     text-align: left;
 }
 
+a:link {
+    color:springgreen
+}
+
+a:hover {
+    color:greenyellow
+}
+
+a:visited {
+    color:seagreen
+}
+
 #coverPhoto {
     max-width: 100%;
     border: 4px solid #555;
