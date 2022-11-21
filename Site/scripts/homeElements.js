@@ -13,11 +13,22 @@ async function writeText(element, quoteIndex) {
             element.innerHTML += textString.charAt(i);
             await new Promise(r => setTimeout(r, timeOutLength));
         }
+        nextIndex = quoteIndex + 1;
+        if (!isFast) {
+            setTimeout(() => {scrollToNextQuote(nextIndex)}, intervalTime)
+        }
+
         timeOutLength = slowTyping;
         isFast = false;
         isTyping = false;
         isFinishedTyping[quoteIndex] = true;
     }
+}
+
+// Function that scrolls into next div when quote is finished
+function scrollToNextQuote(index) {
+    if (index === quotesDaddy.length) {imageDaddy.scrollIntoView()}
+    else {quotesDaddy[index].scrollIntoView()}
 }
 
 // Creates observers for home elements and starts observing them
@@ -50,6 +61,7 @@ function observeQuotes(items) {
             for (i = 0; i < quotesDaddy.length; i++) {
                 if (item.target === quotesDaddy[i]) {
                     // Start writing text
+                    currentIndex = i
                     writeText(quoteElements[i], i);
                 }
             }
