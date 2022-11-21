@@ -37,7 +37,6 @@ body::-webkit-scrollbar {
     --mobileNavSize: 768px;
 
     /* General */
-
     --fontColor: black;
     --fontSize: 22px;
     --shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
