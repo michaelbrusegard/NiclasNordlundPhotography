@@ -5,8 +5,6 @@
     width: 100%;
     animation: transitionIn calc(var(--transitionLength) * 2);
     animation-timing-function: ease-in;
-    margin-top: var(--navContainerHeight);
-    margin-bottom: var(--navContainerHeight);
 }
 
 /* Wallpaper */
@@ -155,9 +153,9 @@
     scroll-snap-type: y mandatory;
 }
 
-#contentContainer::-webkit-scrollbar {
+/* #contentContainer::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .hidden {
     opacity: 0;
@@ -166,6 +164,7 @@
 .quotesDaddy {
     position: relative;
     width: 100vw;
+    height: 100vh; 
     transition: all var(--transitionLength) ease-out;
     user-select: none;
     scroll-snap-align: start;
@@ -186,6 +185,7 @@
     position: relative;
     align-items: center;
     width: 100vw;
+    height: 100vh; 
     transition: opacity var(--transitionLength) linear;
     user-select: none;
     scroll-snap-align: start;
@@ -204,6 +204,11 @@
 } 
 
 #scrolledBottom {
+    width: 100vw;
+    height: 100vh; 
+}
+
+#scrolledTop {
     width: 100vw;
     height: 100vh; 
 }

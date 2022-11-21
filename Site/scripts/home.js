@@ -21,9 +21,6 @@ const quoteElements = document.querySelectorAll('.quotesDaddy p');
 const imageDaddy = document.querySelector('#imageDaddy');
 const images = document.querySelectorAll('#imageDaddy img');
 
-// Gets bottom div
-const scrolledBottom = document.querySelector('#scrolledBottom');
-
 // Interval time for the carousel in ms and which images is displayed
 const intervalTime = 5000
 let imageDisplayed = 0
@@ -69,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
   slideTransition(nav, shopNav, navigatedFromShop);
   console.log(window.scrollY); 
   getNiclasLeftPx(); imagePosition(); textPosition(); 
-  imageCarousel(); elementsPosition(); observeHome(); 
+  imageCarousel(); observeHome(); 
   });
 
-window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); textPosition(); elementsPosition(); });
-window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); textPosition(); elementsPosition();});
+window.addEventListener("resize", () => {getNiclasLeftPx(); imagePosition(); textPosition();});
+window.addEventListener("orientationChange", () => {getNiclasLeftPx(); imagePosition(); textPosition();});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});
