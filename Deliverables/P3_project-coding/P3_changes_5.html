@@ -16,7 +16,7 @@
     <header>
         <h1>P3 Project Coding</h1>
         <h3>Otto Fearnley, Magnus Hansen Åsheim, Martin Vågseter Jakobsen, Erik Olsen Bøhle og Michael Brusegard</h3>
-        <h3>12. november 2022</h3>
+        <h3>21. november 2022</h3>
     </header>
     <div id='boxCoverPhoto'>
         <img id='coverPhoto' src='../img/duck.jpg' alt='Cover image'> 
@@ -31,14 +31,6 @@
     <br>
     <section>
         <h2>Site Location</h2>
-        <p>
-            <!-- Task description, keep temporarily while writing -->
-            <em>
-                The P3_changes.html file should contain a LINK to the start page for your website. This will
-                help the teaching assistant to know where to start on your site, because the project directory
-                may consist of many files.
-            </em>
-        </p>
         <p>
             Our website can be found at Michael's 
             <a href="https://folk.ntnu.no/michbrus/NiclasNordlundPhotography/Site/home.html" target="_blank">folk.ntnu</a> 
@@ -61,13 +53,23 @@
                 the example for P3 below.
             </em>
         </p>
+        <p>
+            The current state of the website is generally what we envisioned in the 
+            <a href='../P2_project-design/P2_design_5.html'>design phase</a>, 
+            but the way it was implemented into each file turned out very different from what we initially planned.
+        </p>
         <h4>Changes to HTML files</h4>
         <p>
-            Write here.
+            Most of the HTML files now look very similar, where we have the navbar header, footer, and one general 
+            page container div inbetween. Each page contains a lot of images, so instead of placing them in one-by-one in 
+            the HTML files, we instead load it in from separate JavaScript files. This way, if we want to add new images,
+            we can just update an array in JavaScript instead of hard coding many lines in the HTML. The HTML files differ
+            in some respects, where for instance we have elements for the checkout menu in only in shop.html, a gallery only 
+            on the showcase pages, and quote elements for the home page.
         </p>
         <h4>Changes to CSS files</h4>
         <p>
-            Write here.
+            Some of the 
         </p>
         <h4>Changes to JavaScript files</h4>
         <p>
@@ -132,6 +134,8 @@
         <p> All project files are contained under a "Site" directory on the folk.ntnu servers. 
             The final project hierarchy is structured as follows:</p>
         <div class='planStructure'>
+            
+        Site/
             <ul>
                 <li><div>animals.html</div></li>
                 <li><div>architectural.html</div></li>
