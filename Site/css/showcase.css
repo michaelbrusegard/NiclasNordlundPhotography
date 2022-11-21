@@ -50,7 +50,8 @@ main {
   display: flex;
   flex-direction: row;
   gap: calc(var(--imageMargin) / 2);
-  margin: calc(var(--navContainerHeight) + var(--imageMargin));
+  padding-top: calc(var(--navContainerHeight) + var(--imageMargin));
+  padding-bottom: calc(var(--navContainerHeight) + var(--imageMargin));
   margin-left: var(--sideWrapperMargin);
   margin-right: var(--sideWrapperMargin);
 }

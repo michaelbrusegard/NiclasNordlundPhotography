@@ -1,4 +1,4 @@
-// Array for image path and dimensions
+// Arrays for image path and dimensions
 const filesAnimals = [
     [
         "animals01.jpg",
@@ -96,7 +96,6 @@ const filesAnimals = [
         1046
     ]
 ];
-
 const filesArchitectural = [
     [
         "architectural01.jpg",
@@ -194,7 +193,6 @@ const filesArchitectural = [
         1063
     ]
 ];
-
 const filesNature = [
     [
         "nature01.jpg",
@@ -282,8 +280,6 @@ const filesNature = [
         904
     ]
 ];
-
-// Array for image path and dimensions
 const filesPortrait = [
     [
         "portrait01.jpg",
@@ -366,8 +362,6 @@ const filesPortrait = [
         895
     ]
 ];
-
-// Array for image path and dimensions
 const filesSport = [
     [
         "sport01.jpg",
@@ -460,8 +454,6 @@ const filesSport = [
         850
     ]
 ];
-
-// Array for image path and dimensions
 const filesWedding = [
     [
         "wedding01.jpg",
@@ -480,18 +472,19 @@ const filesWedding = [
     ]
 ];
 
+// Column variables
+let columnSize = 384;
+let maxNumberColumns = 5;
+
+// Chosing array
 let page = window.location.pathname.split("/").pop().slice(0, -5);
 let files = [];
 if (page == 'animals') {files = filesAnimals;}
 else if (page == 'architectural') {files = filesArchitectural;}
-else if (page == 'nature') {files = filesNature;}
+else if (page == 'nature') {files = filesNature; columnSize *= 1.5;}
 else if (page == 'portrait') {files = filesPortrait;}
 else if (page == 'sport') {files = filesSport;}
-else if (page == 'wedding') {files = filesWedding;}
-
-// Column variables
-const columnSize = 384;
-const maxNumberColumns = 5;
+else if (page == 'wedding') {files = filesWedding; columnSize *= 1.5;}
 
 // Create an observer for showcaseFadeOnscroll
 const addImagesFadeOnScroll = new IntersectionObserver(showcaseFadeOnscroll);

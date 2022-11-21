@@ -153,9 +153,9 @@
     scroll-snap-type: y mandatory;
 }
 
-/* #contentContainer::-webkit-scrollbar {
+#contentContainer::-webkit-scrollbar {
     display: none;
-} */
+}
 
 .hidden {
     opacity: 0;
