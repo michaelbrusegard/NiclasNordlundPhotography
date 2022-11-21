@@ -19,75 +19,29 @@ function loadImages(files) {
   // Gets all the new columns
   const columns = document.getElementsByClassName('column');
 
-  // Adds all images into correct columns based on how many columns there should be and which one is the shortest
+  // Variables to skip big photos when placing into columns
+  let bigPhotoIndexArray = []; 
+  let extraValue = 0;
+  let skipBigPhoto = true;
+
   for (let i = 0; i < totalImages; i++) {
+    // Get current image
     const img = createContainer(files[i]);
-    columns[i % columnsMax].appendChild(img);
+    // Mark as big photo
+    if (files[i][1] < files[i][2]) {
+      bigPhotoIndexArray.push(i % columnsMax);
+      skipBigPhoto = false;
+    }
+    // If we are at the big photo index from the previous iteration, go one column further 
+    if ((bigPhotoIndexArray.includes(i % columnsMax)) && skipBigPhoto) {
+      bigPhotoIndexArray.shift();
+      extraValue += 1;
+    }
+    // Append to column
+    columns[(extraValue + i) % columnsMax].appendChild(img);
+    skipBigPhoto = true;
   }
 }
-
-// let bigPhoto = false
-// let currentImg = 0
-// for (let i = 0; i < totalImages; i++) {
-//   const img = createContainer(files[i]);
-//   if (bigPhoto) {
-//     currentImg += 1
-//   }
-//   columns[currentImg % columnsMax].appendChild(img);
-//   bigPhoto = false
-//   if (files[i][1] < files[i][2]) {
-//     bigPhoto = true;
-//   }
-// }
-
-
-// // Finds the shortest column
-// function findColumn(columns) {
-//   let shortestColumn = 0;
-//   // For every column
-//   for (let i = 0; i < columns.length; i++) {
-//     const columnHeight = calculateColumnHeight(columns[i]);
-//     const shortestColumnHeight = calculateColumnHeight(columns[shortestColumn]);
-//     // Compares current column size to the shortest one and if it is shorter set it as the shortest column
-//     if (columnHeight < shortestColumnHeight) {
-//       shortestColumn = i;
-//     }
-//   }
-//   return shortestColumn;
-// }
-
-// // Calculates the column height using image height
-// function calculateColumnHeight(column) {
-//   let columnHeight = 0;
-//   for (let i = 0; i < column.childElementCount; i++) {
-//     console.log(`Image width: ${files[i][1]}`);
-//     console.log(`Image height: ${files[i][2]}`);
-//     console.log(`Column height: ${columnHeight} before`);
-//     columnHeight += files[i][2];
-//     console.log(`Column height: ${columnHeight} after`);
-//   }
-//   return columnHeight;
-// }
-
-/*
-// Calculates the column height using image height
-function calculateColumnHeight(column) {
-  console.log(column);
-  let columnHeight = 0;
-  let index = 0;
-  column.childNodes.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    console.log(rect);
-    const ratio = (rect.left - rect.right) / files[index][1];
-    const imageHeight = ratio * files[index][2];
-    console.log(`imageheight: ${imageHeight}`);
-    columnHeight +=  imageHeight;
-    console.log(`columnheight: ${columnHeight}`)
-    index += 1;
-  });
-  return columnHeight;
-}
-*/
 
 // Calculate how many columns there is space for
 function getColumns() {
