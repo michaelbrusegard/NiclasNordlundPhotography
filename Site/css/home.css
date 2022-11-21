@@ -139,7 +139,7 @@
     bottom: var(--navContainerHeight);
     aspect-ratio: 1 / 1;
     right: 0;
-    height: 65vh;
+    height: 60vh;
     background: url(../img/home/niclas.png) center center no-repeat;
     background-size: cover;
     animation: niclasIn calc(var(--transitionLength) * 2);
@@ -228,7 +228,7 @@
 
 @media (max-width: 768px) {
     #niclasImg {
-        height: 50vh;
+        height: 40vh;
     }
     #quote { /*Test*/
         top: 10%;
