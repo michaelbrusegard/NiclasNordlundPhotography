@@ -39,7 +39,7 @@ const fastTyping = 8;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
-let isFinishedTyping = Array(5).fill(false);
+let isFinishedTyping = Array(quotesDaddy.length).fill(false);
 let firstClick = true;
 let nextIndex = 1;
 let firstClickAfterQuote = false;
@@ -72,7 +72,6 @@ for (const element of quotesDaddy) {
 // Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   slideTransition(nav, shopNav, navigatedFromShop);
-  console.log(window.scrollY);
   getNiclasLeftPx(); imagePosition(); textPosition();
   imageCarousel(); observeHome();
 });
@@ -94,6 +93,7 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 scrollTopButtons.forEach(el => {
   el.addEventListener('click', event => {
     event.preventDefault();
+    nextIndex = 1;
     quotesDaddy[0].scrollIntoView({ behavior: "smooth" });
   });
 });
