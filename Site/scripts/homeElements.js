@@ -7,6 +7,10 @@ async function writeText(element, quoteIndex) {
         element.innerHTML = '';
         const textString = quoteText[quoteIndex];
         for (let i = 0; i < textString.length; i++) {
+            if (quotesDaddy[quoteIndex].className.endsWith('hidden')) {
+                element.innerHTML = textString
+                break
+            }
             element.innerHTML += textString.charAt(i);
             await new Promise(r => setTimeout(r, timeOutLength));
         }
@@ -51,8 +55,6 @@ function observeQuotes(items) {
                 }
             }
         } else {
-            console.log('iskrem2')
-            timeOutLength = transitionTyping;
             item.target.classList.add('hidden');
         }
     }));
