@@ -34,8 +34,7 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 
 // Adjust the speed parameters of the typing animations
 const slowTyping = 32;
-const fastTyping = 4;
-const transitionTyping = 0;
+const fastTyping = 8;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
@@ -43,23 +42,17 @@ let isFinishedTyping = Array(4).fill(false);
 
 
 // Adjust the speed of the typing animation
-// for (const element of quotesDaddy) {
-//     element.addEventListener('click', () => {
-//         if (isFast) {
-//             timeOutLength = slowTyping;
-//             isFast = false;
-//         } else {
-//             timeOutLength = fastTyping;
-//             isFast = true;
-//         }
-//     });
-// }
-/*
-contentContainer.addEventListener('scroll', () => {
- console.log('scrolling')
-  timeOutLength = fastTyping;
-})
-*/
+for (const element of quotesDaddy) {
+    element.addEventListener('click', () => {
+        if (isFast) {
+            timeOutLength = slowTyping;
+            isFast = false;
+        } else {
+            timeOutLength = fastTyping;
+            isFast = true;
+        }
+    });
+}
 
 // Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
