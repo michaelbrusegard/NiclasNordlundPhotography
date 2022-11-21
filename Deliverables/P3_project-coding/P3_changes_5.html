@@ -41,64 +41,74 @@
     <section>
         <h2>The Changes</h2>
         <p>
-            <!-- Task description, keep temporarily while writing -->
-            <em>
-                This document should detail and
-                justify all substantive changes from your design so that we will not think it was just a mistake
-                or oversight. Although your site should match the design in most details, we understand that
-                you are still learning web design, so you will probably discover that you will want to change
-                some of your design decisions by the time you get to the coding phase. Similarly, your client
-                may make some changes during this time. Your document does not need to be as long and
-                elaborate as your design document (P2), but it should clearly describe what changed. See
-                the example for P3 below.
-            </em>
-        </p>
-        <p>
             The current state of the website is generally what we envisioned in the 
             <a href='../P2_project-design/P2_design_5.html'>design phase</a>, 
             but the way it was implemented into each file turned out very different from what we initially planned.
+            A general trend was that we moved content from HTML to be loaded in JavaScript, and animations split intro
+            both CSS and JavaScript. Many of the planned files were either renamed or merged into one bigger file.
         </p>
-        <h4>Changes to HTML files</h4>
+        <h4>Changes to HTML file setup</h4>
         <p>
             Most of the HTML files now look very similar, where we have the navbar header, footer, and one general 
-            page container div inbetween. Each page contains a lot of images, so instead of placing them in one-by-one in 
-            the HTML files, we instead load it in from separate JavaScript files. This way, if we want to add new images,
-            we can just update an array in JavaScript instead of hard coding many lines in the HTML. The HTML files differ
-            in some respects, where for instance we have elements for the checkout menu in only in shop.html, a gallery only 
-            on the showcase pages, and quote elements for the home page.
+            page container div inbetween. Each showcase page contains a lot of images, so instead of placing them in one-by-one in 
+            the HTML files, we instead load it in from the JavaScript file called showcase.js. This way, if we want to add new images,
+            we can just update the arrays in JavaScript instead of hard coding many lines in the HTML. The HTML files differ
+            in some respects, where for instance we have elements for the checkout menu only in shop.html, a gallery only 
+            on the showcase pages, and quote elements only for the home page.
         </p>
         <h4>Changes to CSS files</h4>
         <p>
-            Some of the 
+            We realized that some of the animations originally planned for JavaScript could be done using CSS. An example is the fade-on-scroll
+            for the text on the home page, where we ended up using snap-scrolling and transitions in CSS instead of having a JavaScript file for it.
+            One useful feature that we did not consider during the design phase was the use of CSS variables to control the parameters of multiple 
+            elements at once. We created a file called style.css containing all these variables in one place, and use these variables across
+            the other CSS files, and sometimes in the JavaScript files.
         </p>
         <h4>Changes to JavaScript files</h4>
         <p>
-            Write here.
-        </p>
-        <h4>Files added</h4>
+            Alongside the scripts we already had planned for, we now also include some scripts dedicated to loading images, animating images on-scroll,
+            and positioning some elements that were difficult to place using CSS mediaqueries. For each section (home, showcase, shop) of the website,
+            the JavaScript files are divided into main files (home.js, showcase.js, shop.js) and secondary files (see the scripts/ directory in the 
+            organizational scheme below). The main files contain variables, eventlisteners and intersection observers, while the secondary files 
+            contain only functions that can called from the main files. 
+        </p> 
         <p>
-            Write here.
+            One direct change is that we merged the shoppingCart.js file into the checkoutSystem.js. We now use one file to control animations for 
+            the shopping cart and shop items, in addition to keeping track of the item information and price total. The checkout button displays this 
+            information in an alert box, with no payment solution added yet. We also ended up discarding the idea of a splash effect script as we 
+            felt it did not really fit the theme of the website aesthetically.
+        </p>
+        <h4>Summary of files/directories added, renamed, changed or removed</h4>
+        <p>
+            <ul>
+                <li><b>fadeOnScroll.js:</b> changed to focus on showcase images instead of home page text.</li>
+                <li><b>shoppingCart.js:</b> merged with the checkout system, file removed.</li>
+                <li><b>quotesTyping.js:</b> merged with old image carousel code, split into home.js and homeElements.js.</li>
+                <li><b>splashOnClick.js:</b> removed as explained above.</li>
+                <li><b>nav.js:</b> added to remember the previous page that was navigated from.</li>
+                <li><b>shop.js</b> and <b>loadShopItems.js:</b> added for lazy loading of items placed in into the shop.</li>
+                <li><b>showcase.js</b> and <b>loadShowcaseImages.js:</b> added to load the images placed into showcase galleries.</li>
+                <li><b>imageCarousel.js:</b> added to make an automatic image carousel at the bottom of the home page.</li>
+                <li><b>niclasImgPosition.js:</b> added to correctly place the home page picture of Niclas based on window size.</li>
+                <li><b>style.css:</b> added to keep CSS variables in one place.</li>
+                <li><b>footer.css:</b> added in the same way as nav.css, for the footer on each page.</li>
+                <li><b>img/symbols/:</b> renamed version of img/icons/, did not initially work on folk.ntnu servers.</li>
+                <li><b>img/shopDisplay/:</b> renamed version of img/shop/.</li>
+                <li><b>img/showcase/:</b> renamed version of img/photography/.</li>
+                <li><b>img/wallpapers/:</b> added to keep all wallpaper images in one place.</li>
+            </ul>
         </p>
     </section>
     <br>
     <section>
         <h2>Minimum Requirements</h2>
         <p>
-            <!-- Task description, keep temporarily while writing -->
-            <em>
-                How each of the team members fulfilled their minimum requirements. For example:
-                "Rachel fulfilled her JavaScript requirements with a user-defined function on intro.html
-                and rollovers on members.html. Tom validated form inputs on orform.html and
-                implemented the pull-down menu for each page".
-            </em>
-        </p>
-        <p>
             Erik, Magnus and Otto worked on the JavaScript files on the home page related to 
             the image carousel and the text. Specifically, Erik worked on the image carousel,
             Magnus worked on the text being written and Otto worked on the text disappearing
             and reappearing. Michael and Martin worked on the JavaScript files on the showcase pages, the navbar 
-            and footer, as well as the shop. Everyone worked on the tasks they were assigned in P2, but the files were later merged into 
-            files. Magnus and Otto worked on files which were merged into home.js and homeElements.js. 
+            and footer, as well as the shop. Everyone worked on the tasks they were assigned in P2, but the file names
+            were later changed. Magnus and Otto worked on files which were merged into home.js and homeElements.js. 
         </p>
     </section>
     <br>
@@ -112,9 +122,16 @@
             </em>
         </p>
         <p>
-            Navbars and footers were implemented by Michael and Martin. These were implemented
-            through separate JS files. The navbar and footer were implemented on all pages.
-            ??? MARTIN Michael VET best
+            Navbars and footers were implemented by Michael and Martin respectively. The navbar required some extra work for
+            the slide animation to work properly when animating across different pages. For this reason, the JavaScript file 
+            nav.js was made to keep track of animations and between which pages a user is navigating. This file is imported into
+            each HTML page, as are the nav.css and footer.css styling files.
+        </p>
+        <p> 
+            The main way we implemented modularity on our website was through the showcase page system. Instead of copy pasting 
+
+            In our JavaScript files we made sure to not duplicate too much code by reusing functions such as for instance 
+            isPortrait(), which checks if a user is viewing in a mobile portrait.
             
             (Focus on navbar and common css variables across files)
         </p>
@@ -157,8 +174,6 @@
                 </li>
                 <li><div>scripts/</div>
                     <ul>
-                        <li><div>animals.js</div></li>
-                        <li><div>architectural.js</div></li>
                         <li><div>checkoutSystem.js</div></li>
                         <li><div>fadeOnScroll.js</div></li>
                         <li><div>home.js</div></li>
@@ -166,14 +181,11 @@
                         <li><div>imageCarousel.js</div></li>
                         <li><div>loadShopItems.js</div></li>
                         <li><div>loadShowcaseImages.js</div></li>
-                        <li><div>nature.js</div></li>
                         <li><div>nav.js</div></li>
                         <li><div>niclasImgPosition.js</div></li>
-                        <li><div>portrait.js</div></li>
                         <li><div>shop.js</div></li>
+                        <li><div>showcase.js</div></li>
                         <li><div>slideTransition.js</div></li>
-                        <li><div>sport.js</div></li>
-                        <li><div>wedding.js</div></li>
                     </ul>
                 </li>
                 <li><div>nodeScripts/</div>
@@ -184,9 +196,9 @@
                         <ul>
                             <li><div>home1.jpg</div></li>
                             <li><div>home2.jpg</div></li>
-                            <li><div>home3.jpg</div></li>
-                            <li><div>home4.jpg</div></li>
                             <li><div>...</div></li>
+                            <li><div>home8.jpg</div></li>
+                            <li><div>niclas.jpg</div></li>
                         </ul>
                     </li>
                     <li><div>shopDisplay/</div>
@@ -202,6 +214,12 @@
                             <li><div>animals01.jpg</div></li>
                             <li><div>animals02.jpg</div></li>
                             <li><div>...</div></li>
+                            <li><div>animals19.jpg</div></li>
+                            <li><div>architectural01.jpg</div></li>
+                            <li><div>architectural02.jpg</div></li>
+                            <li><div>...</div></li>
+                            <li><div>wedding02.jpg</div></li>
+                            <li><div>wedding03.jpg</div></li>
                         </ul>
                     </li>
                     <li><div>symbols/</div>
