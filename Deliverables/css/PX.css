@@ -83,12 +83,15 @@ margin-bottom:20px;
     border-radius: 30px;
 }
 
+.planStructure {
+    text-align: left;
+}
+
 .planStructure ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
     position: relative;
-    text-align: left;
 }
 
 .planStructure li {
