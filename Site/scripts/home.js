@@ -41,8 +41,6 @@ let isFast = false;
 let isTyping = false;
 let isFinishedTyping = Array(quotesDaddy.length).fill(false);
 let firstClick = true;
-let nextIndex = 1;
-let firstClickAfterQuote = false;
 let currentIndex = 0;
 
 
@@ -51,9 +49,7 @@ for (const element of quotesDaddy) {
   element.addEventListener('click', () => {
     if(isFinishedTyping[currentIndex]) {
       firstClick = false;
-    } else {
-      firstClickAfterQuote = true
-    }
+    } 
     if (firstClick) {
       if (isFast) {
         timeOutLength = slowTyping;
@@ -63,7 +59,7 @@ for (const element of quotesDaddy) {
         isFast = true;
       }
     } else {
-      scrollToNextQuote(nextIndex);
+      scrollToNextQuote(currentIndex + 1);
       firstClick = true;
     }
   });
@@ -76,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   imageCarousel(); observeHome();
 });
 
-window.addEventListener("resize", () => { getNiclasLeftPx(); imagePosition(); textPosition(); });
+window.addEventListener("resize", () => { getNiclasLeftPx(); imagePosition(); textPosition(); console.log(nextIndex);});
 window.addEventListener("orientationChange", () => { getNiclasLeftPx(); imagePosition(); textPosition(); });
 
 // Adds ending part of animation
@@ -93,7 +89,6 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 scrollTopButtons.forEach(el => {
   el.addEventListener('click', event => {
     event.preventDefault();
-    nextIndex = 1;
     quotesDaddy[0].scrollIntoView({ behavior: "smooth" });
   });
 });
