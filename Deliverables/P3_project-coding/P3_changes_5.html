@@ -54,7 +54,8 @@
             the HTML files, we instead load it in from the JavaScript file called showcase.js. This way, if we want to add new images,
             we can just update the arrays in JavaScript instead of hard coding many lines in the HTML. The HTML files differ
             in some respects, where for instance we have elements for the checkout menu only in shop.html, a gallery only 
-            on the showcase pages, and quote elements only for the home page.
+            on the showcase pages, and quote elements only for the home page. We achieved the look we were going for on each HTML page
+            based on what we wanted from the design phase.
         </p>
         <h4>Changes to CSS files</h4>
         <p>
@@ -79,25 +80,24 @@
             felt it did not really fit the theme of the website aesthetically.
         </p>
         <h4>Summary of files/directories added, renamed, changed or removed</h4>
-        <p>
-            <ul>
-                <li><b>fadeOnScroll.js:</b> changed to focus on showcase images instead of home page text.</li>
-                <li><b>shoppingCart.js:</b> merged with the checkout system, file removed.</li>
-                <li><b>quotesTyping.js:</b> merged with old image carousel code, split into home.js and homeElements.js.</li>
-                <li><b>splashOnClick.js:</b> removed as explained above.</li>
-                <li><b>nav.js:</b> added to remember the previous page that was navigated from.</li>
-                <li><b>shop.js</b> and <b>loadShopItems.js:</b> added for lazy loading of items placed in into the shop.</li>
-                <li><b>showcase.js</b> and <b>loadShowcaseImages.js:</b> added to load the images placed into showcase galleries.</li>
-                <li><b>imageCarousel.js:</b> added to make an automatic image carousel at the bottom of the home page.</li>
-                <li><b>niclasImgPosition.js:</b> added to correctly place the home page picture of Niclas based on window size.</li>
-                <li><b>style.css:</b> added to keep CSS variables in one place.</li>
-                <li><b>footer.css:</b> added in the same way as nav.css, for the footer on each page.</li>
-                <li><b>img/symbols/:</b> renamed version of img/icons/, did not initially work on folk.ntnu servers.</li>
-                <li><b>img/shopDisplay/:</b> renamed version of img/shop/.</li>
-                <li><b>img/showcase/:</b> renamed version of img/photography/.</li>
-                <li><b>img/wallpapers/:</b> added to keep all wallpaper images in one place.</li>
-            </ul>
-        </p>
+        <ul>
+            <li><b>fadeOnScroll.js:</b> changed to focus on showcase images instead of home page text.</li>
+            <li><b>shoppingCart.js:</b> merged with the checkout system, file removed.</li>
+            <li><b>quotesTyping.js:</b> merged with old image carousel code, split into home.js and homeElements.js.</li>
+            <li><b>splashOnClick.js:</b> removed as explained above.</li>
+            <li><b>nav.js:</b> added to remember the previous page that was navigated from.</li>
+            <li><b>shop.js</b> and <b>loadShopItems.js:</b> added for lazy loading of items placed in into the shop.</li>
+            <li><b>showcase.js</b> and <b>loadShowcaseImages.js:</b> added to load the images placed into showcase galleries.</li>
+            <li><b>imageCarousel.js:</b> added to make an automatic image carousel at the bottom of the home page.</li>
+            <li><b>niclasImgPosition.js:</b> added to correctly place the home page picture of Niclas based on window size.</li>
+            <li><b>style.css:</b> added to keep CSS variables in one place.</li>
+            <li><b>footer.css:</b> added in the same way as nav.css, for the footer on each page.</li>
+            <li><b>img/symbols/:</b> renamed version of img/icons/, did not initially work on folk.ntnu servers.</li>
+            <li><b>img/shopDisplay/:</b> renamed version of img/shop/.</li>
+            <li><b>img/showcase/:</b> renamed version of img/photography/.</li>
+            <li><b>img/wallpapers/:</b> added to keep all wallpaper images in one place.</li>
+            <li><b>nodeScripts/:</b> contains scripts used to generate the image arrays for the JavaScript implementation.</li>
+        </ul>
     </section>
     <br>
     <section>
@@ -114,39 +114,33 @@
     <br>
     <section>
         <h2>Modularity Requirement</h2>
-        <p>
-            <!-- Task description, keep temporarily while writing -->
-            <em>
-                Indicate how the modularity requirement was handled and who was responsible for
-                the implementation.
-            </em>
+        <p> 
+            The main way we implemented modularity on our website was through our use of CSS variables. The page colors, navbar 
+            height, image margins and animation/transition length defined in style.css were all commonly used throughout the other
+            CSS files instead of writing out the actual values. This made it easier for us to change the style of multiple elements
+            at once, such as the scale/color scheme etc. Michael came up with the idea to make a CSS variable file, and Martin has
+            since added more variables for different sections of the project.
+        </p>
+        <p> 
+            In our JavaScript files we made sure to not duplicate too much code by reusing functions, such as for instance the
+            isPortrait() function, which checks if a user is viewing in mobile portrait mode. For all the showcase pages, which are structurally 
+            identical, we made a single JavaScript file called showcase.js with the different image arrays in one place; instead of
+            making intersection observers for each page, we here check the file name of the current window to see which array to use.
+            The majority of the JavaScript files were written by Michael and Martin, and thus they were the ones responsible for coordinating
+            this implementation. 
         </p>
         <p>
             Navbars and footers were implemented by Michael and Martin respectively. The navbar required some extra work for
             the slide animation to work properly when animating across different pages. For this reason, the JavaScript file 
-            nav.js was made to keep track of animations and between which pages a user is navigating. This file is imported into
-            each HTML page, as are the nav.css and footer.css styling files.
+            nav.js was made to keep track of animations and between which pages a user is navigating. This single file is imported into
+            each HTML page, as are the nav.css and footer.css styling files. Instead of duplicating the navbar/footer CSS for every HTML
+            page, this approach allowed us to only define the styling once.
         </p>
-        <p> 
-            The main way we implemented modularity on our website was through the showcase page system. Instead of copy pasting 
-
-            In our JavaScript files we made sure to not duplicate too much code by reusing functions such as for instance 
-            isPortrait(), which checks if a user is viewing in a mobile portrait.
-            
-            (Focus on navbar and common css variables across files)
-        </p>
+        
     </section>
     <br>
     <section>
         <h2>Updated Organizational Scheme</h2>
-        <p>
-            <!-- Task description, keep temporarily while writing -->
-            <em>
-                Explicitly state (since it may have changed since the design document), which person
-                worked on which files, including CSS and JavaScript files, and who produced the
-                artwork (banner and button design, etc.).
-            </em>
-        </p>
         <h4>Directory structure</h4>
         <p> All project files are contained under a "Site" directory on the folk.ntnu servers. 
             The final project hierarchy is structured as follows:</p>
@@ -265,98 +259,134 @@
 			
 			<tbody>
                 <tr>
-					<td>icons</td>
-					<td>Generate icons with Dall-E 2 and photoshop them appropriately.</td>
-					<td>Otto and Michael</td>
-				</tr>
-				<tr>
-					<td>nature.html, animals.html, architectural.html, portrait.html, wedding.html, sport.html</td>
-					<td>Create display of the showcase pictures on their sites. Bigger pictures on landscape etc. 
-                        Displayed after image width.</td>
-					<td>Magnus</td>
-				</tr>
-                <tr>
-					<td>nav.css</td>
-					<td>Navigation bar styling.</td>
-					<td>Michael ?????</td>
-				</tr>
-                <tr>
-					<td>showcase images</td>
-					<td>Get the files for showcase images from Niclas.</td>
+					<td>Obtain images</td>
+					<td>Recieve and process image files from Niclas, add them to the project.</td>
 					<td>Michael</td>
 				</tr>
                 <tr>
-					<td>showcase.css</td>
-					<td>Styling for showcase pages.</td>
-					<td>Magnus</td>
-				</tr>
-                <tr>
-					<td>fadeOnScroll.js</td>
-                    <td>Extra fancy effects when scrolling on items that can not be done in css.</td>
-					<td>Michael & Otto</td>
-				</tr>
-                <tr>
-					<td>shop images</td>
-					<td>Get the files for shop images from Niclas and crop them to a small size.</td>
-					<td>Michael</td>
+					<td>Make symbols/icons</td>
+					<td>Generated icons with Dall-E 2 and photoshoped them appropriately.</td>
+					<td>Otto/Michael</td>
 				</tr>
                 <tr>
 					<td>home.html</td>
-					<td>Homepage with information about Niclas, quotes and best pictures. 
-                        Also the footer with contact info easily accesible.</td>
+					<td>Created a home page with a picture of Niclas, animated quotes, fade in-out effects
+                        an image carousel, and a snap-scrolling system between different elements.</td>
 					<td>All</td>
 				</tr>
 				<tr>
+					<td>nature.html, animals.html, architectural.html, portrait.html, wedding.html, sport.html</td>
+					<td>Created galleries of the showcase pictures on the respective sites. The images are 
+                        placed into separate columns of equal width.</td>
+					<td>Magnus/Michael</td>
+				</tr>
+                <tr>
 					<td>shop.html</td>
-					<td>Create the checkout system with shopping display and checkout cart. 
-                        Store prices and send to Stripe for checkout. (If there is time implement a 
-                        webhook to send the bought images to the customer).</td>
-					<td>Martin and Michael</td>
+					<td>Created a shopping page complete with a checkout menu, animated checkout cart,
+                        a system that keeps track of items and prices, and a button to confirm the different items
+                        and checkout total.</td>
+					<td>Martin/Michael</td>
+				</tr>
+                
+                <tr>
+					<td>style.css</td>
+					<td>File for storing CSS variables that are commonly used in other files.</td>
+					<td>Michael/Martin</td>
 				</tr>
                 <tr>
-					<td>shop.css</td>
-					<td>Shop styling.</td>
-					<td>Martin & Michael</td>
-				</tr>
-                <tr>
-					<td>??????checkoutSystem.js</td>
-					<td>System for tracking which images are added to the shopping cart ready for purchase. 
-                        This information should be sent to the payment solution on Stripe.</td>
-					<td>Martin</td>
-				</tr>
-                <tr>
-					<td>homeElements.js</td>
-					<td>Multiple scripts combined within the homeElements.js file</td>
-					<td>All</td>
-				</tr>
-                <tr>
-					<td>Writing effect</td>
-					<td>Wwriting effect for the text displayed on the home page. Found in homeElements.js</td>
-					<td>Magnus & Otto</td>
-				</tr>
-				<tr>
-					<td>Carousel</td>
-					<td>Carousel for the images dispayed on the home page. Found in homeElements.js</td>
-					<td>Erik</td>
+					<td>nav.css</td>
+					<td>Navigation bar styling and animations.</td>
+					<td>Michael</td>
 				</tr>
                 <tr>
 					<td>home.css</td>
-					<td>Homepage styling and generic styling.</td>
+					<td>Home page styling and animations.</td>
 					<td>All</td>
 				</tr>
                 <tr>
-                    <td>Scrolling effects on homepage</td>
-                    <td>JS effects on scrolling on the homepage</td>
-                    <td>Martin, Magnus & Otto</td>
-				<tr>
-					<td>shoppingCart.js</td>
-					<td>Red dot to indicate items in cart, and an animation from the item being dropped in the cart.</td>
+					<td>showcase.css</td>
+					<td>Styling and animations for showcase pages.</td>
+					<td>Magnus/Michael</td>
+				</tr>
+                <tr>
+					<td>shop.css</td>
+					<td>Shop styling and animations.</td>
+					<td>Martin/Michael</td>
+				</tr>
+                <tr>
+					<td>footer.css</td>
+					<td>Footer styling and animations.</td>
 					<td>Martin</td>
+				</tr>
+                <tr>
+					<td>checkoutSystem.js/shop.js</td>
+					<td>System for tracking which images are added to the shopping cart ready for purchase. 
+                        Animations for adding/removing items, buttom to open/close the checkout menu.
+                        Animations for the red dot on the shopping cart icon.
+                        Checkout button with an alertbox for the purchase.</td>
+					<td>Martin</td>
+				</tr>
+                <tr>
+					<td>fadeOnScroll.js</td>
+                    <td>Fade in/out effects on the images on the showcase pages.</td>
+					<td>Michael</td>
+				</tr>
+                <tr>
+					<td>home.js/homeElements.js</td>
+					<td>Home page functionality for the quote auto typing function, scroll transitions 
+                        between quotes, and the image carousel.</td>
+					<td>All</td>
+				</tr>
+				<tr>
+					<td>imageCarousel.js</td>
+					<td>Carousel for the images dispayed on the home page, the images transition in 
+                        and out from right to left while expanding and contracting in size.</td>
+					<td>Erik/Michael</td>
+				</tr>
+                <tr>
+					<td>showcase.js/loadShowcaseImages.js</td>
+					<td>Implemented lazy loading of images from arrays into galleries on the 
+                        showcase pages. Functionality to place each image into a separate column.</td>
+					<td>Martin/Michael</td>
+				</tr>
+                <tr>
+					<td>loadShopItems.js</td>
+					<td>Calculate columns, place shop items in a grid, include lazy loading, 
+                        add randomized on-scroll effect to shop items.</td>
+					<td>Michael</td>
+				</tr>
+                <tr>
+					<td>nav.js</td>
+					<td>Control when to apply the slide animation and remember which page the user navigates from.</td>
+					<td>Michael</td>
+				</tr>
+                <tr>
+					<td>niclasImgPosition</td>
+					<td>Control the position of the Niclas picture on the home page.
+                        Hard to achieve using only CSS mediaqueries.</td>
+					<td>Michael</td>
 				</tr>
 				<tr>
 					<td>slideTransition.js</td>
-					<td>Animation when going from shopping -> showcase or showcase -> shopping.</td>
-					<td>Martin and Michael</td>
+					<td>Animation when going from shopping -> home/showcase or home/showcase -> shopping.
+                        The bag icon slides across the screen while the other navbar elements fade in and out.</td>
+					<td>Michael</td>
+				</tr>
+                <tr>
+					<td>nodeScripts/</td>
+					<td>Additional scripts used to generate image arrays and parse out swedish characters from
+                        recieved image file names.</td>
+					<td>Michael</td>
+				</tr>
+                <tr>
+					<td>User testing</td>
+					<td>Make a google form and get feedback from testers.</td>
+					<td>Otto</td>
+				</tr>
+                <tr>
+					<td>Documents</td>
+					<td>Write the P3 and P4 deliverables on time.</td>
+					<td>Erik/Otto/Martin</td>
 				</tr>
                 <tr>
 					<td>Final check</td>
