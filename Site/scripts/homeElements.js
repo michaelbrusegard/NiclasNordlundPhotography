@@ -73,16 +73,14 @@ function observeQuotes(items) {
 // Adjust the text position based on screen width and orientation
 function textPosition() {
     for (let i = 0; i < quoteElements.length; i++) {
+        quoteElements[i].style.left = "5%";
         if (isPortraitOrientation()) {
-            quoteElements[i].style.left = "5%";
-            quoteElements[i].style.top = "20%";
+            quoteElements[i].style.top = "12%";
             quoteElements[i].style.width = "90%";
         } else if (isMobileNav() && !isPortraitOrientation()) {
-            quoteElements[i].style.left = "5%";
             quoteElements[i].style.top = "25%";
-            quoteElements[i].style.width = "90%";
+            quoteElements[i].style.width = "80%";
         } else {
-            quoteElements[i].style.left = "5%";
             quoteElements[i].style.top = "35%";
             quoteElements[i].style.width = "50%";
         }
