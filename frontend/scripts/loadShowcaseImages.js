@@ -88,8 +88,8 @@ function createContainer(file) {
 const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Eventlistener for scroll-back-to-top button
-scrollTopButtons.forEach(el => {
-  el.addEventListener('click', event => {
+scrollTopButtons.forEach(element => {
+  element.addEventListener('click', event => {
   event.preventDefault();
   document.documentElement.scrollTo({
       top: 0,

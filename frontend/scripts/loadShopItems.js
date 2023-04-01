@@ -75,12 +75,7 @@ function createContainer(pricesArray) {
 
     // Name
     let p = document.createElement('p');
-    let name = pricesArray[0];
-    if (name.charAt(name.length - 5) == '_'){
-        p.textContent = pricesArray[0].slice(0, - 5);
-    } else {
-        p.textContent = pricesArray[0].slice(0, -4);
-    }
+    p.textContent = pricesArray[0];
     p.classList.add('name');
 
     // Container

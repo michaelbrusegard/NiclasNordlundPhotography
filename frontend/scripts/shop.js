@@ -1098,7 +1098,7 @@ const checkoutMenu = document.getElementById('checkoutMenu');
 const infoButton = document.getElementById('infoButton');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 const redDots = document.querySelectorAll('.redDot');
-const infoText = 'INFO: Upon purchase you will receive a full quality digital copy of the photo.';
+const infoText = 'Upon purchase you will receive a full quality digital copy of the photo.';
 
 // Keeping track of the checkout elements
 const checkoutButton = document.getElementById('checkoutButton');
@@ -1132,11 +1132,11 @@ getLinkIcon(getCurrentNavElement(nav), 'linkBag').addEventListener('animationend
 getLinkIcon(getCurrentNavElement(nav), 'linkSignature').addEventListener('animationend', () => {removeAnimationEndOnNavElements(nav)});
 
 // Check when the current bag icons are clicked
-Array.from(shopNav.children).forEach(el => {getLinkIcon(el, 'linkBag').addEventListener('click', event => {
+Array.from(shopNav.children).forEach(element => {getLinkIcon(element, 'linkBag').addEventListener('click', event => {
     event.preventDefault(); redirectToLastLink(navigatedFromShowcaseOrHome);});});
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
-cartButtons.forEach(el => el.addEventListener('click', event => {
+cartButtons.forEach(element => element.addEventListener('click', event => {
     event.preventDefault();
     alignCheckout();
     // Check which scale we want to set the new z-index with
@@ -1159,21 +1159,32 @@ infoButton.addEventListener('click', () => {
 
 // Logs the current checkout items to alert
 checkoutButton.addEventListener('click', () => {
-    let n = 1;
-    let alertString = `Total number of items: ${itemNumber}\n\n`
+    const itemsToPurchase = []
     for (const item of addedItems) {
-        const name = item.children[2].innerHTML
+        const name = item.children[2].innerHTML;
         const price = item.children[1].innerHTML;
-        alertString += `Item ${n}: \nName: ${name}\nPrice: ${price}\n\n`;
-        n += 1;
+        itemsToPurchase.push([name, price.slice(0, -1)])
     }
-    alertString += `Total cost at checkout: ${checkoutTotal}€`;
-    alert(alertString);
-});
+
+    fetch('/checkout-session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(itemsToPurchase),
+    }).then(response => {
+        if (response.ok) return response.json();
+        return response.json().then(json => Promise.reject(json));
+    }).then(({ url }) => {
+        window.location = url;
+    }).catch(e => {
+        console.error(e.error);
+    });
+})
 
 // Eventlistener for scroll-back-to-top button
-scrollTopButtons.forEach(el => {
-    el.addEventListener('click', event => {
+scrollTopButtons.forEach(element => {
+    element.addEventListener('click', event => {
     event.preventDefault();
     document.documentElement.scrollTo({
         top: 0,
