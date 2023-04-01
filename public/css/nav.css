@@ -24,7 +24,10 @@ nav .mobileNav {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 nav .desktopNav li a,
@@ -35,7 +38,8 @@ nav .mobileNav li a {
     font-family: 'Caveat', cursive;
     font-weight: 400;
     font-size: var(--fontSize);
-    filter: drop-shadow(var(--shadow));
+    -webkit-filter: drop-shadow(var(--shadow));
+            filter: drop-shadow(var(--shadow));
     opacity: 1;
     transition: opacity var(--transitionLength);
 }
@@ -215,6 +219,9 @@ nav .mobileNav {
     text-align: center;
     vertical-align: middle;
     line-height: 1.5em;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     opacity: 0;
 }

@@ -1,20 +1,24 @@
 /* Slide transition */
 
 .fadeOutAnimation {
-    animation: fadeOut calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
+            animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
 .fadeInAnimation {
-    animation: fadeIn var(--transitionLength) linear;
+    -webkit-animation: fadeIn var(--transitionLength) linear;
+            animation: fadeIn var(--transitionLength) linear;
 }
 
 .linkBagAnimation {
-    animation: transitionBag calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
+            animation: transitionBag calc(var(--transitionLength) * 2) linear;
 }
 
 @media (min-width: 1100px) {
     .linkBagAnimation {
-        animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+        -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+                animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
     }
 }
 
@@ -27,6 +31,20 @@
 }
 
 /* Navigation bar animations */
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 
 @keyframes fadeOut {
     0% {
@@ -42,6 +60,16 @@
     }
 }
 
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -52,9 +80,21 @@
     }
 }
 
+@-webkit-keyframes transitionBag {
+    to {
+        transform: translateX(calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize)));
+    }
+}
+
 @keyframes transitionBag {
     to {
         transform: translateX(calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize)));
+    }
+}
+
+@-webkit-keyframes transitionBagWide {
+    to {
+        transform: translateX(calc(-1 * var(--desktopNavSize) + var(--navPadding) * 2 + var(--menuIconSize)));
     }
 }
 
@@ -68,10 +108,23 @@
 
 .scaleFadeIn {
     pointer-events: none;
-    animation: scaleFadeIn calc(var(--transitionLength) + 3 * var(--transitionLength) * var(--variedScaleFadeIn)) ease-out;
+    -webkit-animation: scaleFadeIn calc(var(--transitionLength) + 3 * var(--transitionLength) * var(--variedScaleFadeIn)) ease-out;
+            animation: scaleFadeIn calc(var(--transitionLength) + 3 * var(--transitionLength) * var(--variedScaleFadeIn)) ease-out;
 }
 
 /* Fade on scroll animations */
+
+@-webkit-keyframes scaleFadeIn {
+    from {
+        opacity: calc(var(--softOpacity) / 3);
+        transform: scale(0.9, 0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
 
 @keyframes scaleFadeIn {
     from {
@@ -90,8 +143,10 @@
 .pageContainer {
     height: 100%;
     width: 100%;
-    animation: transitionIn calc(var(--transitionLength) * 2);
-    animation-timing-function: linear;
+    -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
+            animation: transitionIn calc(var(--transitionLength) * 2);
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
     min-height: 100vh;
     padding-top: var(--navContainerHeight);
     padding-bottom: var(--navContainerHeight);
@@ -128,12 +183,16 @@
     width: var(--imageContainerSize);
     box-shadow: var(--shadow);
     transition: background-color var(--transitionLength) ease-in;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .container:hover {
     background-color: var(--hoverPageColor);
-    animation: tilt-shaking var(--transitionLength);
+    -webkit-animation: tilt-shaking var(--transitionLength);
+            animation: tilt-shaking var(--transitionLength);
 }
 
 .images {
@@ -205,7 +264,10 @@
     transition: max-height, margin-top;
     transition-timing-function: ease-out;
     transition-duration: var(--transitionLength) ;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 #checkoutMenu.active {
@@ -225,6 +287,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: -webkit-sticky;
     position: sticky;
     border-top: solid var(--checkoutBorder);
     border-color: var(--pageColor);
@@ -268,8 +331,10 @@
 
 .container.inCart {
     z-index: var(--checkoutAnimationZindex);
-    animation: add-to-cart var(--transitionLength);
-    animation-timing-function: ease-out;
+    -webkit-animation: add-to-cart var(--transitionLength);
+            animation: add-to-cart var(--transitionLength);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
 }
 
 .container.checkout {
@@ -278,8 +343,10 @@
     height: auto;
     background-color: var(--expandedPageColor);
     display: inline-block;
-    animation: transitionIn var(--transitionLength);
-    animation-timing-function: ease-in;
+    -webkit-animation: transitionIn var(--transitionLength);
+            animation: transitionIn var(--transitionLength);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
 }
 
 .container.checkout.deleted {
@@ -293,6 +360,16 @@
 
 /* Page/checkout item transition */
 
+@-webkit-keyframes transitionIn {
+    from {
+        opacity: var(--softOpacity);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes transitionIn {
     from {
         opacity: var(--softOpacity);
@@ -304,6 +381,28 @@
 }
 
 /* Shop items hover animation */
+
+@-webkit-keyframes tilt-shaking {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 @keyframes tilt-shaking {
     0% {
@@ -328,6 +427,16 @@
 }
 
 /* Shop item added to cart animation */
+
+@-webkit-keyframes add-to-cart {
+    from {
+        transform: translate(0, 0) scale(1, 1);
+    }
+
+    to {
+        transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
+    }
+}
 
 @keyframes add-to-cart {
     from {

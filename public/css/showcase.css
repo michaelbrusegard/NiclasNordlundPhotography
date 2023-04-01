@@ -28,8 +28,10 @@
   height: auto;
   width: 100%;
   position: absolute;
-  animation: transitionIn calc(var(--transitionLength) * 2);
-  animation-timing-function: ease-in;
+  -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
+          animation: transitionIn calc(var(--transitionLength) * 2);
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
   background-repeat: repeat;
   background-attachment: scroll;
   background-size: 100%;
@@ -66,28 +68,36 @@ main {
   height: 100%;
   width: 100%;
   border-radius: var(--imageBorderRadius);
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: var(--shadow);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 /* Slide transition */
 
 .fadeOutAnimation {
-  animation: fadeOut calc(var(--transitionLength) * 2) linear;
+  -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
+          animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
 .fadeInAnimation {
-  animation: fadeIn var(--transitionLength) linear;
+  -webkit-animation: fadeIn var(--transitionLength) linear;
+          animation: fadeIn var(--transitionLength) linear;
 }
 
 .linkBagAnimation {
-  animation: transitionBag calc(var(--transitionLength) * 2) linear;
+  -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
+          animation: transitionBag calc(var(--transitionLength) * 2) linear;
 }
 
 @media (min-width: 1100px) {
   .linkBagAnimation {
-      animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+      -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+              animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
   }
 }
 
@@ -100,6 +110,20 @@ main {
 }
 
 /* Navigation bar animations */
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 
 @keyframes fadeOut {
   0% {
@@ -115,6 +139,16 @@ main {
   }
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -125,9 +159,21 @@ main {
   }
 }
 
+@-webkit-keyframes transitionBag {
+  to {
+    transform: translateX(calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize))));
+  }
+}
+
 @keyframes transitionBag {
   to {
     transform: translateX(calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize))));
+  }
+}
+
+@-webkit-keyframes transitionBagWide {
+  to {
+    transform: translateX(calc(var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))));
   }
 }
 
@@ -138,6 +184,18 @@ main {
 }
 
 /* Page transition */
+
+@-webkit-keyframes transitionIn {
+  from {
+    opacity: var(--softOpacity);
+    transform: translateY(var(--navContainerHeight));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @keyframes transitionIn {
   from {
@@ -154,26 +212,43 @@ main {
 /* Fade on scroll class selectors */
 
 .fadeInFromBottom {
-  animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
+          animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromRight {
-  animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
+          animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromLeft {
-  animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
+          animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromRightBottom {
-  animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
+          animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromLeftBottom {
-  animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
+          animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 /* Fade on scroll animations */
+
+@-webkit-keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(var(--imageMargin));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @keyframes fadeInFromBottom {
   from {
@@ -187,10 +262,34 @@ main {
   }
 }
 
+@-webkit-keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(var(--imageMargin));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes fadeInFromRight {
   from {
     opacity: 0;
     transform: translateX(var(--imageMargin));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--imageMargin)));
   }
 
   to {
@@ -211,10 +310,34 @@ main {
   }
 }
 
+@-webkit-keyframes fadeInFromRightBottom {
+  from {
+    opacity: 0;
+    transform: translate(var(--imageMargin), var(--imageMargin));
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
 @keyframes fadeInFromRightBottom {
   from {
     opacity: 0;
     transform: translate(var(--imageMargin), var(--imageMargin));
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@-webkit-keyframes fadeInFromLeftBottom {
+  from {
+    opacity: 0;
+    transform: translate(calc(-1 * var(--imageMargin)), var(--imageMargin));
   }
 
   to {

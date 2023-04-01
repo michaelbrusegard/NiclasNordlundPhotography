@@ -10,7 +10,10 @@
     bottom: 0;
     margin: 0;
     width: 100%;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .footerDiv {
@@ -36,7 +39,8 @@
     font-family: 'Caveat', cursive;
     font-weight: 400;
     font-size: var(--fontSize);
-    filter: drop-shadow(var(--shadow));
+    -webkit-filter: drop-shadow(var(--shadow));
+            filter: drop-shadow(var(--shadow));
     opacity: 1;
     transition: opacity var(--transitionLength);
 }
