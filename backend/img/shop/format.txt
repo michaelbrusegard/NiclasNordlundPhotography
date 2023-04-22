@@ -1,2 +1,2 @@
 Put all images that should be sold in the shop in this folder.
-The names should be the same as in shopDisplayImages
+The names should be the same as in shopImages

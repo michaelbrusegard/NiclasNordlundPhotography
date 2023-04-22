@@ -2,5 +2,6 @@
 node_modules
 .DS_Store
 config.json
-shopQuality/*
-!shopQuality/format.txt
+backend/img/shop/*
+!backend/img/shop/format.txt
+acoustic-scarab-382401-51a3eaca51bc.json

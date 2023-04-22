@@ -167,7 +167,7 @@
 
 #gridWrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopDisplayMargin)));
+    grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopMargin)));
     justify-content: center;
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
@@ -177,7 +177,7 @@
     background-color: var(--expandedPageColor);
     box-shadow: var(--shadow);
     position: relative;
-    margin: var(--shopDisplayMargin);
+    margin: var(--shopMargin);
     border-radius: var(--imageBorderRadius);
     height: var(--imageContainerSize);
     width: var(--imageContainerSize);
@@ -256,7 +256,7 @@
     border-width: var(--checkoutBorder);
     border-radius: var(--imageBorderRadius);
     border-color: var(--pageColor);
-    margin: var(--shopDisplayMargin);
+    margin: var(--shopMargin);
     margin-top: 0;
     min-height: 0;
     max-height: 0;
@@ -274,8 +274,8 @@
     z-index: var(--checkoutMenuZindex);
     top: 0;
     overflow-y: auto;
-    max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopDisplayMargin)));
-    margin-top: calc(var(--shopDisplayMargin) + var(--navContainerHeight));
+    max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopMargin)));
+    margin-top: calc(var(--shopMargin) + var(--navContainerHeight));
 }
 
 #checkoutMenu.active::-webkit-scrollbar {
@@ -296,7 +296,7 @@
 
 #checkoutInfo {
     display: flex;
-    margin: var(--shopDisplayMargin);
+    margin: var(--shopMargin);
     font-family: 'Noto Sans Mono', sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
@@ -338,8 +338,8 @@
 }
 
 .container.checkout {
-    width: calc(var(--checkoutWidth) - 2 * (var(--shopDisplayMargin) + var(--checkoutBorder)));
-    padding-bottom: var(--shopDisplayMargin);
+    width: calc(var(--checkoutWidth) - 2 * (var(--shopMargin) + var(--checkoutBorder)));
+    padding-bottom: var(--shopMargin);
     height: auto;
     background-color: var(--expandedPageColor);
     display: inline-block;

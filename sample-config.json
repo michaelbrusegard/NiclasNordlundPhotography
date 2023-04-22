@@ -1,5 +1,8 @@
 {
 	"stripeSecretKey": "",
     "stripeWebhookSecret": "",
-    "serverUrl": ""
+    "serverUrl": "",
+    "googleProjectId": "",
+    "googleBackEndBucketName": "",
+    "googleFrontEndBucketName": ""
 }

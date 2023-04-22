@@ -50,12 +50,12 @@ function calculateRows() {
 
     // Container size
     const imageContainerSize = parseInt(style.getPropertyValue('--imageContainerSize').slice(0, -2));
-    const shopDisplayMargin = parseInt(style.getPropertyValue('--shopDisplayMargin').slice(0, -2));
+    const shopMargin = parseInt(style.getPropertyValue('--shopMargin').slice(0, -2));
 
     // Nav height
     const navContainerHeight = parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2));
 
-    return Math.floor((window.innerHeight - navContainerHeight - shopDisplayMargin) / (imageContainerSize + shopDisplayMargin));
+    return Math.floor((window.innerHeight - navContainerHeight - shopMargin) / (imageContainerSize + shopMargin));
 }
 
 // Function that creates the div container for the shop
@@ -63,7 +63,7 @@ function createContainer(pricesArray) {
 
     // Images
     let img = document.createElement('img');
-    img.src = 'img/shopDisplay/' + pricesArray[0];
+    img.src = 'img/shop/' + pricesArray[0];
     img.loading = 'lazy';
     img.alt = pricesArray[0];
     img.classList.add('images');

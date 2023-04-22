@@ -14,7 +14,7 @@ app.use(express.static(frontendPath, { index: 'home.html' }));
 
 const stripe = require('stripe')(config.stripeSecretKey);
 
-const storeItems = require('../nodeScripts/prices.json');
+const storeItems = require('../cloud functions/prices.json');
 
 app.post('/checkout-session', async (request, response) => {
     const itemsToPurchase = request.body;
@@ -83,11 +83,10 @@ app.post('/webhook', (request, response) => {
     switch (event.type) {
         case 'checkout.session.completed':
             const checkoutSession = event.data.object;
-            const email = checkoutSession.customer_details.email
             let purchasedItems = checkoutSession.metadata.purchasedItems;
             if (purchasedItems != undefined) {
                 purchasedItems = JSON.parse(purchasedItems);
-                fileSharing.handlePhotos(purchasedItems, email);
+                fileSharing.handleImages(purchasedItems);
             }
             break;
         default:

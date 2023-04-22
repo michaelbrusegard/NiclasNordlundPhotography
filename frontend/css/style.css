@@ -52,7 +52,7 @@ body::-webkit-scrollbar {
 
     /* Grid */
     --sideWrapperMargin: 40px;
-    --shopDisplayMargin: 6px;
+    --shopMargin: 6px;
 
     /* Image container */
     --textMargin: 10px;
