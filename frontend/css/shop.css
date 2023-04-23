@@ -190,7 +190,6 @@
 }
 
 .container:hover {
-    background-color: var(--hoverPageColor);
     -webkit-animation: tilt-shaking var(--transitionLength);
             animation: tilt-shaking var(--transitionLength);
 }
@@ -218,6 +217,22 @@
     font-size: calc(var(--fontSize) / 2);
     margin-left: var(--textMargin);
     margin-right: var(--textMargin);
+}
+
+.button {
+    margin-top: 2px;
+    position: absolute;
+    right: 0.5em;
+    display: inline-block;
+    background-color: var(--pageColor);
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 1.5em;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: var(--hoverPageColor);
 }
 
 /* Adaptive Size */
@@ -318,7 +333,7 @@
 }
 
 #infoButton:hover {
-    background-color: var(--expandedPageColor);
+    background-color: var(--hoverPageColor);
 }
 
 #checkoutButton {
@@ -352,10 +367,6 @@
 .container.checkout.deleted {
     transition: opacity var(--transitionLength) ease-in;
     opacity: 0;
-}
-
-.container.checkout:hover {
-    background-color: var(--hoverPageColor);
 }
 
 /* Page/checkout item transition */

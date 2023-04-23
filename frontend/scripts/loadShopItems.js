@@ -72,6 +72,11 @@ function createContainer(pricesArray) {
     let h2 = document.createElement('h2');
     h2.textContent = pricesArray[1] + '€';
     h2.classList.add('price');
+    // Add button
+    let button = document.createElement('div');
+    button.textContent = '+';
+    button.classList.add('button');
+    h2.appendChild(button);
 
     // Name
     let p = document.createElement('p');
@@ -90,5 +95,5 @@ function createContainer(pricesArray) {
     observeGridItems.observe(div);
 
     // Apply checkout system interaction to the div item
-    div.addEventListener('click', () => { checkoutSystem(div, parseInt(pricesArray[1])); });
+    button.addEventListener('click', () => { checkoutSystem(div, parseInt(pricesArray[1])); });
 }
