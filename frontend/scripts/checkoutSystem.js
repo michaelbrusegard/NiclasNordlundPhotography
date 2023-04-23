@@ -23,7 +23,7 @@ function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
     const button = checkoutItem.querySelector('.button');
-    button.innerHTML = 'x';
+    button.style.backgroundImage = "url('../img/symbols/remove.png')";
     // Calculate animation variables
     const addScroll = window.scrollY;
     rectItem = shopItem.getBoundingClientRect();

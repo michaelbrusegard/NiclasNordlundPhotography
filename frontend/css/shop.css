@@ -224,7 +224,7 @@
     position: absolute;
     right: 0.5em;
     display: inline-block;
-    background-color: var(--pageColor);
+    background: url('../img/symbols/add.png');
     height: 1.5em;
     width: 1.5em;
     border-radius: 1.5em;
@@ -232,7 +232,7 @@
 }
 
 .button:hover {
-    background-color: var(--hoverPageColor);
+    opacity: var(--softOpacity)
 }
 
 /* Adaptive Size */
@@ -325,7 +325,7 @@
 #infoButton {
     right: 0;
     display: inline-block;
-    background-color: var(--pageColor);
+    background: url('../img/symbols/questionmark.png');
     height: 1.5em;
     width: 1.5em;
     border-radius: 1.5em;
@@ -333,7 +333,7 @@
 }
 
 #infoButton:hover {
-    background-color: var(--hoverPageColor);
+    opacity: var(--softOpacity);
 }
 
 #checkoutButton {

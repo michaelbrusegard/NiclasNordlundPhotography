@@ -74,7 +74,6 @@ function createContainer(pricesArray) {
     h2.classList.add('price');
     // Add button
     let button = document.createElement('div');
-    button.textContent = '+';
     button.classList.add('button');
     h2.appendChild(button);
 
