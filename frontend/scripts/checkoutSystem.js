@@ -22,8 +22,12 @@ function alignCheckout() {
 function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
-    const button = checkoutItem.querySelector('.button');
+    // Change and remove buttons
+    const button = checkoutItem.querySelector('.addButton');
     button.style.backgroundImage = "url('../img/symbols/remove.png')";
+    const pinchOutButton = checkoutItem.querySelector(':nth-child(4)');
+    checkoutItem.removeChild(pinchOutButton);
+
     // Calculate animation variables
     const addScroll = window.scrollY;
     rectItem = shopItem.getBoundingClientRect();

@@ -14,8 +14,6 @@ app.use(express.static(frontendPath, { index: 'home.html' }));
 
 const stripe = require('stripe')(config.stripeSecretKey);
 
-const storeItems = require('../cloud functions/prices.json');
-
 app.post('/checkout-session', async (request, response) => {
     const itemsToPurchase = request.body;
     let validatedItemsToPurchase = [];

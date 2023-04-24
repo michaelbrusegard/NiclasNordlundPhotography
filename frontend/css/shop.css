@@ -219,19 +219,36 @@
     margin-right: var(--textMargin);
 }
 
-.button {
+.pinchOutButton {
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    font-size: 1.4em;
+    display: inline-block;
+    background: url('../img/symbols/pinchOut.png');
+    background-size: cover;
+    height: var(--buttonSize);
+    width: var(--buttonSize);
+    border-radius: var(--buttonSize);
+}
+
+.pinchOutButton:hover {
+    opacity: var(--softOpacity)
+}
+
+.addButton {
     margin-top: 2px;
     position: absolute;
     right: 0.5em;
     display: inline-block;
     background: url('../img/symbols/add.png');
-    height: 1.5em;
-    width: 1.5em;
-    border-radius: 1.5em;
-    text-align: center;
+    background-size: cover;
+    height: var(--buttonSize);
+    width: var(--buttonSize);
+    border-radius: var(--buttonSize);
 }
 
-.button:hover {
+.addButton:hover {
     opacity: var(--softOpacity)
 }
 
@@ -326,10 +343,10 @@
     right: 0;
     display: inline-block;
     background: url('../img/symbols/questionmark.png');
-    height: 1.5em;
-    width: 1.5em;
-    border-radius: 1.5em;
-    text-align: center;
+    background-size: cover;
+    height: var(--buttonSize);
+    width: var(--buttonSize);
+    border-radius: var(--buttonSize);
 }
 
 #infoButton:hover {

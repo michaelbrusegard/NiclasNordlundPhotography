@@ -22,7 +22,9 @@ function checkoutLoad() {
 }
 
 // Function that initiates loading
-function loadItems() {
+async function loadItems() {
+
+    const pricesArray = await fetchPrices;
 
     // Avoids trying to load more photos than exists
     if (itemsToLoad > pricesArray.length) {
@@ -63,7 +65,7 @@ function createContainer(pricesArray) {
 
     // Images
     let img = document.createElement('img');
-    img.src = 'img/shop/' + pricesArray[0];
+    img.src = `https://storage.googleapis.com/${googleFrontEndBucketName}/${pricesArray[0]}`;
     img.loading = 'lazy';
     img.alt = pricesArray[0];
     img.classList.add('images');
@@ -73,26 +75,34 @@ function createContainer(pricesArray) {
     h2.textContent = pricesArray[1] + '€';
     h2.classList.add('price');
     // Add button
-    let button = document.createElement('div');
-    button.classList.add('button');
-    h2.appendChild(button);
+    let addButton = document.createElement('div');
+    addButton.classList.add('addButton');
+    h2.appendChild(addButton);
 
     // Name
     let p = document.createElement('p');
     p.textContent = pricesArray[0];
     p.classList.add('name');
 
+    // Pinch Out button
+    let pinchOutButton = document.createElement('div');
+    pinchOutButton.classList.add('pinchOutButton');
+
     // Container
     let div = document.createElement('div');
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(p);
+    div.appendChild(pinchOutButton);
     div.classList.add('container');
     gridWrapper.appendChild(div);
 
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
 
+    // Check for click on pinch out button
+    pinchOutButton.addEventListener('click', () => { highlightImage(img); });
+
     // Apply checkout system interaction to the div item
-    button.addEventListener('click', () => { checkoutSystem(div, parseInt(pricesArray[1])); });
+    addButton.addEventListener('click', () => { checkoutSystem(div, parseInt(pricesArray[1])); });
 }
