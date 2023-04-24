@@ -81,6 +81,8 @@ function createContainer(file) {
   // Add observer for fade on scroll effect
   addImagesFadeOnScroll.observe(imgDiv);
 
+  image.addEventListener('click', () => { highlightImage(image); });
+
   return imgDiv;
 }
 
