@@ -14,6 +14,8 @@ app.use(express.static(frontendPath, { index: 'home.html' }));
 
 const stripe = require('stripe')(config.stripeSecretKey);
 
+const storeItems = [];
+
 app.post('/checkout-session', async (request, response) => {
     const itemsToPurchase = request.body;
     let validatedItemsToPurchase = [];
@@ -35,20 +37,22 @@ app.post('/checkout-session', async (request, response) => {
             }
         }
     }
-    try {
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            mode: 'payment',
-            line_items: lineItems,
-            success_url: `${config.serverUrl}/sucess.html`,
-            cancel_url: `${config.serverUrl}/shop.html`,
-            metadata: {
-                purchasedItems: JSON.stringify(validatedItemsToPurchase)
-            }
-        });
-        response.json({ url: session.url });
-    } catch (e) {
-        response.status(500).json({ error: e.message });
+    if (lineItems > 0) {
+        try {
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                mode: 'payment',
+                line_items: lineItems,
+                success_url: `${config.serverUrl}/sucess.html`,
+                cancel_url: `${config.serverUrl}/shop.html`,
+                metadata: {
+                    purchasedItems: JSON.stringify(validatedItemsToPurchase)
+                }
+            });
+            response.json({ url: session.url });
+        } catch (e) {
+            response.status(500).json({ error: e.message });
+        }
     }
 });
 
