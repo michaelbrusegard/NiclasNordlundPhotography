@@ -26,7 +26,6 @@ jobs:
         uses: google-github-actions/deploy-cloud-functions@v1
 
       - name: Deploy compressPublicPhotos
-        with:
         run: |
           gcloud functions deploy name-of-function \
             --gen2 \
