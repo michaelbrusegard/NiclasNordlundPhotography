@@ -21,10 +21,16 @@ jobs:
       - name: Install Prettier
         run: npm install --save-dev prettier
 
-      - name: Format code with Prettier
-        run: npx prettier .prettierrc --write .
-
       - name: Commit changes if needed
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Format code"
+        uses: octokit/auth-app@v4
+        env:
+          APP_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_APP_ID }}
+          PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
+          INSTALLATION_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_INSTALLATION_ID }}
+        run: |
+          npx prettier .prettierrc --write .
+          npx @octokit/auth-app -a $APP_ID -k $PRIVATE_KEY -I $INSTALLATION_ID
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Run Prettier"
+          git push
