@@ -34,4 +34,4 @@ jobs:
             --runtime=nodejs18 \
             --source=cloud functions \
             --entry-point=compressPhotos
-            
+
