@@ -27,7 +27,4 @@ async function handlePhotos(purchasedItems) {
   }
 }
 
-
-
-
 module.exports = { handlePhotos };
