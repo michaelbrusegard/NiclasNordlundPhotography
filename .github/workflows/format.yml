@@ -26,13 +26,8 @@ jobs:
 
       - name: Commit changes if needed
         if: failure()
-        env:
-          APP_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_APP_ID }}
-          PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
-          INSTALLATION_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_INSTALLATION_ID }}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Format code"
         run: |
           npx prettier .prettierrc --write .
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Run Prettier"
-          git push
