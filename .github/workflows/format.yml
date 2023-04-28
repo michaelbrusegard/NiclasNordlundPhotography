@@ -18,9 +18,6 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: install auth-app
-        run: npm install @octokit/auth-app
-
       - name: Install Prettier
         run: npm install --save-dev prettier
 
@@ -29,14 +26,11 @@ jobs:
 
       - name: Commit changes if needed
         if: failure()
-        env:
-          APP_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_APP_ID }}
-          PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
-          INSTALLATION_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_INSTALLATION_ID }}
         run: |
           npx prettier .prettierrc --write .
-          npx @octokit/auth-app -a $APP_ID -k $PRIVATE_KEY -I $INSTALLATION_ID
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -am "Run Prettier"
-          git push
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git checkout $GITHUB_HEAD_REF
+          git commit -am "fixup: Format code with Prettier"
+          git push origin HEAD:master
