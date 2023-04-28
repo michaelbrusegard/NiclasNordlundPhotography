@@ -27,5 +27,4 @@ jobs:
           runtime: nodejs18
           source_dir: cloud functions
           event_trigger_type: google.storage.object.finalize
-          event_trigger_resource: ${{ secrets.GCLOUD_PHOTOS_BUCKET }}
-          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+          event_trigger_resource: projects/${{ secrets.GCLOUD_PROJECT_ID }}/buckets/${{ secrets.GCLOUD_PHOTOS_BUCKET }}
