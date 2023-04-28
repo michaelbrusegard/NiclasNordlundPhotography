@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
+    "format": "npx prettier .prettierrc --write",
     "startServer": "nodemon backend/server.js",
     "startStripe": "stripe listen --forward-to localhost:3000/webhook",
     "loginStripe": "stripe login",
