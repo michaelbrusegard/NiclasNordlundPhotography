@@ -21,7 +21,11 @@ jobs:
       - name: Install Prettier
         run: npm install --save-dev prettier
 
+      - name: Format code with Prettier
+        run: npx prettier .prettierrc --check .
+
       - name: Commit changes if needed
+        if: failure()
         env:
           APP_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_APP_ID }}
           PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
