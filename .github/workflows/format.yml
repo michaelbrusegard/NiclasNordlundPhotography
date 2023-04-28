@@ -1,0 +1,36 @@
+name: Format
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      - name: Install Prettier
+        run: npm install --save-dev --save-exact prettier
+
+      - name: Format code with Prettier
+        run: npx prettier .prettierrc --write .
+
+      - name: Commit changes
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git commit -am "Run Prettier"
+            git push
+          else
+            echo "No changes to commit"
+          fi

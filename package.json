@@ -30,8 +30,8 @@
     "stripe": "^11.17.0"
   },
   "devDependencies": {
-    "eslint": "^8.39.0",
     "eslint-config-standard": "^17.0.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
   }
 }
