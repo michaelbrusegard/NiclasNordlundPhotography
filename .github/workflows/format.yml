@@ -22,7 +22,7 @@ jobs:
         run: npm install --save-dev prettier
 
       - name: Format code with Prettier
-        run: npx prettier .prettierrc --check .
+        run: npx prettier --check .
 
       - name: Commit changes if needed
         if: failure()
@@ -31,7 +31,7 @@ jobs:
           PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
           INSTALLATION_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_INSTALLATION_ID }}
         run: |
-          npx prettier .prettierrc --write .
+          npx prettier --write .
           npx @octokit/auth-app -a $APP_ID -k $PRIVATE_KEY -I $INSTALLATION_ID
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
