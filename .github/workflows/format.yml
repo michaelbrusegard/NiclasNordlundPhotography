@@ -19,18 +19,21 @@ jobs:
           node-version: 18.x
 
       - name: Install Prettier
-        run: npm install --save-dev --save-exact prettier
+        run: npm install --save-dev prettier
 
       - name: Format code with Prettier
-        run: npx prettier .prettierrc --write .
+        run: npx prettier .prettierrc --check .
 
-      - name: Commit changes
+      - name: Commit changes if needed
+        if: failure()
+        env:
+          APP_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_APP_ID }}
+          PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
+          INSTALLATION_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_INSTALLATION_ID }}
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git commit -am "Run Prettier"
-            git push
-          else
-            echo "No changes to commit"
-          fi
+          npx prettier .prettierrc --check .
+          npx @octokit/auth-app -a $APP_ID -k $PRIVATE_KEY -I $INSTALLATION_ID
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Run Prettier"
+          git push
