@@ -1,0 +1,31 @@
+name: Deploy Cloud Functions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - id: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+
+      - name: Deploy compressPublicPhotos
+        uses: google-github-actions/deploy-cloud-functions@v1
+        with:
+          name: compressPublicPhotos
+          region: europe-west1
+          entry_point: compressPhoto
+          runtime: nodejs18
+          source_dir: cloud functions
+          event_trigger_type: google.storage.object.finalize
+          event_trigger_resource: ${{ secrets.GCLOUD_PHOTOS_BUCKET }}
+          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
