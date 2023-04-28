@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: install auth-app
+        run: npm install @octokit/auth-app
+
       - name: Install Prettier
         run: npm install --save-dev prettier
 
