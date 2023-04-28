@@ -22,13 +22,16 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
 
-      - name: Deploy compressPublicPhotos
+      - name: Setup GCloud SDK
         uses: google-github-actions/deploy-cloud-functions@v1
+
+      - name: Deploy compressPublicPhotos
         with:
-          name: compressPublicPhotos
-          region: europe-west1
-          entry_point: compressPhoto
-          runtime: nodejs18
-          source_dir: cloud functions
-          event_trigger_type: google.storage.object.finalize
-          event_trigger_resource: projects/${{ secrets.GCLOUD_PROJECT_ID }}/buckets/${{ secrets.GCLOUD_PHOTOS_BUCKET }}
+        run: |
+          gcloud functions deploy name-of-function \
+            --gen2 \
+            --region=europe-north1 \
+            --runtime=nodejs18 \
+            --source=cloud functions \
+            --entry-point=compressPhotos
+            
