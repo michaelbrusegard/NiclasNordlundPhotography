@@ -21,11 +21,8 @@ jobs:
       - name: Install Prettier
         run: npm install --save-dev prettier
 
-      - name: Find prettier executable
-        run: which prettier
-
       - name: Format code with Prettier
-        run: npx prettier .prettierrc --check .
+        run: npx prettier .prettierrc --write .
 
       - name: Commit changes if needed
         if: failure()
