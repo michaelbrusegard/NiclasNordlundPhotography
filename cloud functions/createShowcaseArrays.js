@@ -11,30 +11,30 @@ const sport = [];
 const wedding = [];
 
 // Goes through all files in showcase
-files.forEach(i => {
-    // Checks if it is .jpg photos
-    if (i.endsWith('.jpg')) {
-        // Checks which category of photo it is and adds the path aswell as dimensions to the correct array
-        if (i.startsWith('animals')) {
-            let dimensions = sizeOf('../img/showcase/' + i);
-            animals.push([i, dimensions.width, dimensions.height]);
-        } else if (i.startsWith('architectural')) {
-            let dimensions = sizeOf('../img/showcase/' + i);
-            architectural.push([i, dimensions.width, dimensions.height]);
-        } else if (i.startsWith('nature')) {
-            let dimensions = sizeOf('../img/showcase/' + i);
-            nature.push([i, dimensions.width, dimensions.height]);
-        } else if (i.startsWith('portrait')) {
-            let dimensions = sizeOf('../img/showcase/' + i);
-            portrait.push([i, dimensions.width, dimensions.height]);
-        } else if (i.startsWith('sport')) {
-            let dimensions = sizeOf('../img/showcase/' + i);
-            sport.push([i, dimensions.width, dimensions.height]);
-        } else if (i.startsWith('wedding')) {
-            let dimensions = sizeOf('../img/showcase/' + i);
-            wedding.push([i, dimensions.width, dimensions.height]);
-        }
+files.forEach((i) => {
+  // Checks if it is .jpg photos
+  if (i.endsWith('.jpg')) {
+    // Checks which category of photo it is and adds the path aswell as dimensions to the correct array
+    if (i.startsWith('animals')) {
+      let dimensions = sizeOf('../img/showcase/' + i);
+      animals.push([i, dimensions.width, dimensions.height]);
+    } else if (i.startsWith('architectural')) {
+      let dimensions = sizeOf('../img/showcase/' + i);
+      architectural.push([i, dimensions.width, dimensions.height]);
+    } else if (i.startsWith('nature')) {
+      let dimensions = sizeOf('../img/showcase/' + i);
+      nature.push([i, dimensions.width, dimensions.height]);
+    } else if (i.startsWith('portrait')) {
+      let dimensions = sizeOf('../img/showcase/' + i);
+      portrait.push([i, dimensions.width, dimensions.height]);
+    } else if (i.startsWith('sport')) {
+      let dimensions = sizeOf('../img/showcase/' + i);
+      sport.push([i, dimensions.width, dimensions.height]);
+    } else if (i.startsWith('wedding')) {
+      let dimensions = sizeOf('../img/showcase/' + i);
+      wedding.push([i, dimensions.width, dimensions.height]);
     }
+  }
 });
 
 // Creates .json files for every array

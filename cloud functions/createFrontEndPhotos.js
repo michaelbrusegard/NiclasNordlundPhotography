@@ -30,15 +30,11 @@ exports.processPhoto = async (event, context) => {
     .jpeg({ quality: QUALITY })
     .resize(MAX_WIDTH, MAX_HEIGHT, {
       fit: 'inside', // Resize only if the photo is larger than the maximum size
-      withoutEnlargement: true // Do not enlarge the photo if it is smaller than the maximum size
+      withoutEnlargement: true, // Do not enlarge the photo if it is smaller than the maximum size
     });
 
   // Use pipeline to stream the photo through Sharp and upload to destination bucket
-  await promisify(pipeline)(
-    sourceStream,
-    transformStream,
-    destinationStream
-  );
+  await promisify(pipeline)(sourceStream, transformStream, destinationStream);
 
   return destinationFile;
 };

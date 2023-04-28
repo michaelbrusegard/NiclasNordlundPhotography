@@ -29,9 +29,9 @@
   width: 100%;
   position: absolute;
   -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
-          animation: transitionIn calc(var(--transitionLength) * 2);
+  animation: transitionIn calc(var(--transitionLength) * 2);
   -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
   background-repeat: repeat;
   background-attachment: scroll;
   background-size: 100%;
@@ -69,35 +69,36 @@ main {
   width: 100%;
   border-radius: var(--photoBorderRadius);
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   box-shadow: var(--shadow);
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Slide transition */
 
 .fadeOutAnimation {
   -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
-          animation: fadeOut calc(var(--transitionLength) * 2) linear;
+  animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
 .fadeInAnimation {
   -webkit-animation: fadeIn var(--transitionLength) linear;
-          animation: fadeIn var(--transitionLength) linear;
+  animation: fadeIn var(--transitionLength) linear;
 }
 
 .linkBagAnimation {
   -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
-          animation: transitionBag calc(var(--transitionLength) * 2) linear;
+  animation: transitionBag calc(var(--transitionLength) * 2) linear;
 }
 
 @media (min-width: 1100px) {
   .linkBagAnimation {
-      -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
-              animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
+      linear;
+    animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
   }
 }
 
@@ -161,25 +162,37 @@ main {
 
 @-webkit-keyframes transitionBag {
   to {
-    transform: translateX(calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize))));
+    transform: translateX(
+      calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+    );
   }
 }
 
 @keyframes transitionBag {
   to {
-    transform: translateX(calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize))));
+    transform: translateX(
+      calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+    );
   }
 }
 
 @-webkit-keyframes transitionBagWide {
   to {
-    transform: translateX(calc(var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))));
+    transform: translateX(
+      calc(
+        var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))
+      )
+    );
   }
 }
 
 @keyframes transitionBagWide {
   to {
-    transform: translateX(calc(var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))));
+    transform: translateX(
+      calc(
+        var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))
+      )
+    );
   }
 }
 
@@ -213,27 +226,29 @@ main {
 
 .fadeInFromBottom {
   -webkit-animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
-          animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
+  animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromRight {
   -webkit-animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
-          animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
+  animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromLeft {
   -webkit-animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
-          animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
+  animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromRightBottom {
-  -webkit-animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
-          animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromRightBottom calc(var(--transitionLength) * 2)
+    ease-in;
+  animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromLeftBottom {
-  -webkit-animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
-          animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
+  -webkit-animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2)
+    ease-in;
+  animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 /* Fade on scroll animations */
@@ -361,14 +376,14 @@ main {
 /* Adaptive Size */
 
 @media (min-width: 1100px) {
-  .gallery{
+  .gallery {
     margin-left: calc(2 * var(--sideWrapperMargin));
     margin-right: calc(2 * var(--sideWrapperMargin));
   }
 }
 
 @media (max-width: 768px) {
-  .gallery{
+  .gallery {
     margin-left: calc(var(--sideWrapperMargin) / 2);
     margin-right: calc(var(--sideWrapperMargin) / 2);
   }

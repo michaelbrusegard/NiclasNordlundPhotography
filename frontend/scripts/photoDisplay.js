@@ -26,4 +26,3 @@ function highlightPhoto(photo) {
   highlightDiv.appendChild(highlightPhoto);
   document.body.appendChild(highlightDiv);
 }
-

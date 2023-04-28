@@ -8,9 +8,9 @@ function mobileMenu(menu, nav) {
 // Returns the mobile nav element if it is mobile and desktop if it is desktop
 function getCurrentNavElement(nav) {
   if (isMobileNav()) {
-      return nav.children[0]
+    return nav.children[0];
   } else {
-      return nav.children[1]
+    return nav.children[1];
   }
 }
 
@@ -31,14 +31,16 @@ function replaceNav(newNav, oldNav) {
 function isMobileNav() {
   // Gets the css variable for mobile size
   const style = getComputedStyle(document.body);
-  const mobileNavSize = parseInt(style.getPropertyValue('--mobileNavSize').slice(0, -2));
+  const mobileNavSize = parseInt(
+    style.getPropertyValue('--mobileNavSize').slice(0, -2)
+  );
   // Gets the screen width
   const screenWidth = window.innerWidth;
   // Compares screen width to the mobile size
   if (mobileNavSize > screenWidth) {
-      return true;
+    return true;
   } else {
-      return false;
+    return false;
   }
 }
 
@@ -46,7 +48,7 @@ function isMobileNav() {
 function getNavigationType() {
   let type = '';
   performance.getEntriesByType('navigation').forEach((p) => {
-      type = p.type;
+    type = p.type;
   });
   return type;
 }

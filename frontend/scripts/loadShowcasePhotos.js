@@ -1,6 +1,5 @@
 // Function to load photos and arrange them into columns
 function loadPhotos(files) {
-
   // Variables
   const totalPhotos = files.length;
   const columnsMax = getColumns();
@@ -20,7 +19,7 @@ function loadPhotos(files) {
   const columns = document.getElementsByClassName('column');
 
   // Variables to skip big photos when placing into columns
-  let bigPhotoIndexArray = []; 
+  let bigPhotoIndexArray = [];
   let extraValue = 0;
   let skipBigPhoto = true;
 
@@ -32,8 +31,8 @@ function loadPhotos(files) {
       bigPhotoIndexArray.push(i % columnsMax);
       skipBigPhoto = false;
     }
-    // If we are at the big photo index from the previous iteration, go one column further 
-    if ((bigPhotoIndexArray.includes(i % columnsMax)) && skipBigPhoto) {
+    // If we are at the big photo index from the previous iteration, go one column further
+    if (bigPhotoIndexArray.includes(i % columnsMax) && skipBigPhoto) {
       bigPhotoIndexArray.shift();
       extraValue += 1;
     }
@@ -59,7 +58,6 @@ function getColumns() {
 // Function that creates photo tags with lazyloading
 // Modified lazyload function to adapt to multiple columns
 function createContainer(file) {
-
   // Added creation of a div to hold the photos
   let div = document.createElement('div');
   let img = document.createElement('img');
@@ -81,7 +79,9 @@ function createContainer(file) {
   // Add observer for fade on scroll effect
   addPhotosFadeOnScroll.observe(div);
 
-  img.addEventListener('click', () => { highlightPhoto(img); });
+  img.addEventListener('click', () => {
+    highlightPhoto(img);
+  });
 
   return div;
 }
@@ -90,11 +90,12 @@ function createContainer(file) {
 const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Eventlistener for scroll-back-to-top button
-scrollTopButtons.forEach(element => {
-  element.addEventListener('click', event => {
-  event.preventDefault();
-  document.documentElement.scrollTo({
+scrollTopButtons.forEach((element) => {
+  element.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.documentElement.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
+    });
   });
-})});
+});

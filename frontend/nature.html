@@ -1,211 +1,223 @@
 <!DOCTYPE html>
-<html lang='en'>
-
-<head>
-
+<html lang="en">
+  <head>
     <!-- Page metadata -->
 
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NiclasNordlundPhotography</title>
 
     <!-- Stylesheets -->
 
-    <link rel='stylesheet' href='css/style.css'>
-    <link rel='stylesheet' href='css/nav.css'>
-    <link rel="stylesheet" href='css/footer.css'>
-    <link rel='stylesheet' href='css/showcase.css'>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/showcase.css" />
 
     <!-- Scripts -->
 
-    <script defer src='scripts/nav.js'></script>
-    <script defer src='scripts/slideTransition.js'></script>
-    <script defer src='scripts/loadShowcasePhotos.js'></script>
-    <script defer src='scripts/fadeOnScroll.js'></script>
-    <script defer src='scripts/photoDisplay.js'></script>
-    <script defer src='scripts/showcase.js'></script>
+    <script defer src="scripts/nav.js"></script>
+    <script defer src="scripts/slideTransition.js"></script>
+    <script defer src="scripts/loadShowcasePhotos.js"></script>
+    <script defer src="scripts/fadeOnScroll.js"></script>
+    <script defer src="scripts/photoDisplay.js"></script>
+    <script defer src="scripts/showcase.js"></script>
 
     <!-- Favicons -->
 
-    <link rel='icon' type='image/png-icon' href='img/icons/faviconDark.png' media='(prefers-color-scheme: light)'>
-    <link rel='icon' type='image/png-icon' href='img/icons/faviconLight.png' media='(prefers-color-scheme: dark)'>
+    <link
+      rel="icon"
+      type="image/png-icon"
+      href="img/icons/faviconDark.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/png-icon"
+      href="img/icons/faviconLight.png"
+      media="(prefers-color-scheme: dark)"
+    />
 
     <!-- Fonts -->
 
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@200&display=swap' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
+  <body>
+    <header class="navContainer">
+      <!-- Start of shop navigation bar -->
 
-<body>
-    <header class='navContainer'>
+      <nav id="shopNav">
+        <ul class="mobileNav">
+          <!-- Start of Mobile navigation bar -->
 
-        <!-- Start of shop navigation bar -->
+          <li>
+            <a href="#" onclick="setBagLink()" class="linkIcon linkBag"></a>
+          </li>
+          <li>
+            <a href="home.html" class="linkIcon linkSignature"></a>
+          </li>
+          <li>
+            <a href="" class="linkIcon linkCart"></a>
+            <p class="redDot">0</p>
+          </li>
 
-        <nav id='shopNav'>
+          <!-- End of Mobile navigation bar -->
+        </ul>
 
-            <ul class='mobileNav'>
+        <ul class="desktopNav">
+          <!-- Start of Desktop navigation bar -->
 
-                <!-- Start of Mobile navigation bar -->
+          <li>
+            <a href="#" onclick="setBagLink()" class="linkIcon linkBag"></a>
+          </li>
+          <li>
+            <a href="home.html" class="linkIcon linkSignature"></a>
+          </li>
+          <li>
+            <a href="" class="linkIcon linkCart"></a>
+            <p class="redDot">0</p>
+          </li>
 
-                <li>
-                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
-                </li>
-                <li>
-                    <a href='home.html' class='linkIcon linkSignature'></a>
-                </li>
-                <li>
-                    <a href='' class='linkIcon linkCart'></a>
-                    <p class='redDot'>0</p>
-                </li>
+          <!-- End of Desktop navigation bar -->
+        </ul>
+      </nav>
 
-                <!-- End of Mobile navigation bar -->
+      <!-- End of shop navigation bar -->
 
-            </ul>
+      <!-- Start of navigation bar -->
 
-            <ul class='desktopNav'>
+      <nav id="nav">
+        <ul class="mobileNav">
+          <!-- Start of Mobile navigation bar -->
 
-                <!-- Start of Desktop navigation bar -->
+          <li>
+            <a href="#" class="linkIcon linkMenu">
+              <div id="menu1"></div>
+              <div id="menu2"></div>
+            </a>
+          </li>
+          <li>
+            <a href="home.html" class="linkIcon linkSignature"></a>
+          </li>
+          <li>
+            <a href="shop.html" class="linkIcon linkBag"></a>
+          </li>
 
-                <li>
-                    <a href='#' onclick ='setBagLink()' class='linkIcon linkBag'></a>
-                </li>
-                <li>
-                    <a href='home.html' class='linkIcon linkSignature'></a>
-                </li>
-                <li>
-                    <a href='' class='linkIcon linkCart'></a>
-                    <p class='redDot'>0</p>
-                </li>
+          <!-- End of Mobile navigation bar -->
+        </ul>
 
-                <!-- End of Desktop navigation bar -->
+        <ul class="desktopNav">
+          <!-- Start of Desktop navigation bar -->
 
-            </ul>
+          <li>
+            <a href="home.html" class="linkIcon linkSignature"></a>
+          </li>
+          <li>
+            <a href="nature.html">Nature</a>
+          </li>
+          <li>
+            <a href="animals.html">Animals</a>
+          </li>
+          <li>
+            <a href="architectural.html">Architectural</a>
+          </li>
+          <li>
+            <a href="portrait.html">Portrait</a>
+          </li>
+          <li>
+            <a href="wedding.html">Wedding</a>
+          </li>
+          <li>
+            <a href="sport.html">Sport</a>
+          </li>
+          <li>
+            <a href="shop.html" class="linkIcon linkBag"></a>
+          </li>
 
-        </nav>
+          <!-- End of Desktop navigation bar -->
+        </ul>
+      </nav>
 
-        <!-- End of shop navigation bar -->
-
-        <!-- Start of navigation bar -->
-
-        <nav id='nav'>
-
-            <ul class='mobileNav'>
-
-                <!-- Start of Mobile navigation bar -->
-
-                <li>
-                    <a href='#' class='linkIcon linkMenu'>
-                        <div id='menu1'></div>
-                        <div id='menu2'></div>
-                    </a>
-                </li>
-                <li>
-                    <a href='home.html' class='linkIcon linkSignature'></a>
-                </li>
-                <li>
-                    <a href='shop.html' class='linkIcon linkBag'></a>
-                </li>
-
-                <!-- End of Mobile navigation bar -->
-
-            </ul>
-
-            <ul class='desktopNav'>
-
-                <!-- Start of Desktop navigation bar -->
-
-                <li>
-                    <a href='home.html' class='linkIcon linkSignature'></a>
-                </li>
-                <li>
-                    <a href='nature.html'>Nature</a>
-                </li>
-                <li>
-                    <a href='animals.html'>Animals</a>
-                </li>
-                <li>
-                    <a href='architectural.html'>Architectural</a>
-                </li>
-                <li>
-                    <a href='portrait.html'>Portrait</a>
-                </li>
-                <li>
-                    <a href='wedding.html'>Wedding</a>
-                </li>
-                <li>
-                    <a href='sport.html'>Sport</a>
-                </li>
-                <li>
-                    <a href='shop.html' class='linkIcon linkBag'></a>
-                </li>
-
-                <!-- End of Desktop navigation bar -->
-
-            </ul>
-
-        </nav>
-
-        <!-- End of navigation bar -->
-
+      <!-- End of navigation bar -->
     </header>
 
-    <main id='nature' class='pageContainer'>
+    <main id="nature" class="pageContainer">
+      <!-- Start of page content -->
 
-        <!-- Start of page content -->
+      <div class="gallery"></div>
 
-        <div class='gallery'></div>
+      <!-- End of page content -->
 
-        <!-- End of page content -->
+      <footer class="footerContainer">
+        <!-- Start of footer -->
 
-        <footer class='footerContainer'>
+        <div class="footerDiv">
+          <ul class="desktopFooter">
+            <li>
+              <a href="" class="linkIcon arrow"></a>
+            </li>
+            <li>
+              <a href="mailto:nic.nord@hotmail.com" class="footerText"
+                >Email: nic.nord@hotmail.com</a
+              >
+            </li>
 
-            <!-- Start of footer -->
-        
-            <div class='footerDiv'>
-                <ul class='desktopFooter'>
-                    <li>
-                        <a href='' class='linkIcon arrow'></a>
-                    </li>
-                    <li>
-                        <a href='mailto:nic.nord@hotmail.com' class='footerText'>Email: nic.nord@hotmail.com</a>
-                        </li>
-                        
-                        <li>
-                            <a href='tel:+358400193300' class='footerText'>Tlf: +35 840 0193 300</a>
-                    </li>
-                    <li>
-                        <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
-                        <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
-                    </li>
-                </ul>
-                <ul class='mobileFooter'>
-                    <li>
-                        <a href='' class='linkIcon arrow'></a>
-                    </li>
-                    <li>
-                        <a href='mailto:nic.nord@hotmail.com' class='linkIcon email'></a>
-                    </li>
-                    <li>
-                        <a href='tel:+358400193300' class='linkIcon phone'></a>
-                    </li>
-                    <li>
-                        <a href='https://www.instagram.com/nic.nord.photo/' target='_blank' class='linkIcon insta'></a>
-                        <a href='https://www.facebook.com/niclasnordlundfotograf' target='_blank' class='linkIcon facebook'></a>
-                    </li>
-                </ul>
-        
-            </div>
-        
-            <!-- End of footer -->
-        
-        </footer>
+            <li>
+              <a href="tel:+358400193300" class="footerText"
+                >Tlf: +35 840 0193 300</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/nic.nord.photo/"
+                target="_blank"
+                class="linkIcon insta"
+              ></a>
+              <a
+                href="https://www.facebook.com/niclasnordlundfotograf"
+                target="_blank"
+                class="linkIcon facebook"
+              ></a>
+            </li>
+          </ul>
+          <ul class="mobileFooter">
+            <li>
+              <a href="" class="linkIcon arrow"></a>
+            </li>
+            <li>
+              <a href="mailto:nic.nord@hotmail.com" class="linkIcon email"></a>
+            </li>
+            <li>
+              <a href="tel:+358400193300" class="linkIcon phone"></a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/nic.nord.photo/"
+                target="_blank"
+                class="linkIcon insta"
+              ></a>
+              <a
+                href="https://www.facebook.com/niclasnordlundfotograf"
+                target="_blank"
+                class="linkIcon facebook"
+              ></a>
+            </li>
+          </ul>
+        </div>
 
+        <!-- End of footer -->
+      </footer>
     </main>
-
-</body>
-
+  </body>
 </html>
