@@ -8,9 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
 
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +24,7 @@ jobs:
 
       - name: Deploy compressPublicPhotos
         run: |
-          gcloud functions deploy name-of-function \
+          gcloud functions deploy compressPublicPhotos \
             --gen2 \
             --region=europe-north1 \
             --runtime=nodejs18 \
