@@ -1,27 +1,27 @@
 /* Page content */
 
 #animals {
-  background-image: url(../img/wallpapers/wallpaperAnimals.jpg);
+  background-image: url(../img/wallpapers/animals.jpg);
 }
 
 #architectural {
-  background-image: url(../img/wallpapers/wallpaperArchitectural.jpg);
+  background-image: url(../img/wallpapers/architectural.jpg);
 }
 
 #nature {
-  background-image: url(../img/wallpapers/wallpaperNature.jpg);
+  background-image: url(../img/wallpapers/nature.jpg);
 }
 
 #portrait {
-  background-image: url(../img/wallpapers/wallpaperPortrait.jpg);
+  background-image: url(../img/wallpapers/portrait.jpg);
 }
 
 #sport {
-  background-image: url(../img/wallpapers/wallpaperSport.jpg);
+  background-image: url(../img/wallpapers/sport.jpg);
 }
 
 #wedding {
-  background-image: url(../img/wallpapers/wallpaperWedding.jpg);
+  background-image: url(../img/wallpapers/wedding.jpg);
 }
 
 .pageContainer {
@@ -46,14 +46,14 @@ main {
   position: absolute;
 }
 
-/* Image layout*/
+/* Photo layout*/
 
 .gallery {
   display: flex;
   flex-direction: row;
-  gap: calc(var(--imageMargin) / 2);
-  padding-top: calc(var(--navContainerHeight) + var(--imageMargin));
-  padding-bottom: calc(var(--navContainerHeight) + var(--imageMargin));
+  gap: calc(var(--photoMargin) / 2);
+  padding-top: calc(var(--navContainerHeight) + var(--photoMargin));
+  padding-bottom: calc(var(--navContainerHeight) + var(--photoMargin));
   margin-left: var(--sideWrapperMargin);
   margin-right: var(--sideWrapperMargin);
 }
@@ -61,13 +61,13 @@ main {
 .gallery .column {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--imageMargin) / 2);
+  gap: calc(var(--photoMargin) / 2);
 }
 
-.image img {
+.photo img {
   height: 100%;
   width: 100%;
-  border-radius: var(--imageBorderRadius);
+  border-radius: var(--photoBorderRadius);
   -o-object-fit: cover;
      object-fit: cover;
   box-shadow: var(--shadow);
@@ -241,7 +241,7 @@ main {
 @-webkit-keyframes fadeInFromBottom {
   from {
     opacity: 0;
-    transform: translateY(var(--imageMargin));
+    transform: translateY(var(--photoMargin));
   }
 
   to {
@@ -253,7 +253,7 @@ main {
 @keyframes fadeInFromBottom {
   from {
     opacity: 0;
-    transform: translateY(var(--imageMargin));
+    transform: translateY(var(--photoMargin));
   }
 
   to {
@@ -265,7 +265,7 @@ main {
 @-webkit-keyframes fadeInFromRight {
   from {
     opacity: 0;
-    transform: translateX(var(--imageMargin));
+    transform: translateX(var(--photoMargin));
   }
 
   to {
@@ -277,7 +277,7 @@ main {
 @keyframes fadeInFromRight {
   from {
     opacity: 0;
-    transform: translateX(var(--imageMargin));
+    transform: translateX(var(--photoMargin));
   }
 
   to {
@@ -289,7 +289,7 @@ main {
 @-webkit-keyframes fadeInFromLeft {
   from {
     opacity: 0;
-    transform: translateX(calc(-1 * var(--imageMargin)));
+    transform: translateX(calc(-1 * var(--photoMargin)));
   }
 
   to {
@@ -301,7 +301,7 @@ main {
 @keyframes fadeInFromLeft {
   from {
     opacity: 0;
-    transform: translateX(calc(-1 * var(--imageMargin)));
+    transform: translateX(calc(-1 * var(--photoMargin)));
   }
 
   to {
@@ -313,7 +313,7 @@ main {
 @-webkit-keyframes fadeInFromRightBottom {
   from {
     opacity: 0;
-    transform: translate(var(--imageMargin), var(--imageMargin));
+    transform: translate(var(--photoMargin), var(--photoMargin));
   }
 
   to {
@@ -325,7 +325,7 @@ main {
 @keyframes fadeInFromRightBottom {
   from {
     opacity: 0;
-    transform: translate(var(--imageMargin), var(--imageMargin));
+    transform: translate(var(--photoMargin), var(--photoMargin));
   }
 
   to {
@@ -337,7 +337,7 @@ main {
 @-webkit-keyframes fadeInFromLeftBottom {
   from {
     opacity: 0;
-    transform: translate(calc(-1 * var(--imageMargin)), var(--imageMargin));
+    transform: translate(calc(-1 * var(--photoMargin)), var(--photoMargin));
   }
 
   to {
@@ -349,7 +349,7 @@ main {
 @keyframes fadeInFromLeftBottom {
   from {
     opacity: 0;
-    transform: translate(calc(-1 * var(--imageMargin)), var(--imageMargin));
+    transform: translate(calc(-1 * var(--photoMargin)), var(--photoMargin));
   }
 
   to {

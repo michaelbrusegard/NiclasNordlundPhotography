@@ -12,9 +12,9 @@ const wedding = [];
 
 // Goes through all files in showcase
 files.forEach(i => {
-    // Checks if it is .jpg images
+    // Checks if it is .jpg photos
     if (i.endsWith('.jpg')) {
-        // Checks which category of image it is and adds the path aswell as dimensions to the correct array
+        // Checks which category of photo it is and adds the path aswell as dimensions to the correct array
         if (i.startsWith('animals')) {
             let dimensions = sizeOf('../img/showcase/' + i);
             animals.push([i, dimensions.width, dimensions.height]);

@@ -1,8 +1,8 @@
-// Function to load images and arrange them into columns
-function loadImages(files) {
+// Function to load photos and arrange them into columns
+function loadPhotos(files) {
 
   // Variables
-  const totalImages = files.length;
+  const totalPhotos = files.length;
   const columnsMax = getColumns();
   const gallery = document.getElementsByClassName('gallery')[0];
 
@@ -24,9 +24,9 @@ function loadImages(files) {
   let extraValue = 0;
   let skipBigPhoto = true;
 
-  for (let i = 0; i < totalImages; i++) {
-    // Get current image
-    const img = createContainer(files[i]);
+  for (let i = 0; i < totalPhotos; i++) {
+    // Get current photo
+    const photo = createContainer(files[i]);
     // Mark as big photo
     if (files[i][1] < files[i][2]) {
       bigPhotoIndexArray.push(i % columnsMax);
@@ -38,7 +38,7 @@ function loadImages(files) {
       extraValue += 1;
     }
     // Append to column
-    columns[(extraValue + i) % columnsMax].appendChild(img);
+    columns[(extraValue + i) % columnsMax].appendChild(photo);
     skipBigPhoto = true;
   }
 }
@@ -56,34 +56,34 @@ function getColumns() {
   }
 }
 
-// Function that creates image tags with lazyloading
+// Function that creates photo tags with lazyloading
 // Modified lazyload function to adapt to multiple columns
 function createContainer(file) {
 
-  // Added creation of a div to hold the images
-  let imgDiv = document.createElement('div');
-  let image = document.createElement('img');
+  // Added creation of a div to hold the photos
+  let div = document.createElement('div');
+  let img = document.createElement('img');
 
-  // Loads image from showcase, sets alt and lazy
+  // Loads photos from showcase, sets alt and lazy
   // Assigning a class to the new div in order for css to be added
-  image.src = 'img/showcase/' + file[0];
-  image.alt = file[0];
-  image.loading = 'lazy';
-  imgDiv.classList.add('image');
+  img.src = 'img/showcase/' + file[0];
+  img.alt = file[0];
+  img.loading = 'lazy';
+  div.classList.add('photo');
 
-  // Sets the html height and width so the image takes the same amount of space before it is loaded
-  image.width = file[1];
-  image.height = file[2];
+  // Sets the html height and width so the photo takes the same amount of space before it is loaded
+  img.width = file[1];
+  img.height = file[2];
 
-  // Adds image to the div
-  imgDiv.appendChild(image);
+  // Adds photo to the div
+  div.appendChild(img);
 
   // Add observer for fade on scroll effect
-  addImagesFadeOnScroll.observe(imgDiv);
+  addPhotosFadeOnScroll.observe(div);
 
-  image.addEventListener('click', () => { highlightImage(image); });
+  img.addEventListener('click', () => { highlightPhoto(img); });
 
-  return imgDiv;
+  return div;
 }
 
 // Button that scrolls the window to the top

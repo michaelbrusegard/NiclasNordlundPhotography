@@ -158,7 +158,7 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background: url(../img/wallpapers/wallpaperShop.jpg) center center no-repeat;
+    background: url(../img/wallpapers/shop.jpg) center center no-repeat;
     background-size: cover;
     z-index: -1;
 }
@@ -167,7 +167,7 @@
 
 #gridWrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, calc(var(--imageContainerSize) + 2 * var(--shopMargin)));
+    grid-template-columns: repeat(auto-fit, calc(var(--photoContainerSize) + 2 * var(--shopMargin)));
     justify-content: center;
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
@@ -178,9 +178,9 @@
     box-shadow: var(--shadow);
     position: relative;
     margin: var(--shopMargin);
-    border-radius: var(--imageBorderRadius);
-    height: var(--imageContainerSize);
-    width: var(--imageContainerSize);
+    border-radius: var(--photoBorderRadius);
+    height: var(--photoContainerSize);
+    width: var(--photoContainerSize);
     box-shadow: var(--shadow);
     transition: background-color var(--transitionLength) ease-in;
     -webkit-user-select: none;
@@ -194,13 +194,13 @@
             animation: tilt-shaking var(--transitionLength);
 }
 
-.images {
-    border-radius: var(--imageBorderRadius);
+.photos {
+    border-radius: var(--photoBorderRadius);
     margin: auto;
-    margin-top: calc(var(--imageMargin) / 2);
+    margin-top: calc(var(--photoMargin) / 2);
     display: block;
-    height: var(--imageSize);
-    max-width: calc(var(--imageSize) * 1.7);
+    height: var(--photoSize);
+    max-width: calc(var(--photoSize) * 1.7);
 }
 
 .price {
@@ -225,7 +225,7 @@
     top: 0.5em;
     font-size: 1.4em;
     display: inline-block;
-    background: url('../img/symbols/pinchOut.png');
+    background: url('../img/icons/pinchOut.png');
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);
@@ -241,7 +241,7 @@
     position: absolute;
     right: 0.5em;
     display: inline-block;
-    background: url('../img/symbols/add.png');
+    background: url('../img/icons/add.png');
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);
@@ -275,7 +275,7 @@
 /* Checkout */
 
 #checkoutMenu {
-    background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
+    background-image: url(../img/wallpapers/checkout.jpg);
     background-position: center;
     background-size: cover;
     position: fixed;
@@ -286,7 +286,7 @@
     overflow: hidden;
     border: solid;
     border-width: var(--checkoutBorder);
-    border-radius: var(--imageBorderRadius);
+    border-radius: var(--photoBorderRadius);
     border-color: var(--pageColor);
     margin: var(--shopMargin);
     margin-top: 0;
@@ -315,7 +315,7 @@
 }
 
 #checkoutElements {
-    background-image: url(../img/wallpapers/wallpaperCheckout.jpg);
+    background-image: url(../img/wallpapers/checkout.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -342,7 +342,7 @@
 #infoButton {
     right: 0;
     display: inline-block;
-    background: url('../img/symbols/questionmark.png');
+    background: url('../img/icons/questionmark.png');
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);

@@ -24,7 +24,7 @@ function checkoutSystem(shopItem, itemPrice) {
     const checkoutItem = shopItem.cloneNode(true);
     // Change and remove buttons
     const button = checkoutItem.querySelector('.addButton');
-    button.style.backgroundImage = "url('../img/symbols/remove.png')";
+    button.style.backgroundImage = "url('../img/icons/remove.png')";
     const pinchOutButton = checkoutItem.querySelector(':nth-child(4)');
     checkoutItem.removeChild(pinchOutButton);
 

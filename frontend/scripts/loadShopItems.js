@@ -51,24 +51,24 @@ function calculateRows() {
     const style = getComputedStyle(document.body);
 
     // Container size
-    const imageContainerSize = parseInt(style.getPropertyValue('--imageContainerSize').slice(0, -2));
+    const photoContainerSize = parseInt(style.getPropertyValue('--photoContainerSize').slice(0, -2));
     const shopMargin = parseInt(style.getPropertyValue('--shopMargin').slice(0, -2));
 
     // Nav height
     const navContainerHeight = parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2));
 
-    return Math.floor((window.innerHeight - navContainerHeight - shopMargin) / (imageContainerSize + shopMargin));
+    return Math.floor((window.innerHeight - navContainerHeight - shopMargin) / (photoContainerSize + shopMargin));
 }
 
 // Function that creates the div container for the shop
 function createContainer(pricesArray) {
 
-    // Images
+    // Photos
     let img = document.createElement('img');
     img.src = `https://storage.googleapis.com/${googleFrontEndBucketName}/${pricesArray[0]}`;
     img.loading = 'lazy';
     img.alt = pricesArray[0];
-    img.classList.add('images');
+    img.classList.add('photos');
 
     // Price
     let h2 = document.createElement('h2');
@@ -101,7 +101,7 @@ function createContainer(pricesArray) {
     observeGridItems.observe(div);
 
     // Check for click on pinch out button
-    pinchOutButton.addEventListener('click', () => { highlightImage(img); });
+    pinchOutButton.addEventListener('click', () => { highlightPhoto(img); });
 
     // Apply checkout system interaction to the div item
     addButton.addEventListener('click', () => { checkoutSystem(div, parseInt(pricesArray[1])); });

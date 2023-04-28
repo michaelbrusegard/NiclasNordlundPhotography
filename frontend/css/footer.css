@@ -53,31 +53,31 @@
 /* Icons */
 
 .arrow {
-    background: url('../img/symbols/arrow.png');
+    background: url('../img/icons/arrow.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .email {
-    background: url('../img/symbols/email.png');
+    background: url('../img/icons/email.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .phone {
-    background: url('../img/symbols/phone.png');
+    background: url('../img/icons/phone.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .insta {
-    background: url('../img/symbols/instagram.png');
+    background: url('../img/icons/instagram.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
 
 .facebook {
-    background: url('../img/symbols/facebook.png');
+    background: url('../img/icons/facebook.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }

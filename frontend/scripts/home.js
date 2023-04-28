@@ -13,17 +13,17 @@ const style = getComputedStyle(document.body);
 // Getting home elements
 const contentContainer = document.getElementById('contentContainer');
 
-// Gets the divs with the quotes and the quotes p
-const quotesDaddy = document.querySelectorAll('.quotesDaddy');
-const quoteElements = document.querySelectorAll('.quotesDaddy p');
+// Gets the divs with the quotes and the text
+const quotesContainer = document.querySelectorAll('.quotesContainer');
+const quoteElements = document.querySelectorAll('.quotesContainer p');
 
-// Gets the div containing the images and the images
-const imageDaddy = document.querySelector('#imageDaddy');
-const images = document.querySelectorAll('#imageDaddy img');
+// Gets the div containing the photo carousel and the photos
+const photoCarousel = document.querySelector('#photoCarousel');
+const photos = document.querySelectorAll('#photoCarousel img');
 
-// Interval time for the carousel in ms and which images is displayed
+// Interval time for the carousel in ms and which photo is displayed
 const intervalTime = 5000;
-let imageDisplayed = 0;
+let photoDisplayed = 0;
 
 // Text to be displayed on the home page
 const quoteText = ['Born in Mariehamn in 1965, I always had an interest in animals and nature.',
@@ -39,13 +39,13 @@ const fastTyping = 8;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
-let isFinishedTyping = Array(quotesDaddy.length).fill(false);
+let isFinishedTyping = Array(quotesContainer.length).fill(false);
 let firstClick = true;
 let currentIndex = 0;
 
 
 // Adjust the speed of the typing animation
-for (const element of quotesDaddy) {
+for (const element of quotesContainer) {
   element.addEventListener('click', () => {
     if(isFinishedTyping[currentIndex]) {
       firstClick = false;
@@ -68,12 +68,12 @@ for (const element of quotesDaddy) {
 // Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   slideTransition(nav, shopNav, navigatedFromShop);
-  getNiclasLeftPx(); imagePosition(); textPosition();
-  imageCarousel(); observeHome();
+  setNiclasLeftPos(); carouselPhotoPosition(); textPosition();
+  initialisePhotoCarousel(); observeHome();
 });
 
-window.addEventListener("resize", () => { getNiclasLeftPx(); imagePosition(); textPosition(); console.log(nextIndex);});
-window.addEventListener("orientationChange", () => { getNiclasLeftPx(); imagePosition(); textPosition(); });
+window.addEventListener("resize", () => { setNiclasLeftPos(); carouselPhotoPosition(); textPosition();});
+window.addEventListener("orientationChange", () => { setNiclasLeftPos(); carouselPhotoPosition(); textPosition(); });
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => { animationEndOnNavElements(nav, shopNav); });
@@ -89,6 +89,6 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 scrollTopButtons.forEach(element => {
   element.addEventListener('click', event => {
     event.preventDefault();
-    quotesDaddy[0].scrollIntoView({ behavior: "smooth" });
+    quotesContainer[0].scrollIntoView({ behavior: "smooth" });
   });
 });

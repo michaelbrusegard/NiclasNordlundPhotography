@@ -6,7 +6,7 @@ async function writeText(element, quoteIndex) {
         element.innerHTML = '';
         const textString = quoteText[quoteIndex];
         for (let i = 0; i < textString.length; i++) {
-            if (quotesDaddy[quoteIndex].className.endsWith('hidden')) {
+            if (quotesContainer[quoteIndex].className.endsWith('hidden')) {
                 element.innerHTML = textString
                 break
             }
@@ -26,17 +26,17 @@ async function writeText(element, quoteIndex) {
 
 // Function that scrolls into next div when quote is finished
 function scrollToNextQuote(index) {
-    if (index === quotesDaddy.length) {imageDaddy.scrollIntoView()}
-    else {quotesDaddy[index].scrollIntoView()}
+    if (index === quotesContainer.length) {photoCarousel.scrollIntoView()}
+    else {quotesContainer[index].scrollIntoView()}
 }
 
 // Creates observers for home elements and starts observing them
 function observeHome() {
     const carouselObserver = new IntersectionObserver(observeCarousel, { threshold: 0.8 });
     const quotesObserver = new IntersectionObserver(observeQuotes, { threshold: 0.8 });
-    carouselObserver.observe(imageDaddy);
-    for (let i = 0; i < quotesDaddy.length; i++) {
-        quotesObserver.observe(quotesDaddy[i]);
+    carouselObserver.observe(photoCarousel);
+    for (let i = 0; i < quotesContainer.length; i++) {
+        quotesObserver.observe(quotesContainer[i]);
     }
 }
 
@@ -57,8 +57,8 @@ function observeQuotes(items) {
         if (item.isIntersecting) {
             timeOutLength = slowTyping;
             item.target.classList.remove('hidden');
-            for (i = 0; i < quotesDaddy.length; i++) {
-                if (item.target === quotesDaddy[i]) {
+            for (i = 0; i < quotesContainer.length; i++) {
+                if (item.target === quotesContainer[i]) {
                     // Start writing text
                     currentIndex = i
                     writeText(quoteElements[i], i);

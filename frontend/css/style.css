@@ -45,8 +45,8 @@ body::-webkit-scrollbar {
     --buttonSize: 1.5em;
 
     /* Showcase */
-    --imageMargin: 20px;
-    --imageBorderRadius: 5px;
+    --photoMargin: 20px;
+    --photoBorderRadius: 5px;
 
     /* Home */
     --quoteZindex: 50;
@@ -55,10 +55,10 @@ body::-webkit-scrollbar {
     --sideWrapperMargin: 40px;
     --shopMargin: 6px;
 
-    /* Image container */
+    /* Photo container */
     --textMargin: 10px;
-    --imageSize: 96px;
-    --imageContainerSize: 175px;
+    --photoSize: 96px;
+    --photoContainerSize: 175px;
 
     /* Checkout */
     --checkoutWidth: 362px;

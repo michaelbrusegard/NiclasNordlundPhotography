@@ -1,4 +1,4 @@
-// Arrays for image path and dimensions
+// Arrays for photo path and dimensions
 const filesAnimals = [
     [
         "animals01.jpg",
@@ -487,7 +487,7 @@ else if (page == 'sport') {files = filesSport;}
 else if (page == 'wedding') {files = filesWedding; columnSize *= 1.5;}
 
 // Create an observer for showcaseFadeOnscroll
-const addImagesFadeOnScroll = new IntersectionObserver(showcaseFadeOnscroll);
+const addPhotosFadeOnScroll = new IntersectionObserver(showcaseFadeOnscroll);
 
 // Variables for slide transition
 const nav = document.getElementById('nav');
@@ -498,10 +498,10 @@ let navigatedFrom = document.referrer
 // Variable for mobile menu
 const menu = document.querySelector('.linkMenu');
 
-// Loads images into columns
-document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadImages(files); });
-window.addEventListener('resize', () => { loadImages(files);});
-window.addEventListener('orientationChange', () => { loadImages(files);});
+// Loads photos into columns
+document.addEventListener('DOMContentLoaded', () => {slideTransition(nav, shopNav, navigatedFromShop); loadPhotos(files); });
+window.addEventListener('resize', () => { loadPhotos(files);});
+window.addEventListener('orientationChange', () => { loadPhotos(files);});
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {animationEndOnNavElements(nav, shopNav)});

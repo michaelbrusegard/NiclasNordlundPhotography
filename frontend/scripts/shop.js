@@ -51,10 +51,10 @@ const shopNav = document.getElementById('shopNav');
 const navigatedFromShowcaseOrHome = ['home.html', 'nature.html', 'animals.html', 'architectural.html', 'portrait.html', 'sport.html', 'wedding.html'];
 let navigatedFrom = document.referrer;
 
-// When the DOM is done loading: loads new image containers and aligns checkout menu
+// When the DOM is done loading: loads new photo containers and aligns checkout menu
 document.addEventListener('DOMContentLoaded', () => { slideTransition(shopNav, nav, navigatedFromShowcaseOrHome); windowLoad(); alignCheckout(); });
 
-// Changes to the window: loads new image containers and aligns checkout menu
+// Changes to the window: loads new photo containers and aligns checkout menu
 window.addEventListener("scroll", () => { scrollLoad(); });
 window.addEventListener("resize", () => { windowLoad(); alignCheckout(); });
 window.addEventListener("orientationChange", () => { windowLoad(); alignCheckout(); });

@@ -10,7 +10,7 @@ function showcaseFadeOnscroll(items) {
         // Checks if the item is intersecting
         if (item.isIntersecting) {
             // Checks how many columns there are
-            // Adds the fade in animation based on which column the image is
+            // Adds the fade in animation based on which column the photo is in
             if (columnsAmount === 1) {
                 item.target.classList.add('fadeInFromBottom');
             } else if (columnsAmount === 2) {

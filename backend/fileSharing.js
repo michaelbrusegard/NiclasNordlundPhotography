@@ -1,11 +1,9 @@
-module.exports = { handleImages };
-
 const { Storage } = require('@google-cloud/storage');
 const config = require('../config.json');
 
 const storage = new Storage({ projectId: config.googleProjectId, keyFilename: 'acoustic-scarab-382401-51a3eaca51bc.json' });
 
-async function handleImages(purchasedItems) {
+async function handlePhotos(purchasedItems) {
     try {
         const bucket = storage.bucket(config.googleBackEndBucketName);
         const promises = purchasedItems.map(async (item) => {
@@ -26,4 +24,4 @@ async function handleImages(purchasedItems) {
     }
 }
 
-module.exports = { handleImages };
+module.exports = { handlePhotos };

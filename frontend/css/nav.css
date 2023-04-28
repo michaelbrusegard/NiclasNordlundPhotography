@@ -128,19 +128,19 @@ nav .mobileNav {
 /* Icons */
 
 .linkSignature {
-    background: url('../img/symbols/signature.png');
+    background: url('../img/icons/signature.png');
     background-size: calc(var(--menuIconSize) * 4);
     width: calc(var(--menuIconSize) * 4);
 }
 
 .linkBag {
-    background: url('../img/symbols/bag.png');
+    background: url('../img/icons/bag.png');
     background-size: calc(var(--menuIconSize));
     width: var(--menuIconSize);
 }
 
 .linkCart {
-    background: url('../img/symbols/cart.png');
+    background: url('../img/icons/cart.png');
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
@@ -159,12 +159,12 @@ nav .mobileNav {
 /* Menu icon position */
 
 #menu1 {
-    background: url('../img/symbols/menuLine1.png');
+    background: url('../img/icons/menuLine1.png');
     top: calc(var(--navContainerHeight) / 3);
 }
 
 #menu2 {
-    background: url('../img/symbols/menuLine2.png');
+    background: url('../img/icons/menuLine2.png');
     bottom: calc(var(--navContainerHeight) / 3);
 }
 

@@ -88,7 +88,7 @@ app.post('/webhook', (request, response) => {
             let purchasedItems = checkoutSession.metadata.purchasedItems;
             if (purchasedItems != undefined) {
                 purchasedItems = JSON.parse(purchasedItems);
-                fileSharing.handleImages(purchasedItems);
+                fileSharing.handlePhotos(purchasedItems);
             }
             break;
         default:
