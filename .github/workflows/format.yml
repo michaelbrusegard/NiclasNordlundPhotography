@@ -22,12 +22,18 @@ jobs:
         run: npm install --save-dev prettier
 
       - name: Format code with Prettier
-        run: npm run testFormat
+        run: npx prettier .prettierrc --check .
 
       - name: Commit changes if needed
-        if failure()
-        run: npm run format
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Apply formatting changes
-          branch: ${{ github.head_ref }}
+        if: failure()
+        env:
+          APP_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_APP_ID }}
+          PRIVATE_KEY: ${{ secrets.WORKFLOW_AUTHENTICATOR_PRIVATE_KEY }}
+          INSTALLATION_ID: ${{ secrets.WORKFLOW_AUTHENTICATOR_INSTALLATION_ID }}
+        run: |
+          npx prettier .prettierrc --write .
+          npx @octokit/auth-app -a $APP_ID -k $PRIVATE_KEY -I $INSTALLATION_ID
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Run Prettier"
+          git push
