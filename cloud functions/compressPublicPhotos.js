@@ -14,7 +14,7 @@ const QUALITY = 60; // The desired quality for the low-quality photos
 
 const storage = new Storage();
 
-exports.processPhoto = async (event, context) => {
+exports.compressPhoto = async (event, context) => {
   const file = event;
   const sourceBucket = storage.bucket(file.bucket);
   const destinationBucket = storage.bucket(DESTINATION_BUCKET_NAME);
