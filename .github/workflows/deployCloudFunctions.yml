@@ -28,6 +28,6 @@ jobs:
           --gen2 \
           --region=europe-north1 \
           --runtime=nodejs18 \
-          --source=cloud_functions \
+          --source=cloud_functions/CompressPublicPhotos.js \
           --entry-point=compressPhoto \
           --trigger-bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }}
