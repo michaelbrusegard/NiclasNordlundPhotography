@@ -16,7 +16,6 @@ const stripe = require('stripe')(config.stripeSecretKey);
 
 const storeItems = [];
 
-
 app.post('/checkout-session', async (request, response) => {
   const itemsToPurchase = request.body;
   let validatedItemsToPurchase = [];
