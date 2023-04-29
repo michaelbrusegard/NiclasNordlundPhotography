@@ -1,11 +1,11 @@
 {
-  "name": "cloud_functions",
-  "version": "1.0.0",
-  "description": "Function that deletes photos from a bucekt when they are deleted in another bucket.",
-  "main": "deletePhoto.js",
-  "author": "Michael Brusegard",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "@google-cloud/storage": "^6.9.5"
-  }
+    "name": "cloud_functions",
+    "version": "1.0.0",
+    "description": "Function that deletes photos from a bucekt when they are deleted in another bucket.",
+    "main": "deletePhoto.js",
+    "author": "Michael Brusegard",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@google-cloud/storage": "^6.9.5"
+    }
 }

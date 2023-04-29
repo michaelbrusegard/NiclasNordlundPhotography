@@ -1,505 +1,507 @@
 /* Slide transition */
 
 .fadeOutAnimation {
-  -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
-  animation: fadeOut calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
+    animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
 .fadeInAnimation {
-  -webkit-animation: fadeIn var(--transitionLength) linear;
-  animation: fadeIn var(--transitionLength) linear;
+    -webkit-animation: fadeIn var(--transitionLength) linear;
+    animation: fadeIn var(--transitionLength) linear;
 }
 
 .linkBagAnimation {
-  -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
-  animation: transitionBag calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
+    animation: transitionBag calc(var(--transitionLength) * 2) linear;
 }
 
 @media (min-width: 1100px) {
-  .linkBagAnimation {
-    -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
-      linear;
-    animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
-  }
+    .linkBagAnimation {
+        -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
+            linear;
+        animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+    }
 }
 
 #shopNav {
-  display: none;
+    display: none;
 }
 
 #nav {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 /* Navigation bar animations */
 
 @-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
 
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
 
-  100% {
-    opacity: 0;
-  }
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
 
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
 
-  100% {
-    opacity: 0;
-  }
+    100% {
+        opacity: 0;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes transitionBag {
-  to {
-    transform: translateX(
-      calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize))
-    );
-  }
+    to {
+        transform: translateX(
+            calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize))
+        );
+    }
 }
 
 @keyframes transitionBag {
-  to {
-    transform: translateX(
-      calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize))
-    );
-  }
+    to {
+        transform: translateX(
+            calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize))
+        );
+    }
 }
 
 @-webkit-keyframes transitionBagWide {
-  to {
-    transform: translateX(
-      calc(
-        -1 * var(--desktopNavSize) + var(--navPadding) * 2 + var(--menuIconSize)
-      )
-    );
-  }
+    to {
+        transform: translateX(
+            calc(
+                -1 * var(--desktopNavSize) + var(--navPadding) * 2 + var(--menuIconSize)
+            )
+        );
+    }
 }
 
 @keyframes transitionBagWide {
-  to {
-    transform: translateX(
-      calc(
-        -1 * var(--desktopNavSize) + var(--navPadding) * 2 + var(--menuIconSize)
-      )
-    );
-  }
+    to {
+        transform: translateX(
+            calc(
+                -1 * var(--desktopNavSize) + var(--navPadding) * 2 + var(--menuIconSize)
+            )
+        );
+    }
 }
 
 /* Fade on scroll class selector */
 
 .scaleFadeIn {
-  pointer-events: none;
-  -webkit-animation: scaleFadeIn
-    calc(
-      var(--transitionLength) + 3 * var(--transitionLength) *
-        var(--variedScaleFadeIn)
-    )
-    ease-out;
-  animation: scaleFadeIn
-    calc(
-      var(--transitionLength) + 3 * var(--transitionLength) *
-        var(--variedScaleFadeIn)
-    )
-    ease-out;
+    pointer-events: none;
+    -webkit-animation: scaleFadeIn
+        calc(
+            var(--transitionLength) + 3 * var(--transitionLength) *
+                var(--variedScaleFadeIn)
+        )
+        ease-out;
+    animation: scaleFadeIn
+        calc(
+            var(--transitionLength) + 3 * var(--transitionLength) *
+                var(--variedScaleFadeIn)
+        )
+        ease-out;
 }
 
 /* Fade on scroll animations */
 
 @-webkit-keyframes scaleFadeIn {
-  from {
-    opacity: calc(var(--softOpacity) / 3);
-    transform: scale(0.9, 0.9);
-  }
+    from {
+        opacity: calc(var(--softOpacity) / 3);
+        transform: scale(0.9, 0.9);
+    }
 
-  to {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 @keyframes scaleFadeIn {
-  from {
-    opacity: calc(var(--softOpacity) / 3);
-    transform: scale(0.9, 0.9);
-  }
+    from {
+        opacity: calc(var(--softOpacity) / 3);
+        transform: scale(0.9, 0.9);
+    }
 
-  to {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 /* Page content */
 
 .pageContainer {
-  height: 100%;
-  width: 100%;
-  -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
-  animation: transitionIn calc(var(--transitionLength) * 2);
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  min-height: 100vh;
-  padding-top: var(--navContainerHeight);
-  padding-bottom: var(--navContainerHeight);
+    height: 100%;
+    width: 100%;
+    -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
+    animation: transitionIn calc(var(--transitionLength) * 2);
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    min-height: 100vh;
+    padding-top: var(--navContainerHeight);
+    padding-bottom: var(--navContainerHeight);
 }
 
 /* Wallpaper */
 
 #wallpaperShop {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: url(../img/wallpapers/shop.jpg) center center no-repeat;
-  background-size: cover;
-  z-index: -1;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url(../img/wallpapers/shop.jpg) center center no-repeat;
+    background-size: cover;
+    z-index: -1;
 }
 
 /* Shopping */
 
 #gridWrapper {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    calc(var(--photoContainerSize) + 2 * var(--shopMargin))
-  );
-  justify-content: center;
-  margin-left: var(--sideWrapperMargin);
-  margin-right: var(--sideWrapperMargin);
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        calc(var(--photoContainerSize) + 2 * var(--shopMargin))
+    );
+    justify-content: center;
+    margin-left: var(--sideWrapperMargin);
+    margin-right: var(--sideWrapperMargin);
 }
 
 .container {
-  background-color: var(--expandedPageColor);
-  box-shadow: var(--shadow);
-  position: relative;
-  margin: var(--shopMargin);
-  border-radius: var(--photoBorderRadius);
-  height: var(--photoContainerSize);
-  width: var(--photoContainerSize);
-  box-shadow: var(--shadow);
-  transition: background-color var(--transitionLength) ease-in;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    background-color: var(--expandedPageColor);
+    box-shadow: var(--shadow);
+    position: relative;
+    margin: var(--shopMargin);
+    border-radius: var(--photoBorderRadius);
+    height: var(--photoContainerSize);
+    width: var(--photoContainerSize);
+    box-shadow: var(--shadow);
+    transition: background-color var(--transitionLength) ease-in;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .container:hover {
-  -webkit-animation: tilt-shaking var(--transitionLength);
-  animation: tilt-shaking var(--transitionLength);
+    -webkit-animation: tilt-shaking var(--transitionLength);
+    animation: tilt-shaking var(--transitionLength);
 }
 
 .photos {
-  border-radius: var(--photoBorderRadius);
-  margin: auto;
-  margin-top: calc(var(--photoMargin) / 2);
-  display: block;
-  height: var(--photoSize);
-  max-width: calc(var(--photoSize) * 1.7);
+    border-radius: var(--photoBorderRadius);
+    margin: auto;
+    margin-top: calc(var(--photoMargin) / 2);
+    display: block;
+    height: var(--photoSize);
+    max-width: calc(var(--photoSize) * 1.7);
 }
 
 .price {
-  font-family: 'Noto Sans Mono', sans-serif;
-  font-weight: bold;
-  font-size: var(--fontSize);
-  margin-left: var(--textMargin);
-  margin-right: var(--textMargin);
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-weight: bold;
+    font-size: var(--fontSize);
+    margin-left: var(--textMargin);
+    margin-right: var(--textMargin);
 }
 
 .name {
-  font-family: 'Noto Sans Mono', sans-serif;
-  font-weight: normal;
-  font-size: calc(var(--fontSize) / 2);
-  margin-left: var(--textMargin);
-  margin-right: var(--textMargin);
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-weight: normal;
+    font-size: calc(var(--fontSize) / 2);
+    margin-left: var(--textMargin);
+    margin-right: var(--textMargin);
 }
 
 .pinchOutButton {
-  position: absolute;
-  right: 0.5em;
-  top: 0.5em;
-  font-size: 1.4em;
-  display: inline-block;
-  background: url('../img/icons/pinchOut.png');
-  background-size: cover;
-  height: var(--buttonSize);
-  width: var(--buttonSize);
-  border-radius: var(--buttonSize);
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    font-size: 1.4em;
+    display: inline-block;
+    background: url('../img/icons/pinchOut.png');
+    background-size: cover;
+    height: var(--buttonSize);
+    width: var(--buttonSize);
+    border-radius: var(--buttonSize);
 }
 
 .pinchOutButton:hover {
-  opacity: var(--softOpacity);
+    opacity: var(--softOpacity);
 }
 
 .addButton {
-  margin-top: 2px;
-  position: absolute;
-  right: 0.5em;
-  display: inline-block;
-  background: url('../img/icons/add.png');
-  background-size: cover;
-  height: var(--buttonSize);
-  width: var(--buttonSize);
-  border-radius: var(--buttonSize);
+    margin-top: 2px;
+    position: absolute;
+    right: 0.5em;
+    display: inline-block;
+    background: url('../img/icons/add.png');
+    background-size: cover;
+    height: var(--buttonSize);
+    width: var(--buttonSize);
+    border-radius: var(--buttonSize);
 }
 
 .addButton:hover {
-  opacity: var(--softOpacity);
+    opacity: var(--softOpacity);
 }
 
 /* Adaptive Size */
 
 @media (min-width: 1100px) {
-  #gridWrapper {
-    margin-left: calc(2 * var(--sideWrapperMargin));
-    margin-right: calc(2 * var(--sideWrapperMargin));
-  }
+    #gridWrapper {
+        margin-left: calc(2 * var(--sideWrapperMargin));
+        margin-right: calc(2 * var(--sideWrapperMargin));
+    }
 }
 
 @media (max-width: 768px) {
-  #gridWrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
+    #gridWrapper {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
-  nav .desktopNav .redDot {
-    display: none;
-  }
+    nav .desktopNav .redDot {
+        display: none;
+    }
 }
 
 /* Checkout */
 
 #checkoutMenu {
-  background-image: url(../img/wallpapers/checkout.jpg);
-  background-position: center;
-  background-size: cover;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  top: calc(var(--checkoutBorder) * -2);
-  right: 0;
-  overflow: hidden;
-  border: solid;
-  border-width: var(--checkoutBorder);
-  border-radius: var(--photoBorderRadius);
-  border-color: var(--pageColor);
-  margin: var(--shopMargin);
-  margin-top: 0;
-  min-height: 0;
-  max-height: 0;
-  width: var(--checkoutWidth);
-  transition: max-height, margin-top;
-  transition-timing-function: ease-out;
-  transition-duration: var(--transitionLength);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    background-image: url(../img/wallpapers/checkout.jpg);
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: calc(var(--checkoutBorder) * -2);
+    right: 0;
+    overflow: hidden;
+    border: solid;
+    border-width: var(--checkoutBorder);
+    border-radius: var(--photoBorderRadius);
+    border-color: var(--pageColor);
+    margin: var(--shopMargin);
+    margin-top: 0;
+    min-height: 0;
+    max-height: 0;
+    width: var(--checkoutWidth);
+    transition: max-height, margin-top;
+    transition-timing-function: ease-out;
+    transition-duration: var(--transitionLength);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #checkoutMenu.active {
-  z-index: var(--checkoutMenuZindex);
-  top: 0;
-  overflow-y: auto;
-  max-height: calc(100% - 2 * (var(--navContainerHeight) + var(--shopMargin)));
-  margin-top: calc(var(--shopMargin) + var(--navContainerHeight));
+    z-index: var(--checkoutMenuZindex);
+    top: 0;
+    overflow-y: auto;
+    max-height: calc(
+        100% - 2 * (var(--navContainerHeight) + var(--shopMargin))
+    );
+    margin-top: calc(var(--shopMargin) + var(--navContainerHeight));
 }
 
 #checkoutMenu.active::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 #checkoutElements {
-  background-image: url(../img/wallpapers/checkout.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: -webkit-sticky;
-  position: sticky;
-  border-top: solid var(--checkoutBorder);
-  border-color: var(--pageColor);
-  bottom: 0;
+    background-image: url(../img/wallpapers/checkout.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: -webkit-sticky;
+    position: sticky;
+    border-top: solid var(--checkoutBorder);
+    border-color: var(--pageColor);
+    bottom: 0;
 }
 
 #checkoutInfo {
-  display: flex;
-  margin: var(--shopMargin);
-  font-family: 'Noto Sans Mono', sans-serif;
-  font-size: var(--fontSize);
-  font-weight: bold;
-  justify-content: space-between;
+    display: flex;
+    margin: var(--shopMargin);
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: var(--fontSize);
+    font-weight: bold;
+    justify-content: space-between;
 }
 
 #checkoutTotalDisplay {
-  display: inline-block;
+    display: inline-block;
 }
 
 #infoButton {
-  right: 0;
-  display: inline-block;
-  background: url('../img/icons/questionmark.png');
-  background-size: cover;
-  height: var(--buttonSize);
-  width: var(--buttonSize);
-  border-radius: var(--buttonSize);
+    right: 0;
+    display: inline-block;
+    background: url('../img/icons/questionmark.png');
+    background-size: cover;
+    height: var(--buttonSize);
+    width: var(--buttonSize);
+    border-radius: var(--buttonSize);
 }
 
 #infoButton:hover {
-  opacity: var(--softOpacity);
+    opacity: var(--softOpacity);
 }
 
 #checkoutButton {
-  width: calc(var(--checkoutWidth) - 2 * var(--checkoutBorder));
-  font-family: 'Noto Sans Mono', sans-serif;
-  font-size: var(--fontSize);
-  font-weight: bold;
-  box-shadow: var(--shadow);
+    width: calc(var(--checkoutWidth) - 2 * var(--checkoutBorder));
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: var(--fontSize);
+    font-weight: bold;
+    box-shadow: var(--shadow);
 }
 
 .container.inCart {
-  z-index: var(--checkoutAnimationZindex);
-  -webkit-animation: add-to-cart var(--transitionLength);
-  animation: add-to-cart var(--transitionLength);
-  -webkit-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
+    z-index: var(--checkoutAnimationZindex);
+    -webkit-animation: add-to-cart var(--transitionLength);
+    animation: add-to-cart var(--transitionLength);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
 }
 
 .container.checkout {
-  width: calc(
-    var(--checkoutWidth) - 2 * (var(--shopMargin) + var(--checkoutBorder))
-  );
-  padding-bottom: var(--shopMargin);
-  height: auto;
-  background-color: var(--expandedPageColor);
-  display: inline-block;
-  -webkit-animation: transitionIn var(--transitionLength);
-  animation: transitionIn var(--transitionLength);
-  -webkit-animation-timing-function: ease-in;
-  animation-timing-function: ease-in;
+    width: calc(
+        var(--checkoutWidth) - 2 * (var(--shopMargin) + var(--checkoutBorder))
+    );
+    padding-bottom: var(--shopMargin);
+    height: auto;
+    background-color: var(--expandedPageColor);
+    display: inline-block;
+    -webkit-animation: transitionIn var(--transitionLength);
+    animation: transitionIn var(--transitionLength);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
 }
 
 .container.checkout.deleted {
-  transition: opacity var(--transitionLength) ease-in;
-  opacity: 0;
+    transition: opacity var(--transitionLength) ease-in;
+    opacity: 0;
 }
 
 /* Page/checkout item transition */
 
 @-webkit-keyframes transitionIn {
-  from {
-    opacity: var(--softOpacity);
-  }
+    from {
+        opacity: var(--softOpacity);
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes transitionIn {
-  from {
-    opacity: var(--softOpacity);
-  }
+    from {
+        opacity: var(--softOpacity);
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Shop items hover animation */
 
 @-webkit-keyframes tilt-shaking {
-  0% {
-    transform: rotate(0deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
 
-  25% {
-    transform: rotate(5deg);
-  }
+    25% {
+        transform: rotate(5deg);
+    }
 
-  50% {
-    transform: rotate(0deg);
-  }
+    50% {
+        transform: rotate(0deg);
+    }
 
-  75% {
-    transform: rotate(-5deg);
-  }
+    75% {
+        transform: rotate(-5deg);
+    }
 
-  100% {
-    transform: rotate(0deg);
-  }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 @keyframes tilt-shaking {
-  0% {
-    transform: rotate(0deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
 
-  25% {
-    transform: rotate(5deg);
-  }
+    25% {
+        transform: rotate(5deg);
+    }
 
-  50% {
-    transform: rotate(0deg);
-  }
+    50% {
+        transform: rotate(0deg);
+    }
 
-  75% {
-    transform: rotate(-5deg);
-  }
+    75% {
+        transform: rotate(-5deg);
+    }
 
-  100% {
-    transform: rotate(0deg);
-  }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 /* Shop item added to cart animation */
 
 @-webkit-keyframes add-to-cart {
-  from {
-    transform: translate(0, 0) scale(1, 1);
-  }
+    from {
+        transform: translate(0, 0) scale(1, 1);
+    }
 
-  to {
-    transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
-  }
+    to {
+        transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
+    }
 }
 
 @keyframes add-to-cart {
-  from {
-    transform: translate(0, 0) scale(1, 1);
-  }
+    from {
+        transform: translate(0, 0) scale(1, 1);
+    }
 
-  to {
-    transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
-  }
+    to {
+        transform: translate(var(--addToCartX), var(--addToCartY)) scale(0, 0);
+    }
 }

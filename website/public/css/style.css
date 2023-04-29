@@ -1,67 +1,67 @@
 *,
 *::after,
 *::before {
-  margin: 0;
-  /* Removes the default margin and padding */
-  padding: 0;
-  box-sizing: border-box;
-  /* Includes margin and padding in width and height calculations */
+    margin: 0;
+    /* Removes the default margin and padding */
+    padding: 0;
+    box-sizing: border-box;
+    /* Includes margin and padding in width and height calculations */
 }
 
 /* Remove scrollbars */
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Variables */
 
 :root {
-  /* Page colors */
-  --pageColor: white;
-  --expandedPageColor: lightgray;
-  --hoverPageColor: gray;
+    /* Page colors */
+    --pageColor: white;
+    --expandedPageColor: lightgray;
+    --hoverPageColor: gray;
 
-  /* Nav */
-  --navZindex: 100;
+    /* Nav */
+    --navZindex: 100;
 
-  --navPadding: 32px;
-  --navContainerHeight: 60px;
+    --navPadding: 32px;
+    --navContainerHeight: 60px;
 
-  --menuIconSize: 40px;
-  --menuIconLineHeight: 4px;
+    --menuIconSize: 40px;
+    --menuIconLineHeight: 4px;
 
-  --desktopNavSize: 1100px;
-  --mobileNavSize: 768px;
+    --desktopNavSize: 1100px;
+    --mobileNavSize: 768px;
 
-  /* General */
-  --fontColor: black;
-  --fontSize: 22px;
-  --shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
-  --transitionLength: 400ms;
-  --softOpacity: 0.6;
-  --buttonSize: 1.5em;
+    /* General */
+    --fontColor: black;
+    --fontSize: 22px;
+    --shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    --transitionLength: 400ms;
+    --softOpacity: 0.6;
+    --buttonSize: 1.5em;
 
-  /* Showcase */
-  --photoMargin: 20px;
-  --photoBorderRadius: 5px;
+    /* Showcase */
+    --photoMargin: 20px;
+    --photoBorderRadius: 5px;
 
-  /* Home */
-  --quoteZindex: 50;
+    /* Home */
+    --quoteZindex: 50;
 
-  /* Grid */
-  --sideWrapperMargin: 40px;
-  --shopMargin: 6px;
+    /* Grid */
+    --sideWrapperMargin: 40px;
+    --shopMargin: 6px;
 
-  /* Photo container */
-  --textMargin: 10px;
-  --photoSize: 96px;
-  --photoContainerSize: 175px;
+    /* Photo container */
+    --textMargin: 10px;
+    --photoSize: 96px;
+    --photoContainerSize: 175px;
 
-  /* Checkout */
-  --checkoutWidth: 362px;
-  --checkoutBorder: 8px;
-  --redDotColor: red;
-  --checkoutMenuZindex: 90;
-  --checkoutAnimationZindex: 200;
+    /* Checkout */
+    --checkoutWidth: 362px;
+    --checkoutBorder: 8px;
+    --redDotColor: red;
+    --checkoutMenuZindex: 90;
+    --checkoutAnimationZindex: 200;
 }
