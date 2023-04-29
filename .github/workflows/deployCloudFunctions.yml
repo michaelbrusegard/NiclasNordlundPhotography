@@ -29,4 +29,5 @@ jobs:
           --region=europe-north1 \
           --runtime=nodejs18 \
           --source=cloud_functions \
-          --entry-point=compressPhoto
+          --entry-point=compressPhoto \
+          --trigger-bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }}
