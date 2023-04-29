@@ -22,8 +22,8 @@ jobs:
       - name: Setup GCloud SDK
         uses: google-github-actions/setup-gcloud@v1
 
-      - name: List files in source directory
-        run: ls ${{ github.workspace }}/cloud_functions/CompressPublicPhotos
+      - name: List files
+        run: ls -R ${{ github.workspace }}
 
       - name: Deploy compressPublicPhotos
         run: |
