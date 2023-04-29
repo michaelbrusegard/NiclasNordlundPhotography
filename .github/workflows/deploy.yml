@@ -28,7 +28,7 @@ jobs:
 
       - name: Deploy compressPublicPhotos
         run: |
-          gcloud functions deploy CompressPublicPhotos \
+          gcloud functions deploy compressPublicPhotos \
           --gen2 \
           --region=europe-north1 \
           --runtime=nodejs18 \
@@ -36,4 +36,16 @@ jobs:
           --entry-point=compressPhoto \
           --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
           --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
+          --project=${{ secrets.GCLOUD_PROJECT_ID }}
+
+      - name: Deploy deletePublicPhotos
+        run: |
+          gcloud functions deploy deletePublicPhotos \
+          --gen2 \
+          --region=europe-north1 \
+          --runtime=nodejs18 \
+          --source=${{ github.workspace }}/cloud_functions/deletePublicPhotos \
+          --entry-point=deletePhoto \
+          --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
+          --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
           --project=${{ secrets.GCLOUD_PROJECT_ID }}
