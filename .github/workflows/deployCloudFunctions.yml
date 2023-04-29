@@ -30,4 +30,5 @@ jobs:
           --runtime=nodejs18 \
           --source=cloud_functions \
           --entry-point=compressPhoto \
-          --trigger-bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }}
+          --trigger-bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
+          --trigger-event-filters=finalize
