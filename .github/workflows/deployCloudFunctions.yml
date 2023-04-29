@@ -19,21 +19,9 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
 
-      - uses: actions-hub/gcloud@master
-        env:
-          PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}
-          APPLICATION_CREDENTIALS: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
-        with:
-          args: info
-
       - name: Setup GCloud SDK
         uses: google-github-actions/setup-gcloud@v1
 
       - name: Deploy compressPublicPhotos
         run: |
-          gcloud functions deploy compressPublicPhotos \
-            --gen2 \
-            --region=europe-north1 \
-            --runtime=nodejs18 \
-            --source=cloud functions \
-            --entry-point=compressPhotos
+          gcloud --version
