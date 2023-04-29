@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  'Deploying cloud functions':
+  deploying_cloud_functions:
     runs-on: ubuntu-latest
 
     steps:

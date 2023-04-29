@@ -7,7 +7,7 @@ on:
       - dev
 
 jobs:
-  'Formating code using Prettier':
+  formating_code_using_prettier:
     runs-on: ubuntu-latest
 
     steps:
