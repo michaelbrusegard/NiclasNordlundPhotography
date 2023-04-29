@@ -13,7 +13,7 @@ function highlightPhoto(photo) {
   });
 
   // Create a new photo element to display the highlighted photo
-  const highlightPhoto = document.createElement('photo');
+  const highlightPhoto = document.createElement('img');
   highlightPhoto.src = photo.src;
   highlightPhoto.style.maxWidth = '90%';
   highlightPhoto.style.maxHeight = '90%';
