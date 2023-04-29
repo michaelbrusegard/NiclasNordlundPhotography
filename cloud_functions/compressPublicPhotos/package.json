@@ -6,7 +6,6 @@
   "author": "Michael Brusegard",
   "license": "Apache-2.0",
   "dependencies": {
-    "@google-cloud/functions-framework": "^3.0.0",
     "@google-cloud/storage": "^6.9.5"
   }
 }
