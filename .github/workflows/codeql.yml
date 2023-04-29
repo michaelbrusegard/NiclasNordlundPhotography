@@ -1,15 +1,14 @@
-
 name: Code vulnerability scanning
 
 on:
   push:
-    branches: 
-    - main
-    - dev
+    branches:
+      - main
+      - dev
   pull_request:
-    branches: 
-    - main
-    - dev
+    branches:
+      - main
+      - dev
   schedule:
     - cron: '30 1 * * 0'
 
@@ -29,7 +28,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-           languages: javascript
+          languages: javascript
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
