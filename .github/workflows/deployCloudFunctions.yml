@@ -21,7 +21,14 @@ jobs:
 
       - name: Setup GCloud SDK
         uses: google-github-actions/setup-gcloud@v1
+        with:
+          version: 'beta'
 
       - name: Deploy compressPublicPhotos
         run: |
-          gcloud --version
+          gcloud beta functions deploy compressPublicPhotos \
+            --gen2 \
+            --region=europe-north1 \
+            --runtime=nodejs18 \
+            --source=cloud functions \
+            --entry-point=compressPhotos
