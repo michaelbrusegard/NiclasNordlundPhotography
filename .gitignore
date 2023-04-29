@@ -2,4 +2,3 @@
 node_modules
 .DS_Store
 config.json
-!cloud_functions/compressPublicPhotos/node_modules

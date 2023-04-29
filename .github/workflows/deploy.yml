@@ -28,7 +28,7 @@ jobs:
           --gen2 \
           --region=europe-north1 \
           --runtime=nodejs18 \
-          --source=cloud_functions/CompressPublicPhotos/ \
+          --source=${{ github.workspace }}/cloud_functions/CompressPublicPhotos \
           --entry-point=compressPhoto \
           --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
           --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
