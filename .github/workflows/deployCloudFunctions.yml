@@ -21,8 +21,6 @@ jobs:
 
       - name: Setup GCloud SDK
         uses: google-github-actions/setup-gcloud@v1
-        with:
-          install_components: functions
 
       - name: Deploy compressPublicPhotos
         run: |
