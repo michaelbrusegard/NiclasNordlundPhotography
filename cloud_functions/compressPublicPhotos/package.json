@@ -1,0 +1,8 @@
+{
+  "name": "cloud_functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "function.js",
+  "author": "Michael Brusegard",
+  "license": "Apache-2.0"
+}

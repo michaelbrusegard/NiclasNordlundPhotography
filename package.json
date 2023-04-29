@@ -2,7 +2,7 @@
   "name": "niclasnordlundphotography",
   "description": "We aim to make a photography website for our client Niclas Photography!",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "server.js",
   "scripts": {
     "format": "npx prettier .prettierrc --write",
     "startServer": "nodemon backend/server.js",
@@ -14,8 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/michaelbrusegard/NiclasNordlundPhotography.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Michael Brusegard",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/michaelbrusegard/NiclasNordlundPhotography/issues"
   },
