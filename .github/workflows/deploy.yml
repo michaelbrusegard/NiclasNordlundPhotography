@@ -1,4 +1,4 @@
-name: Deploy Cloud Functions
+name: Deploy to Google Cloud
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Deploy:
+  'Deploying cloud functions':
     runs-on: ubuntu-latest
 
     steps:
@@ -30,5 +30,5 @@ jobs:
           --runtime=nodejs18 \
           --source=cloud_functions/CompressPublicPhotos.js \
           --entry-point=compressPhoto \
-          --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
-          --trigger-event-filters=type=google.cloud.storage.object.v1.finalized
+          --trigger-event-filters='bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }}' \
+          --trigger-event-filters='type=google.cloud.storage.object.v1.finalized'
