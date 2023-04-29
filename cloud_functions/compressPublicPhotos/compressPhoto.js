@@ -1,4 +1,3 @@
-const config = require('../../config.json');
 const { Storage } = require('@google-cloud/storage');
 const { createReadStream, createWriteStream } = require('fs');
 const { pipeline } = require('stream');
