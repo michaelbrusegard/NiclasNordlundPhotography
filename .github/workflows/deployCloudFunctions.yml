@@ -24,4 +24,9 @@ jobs:
 
       - name: Deploy compressPublicPhotos
         run: |
-          gcloud functions deploy --help
+          gcloud functions deploy CompressPublicPhotos \
+          [--gen2] \
+          --region=europe-north1 \
+          --runtime=nodejs18 \
+          --source=cloud_functions \
+          --entry-point=compressPhoto
