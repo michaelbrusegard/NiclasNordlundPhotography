@@ -1,4 +1,4 @@
-name: Format
+name: Code formatting check
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - dev
 
 jobs:
-  format:
+  Prettier-Format:
     runs-on: ubuntu-latest
 
     steps:
