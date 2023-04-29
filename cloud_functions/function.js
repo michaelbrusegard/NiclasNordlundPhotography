@@ -6,8 +6,8 @@ const { promisify } = require('util');
 const sharp = require('sharp');
 
 // Replace these values with your own
-const SOURCE_BUCKET_NAME = config.googleBackEndBucketName;
-const DESTINATION_BUCKET_NAME = config.googleFrontEndBucketName;
+const SOURCE_BUCKET_NAME = process.env.GCLOUD_PHOTOS_BUCKET;
+const DESTINATION_BUCKET_NAME = process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET;
 const MAX_WIDTH = 1024; // The maximum width of the low-quality photos
 const MAX_HEIGHT = 1024; // The maximum height of the low-quality photos
 const QUALITY = 60; // The desired quality for the low-quality photos
