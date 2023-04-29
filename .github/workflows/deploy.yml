@@ -24,7 +24,7 @@ jobs:
 
       - name: List files in source directory
         run: ls ${{ github.workspace }}/cloud_functions/CompressPublicPhotos
-        
+
       - name: Deploy compressPublicPhotos
         run: |
           gcloud functions deploy CompressPublicPhotos \
