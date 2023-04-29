@@ -31,4 +31,4 @@ jobs:
           --source=cloud_functions \
           --entry-point=compressPhoto \
           --trigger-bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
-          --trigger-event-filters=finalize
+          --trigger-event-filters=type=google.cloud.storage.object.v1.finalized
