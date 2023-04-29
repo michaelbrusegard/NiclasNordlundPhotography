@@ -1,12 +1,12 @@
 {
-  "name": "cloud_functions",
-  "version": "1.0.0",
-  "description": "Function that compresses photos uploaded to a bucket and saves them to a new bucket.",
-  "main": "compressPhoto.js",
-  "author": "Michael Brusegard",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "@google-cloud/storage": "^6.9.5",
-    "sharp": "^0.32.0"
-  }
+    "name": "cloud_functions",
+    "version": "1.0.0",
+    "description": "Function that compresses photos uploaded to a bucket and saves them to a new bucket.",
+    "main": "compressPhoto.js",
+    "author": "Michael Brusegard",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@google-cloud/storage": "^6.9.5",
+        "sharp": "^0.32.0"
+    }
 }

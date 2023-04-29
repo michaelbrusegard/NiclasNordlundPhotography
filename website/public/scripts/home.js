@@ -27,12 +27,12 @@ let photoDisplayed = 0;
 
 // Text to be displayed on the home page
 const quoteText = [
-  'Born in Mariehamn in 1965, I always had an interest in animals and nature.',
-  'Photography was always there as a hobby, but in 2018, I took the step to become a full time freelance photographer.',
-  `Besides the photography itself, I also create pictures to hang on your wall, postcards, jigsaw puzzles and other products 
+    'Born in Mariehamn in 1965, I always had an interest in animals and nature.',
+    'Photography was always there as a hobby, but in 2018, I took the step to become a full time freelance photographer.',
+    `Besides the photography itself, I also create pictures to hang on your wall, postcards, jigsaw puzzles and other products 
 showing the beautiful landscapes, nature and animals of the Åland Islands.`,
-  'In 2022, I received the award for Post Card Artist of the Year in Finland, and today I have around 40 different post card designs.',
-  'Shown below are some of my personal favourite photos.',
+    'In 2022, I received the award for Post Card Artist of the Year in Finland, and today I have around 40 different post card designs.',
+    'Shown below are some of my personal favourite photos.',
 ];
 
 // Adjust the speed parameters of the typing animations
@@ -47,63 +47,63 @@ let currentIndex = 0;
 
 // Adjust the speed of the typing animation
 for (const element of quotesContainer) {
-  element.addEventListener('click', () => {
-    if (isFinishedTyping[currentIndex]) {
-      firstClick = false;
-    }
-    if (firstClick) {
-      if (isFast) {
-        timeOutLength = slowTyping;
-        isFast = false;
-      } else {
-        timeOutLength = fastTyping;
-        isFast = true;
-      }
-    } else {
-      scrollToNextQuote(currentIndex + 1);
-      firstClick = true;
-    }
-  });
+    element.addEventListener('click', () => {
+        if (isFinishedTyping[currentIndex]) {
+            firstClick = false;
+        }
+        if (firstClick) {
+            if (isFast) {
+                timeOutLength = slowTyping;
+                isFast = false;
+            } else {
+                timeOutLength = fastTyping;
+                isFast = true;
+            }
+        } else {
+            scrollToNextQuote(currentIndex + 1);
+            firstClick = true;
+        }
+    });
 }
 
 // Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  slideTransition(nav, shopNav, navigatedFromShop);
-  setNiclasLeftPos();
-  carouselPhotoPosition();
-  textPosition();
-  initialisePhotoCarousel();
-  observeHome();
+    slideTransition(nav, shopNav, navigatedFromShop);
+    setNiclasLeftPos();
+    carouselPhotoPosition();
+    textPosition();
+    initialisePhotoCarousel();
+    observeHome();
 });
 
 window.addEventListener('resize', () => {
-  setNiclasLeftPos();
-  carouselPhotoPosition();
-  textPosition();
+    setNiclasLeftPos();
+    carouselPhotoPosition();
+    textPosition();
 });
 window.addEventListener('orientationChange', () => {
-  setNiclasLeftPos();
-  carouselPhotoPosition();
-  textPosition();
+    setNiclasLeftPos();
+    carouselPhotoPosition();
+    textPosition();
 });
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener(
-  'animationend',
-  () => {
-    animationEndOnNavElements(nav, shopNav);
-  }
+    'animationend',
+    () => {
+        animationEndOnNavElements(nav, shopNav);
+    }
 );
 getLinkIcon(getCurrentNavElement(shopNav), 'linkCart').addEventListener(
-  'animationend',
-  () => {
-    removeAnimationEndOnNavElements(shopNav);
-  }
+    'animationend',
+    () => {
+        removeAnimationEndOnNavElements(shopNav);
+    }
 );
 
 // Checks when menu is clicked
 menu.addEventListener('click', () => {
-  mobileMenu(menu, nav);
+    mobileMenu(menu, nav);
 });
 
 // Button that scrolls the window to the top
@@ -111,8 +111,8 @@ const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButtons.forEach((element) => {
-  element.addEventListener('click', (event) => {
-    event.preventDefault();
-    quotesContainer[0].scrollIntoView({ behavior: 'smooth' });
-  });
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+        quotesContainer[0].scrollIntoView({ behavior: 'smooth' });
+    });
 });

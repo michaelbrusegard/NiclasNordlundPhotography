@@ -1,390 +1,393 @@
 /* Page content */
 
 #animals {
-  background-image: url(../img/wallpapers/animals.jpg);
+    background-image: url(../img/wallpapers/animals.jpg);
 }
 
 #architectural {
-  background-image: url(../img/wallpapers/architectural.jpg);
+    background-image: url(../img/wallpapers/architectural.jpg);
 }
 
 #nature {
-  background-image: url(../img/wallpapers/nature.jpg);
+    background-image: url(../img/wallpapers/nature.jpg);
 }
 
 #portrait {
-  background-image: url(../img/wallpapers/portrait.jpg);
+    background-image: url(../img/wallpapers/portrait.jpg);
 }
 
 #sport {
-  background-image: url(../img/wallpapers/sport.jpg);
+    background-image: url(../img/wallpapers/sport.jpg);
 }
 
 #wedding {
-  background-image: url(../img/wallpapers/wedding.jpg);
+    background-image: url(../img/wallpapers/wedding.jpg);
 }
 
 .pageContainer {
-  height: auto;
-  width: 100%;
-  position: absolute;
-  -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
-  animation: transitionIn calc(var(--transitionLength) * 2);
-  -webkit-animation-timing-function: ease-in;
-  animation-timing-function: ease-in;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-size: 100%;
-  min-height: 100vh;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
+    animation: transitionIn calc(var(--transitionLength) * 2);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: 100%;
+    min-height: 100vh;
 }
 
 main {
-  position: relative;
+    position: relative;
 }
 
 .footerContainer {
-  position: absolute;
+    position: absolute;
 }
 
 /* Photo layout*/
 
 .gallery {
-  display: flex;
-  flex-direction: row;
-  gap: calc(var(--photoMargin) / 2);
-  padding-top: calc(var(--navContainerHeight) + var(--photoMargin));
-  padding-bottom: calc(var(--navContainerHeight) + var(--photoMargin));
-  margin-left: var(--sideWrapperMargin);
-  margin-right: var(--sideWrapperMargin);
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--photoMargin) / 2);
+    padding-top: calc(var(--navContainerHeight) + var(--photoMargin));
+    padding-bottom: calc(var(--navContainerHeight) + var(--photoMargin));
+    margin-left: var(--sideWrapperMargin);
+    margin-right: var(--sideWrapperMargin);
 }
 
 .gallery .column {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--photoMargin) / 2);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--photoMargin) / 2);
 }
 
 .photo img {
-  height: 100%;
-  width: 100%;
-  border-radius: var(--photoBorderRadius);
-  -o-object-fit: cover;
-  object-fit: cover;
-  box-shadow: var(--shadow);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--photoBorderRadius);
+    -o-object-fit: cover;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Slide transition */
 
 .fadeOutAnimation {
-  -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
-  animation: fadeOut calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
+    animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
 .fadeInAnimation {
-  -webkit-animation: fadeIn var(--transitionLength) linear;
-  animation: fadeIn var(--transitionLength) linear;
+    -webkit-animation: fadeIn var(--transitionLength) linear;
+    animation: fadeIn var(--transitionLength) linear;
 }
 
 .linkBagAnimation {
-  -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
-  animation: transitionBag calc(var(--transitionLength) * 2) linear;
+    -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
+    animation: transitionBag calc(var(--transitionLength) * 2) linear;
 }
 
 @media (min-width: 1100px) {
-  .linkBagAnimation {
-    -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
-      linear;
-    animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
-  }
+    .linkBagAnimation {
+        -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
+            linear;
+        animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+    }
 }
 
 #nav {
-  display: none;
+    display: none;
 }
 
 #shopNav {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 /* Navigation bar animations */
 
 @-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
 
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
 
-  100% {
-    opacity: 0;
-  }
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
 
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
 
-  100% {
-    opacity: 0;
-  }
+    100% {
+        opacity: 0;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes transitionBag {
-  to {
-    transform: translateX(
-      calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
-    );
-  }
+    to {
+        transform: translateX(
+            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+        );
+    }
 }
 
 @keyframes transitionBag {
-  to {
-    transform: translateX(
-      calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
-    );
-  }
+    to {
+        transform: translateX(
+            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+        );
+    }
 }
 
 @-webkit-keyframes transitionBagWide {
-  to {
-    transform: translateX(
-      calc(
-        var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))
-      )
-    );
-  }
+    to {
+        transform: translateX(
+            calc(
+                var(--desktopNavSize) -
+                    (var(--navPadding) * 2 + var(--menuIconSize))
+            )
+        );
+    }
 }
 
 @keyframes transitionBagWide {
-  to {
-    transform: translateX(
-      calc(
-        var(--desktopNavSize) - (var(--navPadding) * 2 + var(--menuIconSize))
-      )
-    );
-  }
+    to {
+        transform: translateX(
+            calc(
+                var(--desktopNavSize) -
+                    (var(--navPadding) * 2 + var(--menuIconSize))
+            )
+        );
+    }
 }
 
 /* Page transition */
 
 @-webkit-keyframes transitionIn {
-  from {
-    opacity: var(--softOpacity);
-    transform: translateY(var(--navContainerHeight));
-  }
+    from {
+        opacity: var(--softOpacity);
+        transform: translateY(var(--navContainerHeight));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes transitionIn {
-  from {
-    opacity: var(--softOpacity);
-    transform: translateY(var(--navContainerHeight));
-  }
+    from {
+        opacity: var(--softOpacity);
+        transform: translateY(var(--navContainerHeight));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Fade on scroll class selectors */
 
 .fadeInFromBottom {
-  -webkit-animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
-  animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
+    -webkit-animation: fadeInFromBottom calc(var(--transitionLength) * 2)
+        ease-in;
+    animation: fadeInFromBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromRight {
-  -webkit-animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
-  animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
+    -webkit-animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
+    animation: fadeInFromRight calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromLeft {
-  -webkit-animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
-  animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
+    -webkit-animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
+    animation: fadeInFromLeft calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromRightBottom {
-  -webkit-animation: fadeInFromRightBottom calc(var(--transitionLength) * 2)
-    ease-in;
-  animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
+    -webkit-animation: fadeInFromRightBottom calc(var(--transitionLength) * 2)
+        ease-in;
+    animation: fadeInFromRightBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 .fadeInFromLeftBottom {
-  -webkit-animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2)
-    ease-in;
-  animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
+    -webkit-animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2)
+        ease-in;
+    animation: fadeInFromLeftBottom calc(var(--transitionLength) * 2) ease-in;
 }
 
 /* Fade on scroll animations */
 
 @-webkit-keyframes fadeInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translateY(var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translateY(var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @-webkit-keyframes fadeInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translateX(var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes fadeInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translateX(var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @-webkit-keyframes fadeInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(calc(-1 * var(--photoMargin)));
-  }
+    from {
+        opacity: 0;
+        transform: translateX(calc(-1 * var(--photoMargin)));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes fadeInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(calc(-1 * var(--photoMargin)));
-  }
+    from {
+        opacity: 0;
+        transform: translateX(calc(-1 * var(--photoMargin)));
+    }
 
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @-webkit-keyframes fadeInFromRightBottom {
-  from {
-    opacity: 0;
-    transform: translate(var(--photoMargin), var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translate(var(--photoMargin), var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes fadeInFromRightBottom {
-  from {
-    opacity: 0;
-    transform: translate(var(--photoMargin), var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translate(var(--photoMargin), var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
 }
 
 @-webkit-keyframes fadeInFromLeftBottom {
-  from {
-    opacity: 0;
-    transform: translate(calc(-1 * var(--photoMargin)), var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translate(calc(-1 * var(--photoMargin)), var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes fadeInFromLeftBottom {
-  from {
-    opacity: 0;
-    transform: translate(calc(-1 * var(--photoMargin)), var(--photoMargin));
-  }
+    from {
+        opacity: 0;
+        transform: translate(calc(-1 * var(--photoMargin)), var(--photoMargin));
+    }
 
-  to {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
 }
 
 /* Adaptive Size */
 
 @media (min-width: 1100px) {
-  .gallery {
-    margin-left: calc(2 * var(--sideWrapperMargin));
-    margin-right: calc(2 * var(--sideWrapperMargin));
-  }
+    .gallery {
+        margin-left: calc(2 * var(--sideWrapperMargin));
+        margin-right: calc(2 * var(--sideWrapperMargin));
+    }
 }
 
 @media (max-width: 768px) {
-  .gallery {
-    margin-left: calc(var(--sideWrapperMargin) / 2);
-    margin-right: calc(var(--sideWrapperMargin) / 2);
-  }
+    .gallery {
+        margin-left: calc(var(--sideWrapperMargin) / 2);
+        margin-right: calc(var(--sideWrapperMargin) / 2);
+    }
 }

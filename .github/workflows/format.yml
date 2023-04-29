@@ -1,36 +1,36 @@
 name: Code formatting check
 
 on:
-  push:
-    branches:
-      - main
-      - dev
+    push:
+        branches:
+            - main
+            - dev
 
 jobs:
-  Prettier-Format:
-    runs-on: ubuntu-latest
+    Prettier-Format:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      - name: Set up Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
+            - name: Set up Node.js 18
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18.x
 
-      - name: Install Prettier
-        run: npm install --save-dev prettier
+            - name: Install Prettier
+              run: npm install --save-dev prettier
 
-      - name: Format code with Prettier
-        run: npx prettier .prettierrc.js --check .
+            - name: Format code with Prettier
+              run: npx prettier .prettierrc.js --check .
 
-      - name: Commit changes if needed
-        if: failure()
-        run: |
-          npx prettier .prettierrc.js --write .
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Format code with Prettier"
-          git push
+            - name: Commit changes if needed
+              if: failure()
+              run: |
+                  npx prettier .prettierrc.js --write .
+                  git config --local user.email "action@github.com"
+                  git config --local user.name "GitHub Action"
+                  git commit -am "Format code with Prettier"
+                  git push
