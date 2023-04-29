@@ -22,16 +22,13 @@ jobs:
       - name: Setup GCloud SDK
         uses: google-github-actions/setup-gcloud@v1
 
-      - name: List files
-        run: ls -R ${{ github.workspace }}
-
       - name: Deploy compressPublicPhotos
         run: |
           gcloud functions deploy CompressPublicPhotos \
           --gen2 \
           --region=europe-north1 \
           --runtime=nodejs18 \
-          --source=./cloud_functions/CompressPublicPhotos \
+          --source=/home/runner/work/NiclasNordlundPhotography/NiclasNordlundPhotography/cloud_functions/compressPublicPhotos \
           --entry-point=compressPhoto \
           --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
           --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
