@@ -28,7 +28,7 @@ jobs:
               run: echo "${{ github.event.head_commit.modified }}"
 
             - name: Deploy compressPublicPhotos
-              if: ${{ contains(github.event.head_commit.modified, 'cloud_functions/compressPublicPhotos/') }}
+              if: ${{ contains(github.event.head_commit.modified, '${{ github.workspace }}/cloud_functions/compressPublicPhotos/') }}
               run: |
                   gcloud functions deploy compressPublicPhotos \
                     --gen2 \
@@ -42,7 +42,7 @@ jobs:
                     --env-vars-file .env.yml
 
             - name: Deploy deletePublicPhotos
-              if: ${{ contains(github.event.head_commit.modified, 'cloud_functions/deletePublicPhotos/') }}
+              if: ${{ contains(github.event.head_commit.modified, '${{ github.workspace }}/cloud_functions/deletePublicPhotos/') }}
               run: |
                   gcloud functions deploy deletePublicPhotos \
                     --gen2 \
