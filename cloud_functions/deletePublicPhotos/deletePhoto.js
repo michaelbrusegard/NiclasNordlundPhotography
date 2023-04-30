@@ -2,6 +2,7 @@ const { Storage } = require('@google-cloud/storage');
 
 const DESTINATION_BUCKET_NAME = process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET;
 
+// Create a new storage instance
 const storage = new Storage();
 
 exports.deletePhoto = async (event) => {
