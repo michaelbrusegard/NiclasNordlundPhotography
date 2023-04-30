@@ -24,6 +24,9 @@ jobs:
             - name: Setup GCloud SDK
               uses: google-github-actions/setup-gcloud@v1
 
+            - name: Print modified files
+              run: echo "${{ github.event.head_commit.modified }}"
+
             - name: Deploy compressPublicPhotos
               if: ${{ contains(github.event.head_commit.modified, 'cloud_functions/compressPublicPhotos/') }}
               run: |
