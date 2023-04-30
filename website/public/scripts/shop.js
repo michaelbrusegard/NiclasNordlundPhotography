@@ -1,20 +1,23 @@
-// Public Google Cloud Storage Bucket name
-const googleFrontEndBucketName = 'frontend-photos.niclasnordlund.com';
+// get Public Google Cloud Storage Bucket name
+async function getGCloudPublicPhotosBucket() {
+    const response = await fetch('/getGCloudPublicPhotosBucket');
+    const data = await response.json();
+    return data;
+}
 
 // Prices array
-const fetchPrices = fetch(
-    `https://storage.googleapis.com/storage/v1/b/${googleFrontEndBucketName}/o?fields=items(name)&delimiter=/`
-)
-    .then((response) => response.json())
-    .then((data) => {
-        const pricesArray = data.items.map((item) => {
-            const name = item.name;
-            const price = Number(name.match(/\d+(?=e\.jpg$)/i)[0]);
-            return [name, price];
-        });
-
-        return pricesArray;
+async function getPricesArray(gCloudPublicPhotosBucket) {
+    const response = await fetch(
+        `https://storage.googleapis.com/storage/v1/b/${gCloudPublicPhotosBucket}/o?fields=items(name)&delimiter=/`
+    );
+    const data = await response.json();
+    const pricesArray = data.items.map((item) => {
+        const name = item.name;
+        const price = Number(name.match(/\d+(?=e\.jpg$)/i)[0]);
+        return [name, price];
     });
+    return pricesArray;
+}
 
 // Wrapper div for shop items
 const gridWrapper = document.getElementById('gridWrapper');

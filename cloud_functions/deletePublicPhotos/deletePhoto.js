@@ -1,6 +1,6 @@
 const { Storage } = require('@google-cloud/storage');
 
-const SOURCE_BUCKET_NAME = process.env.GCLOUD_PHOTOS_BUCKET;
+// Accessing environment variables
 const DESTINATION_BUCKET_NAME = process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET;
 
 const storage = new Storage();

@@ -23,7 +23,8 @@ function checkoutLoad() {
 
 // Function that initiates loading
 async function loadItems() {
-    const pricesArray = await fetchPrices;
+    const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
+    const pricesArray = await getPricesArray(gCloudPublicPhotosBucket);
 
     // Avoids trying to load more photos than exists
     if (itemsToLoad > pricesArray.length) {
@@ -73,10 +74,11 @@ function calculateRows() {
 }
 
 // Function that creates the div container for the shop
-function createContainer(pricesArray) {
+async function createContainer(pricesArray) {
+    const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
     // Photos
     let img = document.createElement('img');
-    img.src = `https://storage.googleapis.com/${googleFrontEndBucketName}/${pricesArray[0]}`;
+    img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${pricesArray[0]}`;
     img.loading = 'lazy';
     img.alt = pricesArray[0];
     img.classList.add('photos');

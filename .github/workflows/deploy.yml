@@ -6,8 +6,13 @@ on:
             - main
 
 jobs:
+<<<<<<< HEAD
     Deploy-Cloud-Functions:
         runs-on: ubuntu-latest
+=======
+  Deploy:
+    runs-on: ubuntu-latest
+>>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
 
         permissions:
             contents: 'read'
@@ -26,6 +31,7 @@ jobs:
             - name: Setup GCloud SDK
               uses: google-github-actions/setup-gcloud@v1
 
+<<<<<<< HEAD
             - name: Deploy compressPublicPhotos
               run: |
                   gcloud functions deploy compressPublicPhotos \
@@ -49,3 +55,32 @@ jobs:
                   --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
                   --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
                   --project=${{ secrets.GCLOUD_PROJECT_ID }}
+=======
+      - name: Deploy compressPublicPhotos
+        if: ${{ contains(github.event.head_commit.modified, 'cloud_functions/compressPublicPhotos/') }}
+        run: |
+          gcloud functions deploy compressPublicPhotos \
+          --gen2 \
+          --region=europe-north1 \
+          --runtime=nodejs18 \
+          --source=${{ github.workspace }}/cloud_functions/compressPublicPhotos \
+          --entry-point=compressPhoto \
+          --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
+          --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
+          --project=${{ secrets.GCLOUD_PROJECT_ID }} \
+          --env-vars-file env.yml
+
+      - name: Deploy deletePublicPhotos
+        if: ${{ contains(github.event.head_commit.modified, 'cloud_functions/deletePublicPhotos/') }}
+        run: |
+          gcloud functions deploy deletePublicPhotos \
+          --gen2 \
+          --region=europe-north1 \
+          --runtime=nodejs18 \
+          --source=${{ github.workspace }}/cloud_functions/deletePublicPhotos \
+          --entry-point=deletePhoto \
+          --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
+          --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
+          --project=${{ secrets.GCLOUD_PROJECT_ID }} \
+          --env-vars-file env.yml
+>>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
