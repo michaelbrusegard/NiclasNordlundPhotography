@@ -8,7 +8,7 @@
         "startServer": "nodemon website/server.js",
         "startStripe": "stripe listen --forward-to localhost:3000/webhook",
         "loginStripe": "stripe login",
-        "testPurchase": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75.jpg\",\"aalands skaergaard 80 euro.jpg\",\"aaland vaestra hamnen vinter 180.jpg\"]'"
+        "testPurchase": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aada 80e.jpg\",\"ejder 180e.jpg\",\"ejder 300e.jpg\",\"fiske 2 50e.jpg\"]'"
     },
     "repository": {
         "type": "git",
