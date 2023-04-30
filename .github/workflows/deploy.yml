@@ -1,20 +1,20 @@
 name: Deploy to Google Cloud
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 jobs:
-    Deploy:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: 'read'
-            id-token: 'write'
-        steps:
-            - uses: actions/checkout@v2
-              with:
-                  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  Deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - uses: dorny/paths-filter@v2
         id: filter
@@ -25,13 +25,13 @@ jobs:
             deletePublicPhotos:
               - 'cloud_functions/deletePublicPhotos/**'
 
-            - name: Authenticate with Google Cloud
-              uses: google-github-actions/auth@v1
-              with:
-                  credentials_json: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
 
-            - name: Setup GCloud SDK
-              uses: google-github-actions/setup-gcloud@v1
+      - name: Setup GCloud SDK
+        uses: google-github-actions/setup-gcloud@v1
 
       - name: Deploy compressPublicPhotos
         if: steps.filter.outputs.compressPublicPhotos == 'true'
