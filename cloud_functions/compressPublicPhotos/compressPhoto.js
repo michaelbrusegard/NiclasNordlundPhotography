@@ -4,7 +4,6 @@ const { pipeline } = require('stream');
 const { promisify } = require('util');
 const sharp = require('sharp');
 
-// Accessing environment variables
 const DESTINATION_BUCKET_NAME = process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET;
 const MAX_WIDTH = 1024; // The maximum width of the low-quality photos
 const MAX_HEIGHT = 1024; // The maximum height of the low-quality photos

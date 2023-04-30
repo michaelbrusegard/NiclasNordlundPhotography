@@ -36,7 +36,7 @@ jobs:
                     --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
                     --project=${{ secrets.GCLOUD_PROJECT_ID }} \
-                    --env-vars-file env.yml
+                    --env-vars-file .env.yml
 
             - name: Deploy deletePublicPhotos
               if: ${{ contains(github.event.head_commit.modified, 'cloud_functions/deletePublicPhotos/') }}
@@ -50,4 +50,4 @@ jobs:
                     --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
                     --project=${{ secrets.GCLOUD_PROJECT_ID }} \
-                    --env-vars-file env.yml
+                    --env-vars-file .env.yml
