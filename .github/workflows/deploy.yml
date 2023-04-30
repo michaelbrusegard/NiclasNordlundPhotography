@@ -16,16 +16,14 @@ jobs:
               with:
                   token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-            - name: Filter modified files
-              id: filter_files
-              uses: dorny/paths-filter@v2.1.0
-              with:
-                  filters: |
-                      cloud_functions/compressPublicPhotos/**
-                      cloud_functions/deletePublicPhotos/**
-
-            - name: Print modified files
-              run: echo "${{ steps.filter_files.outputs.paths }}"
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            compressPublicPhotos:
+              - 'cloud_functions/compressPublicPhotos/**'
+            deletePublicPhotos:
+              - 'cloud_functions/deletePublicPhotos/**'
 
             - name: Authenticate with Google Cloud
               uses: google-github-actions/auth@v1
@@ -35,30 +33,30 @@ jobs:
             - name: Setup GCloud SDK
               uses: google-github-actions/setup-gcloud@v1
 
-            - name: Deploy compressPublicPhotos
-              if: contains(steps.filter_files.outputs.paths, 'cloud_functions/compressPublicPhotos')
-              run: |
-                  gcloud functions deploy compressPublicPhotos \
-                    --gen2 \
-                    --region=europe-north1 \
-                    --runtime=nodejs18 \
-                    --source=${{ github.workspace }}/cloud_functions/compressPublicPhotos \
-                    --entry-point=compressPhoto \
-                    --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
-                    --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
-                    --project=${{ secrets.GCLOUD_PROJECT_ID }} \
-                    --env-vars-file env.yml
+      - name: Deploy compressPublicPhotos
+        if: steps.filter.outputs.compressPublicPhotos == 'true'
+        run: |
+          gcloud functions deploy compressPublicPhotos \
+            --gen2 \
+            --region=europe-north1 \
+            --runtime=nodejs18 \
+            --source=${{ github.workspace }}/cloud_functions/compressPublicPhotos \
+            --entry-point=compressPhoto \
+            --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
+            --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
+            --project=${{ secrets.GCLOUD_PROJECT_ID }} \
+            --env-vars-file env.yml
 
-            - name: Deploy deletePublicPhotos
-              if: contains(steps.filter_files.outputs.paths, 'cloud_functions/deletePublicPhotos')
-              run: |
-                  gcloud functions deploy deletePublicPhotos \
-                    --gen2 \
-                    --region=europe-north1 \
-                    --runtime=nodejs18 \
-                    --source=${{ github.workspace }}/cloud_functions/deletePublicPhotos \
-                    --entry-point=deletePhoto \
-                    --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
-                    --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
-                    --project=${{ secrets.GCLOUD_PROJECT_ID }} \
-                    --env-vars-file env.yml
+      - name: Deploy deletePublicPhotos
+        if: steps.filter.outputs.deletePublicPhotos == 'true'
+        run: |
+          gcloud functions deploy deletePublicPhotos \
+            --gen2 \
+            --region=europe-north1 \
+            --runtime=nodejs18 \
+            --source=${{ github.workspace }}/cloud_functions/deletePublicPhotos \
+            --entry-point=deletePhoto \
+            --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
+            --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
+            --project=${{ secrets.GCLOUD_PROJECT_ID }} \
+            --env-vars-file env.yml

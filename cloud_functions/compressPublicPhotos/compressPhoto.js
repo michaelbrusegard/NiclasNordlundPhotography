@@ -9,7 +9,6 @@ const MAX_WIDTH = 1024; // The maximum width of the low-quality photos
 const MAX_HEIGHT = 1024; // The maximum height of the low-quality photos
 const QUALITY = 60; // The desired quality for the low-quality photos
 
-// Create a new Storage instance
 const storage = new Storage();
 
 exports.compressPhoto = async (event) => {
