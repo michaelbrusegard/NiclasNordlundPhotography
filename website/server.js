@@ -1,4 +1,4 @@
-const config = require('../config.json');
+require('dotenv').config();
 const fileSharing = require('./fileSharing.js');
 
 const bodyParser = require('body-parser');
@@ -12,7 +12,7 @@ const frontendPath = path.join(__dirname, 'public');
 app.use(express.json());
 app.use(express.static(frontendPath, { index: 'home.html' }));
 
-const stripe = require('stripe')(config.stripeSecretKey);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const storeItems = [];
 
@@ -46,8 +46,8 @@ app.post('/checkout-session', async (request, response) => {
                 payment_method_types: ['card'],
                 mode: 'payment',
                 line_items: lineItems,
-                success_url: `${config.serverUrl}/sucess.html`,
-                cancel_url: `${config.serverUrl}/shop.html`,
+                success_url: `${process.env.SERVER_URL}/sucess.html`,
+                cancel_url: `${process.env.SERVER_URL}/shop.html`,
                 metadata: {
                     purchasedItems: JSON.stringify(validatedItemsToPurchase),
                 },
@@ -62,7 +62,7 @@ app.post('/checkout-session', async (request, response) => {
 // Define a function to verify the webhook signature
 const webhookVerifyMiddleware = (request, response, next) => {
     const sigHeader = request.headers['stripe-signature'];
-    const webhookSecret = config.stripeWebhookSecret;
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     try {
         request.rawBody = Buffer.from(JSON.stringify(request.body));
@@ -89,7 +89,6 @@ app.use(
 // Define a route to handle the webhook events
 app.post('/webhook', (request, response) => {
     let purchasedPhotos = [];
-
     // Handle the Stripe webhook event
     const event = request.body;
 
@@ -109,6 +108,10 @@ app.post('/webhook', (request, response) => {
 
     // Send a response to acknowledge receipt of the event
     response.json({ received: true });
+});
+
+app.get('/getGCloudPublicPhotosBucket', (req, res) => {
+    res.json(process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET);
 });
 
 app.listen(3000);

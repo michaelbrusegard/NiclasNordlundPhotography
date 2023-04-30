@@ -1,4 +1,5 @@
 function highlightPhoto(photo) {
+    const style = getComputedStyle(document.body);
     // Create a new div to hold the highlighted photo
     const highlightDiv = document.createElement('div');
     highlightDiv.style.position = 'fixed';
@@ -21,6 +22,10 @@ function highlightPhoto(photo) {
     highlightPhoto.style.top = '50%';
     highlightPhoto.style.left = '50%';
     highlightPhoto.style.transform = 'translate(-50%, -50%)';
+    highlightPhoto.style.borderRadius = style.getPropertyValue(
+        '--photoBorderRadius'
+    );
+    highlightPhoto.style.boxShadow = style.getPropertyValue('--shadow');
 
     // Add the photo to the highlight div and the highlight div to the document
     highlightDiv.appendChild(highlightPhoto);

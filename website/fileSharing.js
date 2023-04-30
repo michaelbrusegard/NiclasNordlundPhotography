@@ -1,14 +1,11 @@
+require('dotenv').config();
 const { Storage } = require('@google-cloud/storage');
-const config = require('../config.json');
 
-const storage = new Storage({
-    projectId: config.googleProjectId,
-    keyFilename: 'acoustic-scarab-382401-51a3eaca51bc.json',
-});
+const storage = new Storage();
 
 async function handlePhotos(purchasedItems) {
     try {
-        const bucket = storage.bucket(config.googleBackEndBucketName);
+        const bucket = storage.bucket(process.env.GCLOUD_PHOTOS_BUCKET);
         const promises = purchasedItems.map(async (item) => {
             const file = bucket.file(item);
             const [url] = await file.getSignedUrl({

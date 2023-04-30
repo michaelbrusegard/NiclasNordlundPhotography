@@ -1,4 +1,4 @@
-function setNiclasLeftPos() {
+function setNiclasPhotoLeftPos() {
     const niclasPhoto = document.getElementById('niclasPhoto');
     // Gets the screen width
     const screenWidth = window.innerWidth;

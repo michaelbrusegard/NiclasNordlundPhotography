@@ -1,34 +1,35 @@
 {
-    "name": "niclasnordlundphotography",
-    "description": "We aim to make a photography website for our client Niclas Photography!",
-    "version": "1.0.0",
-    "main": "server.js",
-    "scripts": {
-        "format": "npx prettier .prettierrc --write",
-        "startServer": "nodemon website/server.js",
-        "startStripe": "stripe listen --forward-to localhost:3000/webhook",
-        "loginStripe": "stripe login",
-        "testPurchase": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75.jpg\",\"aalands skaergaard 80 euro.jpg\",\"aaland vaestra hamnen vinter 180.jpg\"]'"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/michaelbrusegard/NiclasNordlundPhotography.git"
-    },
-    "author": "Michael Brusegard",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/michaelbrusegard/NiclasNordlundPhotography/issues"
-    },
-    "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme",
-    "dependencies": {
-        "@google-cloud/storage": "^6.9.5",
-        "archiver": "^5.3.1",
-        "body-parser": "^1.20.2",
-        "express": "^4.18.2",
-        "stripe": "^11.17.0"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.22",
-        "prettier": "^2.8.8"
-    }
+  "name": "niclasnordlundphotography",
+  "description": "We aim to make a photography website for our client Niclas Photography!",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "format": "npx prettier .prettierrc --write",
+    "startServer": "nodemon website/server.js",
+    "startStripe": "stripe listen --forward-to localhost:3000/webhook",
+    "loginStripe": "stripe login",
+    "testPurchase": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75.jpg\",\"aalands skaergaard 80 euro.jpg\",\"aaland vaestra hamnen vinter 180.jpg\"]'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelbrusegard/NiclasNordlundPhotography.git"
+  },
+  "author": "Michael Brusegard",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/michaelbrusegard/NiclasNordlundPhotography/issues"
+  },
+  "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme",
+  "dependencies": {
+    "@google-cloud/storage": "^6.9.5",
+    "archiver": "^5.3.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "stripe": "^11.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
+  }
 }
