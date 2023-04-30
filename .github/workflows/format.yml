@@ -7,13 +7,8 @@ on:
             - dev
 
 jobs:
-<<<<<<< HEAD
-    Prettier-Format:
-        runs-on: ubuntu-latest
-=======
   Format:
     runs-on: ubuntu-latest
->>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
 
         steps:
             - uses: actions/checkout@v3
