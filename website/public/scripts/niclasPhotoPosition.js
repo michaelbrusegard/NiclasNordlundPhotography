@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-function setNiclasLeftPos() {
-=======
 function setNiclasPhotoLeftPos() {
->>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
     const niclasPhoto = document.getElementById('niclasPhoto');
     // Gets the screen width
     const screenWidth = window.innerWidth;

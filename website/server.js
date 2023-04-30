@@ -76,26 +76,10 @@ const webhookVerifyMiddleware = (request, response, next) => {
         console.error(err);
         response.status(400).send('Webhook Error:' + err.message);
     }
-    try {
-        request.rawBody = Buffer.from(JSON.stringify(request.body));
-        stripe.webhooks.constructEvent(
-            request.rawBody,
-            sigHeader,
-            webhookSecret
-        );
-        next();
-    } catch (err) {
-        console.error(err);
-        response.status(400).send('Webhook Error:' + err.message);
-    }
 };
 
 // Configure body-parser to parse the webhook payload as a Buffer
 app.use(
-    bodyParser.raw({
-        type: 'application/json',
-        verify: webhookVerifyMiddleware,
-    })
     bodyParser.raw({
         type: 'application/json',
         verify: webhookVerifyMiddleware,
@@ -105,10 +89,6 @@ app.use(
 // Define a route to handle the webhook events
 app.post('/webhook', (request, response) => {
     let purchasedPhotos = [];
-    let purchasedPhotos = [];
-
-    // Handle the Stripe webhook event
-    const event = request.body;
     // Handle the Stripe webhook event
     const event = request.body;
 
@@ -125,22 +105,7 @@ app.post('/webhook', (request, response) => {
         default:
             console.log(`Unhandled event type ${event.type}`);
     }
-    // Check the type of the received event
-    switch (event.type) {
-        case 'checkout.session.completed':
-            const checkoutSession = event.data.object;
-            let purchasedItems = checkoutSession.metadata.purchasedItems;
-            if (purchasedItems != undefined) {
-                purchasedItems = JSON.parse(purchasedItems);
-                fileSharing.handlePhotos(purchasedItems);
-            }
-            break;
-        default:
-            console.log(`Unhandled event type ${event.type}`);
-    }
 
-    // Send a response to acknowledge receipt of the event
-    response.json({ received: true });
     // Send a response to acknowledge receipt of the event
     response.json({ received: true });
 });

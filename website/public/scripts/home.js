@@ -69,11 +69,7 @@ for (const element of quotesContainer) {
 // Animation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     slideTransition(nav, shopNav, navigatedFromShop);
-<<<<<<< HEAD
-    setNiclasLeftPos();
-=======
     setNiclasPhotoLeftPos();
->>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
     carouselPhotoPosition();
     textPosition();
     initialisePhotoCarousel();
@@ -81,20 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('resize', () => {
-<<<<<<< HEAD
-    setNiclasLeftPos();
-=======
     setNiclasPhotoLeftPos();
->>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
     carouselPhotoPosition();
     textPosition();
 });
 window.addEventListener('orientationChange', () => {
-<<<<<<< HEAD
-    setNiclasLeftPos();
-=======
     setNiclasPhotoLeftPos();
->>>>>>> c020d31 (Changed to .env, added fetches and env deploy)
     carouselPhotoPosition();
     textPosition();
 });
