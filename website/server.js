@@ -107,6 +107,7 @@ app.post('/webhook', (request, response) => {
     }
 
     // Send a response to acknowledge receipt of the event
+
     response.json({ received: true });
 });
 
