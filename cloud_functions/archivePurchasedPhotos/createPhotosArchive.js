@@ -27,6 +27,7 @@ exports.createPhotosArchive = async (req, res) => {
         const archive = archiver('zip', { zlib: { level: 9 } });
         archive.pipe(zipStream);
 
+        // Add photos to zip archive
         for (const photo of photos) {
             const sourceFile = sourceBucket.file(photo);
             const sourceStream = sourceFile.createReadStream();
