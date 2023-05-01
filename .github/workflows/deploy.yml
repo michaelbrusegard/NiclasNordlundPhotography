@@ -26,7 +26,7 @@ jobs:
                         - 'cloud_functions/deletePublicPhotos/**'
                       archivePurchasedPhotos:
                         - 'cloud_functions/archivePurchasedPhotos/**'
-                        
+
             - name: Authenticate with Google Cloud
               uses: google-github-actions/auth@v1
               with:

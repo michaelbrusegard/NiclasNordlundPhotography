@@ -13,6 +13,5 @@
     },
     "function": {
         "timeout": "120s"
-      }
-      
+    }
 }
