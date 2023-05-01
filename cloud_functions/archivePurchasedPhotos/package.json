@@ -1,0 +1,18 @@
+{
+    "name": "cloud_functions",
+    "version": "1.0.0",
+    "description": "Function that archives purchased photos and retrieves a link to downlaod them.",
+    "main": "createPhotosArchive.js",
+    "author": "Michael Brusegard",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@google-cloud/storage": "^6.9.5",
+        "archiver": "^5.3.1",
+        "moment": "^2.29.4",
+        "uuid": "^9.0.0"
+    },
+    "function": {
+        "timeout": "120s"
+      }
+      
+}

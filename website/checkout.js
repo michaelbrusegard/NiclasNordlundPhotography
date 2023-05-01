@@ -3,10 +3,7 @@ require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { Storage } = require('@google-cloud/storage');
 
-const storage = new Storage({
-    projectId: process.env.GCLOUD_PROJECT_ID,
-    apiKey: process.env.GCLOUD_SERVICE_ACCOUNT_KEY,
-});
+const storage = new Storage();
 
 async function getStoreItems() {
     const gCloudPhotosBucket = process.env.GCLOUD_PHOTOS_BUCKET;
