@@ -198,21 +198,21 @@ nav .mobileNav {
     stroke-dasharray: 824;
     stroke-dashoffset: 824;
     -webkit-animation: draw calc(var(--transitionLength) * 2) ease-out forwards;
-            animation: draw calc(var(--transitionLength) * 2) ease-out forwards;
+    animation: draw calc(var(--transitionLength) * 2) ease-out forwards;
 }
 
 @-webkit-keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-    fill-opacity: 1;
-  }
+    to {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+    }
 }
 
 @keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-    fill-opacity: 0;
-  }
+    to {
+        stroke-dashoffset: 0;
+        fill-opacity: 0;
+    }
 }
 
 /* Menu icon animation */
