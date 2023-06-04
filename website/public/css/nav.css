@@ -227,7 +227,7 @@ nav .mobileNav {
 }
 
 .linkMenu.clicked #menu1 {
-    top: calc(var(--navContainerHeight) / 3 + var(--menuIconLineHeight) * 2);
+    top: calc(var(--navContainerHeight) / 3 + var(--menuIconSize) / 4);
     transform: rotate(45deg);
     transition: top calc(var(--transitionLength) / 2) ease-in,
         transform calc(var(--transitionLength) / 2) ease-out
@@ -235,7 +235,7 @@ nav .mobileNav {
 }
 
 .linkMenu.clicked #menu2 {
-    bottom: calc(var(--navContainerHeight) / 3 + var(--menuIconLineHeight) * 2);
+    bottom: calc(var(--navContainerHeight) / 3 + var(--menuIconSize) / 4);
     transform: rotate(-45deg);
     transition: bottom calc(var(--transitionLength) / 2) ease-in,
         transform calc(var(--transitionLength) / 2) ease-out
