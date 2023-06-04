@@ -8,7 +8,7 @@ on:
 jobs:
     Deploy:
         runs-on: ubuntu-latest
-        if: "!(contains(github.event.head_commit.message, 'Format code with Prettier'))"
+        if: "!(contains(github.event.head_commit.message, 'style: :art: format code with Prettier'))"
         permissions:
             contents: 'read'
             id-token: 'write'
@@ -22,11 +22,11 @@ jobs:
               with:
                   filters: |
                       compressPublicPhotos:
-                        - 'cloud_functions/compressPublicPhotos/**'
+                        - 'functions/compressPublicPhotos/**'
                       deletePublicPhotos:
-                        - 'cloud_functions/deletePublicPhotos/**'
+                        - 'functions/deletePublicPhotos/**'
                       archivePurchasedPhotos:
-                        - 'cloud_functions/archivePurchasedPhotos/**'
+                        - 'functions/archivePurchasedPhotos/**'
 
             - name: Authenticate with Google Cloud
               uses: google-github-actions/auth@v1
@@ -43,7 +43,7 @@ jobs:
                     --gen2 \
                     --region=europe-north1 \
                     --runtime=nodejs18 \
-                    --source=${{ github.workspace }}/cloud_functions/compressPublicPhotos \
+                    --source=${{ github.workspace }}/functions/compressPublicPhotos \
                     --entry-point=compressPhoto \
                     --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
@@ -57,7 +57,7 @@ jobs:
                     --gen2 \
                     --region=europe-north1 \
                     --runtime=nodejs18 \
-                    --source=${{ github.workspace }}/cloud_functions/deletePublicPhotos \
+                    --source=${{ github.workspace }}/functions/deletePublicPhotos \
                     --entry-point=deletePhoto \
                     --trigger-event-filters=bucket=${{ secrets.GCLOUD_PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
@@ -72,7 +72,7 @@ jobs:
                     --memory 512MB \
                     --region=europe-north1 \
                     --runtime=nodejs18 \
-                    --source=${{ github.workspace }}/cloud_functions/archivePurchasedPhotos \
+                    --source=${{ github.workspace }}/functions/archivePurchasedPhotos \
                     --entry-point=createPhotosArchive \
                     --trigger-http \
                     --project=${{ secrets.GCLOUD_PROJECT_ID }} \

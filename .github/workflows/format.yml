@@ -31,5 +31,5 @@ jobs:
                   npx prettier .prettierrc.js --write .
                   git config --local user.email "action@github.com"
                   git config --local user.name "GitHub Action"
-                  git commit -am "Format code with Prettier"
+                  git commit -am "style: :art: format code with Prettier"
                   git push
