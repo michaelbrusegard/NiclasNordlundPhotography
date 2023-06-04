@@ -30,6 +30,11 @@ nav .mobileNav {
     user-select: none;
 }
 
+nav .desktopNav li,
+nav .mobileNav li {
+    position: relative;
+}
+
 nav .desktopNav li a,
 nav .mobileNav li a {
     height: var(--navContainerHeight);
@@ -180,8 +185,34 @@ nav .mobileNav {
 
 .underline {
     position: absolute;
-    width: var(--menuIconSize);
-    height: var(--navContainerHeight);
+    left: 0;
+    top: 0;
+    height: calc(var(--navContainerHeight) - (var(--navContainerHeight) / 10));
+    color: var(--fontColor);
+    pointer-events: none;
+    stroke-width: calc(var(--fontSize) / 3);
+}
+
+.underline .path {
+    fill-opacity: 0;
+    stroke-dasharray: 824;
+    stroke-dashoffset: 824;
+    -webkit-animation: draw calc(var(--transitionLength) * 2) ease-out forwards;
+            animation: draw calc(var(--transitionLength) * 2) ease-out forwards;
+}
+
+@-webkit-keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
 }
 
 /* Menu icon animation */
