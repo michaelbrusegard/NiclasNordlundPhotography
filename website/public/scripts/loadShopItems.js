@@ -97,24 +97,19 @@ async function createContainer(pricesArray) {
     p.textContent = pricesArray[0];
     p.classList.add('name');
 
-    // Pinch Out button
-    let pinchOutButton = document.createElement('div');
-    pinchOutButton.classList.add('pinchOutButton');
-
     // Container
     let div = document.createElement('div');
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(p);
-    div.appendChild(pinchOutButton);
     div.classList.add('container');
     gridWrapper.appendChild(div);
 
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
 
-    // Check for click on pinch out button
-    pinchOutButton.addEventListener('click', () => {
+    // Check for click on image
+    img.addEventListener('click', () => {
         highlightPhoto(img);
     });
 

@@ -3,14 +3,14 @@ async function writeText(element, quoteIndex) {
     // Loops through the text and types it out
     if (!isTyping && !isFinishedTyping[quoteIndex]) {
         isTyping = true;
-        element.innerHTML = '';
+        element.textContent = '';
         const textString = quoteText[quoteIndex];
         for (let i = 0; i < textString.length; i++) {
             if (quotesContainer[quoteIndex].className.endsWith('hidden')) {
-                element.innerHTML = textString;
+                element.textContent = textString;
                 break;
             }
-            element.innerHTML += textString.charAt(i);
+            element.textContent += textString.charAt(i);
             await new Promise((r) => setTimeout(r, timeOutLength));
         }
         if (!isFast) {

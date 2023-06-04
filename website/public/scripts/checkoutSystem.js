@@ -26,9 +26,13 @@ function checkoutSystem(shopItem, itemPrice) {
     const checkoutItem = shopItem.cloneNode(true);
     // Change and remove buttons
     const button = checkoutItem.querySelector('.addButton');
-    button.style.backgroundImage = "url('../img/icons/remove.png')";
-    const pinchOutButton = checkoutItem.querySelector(':nth-child(4)');
-    checkoutItem.removeChild(pinchOutButton);
+    button.style.backgroundImage = "url('../img/icons/remove.svg')";
+
+    // Check for click on image
+    const img = checkoutItem.querySelector(':first-child');
+    img.addEventListener('click', () => {
+        highlightPhoto(img);
+    });
 
     // Calculate animation variables
     const addScroll = window.scrollY;
@@ -65,12 +69,12 @@ function checkoutSystem(shopItem, itemPrice) {
     // Update the red dot element
     itemNumber += 1;
     redDots.forEach((element) => {
-        element.innerHTML = itemNumber;
+        element.textContent = itemNumber;
         element.style.opacity = 1;
     });
     // Update checkout price
     checkoutTotal += itemPrice;
-    checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
+    checkoutTotalDisplay.textContent = `Total: ${checkoutTotal}€`;
     // When a checkout item is clicked:
     button.addEventListener(
         'click',
@@ -102,14 +106,14 @@ function checkoutSystem(shopItem, itemPrice) {
             // Update the red dot value
             itemNumber -= 1;
             redDots.forEach((element) => {
-                element.innerHTML = itemNumber;
+                element.textContent = itemNumber;
                 if (itemNumber == 0) {
                     element.style.opacity = 0;
                 }
             });
             // Update checkout price
             checkoutTotal -= itemPrice;
-            checkoutTotalDisplay.innerHTML = `Total: ${checkoutTotal}€`;
+            checkoutTotalDisplay.textContent = `Total: ${checkoutTotal}€`;
         },
         { once: true }
     );

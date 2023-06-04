@@ -245,29 +245,12 @@
     margin-right: var(--textMargin);
 }
 
-.pinchOutButton {
-    position: absolute;
-    right: 0.5em;
-    top: 0.5em;
-    font-size: 1.4em;
-    display: inline-block;
-    background: url('../img/icons/pinchOut.png');
-    background-size: cover;
-    height: var(--buttonSize);
-    width: var(--buttonSize);
-    border-radius: var(--buttonSize);
-}
-
-.pinchOutButton:hover {
-    opacity: var(--softOpacity);
-}
-
 .addButton {
     margin-top: 2px;
     position: absolute;
     right: 0.5em;
     display: inline-block;
-    background: url('../img/icons/add.png');
+    background: url('../img/icons/add.svg');
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);
@@ -370,7 +353,7 @@
 #infoButton {
     right: 0;
     display: inline-block;
-    background: url('../img/icons/questionmark.png');
+    background: url('../img/icons/questionmark.svg');
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);
