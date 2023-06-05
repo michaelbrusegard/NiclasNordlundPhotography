@@ -253,14 +253,14 @@ nav .mobileNav {
     }
 
     #nav .desktopNav li:not(:first-child)::after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 0;
         left: calc(2 / 3 * var(--navPadding));
         width: calc(100vw - 2 * (2 / 3 * var(--navPadding)));
         height: 1px;
         background-color: var(--fontColor);
-    }   
+    }
 
     nav .desktopNav li:first-child {
         margin-top: var(--navContainerHeight);
@@ -282,6 +282,6 @@ nav .mobileNav {
 
     .underline .path {
         -webkit-animation-delay: var(--transitionLength);
-                animation-delay: var(--transitionLength);
+        animation-delay: var(--transitionLength);
     }
 }
