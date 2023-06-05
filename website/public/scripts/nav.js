@@ -5,6 +5,23 @@ function mobileMenu(menu, nav) {
     nav.children[1].classList.toggle('active');
 }
 
+// Starts underline animation when menu is active
+function writeUnderline(path) {
+    if (menuClick === 0) {
+        const parent = path.parentElement;
+        // Create a clone of the element
+        const clone = path.cloneNode(true);
+        // Remove the original element
+        parent.removeChild(path);
+
+        // Reinsert the cloned element
+        parent.appendChild(clone);
+        menuClick++;
+    } else {
+        menuClick = 0;
+    }
+}
+
 // Returns the mobile nav element if it is mobile and desktop if it is desktop
 function getCurrentNavElement(nav) {
     if (isMobileNav()) {

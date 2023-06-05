@@ -138,6 +138,7 @@ let navigatedFrom = document.referrer;
 
 // Variable for mobile menu
 const menu = document.querySelector('.linkMenu');
+let menuClick = 0;
 
 // Loads photos into columns
 document.addEventListener('DOMContentLoaded', () => {
@@ -168,4 +169,5 @@ getLinkIcon(getCurrentNavElement(shopNav), 'linkSignature').addEventListener(
 // Checks when menu is clicked
 menu.addEventListener('click', () => {
     mobileMenu(menu, nav);
+    writeUnderline(document.querySelector('.underline .path'));
 });
