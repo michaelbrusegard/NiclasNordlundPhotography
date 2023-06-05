@@ -7,9 +7,9 @@
     box-sizing: border-box;
     /* Includes margin and padding in width and height calculations */
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Remove scrollbars */
