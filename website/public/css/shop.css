@@ -371,7 +371,9 @@
     position: relative;
     font-family: 'Noto Sans Mono', sans-serif;
     font-size: calc(var(--fontSize) / 1.5);
-    width: calc(var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin)));
+    width: calc(
+        var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
+    );
     background-color: var(--pageColor);
     border-radius: var(--photoBorderRadius);
     padding: var(--shopMargin);
@@ -381,7 +383,9 @@
 }
 
 #checkoutButton {
-    width: calc(var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin)));
+    width: calc(
+        var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
+    );
     font-family: 'Noto Sans Mono', sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
