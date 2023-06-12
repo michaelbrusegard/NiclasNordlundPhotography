@@ -227,6 +227,7 @@
     display: block;
     height: var(--photoSize);
     max-width: calc(var(--photoSize) * 1.7);
+    cursor: pointer;
 }
 
 .price {
@@ -255,6 +256,7 @@
     height: var(--buttonSize);
     width: var(--buttonSize);
     border-radius: var(--buttonSize);
+    cursor: pointer;
 }
 
 .addButton:hover {
@@ -358,18 +360,44 @@
     height: var(--buttonSize);
     width: var(--buttonSize);
     border-radius: var(--buttonSize);
+    cursor: pointer;
 }
 
 #infoButton:hover {
     opacity: var(--softOpacity);
 }
 
+#infoText {
+    position: relative;
+    font-family: 'Noto Sans Mono', sans-serif;
+    font-size: calc(var(--fontSize) / 1.5);
+    width: calc(var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin)));
+    background-color: var(--pageColor);
+    border-radius: var(--photoBorderRadius);
+    padding: var(--shopMargin);
+    border: 2px solid var(--fontColor);
+    margin: var(--shopMargin);
+    box-shadow: var(--shadow);
+}
+
 #checkoutButton {
-    width: calc(var(--checkoutWidth) - 2 * var(--checkoutBorder));
+    width: calc(var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin)));
     font-family: 'Noto Sans Mono', sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
     box-shadow: var(--shadow);
+    cursor: pointer;
+    border: 2px solid var(--fontColor);
+    border-radius: var(--photoBorderRadius);
+    background-color: var(--pageColor);
+    font-family: 'Caveat', cursive;
+    font-weight: 400;
+    font-size: calc(var(--fontSize) * 1.25);
+    margin: var(--shopMargin);
+}
+
+#checkoutButton:hover {
+    background-color: var(--expandedPageColor);
 }
 
 .container.inCart {

@@ -35,8 +35,7 @@ const checkoutMenu = document.getElementById('checkoutMenu');
 const infoButton = document.getElementById('infoButton');
 const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
 const redDots = document.querySelectorAll('.redDot');
-const infoText =
-    'Upon purchase you will receive a full quality digital copy of the photo.';
+const infoText = document.getElementById('infoText');
 
 // Keeping track of the checkout elements
 const checkoutButton = document.getElementById('checkoutButton');
@@ -138,7 +137,11 @@ cartButtons.forEach((element) =>
 );
 
 infoButton.addEventListener('click', () => {
-    alert(infoText);
+    if (infoText.open) {
+        infoText.close();
+    } else {
+        infoText.show();
+    }
 });
 
 // Logs the current checkout items to alert
