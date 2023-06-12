@@ -1,11 +1,11 @@
-require('dotenv').config();
-const fileSharing = require('./fileSharing');
+require("dotenv").config();
+const fileSharing = require("./fileSharing");
 
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 // Define a function to verify the webhook signature
 const webhookVerifyMiddleware = (request, response, next) => {
-    const sigHeader = request.headers['stripe-signature'];
+    const sigHeader = request.headers["stripe-signature"];
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     try {
@@ -18,13 +18,13 @@ const webhookVerifyMiddleware = (request, response, next) => {
         next();
     } catch (err) {
         console.error(err);
-        response.status(400).send('Webhook Error:' + err.message);
+        response.status(400).send("Webhook Error:" + err.message);
     }
 };
 
 // Configure body-parser to parse the webhook payload as a Buffer
 const webhookMiddleware = bodyParser.raw({
-    type: 'application/json',
+    type: "application/json",
     verify: webhookVerifyMiddleware,
 });
 
@@ -36,7 +36,7 @@ const handleCheckoutSession = (req, res) => {
 
     // Check the type of the received event
     switch (event.type) {
-        case 'checkout.session.completed':
+        case "checkout.session.completed":
             const checkoutSession = event.data.object;
             let purchasedItems = checkoutSession.metadata.purchasedItems;
             if (purchasedItems != undefined) {

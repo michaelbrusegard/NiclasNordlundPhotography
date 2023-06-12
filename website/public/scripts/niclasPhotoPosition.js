@@ -1,11 +1,11 @@
 function setNiclasPhotoLeftPos() {
-    const niclasPhoto = document.getElementById('niclasPhoto');
+    const niclasPhoto = document.getElementById("niclasPhoto");
     // Gets the screen width
     const screenWidth = window.innerWidth;
 
     // Get nav bar size
     const desktopNavSize = parseInt(
-        style.getPropertyValue('--desktopNavSize').slice(0, -2)
+        style.getPropertyValue("--desktopNavSize").slice(0, -2)
     );
 
     const photoWidth = niclasPhoto.clientWidth;
@@ -16,11 +16,11 @@ function setNiclasPhotoLeftPos() {
 
     // Sets photo position based on screen size and orientation
     if (screenWidth > desktopNavSize + photoWidth) {
-        niclasPhoto.style.left = String(niclasLeftPxBig) + 'px';
+        niclasPhoto.style.left = String(niclasLeftPxBig) + "px";
     } else if (isMobileNav() && isPortraitOrientation()) {
-        niclasPhoto.style.left = String(niclasLeftPxSmall) + 'px';
+        niclasPhoto.style.left = String(niclasLeftPxSmall) + "px";
     } else {
-        niclasPhoto.style.left = 'auto';
+        niclasPhoto.style.left = "auto";
     }
 }
 

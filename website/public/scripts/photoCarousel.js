@@ -6,7 +6,7 @@ function initialisePhotoCarousel() {
         swapPhoto();
     }, intervalTime);
     // Checking for clicks on carousel
-    photoCarousel.addEventListener('click', () => {
+    photoCarousel.addEventListener("click", () => {
         // Restarting the timer and runnign the photo swapping function
         clearInterval(timer);
         swapPhoto();
@@ -32,13 +32,13 @@ function swapPhoto() {
 // Displaying a new photo
 function newPhoto(index) {
     // Mark the photo as visible and toggle animation
-    photos[index].style.visibility = 'visible';
-    photos[index].classList.add('photoIn');
+    photos[index].style.visibility = "visible";
+    photos[index].classList.add("photoIn");
     // Remove animation after it is finished running
     photos[index].addEventListener(
-        'animationend',
+        "animationend",
         () => {
-            photos[index].classList.remove('photoIn');
+            photos[index].classList.remove("photoIn");
         },
         { once: true }
     );
@@ -46,13 +46,13 @@ function newPhoto(index) {
 
 function removePhoto(index) {
     // Toggle the out animation
-    photos[index].classList.add('photoOut');
+    photos[index].classList.add("photoOut");
     // When animation is done set it to hidden and remove animation
     photos[index].addEventListener(
-        'animationend',
+        "animationend",
         () => {
-            photos[index].classList.remove('photoOut');
-            photos[index].style.visibility = 'hidden';
+            photos[index].classList.remove("photoOut");
+            photos[index].style.visibility = "hidden";
         },
         { once: true }
     );
@@ -64,16 +64,16 @@ function carouselPhotoPosition() {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
     const navContainerHeight = parseInt(
-        style.getPropertyValue('--navContainerHeight').slice(0, -2)
+        style.getPropertyValue("--navContainerHeight").slice(0, -2)
     );
 
     // Padding
-    const generalWidthPadding = String(0.05 * windowWidth) + 'px';
+    const generalWidthPadding = String(0.05 * windowWidth) + "px";
     const generalHeightPadding =
-        String(0.05 * windowHeight + navContainerHeight) + 'px';
-    const specialWidthPadding = String(0.4 * windowWidth) + 'px';
+        String(0.05 * windowHeight + navContainerHeight) + "px";
+    const specialWidthPadding = String(0.4 * windowWidth) + "px";
     const specialHeightPadding =
-        String(0.4 * windowHeight + navContainerHeight) + 'px';
+        String(0.4 * windowHeight + navContainerHeight) + "px";
     // For every photo
     photos.forEach((photo) => {
         // Change the padding based on if it is portrait or landscape

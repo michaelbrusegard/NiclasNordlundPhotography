@@ -3,10 +3,10 @@ async function writeText(element, quoteIndex) {
     // Loops through the text and types it out
     if (!isTyping && !isFinishedTyping[quoteIndex]) {
         isTyping = true;
-        element.textContent = '';
+        element.textContent = "";
         const textString = quoteText[quoteIndex];
         for (let i = 0; i < textString.length; i++) {
-            if (quotesContainer[quoteIndex].className.endsWith('hidden')) {
+            if (quotesContainer[quoteIndex].className.endsWith("hidden")) {
                 element.textContent = textString;
                 break;
             }
@@ -53,9 +53,9 @@ function observeHome() {
 function observeCarousel(items) {
     items.map((item) => {
         if (item.isIntersecting) {
-            item.target.classList.remove('hidden');
+            item.target.classList.remove("hidden");
         } else {
-            item.target.classList.add('hidden');
+            item.target.classList.add("hidden");
         }
     });
 }
@@ -65,7 +65,7 @@ function observeQuotes(items) {
     items.map((item) => {
         if (item.isIntersecting) {
             timeOutLength = slowTyping;
-            item.target.classList.remove('hidden');
+            item.target.classList.remove("hidden");
             for (i = 0; i < quotesContainer.length; i++) {
                 if (item.target === quotesContainer[i]) {
                     // Start writing text
@@ -74,7 +74,7 @@ function observeQuotes(items) {
                 }
             }
         } else {
-            item.target.classList.add('hidden');
+            item.target.classList.add("hidden");
         }
     });
 }
@@ -82,16 +82,16 @@ function observeQuotes(items) {
 // Adjust the text position based on screen width and orientation
 function textPosition() {
     for (let i = 0; i < quoteElements.length; i++) {
-        quoteElements[i].style.left = '5%';
+        quoteElements[i].style.left = "5%";
         if (isPortraitOrientation()) {
-            quoteElements[i].style.top = '12%';
-            quoteElements[i].style.width = '90%';
+            quoteElements[i].style.top = "12%";
+            quoteElements[i].style.width = "90%";
         } else if (isMobileNav() && !isPortraitOrientation()) {
-            quoteElements[i].style.top = '25%';
-            quoteElements[i].style.width = '80%';
+            quoteElements[i].style.top = "25%";
+            quoteElements[i].style.width = "80%";
         } else {
-            quoteElements[i].style.top = '35%';
-            quoteElements[i].style.width = '50%';
+            quoteElements[i].style.top = "35%";
+            quoteElements[i].style.width = "50%";
         }
     }
 }

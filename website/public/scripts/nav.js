@@ -1,8 +1,8 @@
 // Checks when menu is clicked
 function mobileMenu(menu, nav) {
-    menu.classList.toggle('clicked');
-    nav.children[0].classList.toggle('active');
-    nav.children[1].classList.toggle('active');
+    menu.classList.toggle("clicked");
+    nav.children[0].classList.toggle("active");
+    nav.children[1].classList.toggle("active");
 }
 
 // Starts underline animation when menu is active
@@ -40,8 +40,8 @@ function removeAllChildNodes(parent) {
 
 function replaceNav(newNav, oldNav) {
     // Changes the navigation bar by setting display to none
-    oldNav.style.display = 'none';
-    newNav.style.display = 'block';
+    oldNav.style.display = "none";
+    newNav.style.display = "block";
 }
 
 // Function that gets if the anvigation bar is mobile or desktop
@@ -49,7 +49,7 @@ function isMobileNav() {
     // Gets the css variable for mobile size
     const style = getComputedStyle(document.body);
     const mobileNavSize = parseInt(
-        style.getPropertyValue('--mobileNavSize').slice(0, -2)
+        style.getPropertyValue("--mobileNavSize").slice(0, -2)
     );
     // Gets the screen width
     const screenWidth = window.innerWidth;
@@ -63,8 +63,8 @@ function isMobileNav() {
 
 // Function to get the navigation type
 function getNavigationType() {
-    let type = '';
-    performance.getEntriesByType('navigation').forEach((p) => {
+    let type = "";
+    performance.getEntriesByType("navigation").forEach((p) => {
         type = p.type;
     });
     return type;

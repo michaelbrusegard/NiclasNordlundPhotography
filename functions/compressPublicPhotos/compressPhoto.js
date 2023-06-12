@@ -1,8 +1,8 @@
-const { Storage } = require('@google-cloud/storage');
-const { createReadStream, createWriteStream } = require('fs');
-const { pipeline } = require('stream');
-const { promisify } = require('util');
-const sharp = require('sharp');
+const { Storage } = require("@google-cloud/storage");
+const { createReadStream, createWriteStream } = require("fs");
+const { pipeline } = require("stream");
+const { promisify } = require("util");
+const sharp = require("sharp");
 
 const DESTINATION_BUCKET_NAME = process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET;
 const MAX_WIDTH = 1024; // The maximum width of the low-quality photos
@@ -26,7 +26,7 @@ exports.compressPhoto = async (event) => {
     const transformStream = sharp()
         .jpeg({ quality: QUALITY })
         .resize(MAX_WIDTH, MAX_HEIGHT, {
-            fit: 'inside', // Resize only if the photo is larger than the maximum size
+            fit: "inside", // Resize only if the photo is larger than the maximum size
             withoutEnlargement: true, // Do not enlarge the photo if it is smaller than the maximum size
         });
 

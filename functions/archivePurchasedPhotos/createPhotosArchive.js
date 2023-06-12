@@ -1,7 +1,7 @@
-const { Storage } = require('@google-cloud/storage');
-const archiver = require('archiver');
-const moment = require('moment');
-const { v4: uuidv4 } = require('uuid');
+const { Storage } = require("@google-cloud/storage");
+const archiver = require("archiver");
+const moment = require("moment");
+const { v4: uuidv4 } = require("uuid");
 
 const SOURCE_BUCKET_NAME = process.env.GCLOUD_PHOTOS_BUCKET;
 const DESTINATION_BUCKET_NAME = process.env.GCLOUD_ARCHIVE_BUCKET;
@@ -12,7 +12,7 @@ const storage = new Storage();
 exports.createPhotosArchive = async (req, res) => {
     const { photos } = req.body;
     if (!photos || !Array.isArray(photos)) {
-        res.status(400).send('Invalid request');
+        res.status(400).send("Invalid request");
         return;
     }
 
@@ -24,7 +24,7 @@ exports.createPhotosArchive = async (req, res) => {
         const zipFile = destinationBucket.file(zipFileName);
         const zipStream = zipFile.createWriteStream();
 
-        const archive = archiver('zip', { zlib: { level: 9 } });
+        const archive = archiver("zip", { zlib: { level: 9 } });
         archive.pipe(zipStream);
 
         for (const photo of photos) {
@@ -35,17 +35,17 @@ exports.createPhotosArchive = async (req, res) => {
 
         archive.finalize();
 
-        zipStream.on('finish', async () => {
+        zipStream.on("finish", async () => {
             const [exists] = await zipFile.exists();
             if (!exists) {
-                res.status(500).send('Failed to create zip file');
+                res.status(500).send("Failed to create zip file");
                 return;
             }
 
             const options = {
-                version: 'v4',
-                action: 'read',
-                expires: moment().add(1, 'day').toDate(),
+                version: "v4",
+                action: "read",
+                expires: moment().add(1, "day").toDate(),
             };
 
             const [url] = await zipFile.getSignedUrl(options);
@@ -65,6 +65,6 @@ exports.createPhotosArchive = async (req, res) => {
         });
     } catch (err) {
         console.error(`Failed to zip photos: ${err}`);
-        res.status(500).send('Failed to zip photos');
+        res.status(500).send("Failed to zip photos");
     }
 };

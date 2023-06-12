@@ -12,7 +12,7 @@ function alignCheckout() {
     });
     // If the positioning goes out of bounds, place it in the upper right corner
     if (newCheckoutRight <= 0) {
-        checkoutMenu.style.right = '0px';
+        checkoutMenu.style.right = "0px";
     }
     // Otherwise, continue to align the menu with the shopping cart icon
     else {
@@ -25,12 +25,12 @@ function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
     // Change and remove buttons
-    const button = checkoutItem.querySelector('.addButton');
+    const button = checkoutItem.querySelector(".addButton");
     button.style.backgroundImage = "url('../img/icons/remove.svg')";
 
     // Check for click on image
-    const img = checkoutItem.querySelector(':first-child');
-    img.addEventListener('click', () => {
+    const img = checkoutItem.querySelector(":first-child");
+    img.addEventListener("click", () => {
         highlightPhoto(img);
     });
 
@@ -50,21 +50,21 @@ function checkoutSystem(shopItem, itemPrice) {
     });
     const x = cartX - itemX;
     const y = cartY - itemY;
-    shopItem.style.setProperty('--addToCartX', `${x}px`);
-    shopItem.style.setProperty('--addToCartY', `${y}px`);
+    shopItem.style.setProperty("--addToCartX", `${x}px`);
+    shopItem.style.setProperty("--addToCartY", `${y}px`);
     // Move shop item into cart
     addedItems.push(shopItem);
-    shopItem.classList.toggle('inCart');
+    shopItem.classList.toggle("inCart");
     shopItem.addEventListener(
-        'animationend',
+        "animationend",
         () => {
-            shopItem.style.display = 'none';
+            shopItem.style.display = "none";
             checkoutLoad();
         },
         { once: true }
     );
     // Place the checkout item in the checkout menu
-    checkoutItem.classList.add('checkout');
+    checkoutItem.classList.add("checkout");
     checkoutMenu.prepend(checkoutItem);
     // Update the red dot element
     itemNumber += 1;
@@ -77,26 +77,26 @@ function checkoutSystem(shopItem, itemPrice) {
     checkoutTotalDisplay.textContent = `Total: ${checkoutTotal}€`;
     // When a checkout item is clicked:
     button.addEventListener(
-        'click',
+        "click",
         () => {
             // Move shop item back into to the shop
             newy = y + (window.scrollY - addScroll);
-            shopItem.style.setProperty('--addToCartY', `${newy}px`);
-            shopItem.style.display = 'block';
-            shopItem.style.animationDirection = 'reverse';
+            shopItem.style.setProperty("--addToCartY", `${newy}px`);
+            shopItem.style.display = "block";
+            shopItem.style.animationDirection = "reverse";
             shopItem.addEventListener(
-                'animationend',
+                "animationend",
                 () => {
-                    shopItem.classList.toggle('inCart');
-                    shopItem.style.animationDirection = 'none';
-                    shopItem.style.animationDirection = 'normal';
+                    shopItem.classList.toggle("inCart");
+                    shopItem.style.animationDirection = "none";
+                    shopItem.style.animationDirection = "normal";
                 },
                 { once: true }
             );
             // Remove the checkout item
-            checkoutItem.classList.toggle('deleted');
+            checkoutItem.classList.toggle("deleted");
             checkoutItem.addEventListener(
-                'transitionend',
+                "transitionend",
                 () => {
                     checkoutItem.remove();
                 },

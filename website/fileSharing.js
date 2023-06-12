@@ -1,5 +1,5 @@
-require('dotenv').config();
-const request = require('request');
+require("dotenv").config();
+const request = require("request");
 
 async function handlePhotos(purchasedItems) {
     const archivePurchasedPhotosUrl =

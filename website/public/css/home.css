@@ -182,7 +182,7 @@
     position: absolute;
     font-size: x-large;
     z-index: var(--quoteZindex);
-    font-family: 'Noto Sans Mono', sans-serif;
+    font-family: "Noto Sans Mono", sans-serif;
     font-weight: bold;
     color: #fff;
     backdrop-filter: blur(0px);

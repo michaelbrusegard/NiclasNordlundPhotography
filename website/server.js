@@ -1,29 +1,29 @@
-require('dotenv').config();
-const checkout = require('./checkout.js');
+require("dotenv").config();
+const checkout = require("./checkout.js");
 const {
     webhookMiddleware,
     handleCheckoutSession,
-} = require('./handlePurchase.js');
+} = require("./handlePurchase.js");
 
-const path = require('path');
-const express = require('express');
+const path = require("path");
+const express = require("express");
 
 const app = express();
-const frontendPath = path.join(__dirname, 'public');
+const frontendPath = path.join(__dirname, "public");
 
 app.use(express.json());
-app.use(express.static(frontendPath, { index: 'home.html' }));
+app.use(express.static(frontendPath, { index: "home.html" }));
 
-app.post('/checkout-session', checkout);
+app.post("/checkout-session", checkout);
 
-app.get('/getGCloudPublicPhotosBucket', (req, res) => {
+app.get("/getGCloudPublicPhotosBucket", (req, res) => {
     res.json(process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET);
 });
 
 // Use the webhook middleware
-app.use('/webhook', webhookMiddleware);
+app.use("/webhook", webhookMiddleware);
 
 // Define a route to handle the webhook events
-app.post('/webhook', handleCheckoutSession);
+app.post("/webhook", handleCheckoutSession);
 
 app.listen(3000);

@@ -40,7 +40,7 @@ nav .mobileNav li a {
     height: var(--navContainerHeight);
     color: var(--fontColor);
     text-decoration: none;
-    font-family: 'Caveat', cursive;
+    font-family: "Caveat", cursive;
     font-weight: 400;
     font-size: var(--fontSize);
     -webkit-filter: drop-shadow(var(--shadow));
@@ -61,19 +61,19 @@ nav .mobileNav {
 /* Icons */
 
 .linkSignature {
-    background: url('../img/icons/signature.png');
+    background: url("../img/icons/signature.png");
     background-size: calc(var(--menuIconSize) * 4);
     width: calc(var(--menuIconSize) * 4);
 }
 
 .linkBag {
-    background: url('../img/icons/bag.svg');
+    background: url("../img/icons/bag.svg");
     background-size: calc(var(--menuIconSize));
     width: var(--menuIconSize);
 }
 
 .linkCart {
-    background: url('../img/icons/cart.svg');
+    background: url("../img/icons/cart.svg");
     background-size: var(--menuIconSize);
     width: var(--menuIconSize);
 }
@@ -92,12 +92,12 @@ nav .mobileNav {
 /* Menu icon position */
 
 #menu1 {
-    background: url('../img/icons/menuline.svg');
+    background: url("../img/icons/menuline.svg");
     top: calc(var(--navContainerHeight) / 2.75);
 }
 
 #menu2 {
-    background: url('../img/icons/menuline2.svg');
+    background: url("../img/icons/menuline2.svg");
     bottom: calc(var(--navContainerHeight) / 2.75);
 }
 
@@ -253,7 +253,7 @@ nav .mobileNav {
     }
 
     #nav .desktopNav li:not(:first-child)::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: calc(2 / 3 * var(--navPadding));

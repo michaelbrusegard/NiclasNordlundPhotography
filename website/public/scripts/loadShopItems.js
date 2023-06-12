@@ -46,8 +46,8 @@ async function loadItems() {
 // Functions that calculates how many colums there are
 function calculateColums() {
     return getComputedStyle(gridWrapper)
-        .getPropertyValue('grid-template-columns')
-        .split(' ').length;
+        .getPropertyValue("grid-template-columns")
+        .split(" ").length;
 }
 
 // Function that calculates how many rows there is space for given the innerHeight
@@ -56,15 +56,15 @@ function calculateRows() {
 
     // Container size
     const photoContainerSize = parseInt(
-        style.getPropertyValue('--photoContainerSize').slice(0, -2)
+        style.getPropertyValue("--photoContainerSize").slice(0, -2)
     );
     const shopMargin = parseInt(
-        style.getPropertyValue('--shopMargin').slice(0, -2)
+        style.getPropertyValue("--shopMargin").slice(0, -2)
     );
 
     // Nav height
     const navContainerHeight = parseInt(
-        style.getPropertyValue('--navContainerHeight').slice(0, -2)
+        style.getPropertyValue("--navContainerHeight").slice(0, -2)
     );
 
     return Math.floor(
@@ -77,44 +77,44 @@ function calculateRows() {
 async function createContainer(pricesArray) {
     const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
     // Photos
-    let img = document.createElement('img');
+    let img = document.createElement("img");
     img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${pricesArray[0]}`;
-    img.loading = 'lazy';
+    img.loading = "lazy";
     img.alt = pricesArray[0];
-    img.classList.add('photos');
+    img.classList.add("photos");
 
     // Price
-    let h2 = document.createElement('h2');
-    h2.textContent = pricesArray[1] + '€';
-    h2.classList.add('price');
+    let h2 = document.createElement("h2");
+    h2.textContent = pricesArray[1] + "€";
+    h2.classList.add("price");
     // Add button
-    let addButton = document.createElement('div');
-    addButton.classList.add('addButton');
+    let addButton = document.createElement("div");
+    addButton.classList.add("addButton");
     h2.appendChild(addButton);
 
     // Name
-    let p = document.createElement('p');
+    let p = document.createElement("p");
     p.textContent = pricesArray[0];
-    p.classList.add('name');
+    p.classList.add("name");
 
     // Container
-    let div = document.createElement('div');
+    let div = document.createElement("div");
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(p);
-    div.classList.add('container');
+    div.classList.add("container");
     gridWrapper.appendChild(div);
 
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
 
     // Check for click on image
-    img.addEventListener('click', () => {
+    img.addEventListener("click", () => {
         highlightPhoto(img);
     });
 
     // Apply checkout system interaction to the div item
-    addButton.addEventListener('click', () => {
+    addButton.addEventListener("click", () => {
         checkoutSystem(div, parseInt(pricesArray[1]));
     });
 }

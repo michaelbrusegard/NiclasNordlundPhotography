@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const { Storage } = require('@google-cloud/storage');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const { Storage } = require("@google-cloud/storage");
 
 const storage = new Storage();
 
@@ -36,7 +36,7 @@ module.exports = async (request, response) => {
                 validatedItemsToPurchase.push(storeItems[j][0]);
                 lineItems.push({
                     price_data: {
-                        currency: 'eur',
+                        currency: "eur",
                         product_data: {
                             name: storeItems[j][0],
                         },
@@ -50,8 +50,8 @@ module.exports = async (request, response) => {
     if (lineItems.length > 0) {
         try {
             const session = await stripe.checkout.sessions.create({
-                payment_method_types: ['card'],
-                mode: 'payment',
+                payment_method_types: ["card"],
+                mode: "payment",
                 line_items: lineItems,
                 success_url: `${process.env.SERVER_URL}/sucess.html`,
                 cancel_url: `${process.env.SERVER_URL}/shop.html`,

@@ -3,20 +3,20 @@ function loadPhotos(files) {
     // Variables
     const totalPhotos = files.length;
     const columnsMax = getColumns();
-    const gallery = document.getElementsByClassName('gallery')[0];
+    const gallery = document.getElementsByClassName("gallery")[0];
 
     // Removes all columns
     removeAllChildNodes(gallery);
 
     // Creates new column
     for (let i = 0; i < columnsMax; i++) {
-        const newColumn = document.createElement('div');
-        newColumn.classList.add('column');
+        const newColumn = document.createElement("div");
+        newColumn.classList.add("column");
         gallery.appendChild(newColumn);
     }
 
     // Gets all the new columns
-    const columns = document.getElementsByClassName('column');
+    const columns = document.getElementsByClassName("column");
 
     // Variables to skip big photos when placing into columns
     let bigPhotoIndexArray = [];
@@ -59,15 +59,15 @@ function getColumns() {
 // Modified lazyload function to adapt to multiple columns
 function createContainer(file) {
     // Added creation of a div to hold the photos
-    let div = document.createElement('div');
-    let img = document.createElement('img');
+    let div = document.createElement("div");
+    let img = document.createElement("img");
 
     // Loads photos from showcase, sets alt and lazy
     // Assigning a class to the new div in order for css to be added
-    img.src = 'img/showcase/' + file[0];
+    img.src = "img/showcase/" + file[0];
     img.alt = file[0];
-    img.loading = 'lazy';
-    div.classList.add('photo');
+    img.loading = "lazy";
+    div.classList.add("photo");
 
     // Sets the html height and width so the photo takes the same amount of space before it is loaded
     img.width = file[1];
@@ -79,7 +79,7 @@ function createContainer(file) {
     // Add observer for fade on scroll effect
     addPhotosFadeOnScroll.observe(div);
 
-    img.addEventListener('click', () => {
+    img.addEventListener("click", () => {
         highlightPhoto(img);
     });
 
@@ -87,15 +87,15 @@ function createContainer(file) {
 }
 
 // Button that scrolls the window to the top
-const scrollTopButtons = document.querySelectorAll('.arrow');
+const scrollTopButtons = document.querySelectorAll(".arrow");
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButtons.forEach((element) => {
-    element.addEventListener('click', (event) => {
+    element.addEventListener("click", (event) => {
         event.preventDefault();
         document.documentElement.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: "smooth",
         });
     });
 });

@@ -1,6 +1,6 @@
 // get Public Google Cloud Storage Bucket name
 async function getGCloudPublicPhotosBucket() {
-    const response = await fetch('/getGCloudPublicPhotosBucket');
+    const response = await fetch("/getGCloudPublicPhotosBucket");
     const data = await response.json();
     return data;
 }
@@ -20,7 +20,7 @@ async function getPricesArray(gCloudPublicPhotosBucket) {
 }
 
 // Wrapper div for shop items
-const gridWrapper = document.getElementById('gridWrapper');
+const gridWrapper = document.getElementById("gridWrapper");
 const observeGridItems = new IntersectionObserver(shopFadeOnscroll);
 
 // Variables for logic around how many items that need loading
@@ -28,18 +28,18 @@ let itemsToLoad = 0;
 let itemsLoaded = 0;
 
 // Button that scrolls the window to the top
-const scrollTopButtons = document.querySelectorAll('.arrow');
+const scrollTopButtons = document.querySelectorAll(".arrow");
 
 // Fetching the checkout menu and shopping cart button elements
-const checkoutMenu = document.getElementById('checkoutMenu');
-const infoButton = document.getElementById('infoButton');
-const cartButtons = document.querySelectorAll('.linkIcon.linkCart');
-const redDots = document.querySelectorAll('.redDot');
-const infoText = document.getElementById('infoText');
+const checkoutMenu = document.getElementById("checkoutMenu");
+const infoButton = document.getElementById("infoButton");
+const cartButtons = document.querySelectorAll(".linkIcon.linkCart");
+const redDots = document.querySelectorAll(".redDot");
+const infoText = document.getElementById("infoText");
 
 // Keeping track of the checkout elements
-const checkoutButton = document.getElementById('checkoutButton');
-const checkoutTotalDisplay = document.getElementById('checkoutTotalDisplay');
+const checkoutButton = document.getElementById("checkoutButton");
+const checkoutTotalDisplay = document.getElementById("checkoutTotalDisplay");
 let addedItems = [];
 let checkoutMenuClicks = 0;
 let itemNumber = 0;
@@ -48,55 +48,55 @@ let checkoutTotal = 0;
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
 const cartButtonWidth = parseInt(
-    style.getPropertyValue('--menuIconSize').slice(0, -2)
+    style.getPropertyValue("--menuIconSize").slice(0, -2)
 );
 const checkoutWidth = parseInt(
-    style.getPropertyValue('--checkoutWidth').slice(0, -2)
+    style.getPropertyValue("--checkoutWidth").slice(0, -2)
 );
 
 // Variables for slide transition
-const nav = document.getElementById('nav');
-const shopNav = document.getElementById('shopNav');
+const nav = document.getElementById("nav");
+const shopNav = document.getElementById("shopNav");
 const navigatedFromShowcaseOrHome = [
-    'home.html',
-    'nature.html',
-    'animals.html',
-    'architectural.html',
-    'portrait.html',
-    'sport.html',
-    'wedding.html',
+    "home.html",
+    "nature.html",
+    "animals.html",
+    "architectural.html",
+    "portrait.html",
+    "sport.html",
+    "wedding.html",
 ];
 let navigatedFrom = document.referrer;
 
 // When the DOM is done loading: loads new photo containers and aligns checkout menu
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     slideTransition(shopNav, nav, navigatedFromShowcaseOrHome);
     windowLoad();
     alignCheckout();
 });
 
 // Changes to the window: loads new photo containers and aligns checkout menu
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
     scrollLoad();
 });
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     windowLoad();
     alignCheckout();
 });
-window.addEventListener('orientationChange', () => {
+window.addEventListener("orientationChange", () => {
     windowLoad();
     alignCheckout();
 });
 
 // Adds ending part of animation
-getLinkIcon(getCurrentNavElement(nav), 'linkBag').addEventListener(
-    'animationend',
+getLinkIcon(getCurrentNavElement(nav), "linkBag").addEventListener(
+    "animationend",
     () => {
         animationEndOnNavElements(shopNav, nav);
     }
 );
-getLinkIcon(getCurrentNavElement(nav), 'linkSignature').addEventListener(
-    'animationend',
+getLinkIcon(getCurrentNavElement(nav), "linkSignature").addEventListener(
+    "animationend",
     () => {
         removeAnimationEndOnNavElements(nav);
     }
@@ -104,7 +104,7 @@ getLinkIcon(getCurrentNavElement(nav), 'linkSignature').addEventListener(
 
 // Check when the current bag icons are clicked
 Array.from(shopNav.children).forEach((element) => {
-    getLinkIcon(element, 'linkBag').addEventListener('click', (event) => {
+    getLinkIcon(element, "linkBag").addEventListener("click", (event) => {
         event.preventDefault();
         redirectToLastLink(navigatedFromShowcaseOrHome);
     });
@@ -112,7 +112,7 @@ Array.from(shopNav.children).forEach((element) => {
 
 // Checks for clicks on the shopping cart icon to toggle the checkout menu
 cartButtons.forEach((element) =>
-    element.addEventListener('click', (event) => {
+    element.addEventListener("click", (event) => {
         event.preventDefault();
         alignCheckout();
         // Check which scale we want to set the new z-index with
@@ -122,13 +122,13 @@ cartButtons.forEach((element) =>
             scale = 3;
         }
         // Toggle the menu
-        checkoutMenu.classList.toggle('active');
+        checkoutMenu.classList.toggle("active");
         checkoutMenu.addEventListener(
-            'transitionend',
+            "transitionend",
             () => {
                 checkoutMenu.style.setProperty(
-                    '--checkoutMenuZindex',
-                    `${style.getPropertyValue('--checkoutMenuZindex') * scale}`
+                    "--checkoutMenuZindex",
+                    `${style.getPropertyValue("--checkoutMenuZindex") * scale}`
                 );
             },
             { once: true }
@@ -136,7 +136,7 @@ cartButtons.forEach((element) =>
     })
 );
 
-infoButton.addEventListener('click', () => {
+infoButton.addEventListener("click", () => {
     if (infoText.open) {
         infoText.close();
     } else {
@@ -145,7 +145,7 @@ infoButton.addEventListener('click', () => {
 });
 
 // Logs the current checkout items to alert
-checkoutButton.addEventListener('click', () => {
+checkoutButton.addEventListener("click", () => {
     if (addedItems.length > 0) {
         const itemsToPurchase = [];
         for (const item of addedItems) {
@@ -154,10 +154,10 @@ checkoutButton.addEventListener('click', () => {
             itemsToPurchase.push([name, price]);
         }
 
-        fetch('/checkout-session', {
-            method: 'POST',
+        fetch("/checkout-session", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(itemsToPurchase),
         })
@@ -176,11 +176,11 @@ checkoutButton.addEventListener('click', () => {
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButtons.forEach((element) => {
-    element.addEventListener('click', (event) => {
+    element.addEventListener("click", (event) => {
         event.preventDefault();
         document.documentElement.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: "smooth",
         });
     });
 });

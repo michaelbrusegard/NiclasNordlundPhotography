@@ -1,4 +1,4 @@
-const { Storage } = require('@google-cloud/storage');
+const { Storage } = require("@google-cloud/storage");
 
 const DESTINATION_BUCKET_NAME = process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET;
 
