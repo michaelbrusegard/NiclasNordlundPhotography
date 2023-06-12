@@ -231,7 +231,7 @@
 }
 
 .price {
-    font-family: 'Noto Sans Mono', sans-serif;
+    font-family: "Noto Sans Mono", sans-serif;
     font-weight: bold;
     font-size: var(--fontSize);
     margin-left: var(--textMargin);
@@ -239,7 +239,7 @@
 }
 
 .name {
-    font-family: 'Noto Sans Mono', sans-serif;
+    font-family: "Noto Sans Mono", sans-serif;
     font-weight: normal;
     font-size: calc(var(--fontSize) / 2);
     margin-left: var(--textMargin);
@@ -251,7 +251,7 @@
     position: absolute;
     right: 0.5em;
     display: inline-block;
-    background: url('../img/icons/add.svg');
+    background: url("../img/icons/add.svg");
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);
@@ -342,7 +342,7 @@
 #checkoutInfo {
     display: flex;
     margin: var(--shopMargin);
-    font-family: 'Noto Sans Mono', sans-serif;
+    font-family: "Noto Sans Mono", sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
     justify-content: space-between;
@@ -355,7 +355,7 @@
 #infoButton {
     right: 0;
     display: inline-block;
-    background: url('../img/icons/questionmark.svg');
+    background: url("../img/icons/questionmark.svg");
     background-size: cover;
     height: var(--buttonSize);
     width: var(--buttonSize);
@@ -369,7 +369,7 @@
 
 #infoText {
     position: relative;
-    font-family: 'Noto Sans Mono', sans-serif;
+    font-family: "Noto Sans Mono", sans-serif;
     font-size: calc(var(--fontSize) / 1.5);
     width: calc(
         var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
@@ -386,7 +386,7 @@
     width: calc(
         var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
     );
-    font-family: 'Noto Sans Mono', sans-serif;
+    font-family: "Noto Sans Mono", sans-serif;
     font-size: var(--fontSize);
     font-weight: bold;
     box-shadow: var(--shadow);
@@ -394,7 +394,7 @@
     border: 2px solid var(--fontColor);
     border-radius: var(--photoBorderRadius);
     background-color: var(--pageColor);
-    font-family: 'Caveat', cursive;
+    font-family: "Caveat", cursive;
     font-weight: 400;
     font-size: calc(var(--fontSize) * 1.25);
     margin: var(--shopMargin);
