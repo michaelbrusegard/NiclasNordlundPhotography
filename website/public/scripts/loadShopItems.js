@@ -9,7 +9,7 @@ function windowLoad() {
 // Calculates how many items to load on scroll
 function scrollLoad() {
     // Checks when the window height plus the crolled distance is bigger than the body
-    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         itemsToLoad += 2 * calculateColums();
         loadItems();
     }
@@ -25,6 +25,11 @@ function checkoutLoad() {
 async function loadItems() {
     const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
     const pricesArray = await getPricesArray(gCloudPublicPhotosBucket);
+
+    const cartItemIndex = getCartStorageIndex(pricesArray);
+    if (itemsToLoad < cartItemIndex) {
+        itemsToLoad = cartItemIndex;
+    }
 
     // Avoids trying to load more photos than exists
     if (itemsToLoad > pricesArray.length) {
@@ -74,18 +79,18 @@ function calculateRows() {
 }
 
 // Function that creates the div container for the shop
-async function createContainer(pricesArray) {
+async function createContainer(shopItemInfo) {
     const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
     // Photos
     let img = document.createElement("img");
-    img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${pricesArray[0]}`;
+    img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${shopItemInfo[0]}`;
     img.loading = "lazy";
-    img.alt = pricesArray[0];
+    img.alt = shopItemInfo[0];
     img.classList.add("photos");
 
     // Price
     let h2 = document.createElement("h2");
-    h2.textContent = pricesArray[1] + "€";
+    h2.textContent = shopItemInfo[1] + "€";
     h2.classList.add("price");
     // Add button
     let addButton = document.createElement("div");
@@ -94,7 +99,7 @@ async function createContainer(pricesArray) {
 
     // Name
     let p = document.createElement("p");
-    p.textContent = pricesArray[0];
+    p.textContent = shopItemInfo[0];
     p.classList.add("name");
 
     // Container
@@ -113,8 +118,16 @@ async function createContainer(pricesArray) {
         highlightPhoto(img);
     });
 
+    if (
+        cart.some(
+            (item) => item[0] === shopItemInfo[0] && item[1] === shopItemInfo[1]
+        )
+    ) {
+        checkoutSystem(div, shopItemInfo[1]);
+    }
+
     // Apply checkout system interaction to the div item
     addButton.addEventListener("click", () => {
-        checkoutSystem(div, parseInt(pricesArray[1]));
+        checkoutSystem(div, shopItemInfo[1]);
     });
 }

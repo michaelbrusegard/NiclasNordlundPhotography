@@ -13,7 +13,7 @@ async function getPricesArray(gCloudPublicPhotosBucket) {
     const data = await response.json();
     const pricesArray = data.items.map((item) => {
         const name = item.name;
-        const price = Number(name.match(/\d+(?=e\.jpg$)/i)[0]);
+        const price = parseInt(name.match(/\d+(?=e\.jpg$)/i)[0]);
         return [name, price];
     });
     return pricesArray;
@@ -40,6 +40,8 @@ const infoText = document.getElementById("infoText");
 // Keeping track of the checkout elements
 const checkoutButton = document.getElementById("checkoutButton");
 const checkoutTotalDisplay = document.getElementById("checkoutTotalDisplay");
+let cart = [];
+let cartString = "";
 let addedItems = [];
 let checkoutMenuClicks = 0;
 let itemNumber = 0;
@@ -71,6 +73,7 @@ let navigatedFrom = document.referrer;
 // When the DOM is done loading: loads new photo containers and aligns checkout menu
 document.addEventListener("DOMContentLoaded", () => {
     slideTransition(shopNav, nav, navigatedFromShowcaseOrHome);
+    retrieveCart();
     windowLoad();
     alignCheckout();
 });
@@ -118,7 +121,7 @@ cartButtons.forEach((element) =>
         // Check which scale we want to set the new z-index with
         checkoutMenuClicks += 1;
         let scale = 1;
-        if (checkoutMenuClicks % 2 == 1) {
+        if (checkoutMenuClicks % 2 === 1) {
             scale = 3;
         }
         // Toggle the menu
@@ -149,8 +152,8 @@ checkoutButton.addEventListener("click", () => {
     if (addedItems.length > 0) {
         const itemsToPurchase = [];
         for (const item of addedItems) {
-            const name = item.children[2].innerText;
-            const price = item.children[1].innerText.slice(0, -1);
+            const name = item.children[2].textContent;
+            const price = item.children[1].textContent.slice(0, -1);
             itemsToPurchase.push([name, price]);
         }
 
@@ -166,6 +169,7 @@ checkoutButton.addEventListener("click", () => {
                 return response.json().then((json) => Promise.reject(json));
             })
             .then(({ url }) => {
+                sessionStorage.removeItem("cart");
                 window.location = url;
             })
             .catch((e) => {

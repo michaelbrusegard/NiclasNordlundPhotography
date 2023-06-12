@@ -111,18 +111,18 @@ let maxNumberColumns = 5;
 // Chosing array
 let page = window.location.pathname.split("/").pop().slice(0, -5);
 let files = [];
-if (page == "animals") {
+if (page === "animals") {
     files = filesAnimals;
-} else if (page == "architectural") {
+} else if (page === "architectural") {
     files = filesArchitectural;
-} else if (page == "nature") {
+} else if (page === "nature") {
     files = filesNature;
     columnSize *= 1.5;
-} else if (page == "portrait") {
+} else if (page === "portrait") {
     files = filesPortrait;
-} else if (page == "sport") {
+} else if (page === "sport") {
     files = filesSport;
-} else if (page == "wedding") {
+} else if (page === "wedding") {
     files = filesWedding;
     columnSize *= 1.5;
 }

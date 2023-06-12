@@ -20,11 +20,34 @@ function alignCheckout() {
     }
 }
 
+function retrieveCart() {
+    // Loads the cart from sessionStorage
+    if (sessionStorage.getItem("cart")) {
+        cartString = sessionStorage.getItem("cart");
+        cart = JSON.parse(cartString);
+    }
+}
+
+function getCartStorageIndex(pricesArray) {
+    let largestIndex = -1;
+
+    for (let i = 0; i < cart.length; i++) {
+        const item = cart[i];
+        const index = pricesArray.indexOf(item);
+
+        if (index > largestIndex) {
+            largestIndex = index;
+        }
+    }
+
+    return largestIndex;
+}
+
 // Checkout system: add and remove items from the shop to the checkout menu
 function checkoutSystem(shopItem, itemPrice) {
     // Clone the shop item to a checkout item
     const checkoutItem = shopItem.cloneNode(true);
-    // Change and remove buttons
+    // Remove button
     const button = checkoutItem.querySelector(".addButton");
     button.style.backgroundImage = "url('../img/icons/remove.svg')";
 
@@ -54,6 +77,20 @@ function checkoutSystem(shopItem, itemPrice) {
     shopItem.style.setProperty("--addToCartY", `${y}px`);
     // Move shop item into cart
     addedItems.push(shopItem);
+
+    // Adds cart items to session storage
+    if (
+        !cart.some(
+            (item) =>
+                item[0] === shopItem.lastChild.textContent &&
+                item[1] === itemPrice
+        )
+    ) {
+        cart.push([shopItem.lastChild.textContent, itemPrice]);
+        cartString = JSON.stringify(cart);
+        sessionStorage.setItem("cart", cartString);
+    }
+
     shopItem.classList.toggle("inCart");
     shopItem.addEventListener(
         "animationend",
@@ -103,11 +140,17 @@ function checkoutSystem(shopItem, itemPrice) {
                 { once: true }
             );
             addedItems.pop();
+
+            // Updates session storage with cart items
+            cart.pop([shopItem.lastChild.textContent, itemPrice]);
+            cartString = JSON.stringify(cart);
+            sessionStorage.setItem("cart", cartString);
+
             // Update the red dot value
             itemNumber -= 1;
             redDots.forEach((element) => {
                 element.textContent = itemNumber;
-                if (itemNumber == 0) {
+                if (itemNumber === 0) {
                     element.style.opacity = 0;
                 }
             });
