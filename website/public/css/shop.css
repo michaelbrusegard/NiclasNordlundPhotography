@@ -216,8 +216,8 @@
 }
 
 .container:hover {
-    -webkit-animation: tilt-shaking var(--transitionLength);
-    animation: tilt-shaking var(--transitionLength);
+    -webkit-animation: tiltShaking var(--transitionLength);
+    animation: tiltShaking var(--transitionLength);
 }
 
 .photos {
@@ -247,7 +247,7 @@
 }
 
 .addButton {
-    margin-top: 2px;
+    margin-top: calc(var(--checkoutBorder) / 8);
     position: absolute;
     right: 0.5em;
     display: inline-block;
@@ -377,7 +377,7 @@
     background-color: var(--pageColor);
     border-radius: var(--photoBorderRadius);
     padding: var(--shopMargin);
-    border: 2px solid var(--fontColor);
+    border: calc(var(--checkoutBorder) / 8) solid var(--fontColor);
     margin: var(--shopMargin);
     box-shadow: var(--shadow);
 }
@@ -391,7 +391,7 @@
     font-weight: bold;
     box-shadow: var(--shadow);
     cursor: pointer;
-    border: 2px solid var(--fontColor);
+    border: calc(var(--checkoutBorder) / 8) solid var(--fontColor);
     border-radius: var(--photoBorderRadius);
     background-color: var(--pageColor);
     font-family: "Caveat", cursive;
@@ -406,8 +406,11 @@
 
 .container.inCart {
     z-index: var(--checkoutAnimationZindex);
-    -webkit-animation: add-to-cart var(--transitionLength);
-    animation: add-to-cart var(--transitionLength);
+}
+
+.container.inCartAnimation {
+    -webkit-animation: addToCart var(--transitionLength);
+    animation: addToCart var(--transitionLength);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
 }
@@ -429,6 +432,11 @@
 .container.checkout.deleted {
     transition: opacity var(--transitionLength) ease-in;
     opacity: 0;
+}
+
+.redDot {
+    font-family: "Noto Sans Mono", sans-serif;
+    font-weight: bolder;
 }
 
 /* Page/checkout item transition */
@@ -455,7 +463,7 @@
 
 /* Shop items hover animation */
 
-@-webkit-keyframes tilt-shaking {
+@-webkit-keyframes tiltShaking {
     0% {
         transform: rotate(0deg);
     }
@@ -477,7 +485,7 @@
     }
 }
 
-@keyframes tilt-shaking {
+@keyframes tiltShaking {
     0% {
         transform: rotate(0deg);
     }
@@ -501,7 +509,7 @@
 
 /* Shop item added to cart animation */
 
-@-webkit-keyframes add-to-cart {
+@-webkit-keyframes addToCart {
     from {
         transform: translate(0, 0) scale(1, 1);
     }
@@ -511,7 +519,7 @@
     }
 }
 
-@keyframes add-to-cart {
+@keyframes addToCart {
     from {
         transform: translate(0, 0) scale(1, 1);
     }

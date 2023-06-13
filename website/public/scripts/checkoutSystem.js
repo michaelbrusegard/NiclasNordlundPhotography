@@ -44,119 +44,177 @@ function getCartStorageIndex(pricesArray) {
 }
 
 // Checkout system: add and remove items from the shop to the checkout menu
-function checkoutSystem(shopItem, itemPrice) {
-    // Clone the shop item to a checkout item
+
+// Function to clone the shop item to a checkout item
+function cloneShopItemToCheckout(shopItem) {
     const checkoutItem = shopItem.cloneNode(true);
-    // Remove button
     const button = checkoutItem.querySelector(".addButton");
     button.style.backgroundImage = "url('../img/icons/remove.svg')";
 
-    // Check for click on image
     const img = checkoutItem.querySelector(":first-child");
     img.addEventListener("click", () => {
         highlightPhoto(img);
     });
 
-    // Calculate animation variables
+    return checkoutItem;
+}
+
+// Function to calculate animation variables
+function calculateAnimationVariables(shopItem, itemX, itemY) {
     const addScroll = window.scrollY;
-    rectItem = shopItem.getBoundingClientRect();
-    const itemX = (rectItem.left + rectItem.right) / 2;
-    const itemY = (rectItem.bottom + rectItem.top) / 2;
     let cartX = 0;
     let cartY = 0;
+
     cartButtons.forEach((element) => {
-        rectButton = element.getBoundingClientRect();
+        const rectButton = element.getBoundingClientRect();
         if (rectButton.left > 100) {
             cartX += (rectButton.left + rectButton.right) / 2;
             cartY += (rectButton.bottom + rectButton.top) / 2;
         }
     });
+
     const x = cartX - itemX;
     const y = cartY - itemY;
+
     shopItem.style.setProperty("--addToCartX", `${x}px`);
     shopItem.style.setProperty("--addToCartY", `${y}px`);
-    // Move shop item into cart
+
+    return { addScroll, x, y };
+}
+
+// Function to move shop item into cart
+function moveItemToCart(shopItem, itemPrice, removeAnimation) {
     addedItems.push(shopItem);
 
-    // Adds cart items to session storage
-    if (
-        !cart.some(
-            (item) =>
-                item[0] === shopItem.lastChild.textContent &&
-                item[1] === itemPrice
-        )
-    ) {
+    if (!isCartItemInCart(shopItem, itemPrice)) {
         cart.push([shopItem.lastChild.textContent, itemPrice]);
-        cartString = JSON.stringify(cart);
-        sessionStorage.setItem("cart", cartString);
+        updateSessionStorage();
     }
 
-    shopItem.classList.toggle("inCart");
+    if (removeAnimation) {
+        shopItem.classList.toggle("inCart");
+        shopItem.style.display = "none";
+        checkoutLoad();
+        removeAnimation = false;
+    } else {
+        shopItem.classList.toggle("inCart");
+        shopItem.classList.add("inCartAnimation");
+        shopItem.addEventListener(
+            "animationend",
+            () => {
+                shopItem.classList.remove("inCartAnimation");
+                shopItem.style.display = "none";
+                checkoutLoad();
+            },
+            { once: true }
+        );
+    }
+}
+
+// Function to check if a cart item is already in the cart
+function isCartItemInCart(shopItem, itemPrice) {
+    return cart.some(
+        (item) =>
+            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice
+    );
+}
+
+// Function to update session storage with cart items
+function updateSessionStorage() {
+    const cartString = JSON.stringify(cart);
+    sessionStorage.setItem("cart", cartString);
+}
+
+// Function to move shop item back to the shop
+function moveItemToShop(shopItem, y, addScroll) {
+    const newy = y + (window.scrollY - addScroll);
+    shopItem.style.setProperty("--addToCartY", `${newy}px`);
+    shopItem.style.display = "block";
+    shopItem.style.animationDirection = "reverse";
+    shopItem.classList.add("inCartAnimation");
     shopItem.addEventListener(
         "animationend",
         () => {
-            shopItem.style.display = "none";
-            checkoutLoad();
+            shopItem.classList.toggle("inCart");
+            shopItem.classList.remove("inCartAnimation");
+            shopItem.style.animationDirection = "normal";
         },
         { once: true }
     );
-    // Place the checkout item in the checkout menu
+}
+
+// Function to remove the checkout item
+function removeCheckoutItem(checkoutItem, shopItem, itemPrice) {
+    checkoutItem.classList.toggle("deleted");
+    checkoutItem.addEventListener(
+        "transitionend",
+        () => {
+            checkoutItem.remove();
+        },
+        { once: true }
+    );
+    addedItems.pop();
+
+    removeCartItem(shopItem, itemPrice);
+}
+
+// Function to remove a cart item
+function removeCartItem(shopItem, itemPrice) {
+    const itemIndex = cart.findIndex(
+        (item) =>
+            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice
+    );
+
+    if (itemIndex !== -1) {
+        cart.splice(itemIndex, 1);
+        updateSessionStorage();
+    }
+
+    itemNumber -= 1;
+    redDots.forEach((element) => {
+        element.textContent = itemNumber;
+        if (itemNumber === 0) {
+            element.style.opacity = 0;
+        }
+    });
+
+    checkoutTotal -= itemPrice;
+    checkoutTotalDisplay.textContent = `Total: ${checkoutTotal}€`;
+}
+
+// Function to handle the checkout process
+function checkoutSystem(shopItem, itemPrice, removeAnimation) {
+    const checkoutItem = cloneShopItemToCheckout(shopItem);
+    const rectItem = shopItem.getBoundingClientRect();
+    const itemX = (rectItem.left + rectItem.right) / 2;
+    const itemY = (rectItem.bottom + rectItem.top) / 2;
+
+    calculateAnimationVariables(shopItem, itemX, itemY);
+    moveItemToCart(shopItem, itemPrice, removeAnimation);
+
     checkoutItem.classList.add("checkout");
     checkoutMenu.prepend(checkoutItem);
-    // Update the red dot element
+
     itemNumber += 1;
     redDots.forEach((element) => {
         element.textContent = itemNumber;
         element.style.opacity = 1;
     });
-    // Update checkout price
+
     checkoutTotal += itemPrice;
     checkoutTotalDisplay.textContent = `Total: ${checkoutTotal}€`;
-    // When a checkout item is clicked:
+
+    const button = checkoutItem.querySelector(".addButton");
     button.addEventListener(
         "click",
         () => {
-            // Move shop item back into to the shop
-            newy = y + (window.scrollY - addScroll);
-            shopItem.style.setProperty("--addToCartY", `${newy}px`);
-            shopItem.style.display = "block";
-            shopItem.style.animationDirection = "reverse";
-            shopItem.addEventListener(
-                "animationend",
-                () => {
-                    shopItem.classList.toggle("inCart");
-                    shopItem.style.animationDirection = "none";
-                    shopItem.style.animationDirection = "normal";
-                },
-                { once: true }
+            const { addScroll, y } = calculateAnimationVariables(
+                shopItem,
+                itemX,
+                itemY
             );
-            // Remove the checkout item
-            checkoutItem.classList.toggle("deleted");
-            checkoutItem.addEventListener(
-                "transitionend",
-                () => {
-                    checkoutItem.remove();
-                },
-                { once: true }
-            );
-            addedItems.pop();
-
-            // Updates session storage with cart items
-            cart.pop([shopItem.lastChild.textContent, itemPrice]);
-            cartString = JSON.stringify(cart);
-            sessionStorage.setItem("cart", cartString);
-
-            // Update the red dot value
-            itemNumber -= 1;
-            redDots.forEach((element) => {
-                element.textContent = itemNumber;
-                if (itemNumber === 0) {
-                    element.style.opacity = 0;
-                }
-            });
-            // Update checkout price
-            checkoutTotal -= itemPrice;
-            checkoutTotalDisplay.textContent = `Total: ${checkoutTotal}€`;
+            moveItemToShop(shopItem, y, addScroll);
+            removeCheckoutItem(checkoutItem, shopItem, itemPrice);
         },
         { once: true }
     );

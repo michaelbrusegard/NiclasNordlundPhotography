@@ -123,11 +123,11 @@ async function createContainer(shopItemInfo) {
             (item) => item[0] === shopItemInfo[0] && item[1] === shopItemInfo[1]
         )
     ) {
-        checkoutSystem(div, shopItemInfo[1]);
+        checkoutSystem(div, shopItemInfo[1], true);
     }
 
     // Apply checkout system interaction to the div item
     addButton.addEventListener("click", () => {
-        checkoutSystem(div, shopItemInfo[1]);
+        checkoutSystem(div, shopItemInfo[1], false);
     });
 }
