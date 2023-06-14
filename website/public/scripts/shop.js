@@ -143,38 +143,58 @@ infoButton.addEventListener("click", () => {
     if (infoText.open) {
         infoText.close();
     } else {
+        if (addedItems.length > 1) {
+            infoText.textContent =
+                "Upon purchase you will receive an Email with a link to download the full quality digital copies of the photos. Contact me if you want to buy prints.";
+        } else {
+            infoText.textContent =
+                "Upon purchase you will receive an Email with a link to download the full quality digital copy of the photo. Contact me if you want to buy prints.";
+        }
         infoText.show();
     }
 });
 
-// Logs the current checkout items to alert
-checkoutButton.addEventListener("click", () => {
+//
+checkoutButton.addEventListener("click", async () => {
+    // Check if there are any items in the "addedItems" array
     if (addedItems.length > 0) {
         const itemsToPurchase = [];
+        // Iterate through each item in "addedItems" array
         for (const item of addedItems) {
+            // Extract the name and price of the item from its HTML elements
             const name = item.children[2].textContent;
             const price = item.children[1].textContent.slice(0, -1);
+            // Add the item's name and price to the "itemsToPurchase" array
             itemsToPurchase.push([name, price]);
         }
 
-        fetch("/checkout-session", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(itemsToPurchase),
-        })
-            .then((response) => {
-                if (response.ok) return response.json();
-                return response.json().then((json) => Promise.reject(json));
-            })
-            .then(({ url }) => {
-                sessionStorage.removeItem("cart");
-                window.location = url;
-            })
-            .catch((e) => {
-                console.error(e.error);
+        try {
+            // Make a POST request to the "/checkout-session" endpoint with the "itemsToPurchase" array as the request payload
+            const response = await fetch("/checkout-session", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(itemsToPurchase),
             });
+
+            if (response.ok) {
+                // If the response is successful, extract the "url" property from the response JSON
+                const { url } = await response.json();
+                // Remove the "cart" item from the session storage
+                sessionStorage.removeItem("cart");
+                // Redirect the user to the obtained "url"
+                window.location = url;
+            } else {
+                // If the response is not successful, extract the error message from the response JSON
+                const error = await response.json();
+                // Throw an error with the extracted error message
+                throw new Error(error.error);
+            }
+        } catch (e) {
+            // Catch any errors that occurred during the fetch request or response processing
+            console.error(e);
+        }
     }
 });
 
