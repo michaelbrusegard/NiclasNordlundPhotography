@@ -23,29 +23,36 @@ function checkoutLoad() {
 
 // Function that initiates loading
 async function loadItems() {
-    const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
-    const pricesArray = await getPricesArray(gCloudPublicPhotosBucket);
+    try {
+        const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
+        const pricesArray = await getPricesArray(gCloudPublicPhotosBucket);
 
-    const cartItemIndex = getCartStorageIndex(pricesArray);
-    if (itemsToLoad < cartItemIndex) {
-        itemsToLoad = cartItemIndex;
-    }
+        const cartItemIndex = getCartStorageIndex(pricesArray);
+        if (itemsToLoad < cartItemIndex) {
+            itemsToLoad = cartItemIndex;
+        }
 
-    // Avoids trying to load more photos than exists
-    if (itemsToLoad > pricesArray.length) {
-        itemsToLoad = pricesArray.length;
-    }
+        // Avoids trying to load more photos than exists
+        if (itemsToLoad > pricesArray.length) {
+            itemsToLoad = pricesArray.length;
+        }
 
-    // Avoids trying to load more photos if enough photos are loaded already
-    if (itemsToLoad <= itemsLoaded) {
-        return;
-    }
+        // Avoids trying to load more photos if enough photos are loaded already
+        if (itemsToLoad <= itemsLoaded) {
+            return;
+        }
 
-    // Loads the display photos and the corresponding name and price and adds them to the correct elements
-    for (let i = itemsLoaded; i < itemsToLoad; i++) {
-        createContainer(pricesArray[i]);
+        // Loads the display photos and the corresponding name and price and adds them to the correct elements
+        for (let i = itemsLoaded; i < itemsToLoad; i++) {
+            createContainer(pricesArray[i]);
+        }
+        itemsLoaded = itemsToLoad;
+    } catch (error) {
+        gridWrapper.id = "errorWrapper";
+        gridWrapper.textContent =
+            "Unable to load shop items, please try again later.";
+        console.error(error);
     }
-    itemsLoaded = itemsToLoad;
 }
 
 // Functions that calculates how many colums there are

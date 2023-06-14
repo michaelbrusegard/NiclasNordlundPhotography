@@ -199,6 +199,21 @@
     margin-right: var(--sideWrapperMargin);
 }
 
+#errorWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--shopMargin) calc(var(--sideWrapperMargin) + var(--shopMargin));
+    height: calc(100vh - 2 * (var(--navContainerHeight) + var(--shopMargin)));
+    width: calc(100% - 2 * (var(--sideWrapperMargin) + var(--shopMargin)));
+    background-color: var(--expandedPageColor);
+    border-radius: var(--photoBorderRadius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    font-family: "Noto Sans Mono", sans-serif;
+    font-size: calc(1.5 * var(--fontSize));
+}
+
 .container {
     background-color: var(--expandedPageColor);
     box-shadow: var(--shadow);
