@@ -29,7 +29,6 @@
 #contentDiv {
     max-width: var(--desktopNavSize);
     margin: var(--photoMargin) var(--sideWrapperMargin);
-    width: calc(100% - 2 * var(--sideWrapperMargin));
     background-color: var(--pageColor);
     border-radius: var(--photoBorderRadius);
     box-shadow: var(--shadow);
@@ -58,6 +57,22 @@ p {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: calc(0.5 * var(--navPadding));
+}
+
+/* Adaptive Size */
+
+@media (min-width: 1100px) {
+    #contentDiv {
+        margin-left: calc(2 * var(--sideWrapperMargin));
+        margin-right: calc(2 * var(--sideWrapperMargin));
+    }
+}
+
+@media (max-width: 768px) {
+    #contentDiv {
+        margin-left: calc(var(--sideWrapperMargin) / 2);
+        margin-right: calc(var(--sideWrapperMargin) / 2);
+    }
 }
 
 /* Slide transition */
