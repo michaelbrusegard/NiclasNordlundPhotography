@@ -14,7 +14,6 @@
 .navContainer nav {
     width: var(--desktopNavSize);
     margin: 0 auto;
-    padding: 0 var(--navPadding);
     height: 100%;
 }
 

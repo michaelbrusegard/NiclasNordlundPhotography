@@ -1,0 +1,204 @@
+/* Page content */
+
+.pageContainer {
+    height: 100%;
+    width: 100%;
+    -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
+    animation: transitionIn calc(var(--transitionLength) * 2);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    padding-top: var(--navContainerHeight);
+    padding-bottom: var(--navContainerHeight);
+    display: flex;
+    justify-content: center;
+}
+
+/* Wallpaper */
+
+#wallpaperHome {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url(../img/wallpapers/home.jpg) center center no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Content */
+
+#contentDiv {
+    max-width: var(--desktopNavSize);
+    margin: var(--photoMargin) var(--sideWrapperMargin);
+    width: calc(100% - 2 * var(--sideWrapperMargin));
+    background-color: var(--pageColor);
+    border-radius: var(--photoBorderRadius);
+    box-shadow: var(--shadow);
+}
+
+h1 {
+    font-family: "Caveat", cursive;
+    font-size: calc(2 * var(--fontSize));
+    text-align: center;
+    padding: calc(0.5 * var(--navPadding));
+}
+
+p {
+    text-align: center;
+    padding: var(--textMargin);
+    font-size: calc(0.75 * var(--fontSize));
+}
+
+#signature {
+    background: url("../img/icons/signature.png");
+    background-size: calc(var(--menuIconSize) * 4);
+    background-position: center 5%;
+    background-repeat: no-repeat;
+    width: calc(4 * var(--menuIconSize));
+    height: var(--menuIconSize);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(0.5 * var(--navPadding));
+}
+
+/* Slide transition */
+
+.fadeOutAnimation {
+    -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
+    animation: fadeOut calc(var(--transitionLength) * 2) linear;
+}
+
+.fadeInAnimation {
+    -webkit-animation: fadeIn var(--transitionLength) linear;
+    animation: fadeIn var(--transitionLength) linear;
+}
+
+.linkBagAnimation {
+    -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
+    animation: transitionBag calc(var(--transitionLength) * 2) linear;
+}
+
+@media (min-width: 1100px) {
+    .linkBagAnimation {
+        -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
+            linear;
+        animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
+    }
+}
+
+#nav {
+    display: none;
+}
+
+#shopNav {
+    visibility: hidden;
+}
+
+/* Navigation bar animations */
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes transitionBag {
+    to {
+        transform: translateX(
+            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+        );
+    }
+}
+
+@keyframes transitionBag {
+    to {
+        transform: translateX(
+            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+        );
+    }
+}
+
+@-webkit-keyframes transitionBagWide {
+    to {
+        transform: translateX(
+            calc(
+                var(--desktopNavSize) -
+                    (var(--navPadding) * 2 + var(--menuIconSize))
+            )
+        );
+    }
+}
+
+@keyframes transitionBagWide {
+    to {
+        transform: translateX(
+            calc(
+                var(--desktopNavSize) -
+                    (var(--navPadding) * 2 + var(--menuIconSize))
+            )
+        );
+    }
+}
+
+/* Page transition */
+
+@-webkit-keyframes transitionIn {
+    from {
+        opacity: var(--softOpacity);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: var(--softOpacity);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
