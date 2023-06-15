@@ -37,7 +37,6 @@
     color: var(--fontColor);
     text-decoration: none;
     font-family: "Caveat", cursive;
-    font-weight: 400;
     font-size: var(--fontSize);
     -webkit-filter: drop-shadow(var(--shadow));
     filter: drop-shadow(var(--shadow));

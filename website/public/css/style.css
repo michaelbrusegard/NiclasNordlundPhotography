@@ -18,6 +18,12 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+/* Default */
+body {
+    font-family: "Noto Sans Mono", sans-serif;
+    font-weight: 400;
+}
+
 /* Variables */
 
 :root {

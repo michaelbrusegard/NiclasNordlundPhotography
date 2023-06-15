@@ -3,7 +3,9 @@
 .pageContainer {
     height: 100%;
     width: 100%;
+    -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
     animation: transitionIn calc(var(--transitionLength) * 2);
+    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
 }
 
@@ -21,19 +23,24 @@
 /* Slide transition */
 
 .fadeOutAnimation {
+    -webkit-animation: fadeOut calc(var(--transitionLength) * 2) linear;
     animation: fadeOut calc(var(--transitionLength) * 2) linear;
 }
 
 .fadeInAnimation {
+    -webkit-animation: fadeIn var(--transitionLength) linear;
     animation: fadeIn var(--transitionLength) linear;
 }
 
 .linkBagAnimation {
+    -webkit-animation: transitionBag calc(var(--transitionLength) * 2) linear;
     animation: transitionBag calc(var(--transitionLength) * 2) linear;
 }
 
 @media (min-width: 1100px) {
     .linkBagAnimation {
+        -webkit-animation: transitionBagWide calc(var(--transitionLength) * 2)
+            linear;
         animation: transitionBagWide calc(var(--transitionLength) * 2) linear;
     }
 }
@@ -47,6 +54,20 @@
 }
 
 /* Navigation bar animations */
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 
 @keyframes fadeOut {
     0% {
@@ -62,6 +83,16 @@
     }
 }
 
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -72,10 +103,29 @@
     }
 }
 
+@-webkit-keyframes transitionBag {
+    to {
+        transform: translateX(
+            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+        );
+    }
+}
+
 @keyframes transitionBag {
     to {
         transform: translateX(
             calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+        );
+    }
+}
+
+@-webkit-keyframes transitionBagWide {
+    to {
+        transform: translateX(
+            calc(
+                var(--desktopNavSize) -
+                    (var(--navPadding) * 2 + var(--menuIconSize))
+            )
         );
     }
 }
@@ -93,6 +143,16 @@
 
 /* Page transition */
 
+@-webkit-keyframes transitionIn {
+    from {
+        opacity: var(--softOpacity);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes transitionIn {
     from {
         opacity: var(--softOpacity);
@@ -105,6 +165,16 @@
 
 /* Carousel transitions */
 
+@-webkit-keyframes slideIn {
+    0% {
+        transform: translateX(50vw) scale(0.2);
+    }
+
+    100% {
+        transform: translateX(0) scale(1);
+    }
+}
+
 @keyframes slideIn {
     0% {
         transform: translateX(50vw) scale(0.2);
@@ -115,6 +185,16 @@
     }
 }
 
+@-webkit-keyframes slideOut {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+
+    100% {
+        transform: translateX(-50vw) scale(0.2);
+    }
+}
+
 @keyframes slideOut {
     0% {
         transform: translateX(0) scale(1);
@@ -122,6 +202,18 @@
 
     100% {
         transform: translateX(-50vw) scale(0.2);
+    }
+}
+
+@-webkit-keyframes niclasIn {
+    0% {
+        opacity: var(--softOpacity);
+        transform: translateX(calc(var(--sideWrapperMargin) * 2));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
@@ -147,7 +239,9 @@
     height: 60vh;
     background: url(../img/home/niclas.png) center center no-repeat;
     background-size: cover;
+    -webkit-animation: niclasIn calc(var(--transitionLength) * 2);
     animation: niclasIn calc(var(--transitionLength) * 2);
+    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
     z-index: 10;
     pointer-events: none;
@@ -157,6 +251,7 @@
     height: 100vh;
     width: 100vw;
     overflow-y: scroll;
+    -ms-scroll-snap-type: y mandatory;
     scroll-snap-type: y mandatory;
 }
 
@@ -173,6 +268,9 @@
     width: 100vw;
     height: 100vh;
     transition: all var(--transitionLength) ease-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -182,10 +280,10 @@
     position: absolute;
     font-size: x-large;
     z-index: var(--quoteZindex);
-    font-family: "Noto Sans Mono", sans-serif;
-    font-weight: bold;
-    color: #fff;
+    color: var(--pageColor);
+    -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
+    -webkit-filter: drop-shadow(var(--shadow));
     filter: drop-shadow(var(--shadow));
 }
 
@@ -195,6 +293,9 @@
     width: 100vw;
     height: 100vh;
     transition: opacity var(--transitionLength) linear;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -206,8 +307,12 @@
     pointer-events: none;
     width: 100%;
     height: 100%;
+    -o-object-fit: contain;
     object-fit: contain;
     border-radius: var(--photoBorderRadius);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -222,12 +327,16 @@
 }
 
 .photoIn {
+    -webkit-animation: slideIn var(--transitionLength);
     animation: slideIn var(--transitionLength);
+    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
 }
 
 .photoOut {
+    -webkit-animation: slideOut var(--transitionLength);
     animation: slideOut var(--transitionLength);
+    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
 }
 

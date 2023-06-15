@@ -36,6 +36,7 @@ const infoButton = document.getElementById("infoButton");
 const cartButtons = document.querySelectorAll(".linkIcon.linkCart");
 const redDots = document.querySelectorAll(".redDot");
 const infoText = document.getElementById("infoText");
+const errorText = document.getElementById("errorText");
 
 // Keeping track of the checkout elements
 const checkoutButton = document.getElementById("checkoutButton");
@@ -192,6 +193,8 @@ checkoutButton.addEventListener("click", async () => {
                 throw new Error(error.error);
             }
         } catch (e) {
+            errorText.textContent = "Error: Unable to connect to checkout.";
+            errorText.show();
             // Catch any errors that occurred during the fetch request or response processing
             console.error(e);
         }

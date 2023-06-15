@@ -52,7 +52,7 @@ async function loadItems() {
         gridWrapper.style.setProperty("--variedScaleFadeIn", 1);
         gridWrapper.classList.add("scaleFadeIn");
         gridWrapper.textContent =
-            "Unable to load shop items, please try again later.";
+            "Error: Unable to load shop items, please try again later.";
         console.error(error);
     }
 }

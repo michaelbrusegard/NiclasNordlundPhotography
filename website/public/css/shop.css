@@ -210,8 +210,8 @@
     border-radius: var(--photoBorderRadius);
     box-shadow: var(--shadow);
     text-align: center;
-    font-family: "Noto Sans Mono", sans-serif;
     font-size: calc(1.5 * var(--fontSize));
+    color: var(--redDotColor);
 }
 
 .container {
@@ -246,16 +246,13 @@
 }
 
 .price {
-    font-family: "Noto Sans Mono", sans-serif;
-    font-weight: bold;
     font-size: var(--fontSize);
     margin-left: var(--textMargin);
     margin-right: var(--textMargin);
 }
 
 .name {
-    font-family: "Noto Sans Mono", sans-serif;
-    font-weight: normal;
+    font-weight: 200;
     font-size: calc(var(--fontSize) / 2);
     margin-left: var(--textMargin);
     margin-right: var(--textMargin);
@@ -357,9 +354,7 @@
 #checkoutInfo {
     display: flex;
     margin: var(--shopMargin);
-    font-family: "Noto Sans Mono", sans-serif;
     font-size: var(--fontSize);
-    font-weight: bold;
     justify-content: space-between;
 }
 
@@ -384,7 +379,6 @@
 
 #infoText {
     position: relative;
-    font-family: "Noto Sans Mono", sans-serif;
     font-size: calc(var(--fontSize) / 1.5);
     width: calc(
         var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
@@ -397,20 +391,32 @@
     box-shadow: var(--shadow);
 }
 
+#errorText {
+    position: relative;
+    font-size: calc(var(--fontSize) / 1.5);
+    width: calc(
+        var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
+    );
+    background-color: var(--expandedPageColor);
+    border-radius: var(--photoBorderRadius);
+    padding: var(--shopMargin);
+    border: calc(var(--checkoutBorder) / 8) solid var(--fontColor);
+    margin: var(--shopMargin);
+    color: var(--redDotColor);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
 #checkoutButton {
     width: calc(
         var(--checkoutWidth) - 2 * (var(--checkoutBorder) + var(--shopMargin))
     );
-    font-family: "Noto Sans Mono", sans-serif;
-    font-size: var(--fontSize);
-    font-weight: bold;
     box-shadow: var(--shadow);
     cursor: pointer;
     border: calc(var(--checkoutBorder) / 8) solid var(--fontColor);
     border-radius: var(--photoBorderRadius);
     background-color: var(--pageColor);
     font-family: "Caveat", cursive;
-    font-weight: 400;
     font-size: calc(var(--fontSize) * 1.25);
     margin: var(--shopMargin);
 }
@@ -447,11 +453,6 @@
 .container.checkout.deleted {
     transition: opacity var(--transitionLength) ease-in;
     opacity: 0;
-}
-
-.redDot {
-    font-family: "Noto Sans Mono", sans-serif;
-    font-weight: bolder;
 }
 
 /* Page/checkout item transition */
