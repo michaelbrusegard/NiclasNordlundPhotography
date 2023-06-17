@@ -23,10 +23,7 @@ nav .mobileNav {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    height: var(--navContainerHeight);
 }
 
 nav .desktopNav li,
@@ -37,6 +34,7 @@ nav .mobileNav li {
 nav .desktopNav li a,
 nav .mobileNav li a {
     height: var(--navContainerHeight);
+    line-height: var(--navContainerHeight);
     color: var(--fontColor);
     text-decoration: none;
     font-family: "Caveat", cursive;
@@ -81,7 +79,7 @@ nav .mobileNav {
 }
 
 .linkIcon {
-    display: block;
+    display: inline-block;
     background-position: center;
     height: var(--navContainerHeight);
     background-repeat: no-repeat;
@@ -231,7 +229,7 @@ nav .mobileNav {
     }
 
     nav .desktopNav.active {
-        height: 100lvh;
+        height: 100svh;
         background: var(--expandedPageColor);
     }
 
@@ -255,7 +253,7 @@ nav .mobileNav {
         position: absolute;
         bottom: 0;
         left: calc(2 / 3 * var(--navPadding));
-        width: calc(100vw - 2 * (2 / 3 * var(--navPadding)));
+        width: calc(100svw - 2 * (2 / 3 * var(--navPadding)));
         height: 1px;
         background-color: var(--fontColor);
     }

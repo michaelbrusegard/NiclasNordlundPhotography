@@ -96,6 +96,7 @@ async function createContainer(shopItemInfo) {
     img.loading = "lazy";
     img.alt = shopItemInfo[0];
     img.classList.add("photos");
+    img.tabIndex = 0;
 
     // Price
     let h2 = document.createElement("h2");
@@ -104,6 +105,7 @@ async function createContainer(shopItemInfo) {
     // Add button
     let addButton = document.createElement("div");
     addButton.classList.add("addButton");
+    addButton.tabIndex = 0;
     h2.appendChild(addButton);
 
     // Name
@@ -121,6 +123,9 @@ async function createContainer(shopItemInfo) {
 
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
+
+    // Set tab index
+    div.tabIndex = 0;
 
     // Check for click on image
     img.addEventListener("click", () => {

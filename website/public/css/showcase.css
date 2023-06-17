@@ -35,7 +35,7 @@
     background-repeat: repeat;
     background-attachment: scroll;
     background-size: 100%;
-    min-height: 100vh;
+    min-height: 100svh;
 }
 
 main {
@@ -164,7 +164,7 @@ main {
 @-webkit-keyframes transitionBag {
     to {
         transform: translateX(
-            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+            calc(100svw - (var(--navPadding) * 2 + var(--menuIconSize)))
         );
     }
 }
@@ -172,7 +172,7 @@ main {
 @keyframes transitionBag {
     to {
         transform: translateX(
-            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+            calc(100svw - (var(--navPadding) * 2 + var(--menuIconSize)))
         );
     }
 }

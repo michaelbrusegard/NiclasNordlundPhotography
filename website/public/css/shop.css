@@ -84,7 +84,7 @@
 @-webkit-keyframes transitionBag {
     to {
         transform: translateX(
-            calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize))
+            calc(-100svw + var(--navPadding) * 2 + var(--menuIconSize))
         );
     }
 }
@@ -92,7 +92,7 @@
 @keyframes transitionBag {
     to {
         transform: translateX(
-            calc(-100vw + var(--navPadding) * 2 + var(--menuIconSize))
+            calc(-100svw + var(--navPadding) * 2 + var(--menuIconSize))
         );
     }
 }
@@ -170,7 +170,7 @@
     animation: transitionIn calc(var(--transitionLength) * 2);
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
-    min-height: 100vh;
+    min-height: 100svh;
     padding-top: var(--navContainerHeight);
     padding-bottom: var(--navContainerHeight);
 }
@@ -204,7 +204,7 @@
     align-items: center;
     justify-content: center;
     margin: var(--shopMargin) calc(var(--sideWrapperMargin) + var(--shopMargin));
-    height: calc(100vh - 2 * (var(--navContainerHeight) + var(--shopMargin)));
+    height: calc(100svh - 2 * (var(--navContainerHeight) + var(--shopMargin)));
     width: calc(100% - 2 * (var(--sideWrapperMargin) + var(--shopMargin)));
     background-color: var(--expandedPageColor);
     border-radius: var(--photoBorderRadius);
@@ -323,6 +323,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    z-index: calc(var(--checkoutMenuZindex) / 4);
 }
 
 #checkoutMenu.active {
@@ -419,6 +420,7 @@
     font-family: "Caveat", cursive;
     font-size: calc(var(--fontSize) * 1.25);
     margin: var(--shopMargin);
+    color: var(--fontColor);
 }
 
 #checkoutButton:hover {

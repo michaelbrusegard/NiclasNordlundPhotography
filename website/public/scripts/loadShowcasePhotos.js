@@ -25,7 +25,7 @@ function loadPhotos(files) {
 
     for (let i = 0; i < totalPhotos; i++) {
         // Get current photo
-        const photo = createContainer(files[i]);
+        const photo = createContainer(files[i], i);
         // Mark as big photo
         if (files[i][1] < files[i][2]) {
             bigPhotoIndexArray.push(i % columnsMax);
@@ -57,7 +57,7 @@ function getColumns() {
 
 // Function that creates photo tags with lazyloading
 // Modified lazyload function to adapt to multiple columns
-function createContainer(file) {
+function createContainer(file, index) {
     // Added creation of a div to hold the photos
     let div = document.createElement("div");
     let img = document.createElement("img");
@@ -82,6 +82,9 @@ function createContainer(file) {
     img.addEventListener("click", () => {
         highlightPhoto(img);
     });
+
+    // Set logical tabindex for photo order
+    div.tabIndex = index + 1;
 
     return div;
 }

@@ -29,6 +29,7 @@
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    height: var(--navContainerHeight);
 }
 
 .desktopFooter li a,
@@ -42,6 +43,7 @@
     filter: drop-shadow(var(--shadow));
     opacity: 1;
     transition: opacity var(--transitionLength);
+    line-height: var(--navContainerHeight);
 }
 
 .desktopFooter li a:hover,

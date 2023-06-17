@@ -106,7 +106,7 @@
 @-webkit-keyframes transitionBag {
     to {
         transform: translateX(
-            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+            calc(100svw - (var(--navPadding) * 2 + var(--menuIconSize)))
         );
     }
 }
@@ -114,7 +114,7 @@
 @keyframes transitionBag {
     to {
         transform: translateX(
-            calc(100vw - (var(--navPadding) * 2 + var(--menuIconSize)))
+            calc(100svw - (var(--navPadding) * 2 + var(--menuIconSize)))
         );
     }
 }
@@ -248,8 +248,8 @@
 }
 
 #contentContainer {
-    height: 100vh;
-    width: 100vw;
+    height: 100svh;
+    width: 100svw;
     overflow-y: scroll;
     -ms-scroll-snap-type: y mandatory;
     scroll-snap-type: y mandatory;
@@ -265,8 +265,8 @@
 
 .quotesContainer {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     transition: all var(--transitionLength) ease-out;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -290,8 +290,8 @@
 #photoCarousel {
     position: relative;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     transition: opacity var(--transitionLength) linear;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -317,13 +317,13 @@
 }
 
 #scrolledBottom {
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
 }
 
 #scrolledTop {
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
 }
 
 .photoIn {
