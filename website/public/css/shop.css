@@ -333,6 +333,7 @@
     -ms-user-select: none;
     user-select: none;
     z-index: calc(var(--checkoutMenuZindex) / 4);
+    visibility: hidden;
 }
 
 #checkoutMenu.active {
@@ -403,6 +404,8 @@
     border: calc(var(--checkoutBorder) / 8) solid var(--fontColor);
     margin: var(--shopMargin);
     box-shadow: var(--shadow);
+    -webkit-animation: transitionIn calc(2 * var(--transitionLength));
+    animation: transitionIn calc(2 * var(--transitionLength));
 }
 
 #errorText {
@@ -419,6 +422,8 @@
     color: var(--redDotColor);
     box-shadow: var(--shadow);
     text-align: center;
+    -webkit-animation: transitionIn calc(2 * var(--transitionLength));
+    animation: transitionIn calc(2 * var(--transitionLength));
 }
 
 #checkoutButton {

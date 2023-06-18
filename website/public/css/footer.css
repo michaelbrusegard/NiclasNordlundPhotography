@@ -39,8 +39,6 @@
 
 .desktopFooter li a,
 .mobileFooter li a {
-    height: var(--navContainerHeight);
-    line-height: var(--navContainerHeight);
     padding: calc(var(--navPadding) / 2) 0;
     color: var(--fontColor);
     text-decoration: none;

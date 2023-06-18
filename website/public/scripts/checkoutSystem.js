@@ -52,9 +52,14 @@ function cloneShopItemToCheckout(shopItem) {
     button.style.backgroundImage = "url('../img/icons/remove.svg')";
 
     const img = checkoutItem.querySelector(":first-child");
-    img.addEventListener("click", () => {
-        highlightPhoto(img);
-    });
+
+    // Attach event listeners to the img element
+    img.addEventListener("click", (event) =>
+        handlePhotoClickAndEnter(event, img)
+    );
+    img.addEventListener("keydown", (event) =>
+        handlePhotoClickAndEnter(event, img)
+    );
 
     return checkoutItem;
 }
@@ -218,4 +223,16 @@ function checkoutSystem(shopItem, itemPrice, removeAnimation) {
         },
         { once: true }
     );
+
+    button.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            const { addScroll, y } = calculateAnimationVariables(
+                shopItem,
+                itemX,
+                itemY
+            );
+            moveItemToShop(shopItem, y, addScroll);
+            removeCheckoutItem(checkoutItem, shopItem, itemPrice);
+        }
+    });
 }

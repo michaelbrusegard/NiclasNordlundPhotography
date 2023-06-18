@@ -79,9 +79,13 @@ function createContainer(file, index) {
     // Add observer for fade on scroll effect
     addPhotosFadeOnScroll.observe(div);
 
-    img.addEventListener("click", () => {
-        highlightPhoto(img);
-    });
+    // Attach event listeners to the div element
+    div.addEventListener("click", (event) =>
+        handlePhotoClickAndEnter(event, img)
+    );
+    div.addEventListener("keydown", (event) =>
+        handlePhotoClickAndEnter(event, img)
+    );
 
     // Set logical tabindex for photo order
     div.tabIndex = index + 1;

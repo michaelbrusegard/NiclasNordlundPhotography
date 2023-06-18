@@ -33,8 +33,7 @@ nav .mobileNav li {
 
 nav .desktopNav li a,
 nav .mobileNav li a {
-    height: var(--navContainerHeight);
-    line-height: var(--navContainerHeight);
+    padding: calc(var(--navPadding) / 2) 0;
     color: var(--fontColor);
     text-decoration: none;
     font-family: "Caveat", cursive;
@@ -235,6 +234,7 @@ nav .mobileNav {
         z-index: -1;
         transition: all var(--transitionLength) ease-in;
         overflow-y: auto;
+        visibility: hidden;
     }
 
     nav .desktopNav::-webkit-scrollbar {
@@ -244,16 +244,19 @@ nav .mobileNav {
     nav .desktopNav.active {
         height: 100svh;
         background: var(--expandedPageColor);
+        visibility: visible;
     }
 
     nav .mobileNav .linkBag {
         transition: all var(--transitionLength) ease;
+        visibility: visible;
     }
 
     nav .mobileNav.active .linkBag {
         transform: translateY(5px);
         opacity: 0;
         pointer-events: none;
+        visibility: hidden;
     }
 
     nav .desktopNav li {
@@ -276,7 +279,8 @@ nav .mobileNav {
     }
 
     nav .desktopNav .linkSignature,
-    nav .desktopNav .linkBag {
+    nav .desktopNav .linkBag,
+    nav .desktopNav .linkCart {
         display: none;
     }
 

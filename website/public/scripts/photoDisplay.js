@@ -1,5 +1,24 @@
+let previouslyFocusedElement = null;
+
+function disableTabbing(event) {
+    if (event.keyCode === 9 || (event.key !== "Tab" && event.metaKey)) {
+        event.preventDefault();
+    }
+}
+
+function enableTabbing() {
+    document.removeEventListener("keydown", disableTabbing);
+    if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+    }
+}
+
 function highlightPhoto(photo) {
+    previouslyFocusedElement = document.activeElement;
+    document.addEventListener("keydown", disableTabbing);
+
     const style = getComputedStyle(document.body);
+
     // Create a new div to hold the highlighted photo
     const highlightDiv = document.createElement("div");
     highlightDiv.style.position = "fixed";
@@ -11,6 +30,13 @@ function highlightPhoto(photo) {
     highlightDiv.style.zIndex = "9999";
     highlightDiv.addEventListener("click", () => {
         document.body.removeChild(highlightDiv);
+        enableTabbing();
+    });
+    highlightDiv.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === "Escape") {
+            document.body.removeChild(highlightDiv);
+            enableTabbing();
+        }
     });
 
     // Create a new photo element to display the highlighted photo
@@ -27,7 +53,20 @@ function highlightPhoto(photo) {
     );
     highlightPhoto.style.boxShadow = style.getPropertyValue("--shadow");
 
+    // Set tabindex="0" to make the img element tabbable
+    highlightPhoto.setAttribute("tabindex", "0");
+
     // Add the photo to the highlight div and the highlight div to the document
     highlightDiv.appendChild(highlightPhoto);
     document.body.appendChild(highlightDiv);
+
+    // Focus on the img element when highlightPhoto is called
+    highlightPhoto.focus();
+}
+
+// Function to handle click and Enter key press events
+function handlePhotoClickAndEnter(event, photo) {
+    if (event.type === "click" || (event.key === "Enter" && !event.metaKey)) {
+        highlightPhoto(photo);
+    }
 }

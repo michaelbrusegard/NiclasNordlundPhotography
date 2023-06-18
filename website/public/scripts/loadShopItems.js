@@ -124,10 +124,13 @@ async function createContainer(shopItemInfo) {
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
 
-    // Check for click on image
-    img.addEventListener("click", () => {
-        highlightPhoto(img);
-    });
+    // Attach event listeners to the img element
+    img.addEventListener("click", (event) =>
+        handlePhotoClickAndEnter(event, img)
+    );
+    img.addEventListener("keydown", (event) =>
+        handlePhotoClickAndEnter(event, img)
+    );
 
     if (
         cart.some(
@@ -140,5 +143,8 @@ async function createContainer(shopItemInfo) {
     // Apply checkout system interaction to the div item
     addButton.addEventListener("click", () => {
         checkoutSystem(div, shopItemInfo[1], false);
+    });
+    addButton.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") checkoutSystem(div, shopItemInfo[1], false);
     });
 }

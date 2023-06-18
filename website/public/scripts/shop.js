@@ -119,6 +119,7 @@ Array.from(shopNav.children).forEach((element) => {
 cartButtons.forEach((element) =>
     element.addEventListener("click", (event) => {
         event.preventDefault();
+        checkoutMenu.style.visibility = "visible";
         alignCheckout();
         // Check which scale we want to set the new z-index with
         checkoutMenuClicks += 1;
@@ -126,11 +127,19 @@ cartButtons.forEach((element) =>
         if (checkoutMenuClicks % 2 === 1) {
             scale = 3;
         }
+        let isActive = true;
+        if (checkoutMenu.classList.contains("active")) {
+            isActive = false;
+        }
         // Toggle the menu
         checkoutMenu.classList.toggle("active");
         checkoutMenu.addEventListener(
             "transitionend",
             () => {
+                if (isActive === false) {
+                    checkoutMenu.style.visibility = "hidden";
+                    isActive = true;
+                }
                 checkoutMenu.style.setProperty(
                     "--checkoutMenuZindex",
                     `${style.getPropertyValue("--checkoutMenuZindex") * scale}`
@@ -142,36 +151,50 @@ cartButtons.forEach((element) =>
 );
 
 infoButton.addEventListener("click", () => {
+    toggleInfoText();
+});
+
+infoButton.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        toggleInfoText();
+    }
+});
+
+function toggleInfoText() {
     if (infoText.open) {
         infoText.close();
     } else {
         if (addedItems.length > 1) {
             infoText.textContent =
-                "Upon purchase you will receive an Email with a link to download the full quality digital copies of the photos. Contact me if you want to buy prints.";
+                "Upon purchase, you will receive an Email with a link to download the full quality digital copies of the photos. Contact me if you want to buy prints.";
         } else {
             infoText.textContent =
-                "Upon purchase you will receive an Email with a link to download the full quality digital copy of the photo. Contact me if you want to buy prints.";
+                "Upon purchase, you will receive an Email with a link to download the full quality digital copy of the photo. Contact me if you want to buy prints.";
         }
         infoText.show();
     }
+}
+
+checkoutButton.addEventListener("click", async () => {
+    purchaseItems();
 });
 
-//
-checkoutButton.addEventListener("click", async () => {
-    // Check if there are any items in the "addedItems" array
+checkoutButton.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        purchaseItems();
+    }
+});
+
+async function purchaseItems() {
     if (addedItems.length > 0) {
         const itemsToPurchase = [];
-        // Iterate through each item in "addedItems" array
         for (const item of addedItems) {
-            // Extract the name and price of the item from its HTML elements
             const name = item.children[2].textContent;
             const price = item.children[1].textContent.slice(0, -1);
-            // Add the item's name and price to the "itemsToPurchase" array
             itemsToPurchase.push([name, price]);
         }
 
         try {
-            // Make a POST request to the "/checkout-session" endpoint with the "itemsToPurchase" array as the request payload
             const response = await fetch("/checkout-session", {
                 method: "POST",
                 headers: {
@@ -181,26 +204,26 @@ checkoutButton.addEventListener("click", async () => {
             });
 
             if (response.ok) {
-                // If the response is successful, extract the "url" property from the response JSON
                 const { url } = await response.json();
-                // Remove the "cart" item from the session storage
                 sessionStorage.removeItem("cart");
-                // Redirect the user to the obtained "url"
                 window.location = url;
             } else {
-                // If the response is not successful, extract the error message from the response JSON
                 const error = await response.json();
-                // Throw an error with the extracted error message
                 throw new Error(error.error);
             }
         } catch (e) {
             errorText.textContent = "Error: Unable to connect to checkout.";
             errorText.show();
-            // Catch any errors that occurred during the fetch request or response processing
             console.error(e);
         }
+    } else {
+        errorText.textContent = "Error: Cart is empty.";
+        errorText.show();
+        setTimeout(() => {
+            errorText.close();
+        }, 5000);
     }
-});
+}
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButtons.forEach((element) => {
