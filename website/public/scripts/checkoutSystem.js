@@ -224,15 +224,19 @@ function checkoutSystem(shopItem, itemPrice, removeAnimation) {
         { once: true }
     );
 
-    button.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            const { addScroll, y } = calculateAnimationVariables(
-                shopItem,
-                itemX,
-                itemY
-            );
-            moveItemToShop(shopItem, y, addScroll);
-            removeCheckoutItem(checkoutItem, shopItem, itemPrice);
-        }
-    });
+    button.addEventListener(
+        "keydown",
+        (event) => {
+            if (event.key === "Enter") {
+                const { addScroll, y } = calculateAnimationVariables(
+                    shopItem,
+                    itemX,
+                    itemY
+                );
+                moveItemToShop(shopItem, y, addScroll);
+                removeCheckoutItem(checkoutItem, shopItem, itemPrice);
+            }
+        },
+        { once: true }
+    );
 }

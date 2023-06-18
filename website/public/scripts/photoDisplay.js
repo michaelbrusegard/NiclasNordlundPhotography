@@ -42,8 +42,8 @@ function highlightPhoto(photo) {
     // Create a new photo element to display the highlighted photo
     const highlightPhoto = document.createElement("img");
     highlightPhoto.src = photo.src;
-    highlightPhoto.style.maxWidth = "90%";
-    highlightPhoto.style.maxHeight = "90%";
+    highlightPhoto.style.maxWidth = "96%";
+    highlightPhoto.style.maxHeight = "96%";
     highlightPhoto.style.position = "absolute";
     highlightPhoto.style.top = "50%";
     highlightPhoto.style.left = "50%";

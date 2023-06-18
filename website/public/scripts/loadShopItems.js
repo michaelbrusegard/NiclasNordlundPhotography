@@ -142,9 +142,12 @@ async function createContainer(shopItemInfo) {
 
     // Apply checkout system interaction to the div item
     addButton.addEventListener("click", () => {
-        checkoutSystem(div, shopItemInfo[1], false);
+        if (!addedItems.includes(div))
+            checkoutSystem(div, shopItemInfo[1], false);
     });
     addButton.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") checkoutSystem(div, shopItemInfo[1], false);
+        if (event.key === "Enter")
+            if (!addedItems.includes(div))
+                checkoutSystem(div, shopItemInfo[1], false);
     });
 }
