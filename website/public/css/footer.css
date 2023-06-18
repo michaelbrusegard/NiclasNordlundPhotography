@@ -32,8 +32,15 @@
     height: var(--navContainerHeight);
 }
 
+.desktopFooter li,
+.mobileFooter li {
+    position: relative;
+}
+
 .desktopFooter li a,
 .mobileFooter li a {
+    height: var(--navContainerHeight);
+    line-height: var(--navContainerHeight);
     padding: calc(var(--navPadding) / 2) 0;
     color: var(--fontColor);
     text-decoration: none;
@@ -43,11 +50,15 @@
     filter: drop-shadow(var(--shadow));
     opacity: 1;
     transition: opacity var(--transitionLength);
-    line-height: var(--navContainerHeight);
 }
 
 .desktopFooter li a:hover,
 .mobileFooter li a:hover {
+    opacity: 0.6;
+}
+
+.desktopFooter li a:focus,
+.mobileFooter li a:focus {
     opacity: 0.6;
 }
 

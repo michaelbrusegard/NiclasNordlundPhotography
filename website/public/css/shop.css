@@ -235,6 +235,11 @@
     animation: tiltShaking var(--transitionLength);
 }
 
+.container:focus {
+    -webkit-animation: tiltShaking var(--transitionLength);
+    animation: tiltShaking var(--transitionLength);
+}
+
 .photos {
     border-radius: var(--photoBorderRadius);
     margin: auto;
@@ -272,6 +277,10 @@
 }
 
 .addButton:hover {
+    opacity: var(--softOpacity);
+}
+
+.addButton:focus {
     opacity: var(--softOpacity);
 }
 
@@ -378,6 +387,10 @@
     opacity: var(--softOpacity);
 }
 
+#infoButton:focus {
+    opacity: var(--softOpacity);
+}
+
 #infoText {
     position: relative;
     font-size: calc(var(--fontSize) / 1.5);
@@ -424,6 +437,10 @@
 }
 
 #checkoutButton:hover {
+    background-color: var(--expandedPageColor);
+}
+
+#checkoutButton:focus {
     background-color: var(--expandedPageColor);
 }
 

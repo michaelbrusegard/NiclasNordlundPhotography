@@ -50,6 +50,11 @@ nav .mobileNav li a:hover {
     opacity: var(--softOpacity);
 }
 
+nav .desktopNav li a:focus,
+nav .mobileNav li a:focus {
+    opacity: var(--softOpacity);
+}
+
 nav .mobileNav {
     display: none;
 }
@@ -170,6 +175,14 @@ nav .mobileNav {
 }
 
 .linkMenu.clicked:hover #menu2 {
+    transform: rotate(45deg);
+}
+
+.linkMenu.clicked:focus #menu1 {
+    transform: rotate(135deg);
+}
+
+.linkMenu.clicked:focus #menu2 {
     transform: rotate(45deg);
 }
 

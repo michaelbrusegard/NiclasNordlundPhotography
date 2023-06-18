@@ -124,9 +124,6 @@ async function createContainer(shopItemInfo) {
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
 
-    // Set tab index
-    div.tabIndex = 0;
-
     // Check for click on image
     img.addEventListener("click", () => {
         highlightPhoto(img);
