@@ -91,7 +91,15 @@ function displayCopyrightFooter(scrollableElement) {
     const footerContainer = document.querySelector(".footerContainer");
 
     // Check if the user has scrolled to the bottom
-    if (scrollTop + windowHeight >= totalHeight) {
+    if (
+        scrollTop + windowHeight >=
+        totalHeight -
+            parseInt(
+                getComputedStyle(document.documentElement)
+                    .getPropertyValue("--navContainerHeight")
+                    .slice(0, -2)
+            )
+    ) {
         if (isMobileNav()) {
             footerContainer.style.bottom =
                 "calc( 2 * var(--navContainerHeight))";
