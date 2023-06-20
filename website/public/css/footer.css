@@ -99,6 +99,27 @@
     background-repeat: no-repeat;
 }
 
+/* Copyright footer */
+.copyrightFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--navContainerHeight);
+    background: var(--expandedPageColor);
+    font-weight: 200;
+    font-size: calc(var(--fontSize) / 2);
+    line-height: var(--fontSize);
+}
+
+.copyrightFooter a {
+    color: inherit;
+}
+
+.copyrightFooter div {
+    display: inline-block;
+    margin: 0 calc(var(--navPadding) / 3);
+}
+
 /* Adaptive size */
 
 .mobileFooter {
@@ -119,5 +140,9 @@
 
     .mobileFooter {
         display: flex;
+    }
+
+    .copyrightFooter {
+        height: calc(2 * var(--navContainerHeight));
     }
 }

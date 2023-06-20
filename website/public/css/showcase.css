@@ -53,7 +53,7 @@ main {
     flex-direction: row;
     gap: calc(var(--photoMargin) / 2);
     padding-top: calc(var(--navContainerHeight) + var(--photoMargin));
-    padding-bottom: calc(var(--navContainerHeight) + var(--photoMargin));
+    padding-bottom: calc(2 * var(--navContainerHeight) + var(--photoMargin));
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
 }
@@ -75,7 +75,7 @@ main {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 /* Slide transition */
@@ -390,5 +390,8 @@ main {
     .gallery {
         margin-left: calc(var(--sideWrapperMargin) / 2);
         margin-right: calc(var(--sideWrapperMargin) / 2);
+        padding-bottom: calc(
+            3 * var(--navContainerHeight) + var(--photoMargin)
+        );
     }
 }

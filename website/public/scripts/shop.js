@@ -78,19 +78,23 @@ document.addEventListener("DOMContentLoaded", () => {
     retrieveCart();
     windowLoad();
     alignCheckout();
+    displayCopyrightFooter(document.documentElement);
 });
 
 // Changes to the window: loads new photo containers and aligns checkout menu
 window.addEventListener("scroll", () => {
     scrollLoad();
+    displayCopyrightFooter(document.documentElement);
 });
 window.addEventListener("resize", () => {
     windowLoad();
     alignCheckout();
+    displayCopyrightFooter(document.documentElement);
 });
 window.addEventListener("orientationChange", () => {
     windowLoad();
     alignCheckout();
+    displayCopyrightFooter(document.documentElement);
 });
 
 // Adds ending part of animation

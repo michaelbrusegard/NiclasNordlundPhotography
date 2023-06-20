@@ -69,3 +69,36 @@ function getNavigationType() {
     });
     return type;
 }
+
+// Get the current year
+const currentYearElement = document.getElementById("currentYear");
+if (currentYearElement) {
+    const currentYear = new Date().getFullYear();
+    currentYearElement.textContent = currentYear;
+}
+
+function displayCopyrightFooter(scrollableElement) {
+    // Get the current scroll position
+    const scrollTop = scrollableElement.scrollTop;
+
+    // Get the total height of the page, including the scrolled portion
+    const totalHeight = scrollableElement.scrollHeight;
+
+    // Get the window's inner height
+    const windowHeight = scrollableElement.clientHeight;
+
+    // Get the footer container
+    const footerContainer = document.querySelector(".footerContainer");
+
+    // Check if the user has scrolled to the bottom
+    if (scrollTop + windowHeight >= totalHeight) {
+        if (isMobileNav()) {
+            footerContainer.style.bottom =
+                "calc( 2 * var(--navContainerHeight))";
+        } else {
+            footerContainer.style.bottom = "var(--navContainerHeight)";
+        }
+    } else {
+        footerContainer.style.bottom = "0";
+    }
+}

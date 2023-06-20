@@ -28,6 +28,7 @@ function highlightPhoto(photo) {
     highlightDiv.style.height = "100%";
     highlightDiv.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
     highlightDiv.style.zIndex = "9999";
+    highlightDiv.style.cursor = "zoom-out";
     highlightDiv.addEventListener("click", () => {
         document.body.removeChild(highlightDiv);
         enableTabbing();

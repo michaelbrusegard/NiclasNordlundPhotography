@@ -197,6 +197,7 @@
     justify-content: center;
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
+    padding-bottom: calc(2 * var(--navContainerHeight));
 }
 
 #errorWrapper {
@@ -204,7 +205,13 @@
     align-items: center;
     justify-content: center;
     margin: var(--shopMargin) calc(var(--sideWrapperMargin) + var(--shopMargin));
-    height: calc(100svh - 2 * (var(--navContainerHeight) + var(--shopMargin)));
+    height: calc(
+        100svh -
+            (
+                (2 * (var(--navContainerHeight) + var(--shopMargin))) +
+                    (2 * var(--navContainerHeight))
+            )
+    );
     width: calc(100% - 2 * (var(--sideWrapperMargin) + var(--shopMargin)));
     background-color: var(--expandedPageColor);
     border-radius: var(--photoBorderRadius);
@@ -247,7 +254,7 @@
     display: block;
     height: var(--photoSize);
     max-width: calc(var(--photoSize) * 1.7);
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .price {

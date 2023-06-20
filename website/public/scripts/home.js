@@ -76,15 +76,21 @@ document.addEventListener("DOMContentLoaded", () => {
     observeHome();
 });
 
+contentContainer.addEventListener("scroll", () => {
+    displayCopyrightFooter(contentContainer);
+});
+
 window.addEventListener("resize", () => {
     setNiclasPhotoLeftPos();
     carouselPhotoPosition();
     textPosition();
+    displayCopyrightFooter(contentContainer);
 });
 window.addEventListener("orientationChange", () => {
     setNiclasPhotoLeftPos();
     carouselPhotoPosition();
     textPosition();
+    displayCopyrightFooter(contentContainer);
 });
 
 // Adds ending part of animation
