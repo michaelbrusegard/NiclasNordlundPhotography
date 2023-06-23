@@ -12,7 +12,7 @@ function initialisePhotoCarousel() {
         swapPhoto();
         timer = setInterval(function () {
             swapPhoto();
-        }, intervalTime);
+        }, 1.5 * intervalTime);
     });
 }
 

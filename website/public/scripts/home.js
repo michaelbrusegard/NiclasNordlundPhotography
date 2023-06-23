@@ -23,6 +23,7 @@ const photos = document.querySelectorAll("#photoCarousel img");
 
 // Interval time for the carousel in ms and which photo is displayed
 const intervalTime = 5000;
+const fastIntervalTime = 1250;
 let photoDisplayed = 0;
 
 // Text to be displayed on the home page
@@ -42,16 +43,16 @@ let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
 let isFinishedTyping = Array(quotesContainer.length).fill(false);
-let firstClick = true;
 let currentIndex = 0;
+let typingTimeoutId;
 
 // Adjust the speed of the typing animation
 for (const element of quotesContainer) {
     element.addEventListener("click", () => {
         if (isFinishedTyping[currentIndex]) {
-            firstClick = false;
-        }
-        if (firstClick) {
+            clearTimeout(typingTimeoutId);
+            scrollToNextQuote(currentIndex + 1);
+        } else {
             if (isFast) {
                 timeOutLength = slowTyping;
                 isFast = false;
@@ -59,9 +60,6 @@ for (const element of quotesContainer) {
                 timeOutLength = fastTyping;
                 isFast = true;
             }
-        } else {
-            scrollToNextQuote(currentIndex + 1);
-            firstClick = true;
         }
     });
 }
@@ -78,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 contentContainer.addEventListener("scroll", () => {
     displayCopyrightFooter(contentContainer);
+    clearTimeout(typingTimeoutId);
 });
 
 window.addEventListener("resize", () => {

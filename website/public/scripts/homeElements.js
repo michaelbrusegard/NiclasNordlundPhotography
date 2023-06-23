@@ -13,11 +13,12 @@ async function writeText(element, quoteIndex) {
             element.textContent += textString.charAt(i);
             await new Promise((r) => setTimeout(r, timeOutLength));
         }
-        if (!isFast) {
-            setTimeout(() => {
+        typingTimeoutId = setTimeout(
+            () => {
                 scrollToNextQuote(currentIndex + 1);
-            }, intervalTime);
-        }
+            },
+            isFast ? fastIntervalTime : intervalTime
+        );
 
         timeOutLength = slowTyping;
         isFast = false;
