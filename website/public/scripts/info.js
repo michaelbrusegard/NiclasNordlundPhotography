@@ -31,6 +31,17 @@ getLinkIcon(getCurrentNavElement(shopNav), "linkCart").addEventListener(
     }
 );
 
+window.addEventListener("scroll", () => {
+    displayCopyrightFooter(document.documentElement);
+});
+
+window.addEventListener("resize", () => {
+    displayCopyrightFooter(document.documentElement);
+});
+window.addEventListener("orientationChange", () => {
+    displayCopyrightFooter(document.documentElement);
+});
+
 // Button that scrolls the window to the top
 const scrollTopButtons = document.querySelectorAll(".arrow");
 

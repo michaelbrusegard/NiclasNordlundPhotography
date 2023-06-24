@@ -270,6 +270,7 @@
     transition: all var(--transitionLength) ease-out;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    cursor: pointer;
 }
 
 .quotesContainer p {

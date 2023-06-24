@@ -32,16 +32,17 @@
     background-color: var(--pageColor);
     border-radius: var(--photoBorderRadius);
     box-shadow: var(--shadow);
+    margin-bottom: calc(var(--navContainerHeight) + var(--photoMargin));
 }
 
-h1 {
+#contentDiv h1 {
     font-family: "Caveat", cursive;
     font-size: calc(2 * var(--fontSize));
     text-align: center;
     padding: calc(0.5 * var(--navPadding));
 }
 
-p {
+#contentDiv p {
     text-align: center;
     padding: var(--textMargin);
     font-size: calc(0.75 * var(--fontSize));
@@ -72,6 +73,7 @@ p {
     #contentDiv {
         margin-left: calc(var(--sideWrapperMargin) / 2);
         margin-right: calc(var(--sideWrapperMargin) / 2);
+        margin-bottom: calc(2 * var(--navContainerHeight) + var(--photoMargin));
     }
 }
 

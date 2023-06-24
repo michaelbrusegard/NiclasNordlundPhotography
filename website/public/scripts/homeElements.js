@@ -30,9 +30,10 @@ async function writeText(element, quoteIndex) {
 // Function that scrolls into next div when quote is finished
 function scrollToNextQuote(index) {
     if (index === quotesContainer.length) {
-        photoCarousel.scrollIntoView();
+        photoCarousel.scrollIntoView({ behavior: "smooth" });
+        currentIndex += 1;
     } else {
-        quotesContainer[index].scrollIntoView();
+        quotesContainer[index].scrollIntoView({ behavior: "smooth" });
     }
 }
 
@@ -93,6 +94,21 @@ function textPosition() {
         } else {
             quoteElements[i].style.top = "35%";
             quoteElements[i].style.width = "50%";
+        }
+    }
+}
+
+function interactQuote() {
+    if (isFinishedTyping[currentIndex]) {
+        clearTimeout(typingTimeoutId);
+        scrollToNextQuote(currentIndex + 1);
+    } else {
+        if (isFast) {
+            timeOutLength = slowTyping;
+            isFast = false;
+        } else {
+            timeOutLength = fastTyping;
+            isFast = true;
         }
     }
 }

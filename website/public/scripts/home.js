@@ -23,7 +23,7 @@ const photos = document.querySelectorAll("#photoCarousel img");
 
 // Interval time for the carousel in ms and which photo is displayed
 const intervalTime = 5000;
-const fastIntervalTime = 1250;
+const fastIntervalTime = 1000;
 let photoDisplayed = 0;
 
 // Text to be displayed on the home page
@@ -37,8 +37,8 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 ];
 
 // Adjust the speed parameters of the typing animations
-const slowTyping = 32;
-const fastTyping = 8;
+const slowTyping = 50;
+const fastTyping = 10;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
@@ -49,18 +49,7 @@ let typingTimeoutId;
 // Adjust the speed of the typing animation
 for (const element of quotesContainer) {
     element.addEventListener("click", () => {
-        if (isFinishedTyping[currentIndex]) {
-            clearTimeout(typingTimeoutId);
-            scrollToNextQuote(currentIndex + 1);
-        } else {
-            if (isFast) {
-                timeOutLength = slowTyping;
-                isFast = false;
-            } else {
-                timeOutLength = fastTyping;
-                isFast = true;
-            }
-        }
+        interactQuote();
     });
 }
 
@@ -72,6 +61,19 @@ document.addEventListener("DOMContentLoaded", () => {
     textPosition();
     initialisePhotoCarousel();
     observeHome();
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" && currentIndex != quotesContainer.length) {
+        clearTimeout(typingTimeoutId);
+        scrollToNextQuote(currentIndex + 1);
+    } else if (event.key === "ArrowUp" && currentIndex != 0) {
+        clearTimeout(typingTimeoutId);
+        scrollToNextQuote(currentIndex - 1);
+    }
+    if (event.key === "Enter") {
+        interactQuote();
+    }
 });
 
 contentContainer.addEventListener("scroll", () => {
