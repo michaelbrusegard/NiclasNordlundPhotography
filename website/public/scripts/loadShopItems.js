@@ -44,7 +44,7 @@ async function loadItems() {
 
         // Loads the display photos and the corresponding name and price and adds them to the correct elements
         for (let i = itemsLoaded; i < itemsToLoad; i++) {
-            createContainer(pricesArray[i]);
+            createContainer(gCloudPublicPhotosBucket, pricesArray[i]);
         }
         itemsLoaded = itemsToLoad;
     } catch (error) {
@@ -88,8 +88,7 @@ function calculateRows() {
 }
 
 // Function that creates the div container for the shop
-async function createContainer(shopItemInfo) {
-    const gCloudPublicPhotosBucket = await getGCloudPublicPhotosBucket();
+async function createContainer(gCloudPublicPhotosBucket, shopItemInfo) {
     // Photos
     let img = document.createElement("img");
     img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${shopItemInfo[0]}`;

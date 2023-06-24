@@ -237,7 +237,7 @@
     aspect-ratio: 1 / 1;
     right: 0;
     height: 60vh;
-    background: url(../img/home/niclas.png) center center no-repeat;
+    background: url(../img/niclas.png) center center no-repeat;
     background-size: cover;
     -webkit-animation: niclasIn calc(var(--transitionLength) * 2);
     animation: niclasIn calc(var(--transitionLength) * 2);

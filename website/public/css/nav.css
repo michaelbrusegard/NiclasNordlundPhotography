@@ -204,6 +204,7 @@ nav .mobileNav {
     -ms-user-select: none;
     user-select: none;
     opacity: 0;
+    pointer-events: none;
 }
 
 /* Adaptive size */
