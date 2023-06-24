@@ -47,12 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
     slideTransition(nav, shopNav, navigatedFromShop);
     loadPhotos();
 });
-window.addEventListener("resize", () => {
-    loadPhotos();
-});
-window.addEventListener("orientationChange", () => {
-    loadPhotos();
-});
+
+function debounce(func, delay) {
+    let timeoutId;
+
+    return function (...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+window.addEventListener("resize", debounce(loadPhotos, 200));
+
+window.addEventListener("orientationChange", debounce(loadPhotos, 200));
 
 // Adds ending part of animation
 getLinkIcon(getCurrentNavElement(shopNav), "linkBag").addEventListener(
