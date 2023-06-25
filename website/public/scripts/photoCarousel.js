@@ -28,6 +28,20 @@ async function initialisePhotoCarousel() {
             swapPhoto(photos);
         }, 1.5 * intervalTime);
     });
+
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Enter" ||
+            (event.key === "ArrowDown" &&
+                currentIndex === quotesContainer.length)
+        ) {
+            clearInterval(timer);
+            swapPhoto(photos);
+            timer = setInterval(function () {
+                swapPhoto(photos);
+            }, 1.5 * intervalTime);
+        }
+    });
 }
 
 // Function to swap photos

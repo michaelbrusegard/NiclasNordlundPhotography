@@ -295,6 +295,7 @@
     transition: opacity var(--transitionLength) linear;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    cursor: pointer;
 }
 
 #photoCarousel img {
