@@ -191,7 +191,7 @@
     }
 
     100% {
-        transform: translateX(-50vw) scale(0.2);
+        transform: translateX(-50vw) scale(0);
     }
 }
 
@@ -201,7 +201,7 @@
     }
 
     100% {
-        transform: translateX(-50vw) scale(0.2);
+        transform: translateX(-50vw) scale(0);
     }
 }
 
@@ -231,12 +231,12 @@
 
 /* Niclas photo */
 
-#niclasPhoto {
+.niclasPhoto {
     position: fixed;
     bottom: var(--navContainerHeight);
     aspect-ratio: 1 / 1;
     right: 0;
-    height: 60vh;
+    height: 60svh;
     background: url(../img/niclas.png) center center no-repeat;
     background-size: cover;
     -webkit-animation: niclasIn calc(var(--transitionLength) * 2);
@@ -245,6 +245,7 @@
     animation-timing-function: ease-in;
     z-index: 10;
     pointer-events: none;
+    transition: all var(--transitionLength) ease-out;
 }
 
 #contentContainer {
@@ -286,6 +287,8 @@
 
 #photoCarousel {
     position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
     width: 100svw;
     height: 100svh;
@@ -298,11 +301,17 @@
     position: absolute;
     visibility: hidden;
     pointer-events: none;
-    width: 100%;
-    height: calc(100% - var(--navContainerHeight));
-    -o-object-fit: contain;
-    object-fit: contain;
     border-radius: var(--photoBorderRadius);
+    -o-object-fit: cover;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+    max-width: calc(100svw - (2 * var(--photoMargin)));
+    max-height: calc(
+        100svh - (3 * var(--navContainerHeight) + 2 * var(--photoMargin))
+    );
+    margin: var(--photoMargin);
+    margin-top: calc(var(--navContainerHeight) + var(--photoMargin));
+    margin-bottom: calc(2 * var(--navContainerHeight) + var(--photoMargin));
 }
 
 .photoIn {
@@ -322,13 +331,35 @@
 /* Adaptive size */
 
 @media (min-width: 1100px) {
-    #niclasPhoto {
-        height: 80vh;
+    .niclasPhoto {
+        height: 80svh;
     }
 }
 
 @media (max-width: 768px) {
-    #niclasPhoto {
-        height: 40vh;
+    .niclasPhoto {
+        height: 50svh;
+    }
+
+    #photoCarousel img {
+        margin-bottom: calc(3 * var(--navContainerHeight) + var(--photoMargin));
+        max-height: calc(
+            100svh - (4 * var(--navContainerHeight) + 2 * var(--photoMargin))
+        );
+    }
+
+    .quotesContainer p {
+        font-size: large;
+    }
+}
+
+.niclasSmall {
+    height: 30svh;
+    bottom: var(--navContainerHeight);
+}
+
+@media (max-width: 768px) {
+    .niclasSmall {
+        bottom: calc(2 * var(--navContainerHeight));
     }
 }

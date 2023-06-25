@@ -1,5 +1,4 @@
 function setNiclasPhotoLeftPos() {
-    const niclasPhoto = document.getElementById("niclasPhoto");
     // Gets the screen width
     const screenWidth = window.innerWidth;
 
@@ -8,7 +7,7 @@ function setNiclasPhotoLeftPos() {
         style.getPropertyValue("--desktopNavSize").slice(0, -2)
     );
 
-    const photoWidth = niclasPhoto.clientWidth;
+    const photoWidth = (40 * screenWidth) / 100;
     // Calculate and set value
     const niclasLeftPxBig =
         desktopNavSize - photoWidth / 2 + (screenWidth - desktopNavSize) / 2;

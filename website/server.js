@@ -20,6 +20,10 @@ app.get("/getGCloudPublicPhotosBucket", (req, res) => {
     res.json(process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET);
 });
 
+app.get("/getPhotoCarouselBucket", (req, res) => {
+    res.json(process.env.GCLOUD_PHOTO_CAROUSEL_BUCKET);
+});
+
 app.get("/getNatureShowcasePhotosBucket", (req, res) => {
     res.json(process.env.GCLOUD_NATURE_SHOWCASE_BUCKET);
 });

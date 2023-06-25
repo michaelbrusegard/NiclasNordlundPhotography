@@ -31,7 +31,6 @@ async function writeText(element, quoteIndex) {
 function scrollToNextQuote(index) {
     if (index === quotesContainer.length) {
         photoCarousel.scrollIntoView({ behavior: "smooth" });
-        currentIndex += 1;
     } else {
         quotesContainer[index].scrollIntoView({ behavior: "smooth" });
     }
@@ -56,8 +55,11 @@ function observeCarousel(items) {
     items.map((item) => {
         if (item.isIntersecting) {
             item.target.classList.remove("hidden");
+            currentIndex += 1;
+            niclasPhoto.classList.add("niclasSmall");
         } else {
             item.target.classList.add("hidden");
+            niclasPhoto.classList.remove("niclasSmall");
         }
     });
 }
@@ -86,7 +88,7 @@ function textPosition() {
     for (let i = 0; i < quoteElements.length; i++) {
         quoteElements[i].style.left = "5%";
         if (isPortraitOrientation()) {
-            quoteElements[i].style.top = "12%";
+            quoteElements[i].style.top = "15%";
             quoteElements[i].style.width = "90%";
         } else if (isMobileNav() && !isPortraitOrientation()) {
             quoteElements[i].style.top = "25%";

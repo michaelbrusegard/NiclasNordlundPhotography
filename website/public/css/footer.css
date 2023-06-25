@@ -14,6 +14,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: all var(--transitionLength) ease-out;
 }
 
 .footerDiv {

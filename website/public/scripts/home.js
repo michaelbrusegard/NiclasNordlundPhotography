@@ -1,3 +1,19 @@
+// Get photos from google cloud bucket
+async function getPhotoCarouselBucket() {
+    const response = await fetch(`/getPhotoCarouselBucket`);
+    const data = await response.json();
+    return data;
+}
+
+async function fetchBucketData(bucket) {
+    const response = await fetch(
+        `https://storage.googleapis.com/storage/v1/b/${bucket}/o?fields=items(name)&delimiter=/`
+    );
+    const data = await response.json();
+    const files = data.items.map((item) => item.name);
+    return files;
+}
+
 // Variables for slide transition
 const nav = document.getElementById("nav");
 const shopNav = document.getElementById("shopNav");
@@ -12,6 +28,7 @@ const style = getComputedStyle(document.body);
 
 // Getting home elements
 const contentContainer = document.getElementById("contentContainer");
+const niclasPhoto = document.querySelector(".niclasPhoto");
 
 // Gets the divs with the quotes and the text
 const quotesContainer = document.querySelectorAll(".quotesContainer");
@@ -19,7 +36,6 @@ const quoteElements = document.querySelectorAll(".quotesContainer p");
 
 // Gets the div containing the photo carousel and the photos
 const photoCarousel = document.querySelector("#photoCarousel");
-const photos = document.querySelectorAll("#photoCarousel img");
 
 // Interval time for the carousel in ms and which photo is displayed
 const intervalTime = 5000;
@@ -57,7 +73,6 @@ for (const element of quotesContainer) {
 document.addEventListener("DOMContentLoaded", () => {
     slideTransition(nav, shopNav, navigatedFromShop);
     setNiclasPhotoLeftPos();
-    carouselPhotoPosition();
     textPosition();
     initialisePhotoCarousel();
     observeHome();
@@ -83,13 +98,11 @@ contentContainer.addEventListener("scroll", () => {
 
 window.addEventListener("resize", () => {
     setNiclasPhotoLeftPos();
-    carouselPhotoPosition();
     textPosition();
     displayCopyrightFooter(contentContainer);
 });
 window.addEventListener("orientationChange", () => {
     setNiclasPhotoLeftPos();
-    carouselPhotoPosition();
     textPosition();
     displayCopyrightFooter(contentContainer);
 });
