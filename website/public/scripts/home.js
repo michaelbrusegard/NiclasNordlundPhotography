@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowDown" && currentIndex != quotesContainer.length) {
+    if (event.key === "ArrowDown" && currentIndex !== quotesContainer.length) {
         clearTimeout(typingTimeoutId);
         scrollToNextQuote(currentIndex + 1);
-    } else if (event.key === "ArrowUp" && currentIndex != 0) {
+    } else if (event.key === "ArrowUp" && currentIndex !== 0) {
         clearTimeout(typingTimeoutId);
         scrollToNextQuote(currentIndex - 1);
     }

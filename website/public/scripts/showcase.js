@@ -16,6 +16,7 @@ async function fetchBucketData(showcasePhotosBucket) {
 
 // Column variables
 let columnSize = 384;
+let currentColumns = 0;
 let maxNumberColumns = 5;
 
 // Chosing array
@@ -53,9 +54,14 @@ function debounce(func, delay) {
 
     return function (...args) {
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            func.apply(this, args);
-        }, delay);
+
+        const debouncedFunction = () => {
+            if (getColumns() !== currentColumns) {
+                func.apply(this, args);
+            }
+        };
+
+        timeoutId = setTimeout(debouncedFunction, delay);
     };
 }
 

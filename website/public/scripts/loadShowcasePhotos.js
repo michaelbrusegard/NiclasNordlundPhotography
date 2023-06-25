@@ -26,15 +26,15 @@ async function loadPhotos() {
     const files = await fetchBucketData(showcasePhotosBucket);
 
     // Variables
+    currentColumns = getColumns();
     const totalPhotos = files.length;
-    const columnsMax = getColumns();
     const gallery = document.querySelector(".gallery");
 
     // Removes all columns
     removeAllChildNodes(gallery);
 
     // Creates new column
-    for (let i = 0; i < columnsMax; i++) {
+    for (let i = 0; i < currentColumns; i++) {
         const newColumn = document.createElement("div");
         newColumn.classList.add("column");
         gallery.appendChild(newColumn);
@@ -64,16 +64,16 @@ async function loadPhotos() {
         );
         // Mark as big photo
         if (dimensions.width < dimensions.height) {
-            bigPhotoIndexArray.push(i % columnsMax);
+            bigPhotoIndexArray.push(i % currentColumns);
             skipBigPhoto = false;
         }
         // If we are at the big photo index from the previous iteration, go one column further
-        if (bigPhotoIndexArray.includes(i % columnsMax) && skipBigPhoto) {
+        if (bigPhotoIndexArray.includes(i % currentColumns) && skipBigPhoto) {
             bigPhotoIndexArray.shift();
             extraValue += 1;
         }
         // Append to column
-        columns[(extraValue + i) % columnsMax].appendChild(photo);
+        columns[(extraValue + i) % currentColumns].appendChild(photo);
         skipBigPhoto = true;
     }
 }

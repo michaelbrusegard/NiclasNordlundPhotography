@@ -69,7 +69,7 @@ body {
     --photoContainerSize: 175px;
 
     /* Checkout */
-    --checkoutWidth: 362px;
+    --checkoutWidth: 308px;
     --checkoutBorder: 8px;
     --redDotColor: red;
     --checkoutMenuZindex: 90;

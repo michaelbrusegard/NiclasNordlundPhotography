@@ -3,7 +3,7 @@
 .footerContainer {
     background: var(--pageColor);
     height: var(--navContainerHeight);
-    z-index: var(--navZindex);
+    z-index: calc(var(--navZindex) / 2);
     position: fixed;
     right: 0;
     left: 0;

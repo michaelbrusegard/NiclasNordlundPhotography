@@ -39,7 +39,7 @@ const handleCheckoutSession = (req, res) => {
         case "checkout.session.completed":
             const checkoutSession = event.data.object;
             let purchasedItems = checkoutSession.metadata.purchasedItems;
-            if (purchasedItems != undefined) {
+            if (purchasedItems !== undefined) {
                 purchasedItems = JSON.parse(purchasedItems);
                 fileSharing.handlePhotos(purchasedItems);
             }

@@ -341,6 +341,7 @@
     user-select: none;
     z-index: calc(var(--checkoutMenuZindex) / 4);
     visibility: hidden;
+    box-shadow: var(--shadow);
 }
 
 #checkoutMenu.active {

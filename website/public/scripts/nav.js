@@ -94,11 +94,12 @@ function displayCopyrightFooter(scrollableElement) {
     if (
         scrollTop + windowHeight >=
         totalHeight -
-            parseInt(
-                getComputedStyle(document.documentElement)
-                    .getPropertyValue("--navContainerHeight")
-                    .slice(0, -2)
-            )
+            2 *
+                parseInt(
+                    getComputedStyle(document.documentElement)
+                        .getPropertyValue("--navContainerHeight")
+                        .slice(0, -2)
+                )
     ) {
         if (isMobileNav()) {
             footerContainer.style.bottom =
