@@ -69,6 +69,7 @@ const navigatedFromShowcaseOrHome = [
     "sport.html",
     "wedding.html",
     "sucess.html",
+    "bug.html",
 ];
 let navigatedFrom = document.referrer;
 
