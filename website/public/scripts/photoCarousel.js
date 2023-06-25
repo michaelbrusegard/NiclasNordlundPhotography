@@ -12,36 +12,45 @@ async function getPhotos() {
 
 // Function to run the carousel
 async function initialisePhotoCarousel() {
-    // Get the photos
-    const photos = await getPhotos();
-    // Display the first photo and start the timer
-    newPhoto(photoDisplayed, photos);
-    let timer = setInterval(function () {
-        swapPhoto(photos);
-    }, intervalTime);
-    // Checking for clicks on carousel
-    photoCarousel.addEventListener("click", () => {
-        // Restarting the timer and runnign the photo swapping function
-        clearInterval(timer);
-        swapPhoto(photos);
-        timer = setInterval(function () {
+    try {
+        // Get the photos
+        const photos = await getPhotos();
+        // Display the first photo and start the timer
+        newPhoto(photoDisplayed, photos);
+        let timer = setInterval(function () {
             swapPhoto(photos);
-        }, 1.5 * intervalTime);
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (
-            event.key === "Enter" ||
-            (event.key === "ArrowDown" &&
-                currentIndex === quotesContainer.length)
-        ) {
+        }, intervalTime);
+        // Checking for clicks on carousel
+        photoCarousel.addEventListener("click", () => {
+            // Restarting the timer and runnign the photo swapping function
             clearInterval(timer);
             swapPhoto(photos);
             timer = setInterval(function () {
                 swapPhoto(photos);
             }, 1.5 * intervalTime);
-        }
-    });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (
+                event.key === "Enter" ||
+                (event.key === "ArrowDown" &&
+                    currentIndex === quotesContainer.length)
+            ) {
+                clearInterval(timer);
+                swapPhoto(photos);
+                timer = setInterval(function () {
+                    swapPhoto(photos);
+                }, 1.5 * intervalTime);
+            }
+        });
+    } catch (error) {
+        let div = document.createElement("div");
+        div.id = "error";
+        div.textContent = "Error: Unable to load photos.";
+        photoCarousel.style.cursor = "auto";
+        photoCarousel.appendChild(div);
+        console.error(error);
+    }
 }
 
 // Function to swap photos

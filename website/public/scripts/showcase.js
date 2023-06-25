@@ -14,6 +14,8 @@ async function fetchBucketData(showcasePhotosBucket) {
     return files;
 }
 
+const gallery = document.querySelector(".gallery");
+
 // Column variables
 let columnSize = 384;
 let currentColumns = 0;

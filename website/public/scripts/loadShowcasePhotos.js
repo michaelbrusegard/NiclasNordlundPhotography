@@ -22,59 +22,70 @@ function getImageDimensions(bucket, filename) {
 
 // Function to load photos and arrange them into columns
 async function loadPhotos() {
-    const showcasePhotosBucket = await getShowcasePhotosBucket(page);
-    const files = await fetchBucketData(showcasePhotosBucket);
+    try {
+        const showcasePhotosBucket = await getShowcasePhotosBucket(page);
+        const files = await fetchBucketData(showcasePhotosBucket);
 
-    // Variables
-    currentColumns = getColumns();
-    const totalPhotos = files.length;
-    const gallery = document.querySelector(".gallery");
+        // Variables
+        currentColumns = getColumns();
+        const totalPhotos = files.length;
 
-    // Removes all columns
-    removeAllChildNodes(gallery);
+        // Removes all columns
+        removeAllChildNodes(gallery);
 
-    // Creates new column
-    for (let i = 0; i < currentColumns; i++) {
-        const newColumn = document.createElement("div");
-        newColumn.classList.add("column");
-        gallery.appendChild(newColumn);
-    }
-
-    // Gets all the new columns
-    const columns = document.getElementsByClassName("column");
-
-    // Variables to skip big photos when placing into columns
-    let bigPhotoIndexArray = [];
-    let extraValue = 0;
-    let skipBigPhoto = true;
-
-    for (let i = 0; i < totalPhotos; i++) {
-        // Get current photo dimensions
-        const dimensions = await getImageDimensions(
-            showcasePhotosBucket,
-            files[i]
-        );
-
-        // Get current photo
-        const photo = createContainer(
-            showcasePhotosBucket,
-            files[i],
-            dimensions,
-            i
-        );
-        // Mark as big photo
-        if (dimensions.width < dimensions.height) {
-            bigPhotoIndexArray.push(i % currentColumns);
-            skipBigPhoto = false;
+        // Creates new column
+        for (let i = 0; i < currentColumns; i++) {
+            const newColumn = document.createElement("div");
+            newColumn.classList.add("column");
+            gallery.appendChild(newColumn);
         }
-        // If we are at the big photo index from the previous iteration, go one column further
-        if (bigPhotoIndexArray.includes(i % currentColumns) && skipBigPhoto) {
-            bigPhotoIndexArray.shift();
-            extraValue += 1;
+
+        // Gets all the new columns
+        const columns = document.getElementsByClassName("column");
+
+        // Variables to skip big photos when placing into columns
+        let bigPhotoIndexArray = [];
+        let extraValue = 0;
+        let skipBigPhoto = true;
+
+        for (let i = 0; i < totalPhotos; i++) {
+            // Get current photo dimensions
+            const dimensions = await getImageDimensions(
+                showcasePhotosBucket,
+                files[i]
+            );
+
+            // Get current photo
+            const photo = createContainer(
+                showcasePhotosBucket,
+                files[i],
+                dimensions,
+                i
+            );
+            // Mark as big photo
+            if (dimensions.width < dimensions.height) {
+                bigPhotoIndexArray.push(i % currentColumns);
+                skipBigPhoto = false;
+            }
+            // If we are at the big photo index from the previous iteration, go one column further
+            if (
+                bigPhotoIndexArray.includes(i % currentColumns) &&
+                skipBigPhoto
+            ) {
+                bigPhotoIndexArray.shift();
+                extraValue += 1;
+            }
+            // Append to column
+            columns[(extraValue + i) % currentColumns].appendChild(photo);
+            skipBigPhoto = true;
         }
-        // Append to column
-        columns[(extraValue + i) % currentColumns].appendChild(photo);
-        skipBigPhoto = true;
+    } catch (error) {
+        gallery.classList.add("error");
+        gallery.classList.add("fadeInFromBottom");
+        gallery.classList.remove("gallery");
+        gallery.textContent =
+            "Error: Unable to load showcase photos, please try again later.";
+        console.error(error);
     }
 }
 

@@ -25,7 +25,6 @@
 }
 
 .pageContainer {
-    height: auto;
     width: 100%;
     position: absolute;
     -webkit-animation: transitionIn calc(var(--transitionLength) * 2);
@@ -56,6 +55,28 @@ main {
     padding-bottom: calc(var(--navContainerHeight) + var(--photoMargin));
     margin-left: var(--sideWrapperMargin);
     margin-right: var(--sideWrapperMargin);
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: calc(var(--navContainerHeight) + var(--shopMargin))
+        calc(var(--sideWrapperMargin) + var(--shopMargin));
+    height: calc(
+        100svh -
+            (
+                (2 * (var(--navContainerHeight) + var(--shopMargin))) +
+                    var(--navContainerHeight)
+            )
+    );
+    width: calc(100% - 2 * (var(--sideWrapperMargin) + var(--shopMargin)));
+    background-color: var(--pageColor);
+    border-radius: var(--photoBorderRadius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    font-size: calc(1.5 * var(--fontSize));
+    color: var(--redDotColor);
 }
 
 .gallery .column {

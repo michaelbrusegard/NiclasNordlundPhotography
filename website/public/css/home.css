@@ -315,6 +315,29 @@
     margin-bottom: calc(2 * var(--navContainerHeight) + var(--photoMargin));
 }
 
+#error {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--shopMargin) calc(var(--sideWrapperMargin) + var(--shopMargin));
+    height: calc(
+        100svh -
+            (
+                (2 * (var(--navContainerHeight) + var(--shopMargin))) +
+                    (3 * var(--navContainerHeight))
+            )
+    );
+    width: calc(100% - 2 * (var(--sideWrapperMargin) + var(--shopMargin)));
+    background-color: var(--expandedPageColor);
+    border-radius: var(--photoBorderRadius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    font-size: calc(1.5 * var(--fontSize));
+    color: var(--redDotColor);
+    top: calc(2 * var(--navContainerHeight));
+}
+
 .photoIn {
     -webkit-animation: slideIn var(--transitionLength);
     animation: slideIn var(--transitionLength);
