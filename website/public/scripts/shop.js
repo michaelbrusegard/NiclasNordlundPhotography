@@ -192,6 +192,18 @@ checkoutButton.addEventListener("keydown", (event) => {
 
 async function purchaseItems() {
     if (addedItems.length > 0) {
+        checkoutButton.disabled = true;
+        checkoutButton.style.backgroundColor = "var(--expandedPageColor)";
+        checkoutButton.textContent = "Loading";
+        let dots = "";
+        const loadingInterval = setInterval(function () {
+            checkoutButton.textContent = "Loading" + dots;
+            dots += ".";
+            if (dots.length > 3) {
+                dots = "";
+            }
+        }, 400);
+
         const itemsToPurchase = [];
         for (const item of addedItems) {
             const name = item.children[2].textContent;
@@ -220,6 +232,11 @@ async function purchaseItems() {
             errorText.textContent = "Error: Unable to connect to checkout.";
             errorText.show();
             console.error(e);
+        } finally {
+            clearInterval(loadingInterval); // Stop the loading animation
+            checkoutButton.disabled = false;
+            checkoutButton.style.backgroundColor = ""; // Set it back to the original background color
+            checkoutButton.textContent = "Checkout"; // Set it back to the original text
         }
     } else {
         errorText.textContent = "Error: Cart is empty.";
