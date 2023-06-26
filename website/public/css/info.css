@@ -46,6 +46,7 @@
     text-align: center;
     padding: var(--textMargin);
     font-size: calc(0.75 * var(--fontSize));
+    padding: calc(0.5 * var(--navPadding));
 }
 
 #signature {
@@ -58,6 +59,44 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: calc(0.5 * var(--navPadding));
+}
+
+form {
+    text-align: center;
+    padding: calc(0.5 * var(--navPadding));
+}
+
+form > * {
+    border: calc(var(--checkoutBorder) / 8) solid var(--fontColor);
+    border-radius: var(--photoBorderRadius);
+    font-size: var(--fontSize);
+    padding: var(--shopMargin);
+}
+
+form input[type="text"] {
+    width: 100%;
+}
+
+form textarea {
+    width: 100%;
+    min-height: 30svh;
+    resize: vertical;
+}
+
+form button {
+    margin-bottom: calc(0.5 * var(--navPadding));
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    background-color: var(--expandedPageColor);
+    color: var(--fontColor);
+}
+
+form button:hover {
+    background-color: var(--hoverPageColor);
+}
+
+form button:focus {
+    background-color: var(--hoverPageColor);
 }
 
 /* Adaptive Size */
@@ -217,5 +256,16 @@
 
     to {
         opacity: 1;
+    }
+}
+
+/* Adaptive size */
+@media (max-width: 768px) {
+    #contentDiv p {
+        font-size: calc(0.7 * var(--fontSize));
+    }
+
+    form > * {
+        font-size: calc(0.7 * var(--fontSize));
     }
 }
