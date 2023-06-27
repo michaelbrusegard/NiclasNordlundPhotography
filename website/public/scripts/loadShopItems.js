@@ -1,3 +1,13 @@
+function contentLoad() {
+    colums = calculateColums();
+    rows = calculateRows();
+    itemsToLoad = rows * colums + colums;
+    loadItems().then(() => {
+        console.log("Items loaded");
+        prerender();
+    });
+}
+
 // Calculates how many items to load on window size change
 function windowLoad() {
     colums = calculateColums();
@@ -88,7 +98,7 @@ function calculateRows() {
 }
 
 // Function that creates the div container for the shop
-async function createContainer(gCloudPublicPhotosBucket, shopItemInfo) {
+function createContainer(gCloudPublicPhotosBucket, shopItemInfo) {
     // Photos
     let img = document.createElement("img");
     img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${shopItemInfo[0]}`;

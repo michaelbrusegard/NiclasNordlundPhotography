@@ -15,6 +15,7 @@ menu.addEventListener("click", () => {
 // Animation when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
     slideTransition(nav, shopNav, navigatedFromShop);
+    prerender();
 });
 
 // Adds ending part of animation

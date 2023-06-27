@@ -20,7 +20,6 @@ async function writeText(element, quoteIndex) {
             isFast ? fastIntervalTime : intervalTime
         );
 
-        timeOutLength = slowTyping;
         isFast = false;
         isTyping = false;
         isFinishedTyping[quoteIndex] = true;

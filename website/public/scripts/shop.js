@@ -77,9 +77,9 @@ let navigatedFrom = document.referrer;
 document.addEventListener("DOMContentLoaded", () => {
     slideTransition(shopNav, nav, navigatedFromShowcaseOrHome);
     retrieveCart();
-    windowLoad();
     alignCheckout();
     displayCopyrightFooter(document.documentElement);
+    contentLoad();
 });
 
 // Changes to the window: loads new photo containers and aligns checkout menu

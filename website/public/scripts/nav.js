@@ -111,3 +111,27 @@ function displayCopyrightFooter(scrollableElement) {
         footerContainer.style.bottom = "0";
     }
 }
+
+function prerender() {
+    quicklink
+        .prerender([
+            "home.html",
+            "nature.html",
+            "animals.html",
+            "architectural.html",
+            "portrait.html",
+            "wedding.html",
+            "sport.html",
+            "shop.html",
+            "bug.html",
+            "sucess.html",
+        ])
+        .catch((error) => {
+            if (
+                error.message !==
+                "This browser does not support the speculation rules API. Falling back to prefetch."
+            ) {
+                console.error(error);
+            }
+        });
+}

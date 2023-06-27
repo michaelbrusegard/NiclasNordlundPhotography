@@ -79,6 +79,8 @@ async function loadPhotos() {
             columns[(extraValue + i) % currentColumns].appendChild(photo);
             skipBigPhoto = true;
         }
+
+        prerender();
     } catch (error) {
         gallery.classList.add("error");
         gallery.classList.add("fadeInFromBottom");
