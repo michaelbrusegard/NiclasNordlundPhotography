@@ -194,6 +194,7 @@ async function purchaseItems() {
     if (addedItems.length > 0) {
         checkoutButton.disabled = true;
         checkoutButton.style.backgroundColor = "var(--expandedPageColor)";
+        checkoutButton.style.cursor = "auto";
         checkoutButton.textContent = "Loading";
         let dots = "";
         const loadingInterval = setInterval(function () {
@@ -235,8 +236,9 @@ async function purchaseItems() {
         } finally {
             clearInterval(loadingInterval); // Stop the loading animation
             checkoutButton.disabled = false;
-            checkoutButton.style.backgroundColor = ""; // Set it back to the original background color
-            checkoutButton.textContent = "Checkout"; // Set it back to the original text
+            checkoutButton.style.backgroundColor = "";
+            checkoutButton.style.cursor = "pointer";
+            checkoutButton.textContent = "Checkout";
         }
     } else {
         errorText.textContent = "Error: Cart is empty.";
