@@ -3,7 +3,6 @@ function contentLoad() {
     rows = calculateRows();
     itemsToLoad = rows * colums + colums;
     loadItems().then(() => {
-        console.log("Items loaded");
         prerender();
     });
 }
@@ -98,7 +97,7 @@ function calculateRows() {
 }
 
 // Function that creates the div container for the shop
-function createContainer(gCloudPublicPhotosBucket, shopItemInfo) {
+async function createContainer(gCloudPublicPhotosBucket, shopItemInfo) {
     // Photos
     let img = document.createElement("img");
     img.src = `https://storage.googleapis.com/${gCloudPublicPhotosBucket}/${shopItemInfo[0]}`;
