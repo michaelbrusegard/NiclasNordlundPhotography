@@ -29,7 +29,7 @@ jobs:
                         - 'functions/deletePublicPhotos/**'
                       archivePurchasedPhotos:
                         - 'functions/archivePurchasedPhotos/**'
-                      website
+                      website:
                         - 'website/**'
 
             - name: Authenticate with Google Cloud
