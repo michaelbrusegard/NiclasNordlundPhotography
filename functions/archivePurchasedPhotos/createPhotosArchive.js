@@ -3,8 +3,8 @@ const archiver = require("archiver");
 const moment = require("moment");
 const { v4: uuidv4 } = require("uuid");
 
-const SOURCE_BUCKET_NAME = process.env.GCLOUD_PHOTOS_BUCKET;
-const DESTINATION_BUCKET_NAME = process.env.GCLOUD_ARCHIVE_BUCKET;
+const SOURCE_BUCKET_NAME = process.env.PHOTOS_BUCKET;
+const DESTINATION_BUCKET_NAME = process.env.ARCHIVE_BUCKET;
 const expirationDuration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 const storage = new Storage();

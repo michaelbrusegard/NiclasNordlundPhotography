@@ -23,8 +23,8 @@ function getImageDimensions(bucket, filename) {
 // Function to load photos and arrange them into columns
 async function loadPhotos() {
     try {
-        const showcasePhotosBucket = await getShowcasePhotosBucket(page);
-        const files = await fetchBucketData(showcasePhotosBucket);
+        const showcaseBucket = await getShowcaseBucket(page);
+        const files = await fetchBucketData(showcaseBucket);
 
         // Variables
         currentColumns = getColumns();
@@ -51,13 +51,13 @@ async function loadPhotos() {
         for (let i = 0; i < totalPhotos; i++) {
             // Get current photo dimensions
             const dimensions = await getImageDimensions(
-                showcasePhotosBucket,
+                showcaseBucket,
                 files[i]
             );
 
             // Get current photo
             const photo = createContainer(
-                showcasePhotosBucket,
+                showcaseBucket,
                 files[i],
                 dimensions,
                 i
@@ -106,14 +106,14 @@ function getColumns() {
 
 // Function that creates photo tags with lazyloading
 // Modified lazyload function to adapt to multiple columns
-function createContainer(showcasePhotosBucket, filename, dimensions, index) {
+function createContainer(showcaseBucket, filename, dimensions, index) {
     // Added creation of a div to hold the photos
     let div = document.createElement("div");
     let img = document.createElement("img");
 
     // Loads photos from showcase, sets alt and lazy
     // Assigning a class to the new div in order for css to be added
-    img.src = `https://storage.googleapis.com/${showcasePhotosBucket}/${filename}`;
+    img.src = `https://storage.googleapis.com/${showcaseBucket}/${filename}`;
     img.alt = filename;
     img.loading = "lazy";
     div.classList.add("photo");

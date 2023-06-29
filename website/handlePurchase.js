@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 // Define a function to verify the webhook signature
 const webhookVerifyMiddleware = (request, response, next) => {
     const sigHeader = request.headers["stripe-signature"];
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    const webhookSecret = process.env.WEBHOOK_SECRET;
 
     try {
         request.rawBody = Buffer.from(JSON.stringify(request.body));
@@ -16,8 +16,8 @@ const webhookVerifyMiddleware = (request, response, next) => {
             webhookSecret
         );
         next();
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error(error);
         response.status(400).send("Webhook Error:" + err.message);
     }
 };

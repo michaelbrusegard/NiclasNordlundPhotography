@@ -1,5 +1,6 @@
 require("dotenv").config();
 const checkout = require("./checkout.js");
+const bug = require("./bug");
 const {
     webhookMiddleware,
     handleCheckoutSession,
@@ -13,39 +14,42 @@ const frontendPath = path.join(__dirname, "public");
 
 app.use(express.json());
 app.use(express.static(frontendPath, { index: "home.html" }));
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/checkout-session", checkout);
 
-app.get("/getGCloudPublicPhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_PUBLIC_PHOTOS_BUCKET);
+app.post("/found-a-bug", bug);
+
+app.get("/get-public-photos-bucket", (req, res) => {
+    res.json(process.env.PUBLIC_PHOTOS_BUCKET);
 });
 
-app.get("/getPhotoCarouselBucket", (req, res) => {
-    res.json(process.env.GCLOUD_PHOTO_CAROUSEL_BUCKET);
+app.get("/get-photo-carousel-bucket", (req, res) => {
+    res.json(process.env.PHOTO_CAROUSEL_BUCKET);
 });
 
-app.get("/getNatureShowcasePhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_NATURE_SHOWCASE_BUCKET);
+app.get("/get-nature-showcase-bucket", (req, res) => {
+    res.json(process.env.NATURE_SHOWCASE_BUCKET);
 });
 
-app.get("/getAnimalsShowcasePhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_ANIMALS_SHOWCASE_BUCKET);
+app.get("/get-animals-showcase-bucket", (req, res) => {
+    res.json(process.env.ANIMALS_SHOWCASE_BUCKET);
 });
 
-app.get("/getArchitecturalShowcasePhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_ARCHITECTURAL_SHOWCASE_BUCKET);
+app.get("/get-architectural-showcase-bucket", (req, res) => {
+    res.json(process.env.ARCHITECTURAL_SHOWCASE_BUCKET);
 });
 
-app.get("/getPortraitShowcasePhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_PORTRAIT_SHOWCASE_BUCKET);
+app.get("/get-portrait-showcase-bucket", (req, res) => {
+    res.json(process.env.PORTRAIT_SHOWCASE_BUCKET);
 });
 
-app.get("/getWeddingShowcasePhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_WEDDING_SHOWCASE_BUCKET);
+app.get("/get-wedding-showcase-bucket", (req, res) => {
+    res.json(process.env.WEDDING_SHOWCASE_BUCKET);
 });
 
-app.get("/getSportShowcasePhotosBucket", (req, res) => {
-    res.json(process.env.GCLOUD_SPORT_SHOWCASE_BUCKET);
+app.get("/get-sport-showcase-bucket", (req, res) => {
+    res.json(process.env.SPORT_SHOWCASE_BUCKET);
 });
 
 // Use the webhook middleware

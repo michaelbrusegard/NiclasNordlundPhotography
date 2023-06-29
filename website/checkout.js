@@ -1,15 +1,15 @@
 require("dotenv").config();
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.SECRET_KEY);
 const { Storage } = require("@google-cloud/storage");
 
 const storage = new Storage();
 
 async function getStoreItems() {
-    const gCloudPhotosBucket = process.env.GCLOUD_PHOTOS_BUCKET;
+    const photosBucket = process.env.PHOTOS_BUCKET;
     const storeItems = [];
 
-    const [files] = await storage.bucket(gCloudPhotosBucket).getFiles();
+    const [files] = await storage.bucket(photosBucket).getFiles();
     for (const file of files) {
         const name = file.name;
         const price = Number(name.match(/\d+(?=e\.jpg$)/i)[0]);

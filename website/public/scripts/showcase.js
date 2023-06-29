@@ -1,13 +1,13 @@
 // Get photos from google cloud bucket
-async function getShowcasePhotosBucket(page) {
-    const response = await fetch(`/get${page}ShowcasePhotosBucket`);
+async function getShowcaseBucket(page) {
+    const response = await fetch(`/get-${page}-showcase-bucket`);
     const data = await response.json();
     return data;
 }
 
-async function fetchBucketData(showcasePhotosBucket) {
+async function fetchBucketData(showcaseBucket) {
     const response = await fetch(
-        `https://storage.googleapis.com/storage/v1/b/${showcasePhotosBucket}/o?fields=items(name)&delimiter=/`
+        `https://storage.googleapis.com/storage/v1/b/${showcaseBucket}/o?fields=items(name)&delimiter=/`
     );
     const data = await response.json();
     const files = data.items.map((item) => item.name);
@@ -22,13 +22,9 @@ let currentColumns = 0;
 let maxNumberColumns = 5;
 
 // Chosing array
-let page = window.location.pathname
-    .split("/")
-    .pop()
-    .slice(0, -5)
-    .replace(/^\w/, (c) => c.toUpperCase());
+let page = window.location.pathname.split("/").pop().slice(0, -5);
 
-if (page === "Nature" || page === "Wedding") {
+if (page === "nature" || page === "wedding") {
     columnSize *= 1.5;
 }
 

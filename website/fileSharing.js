@@ -1,14 +1,27 @@
 require("dotenv").config();
 const axios = require("axios");
+const { GoogleAuth } = require("google-auth-library");
 
 async function handlePhotos(purchasedItems) {
     const archivePurchasedPhotosUrl =
-        process.env.GCLOUD_ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL;
+        process.env.ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL;
 
     try {
-        const response = await axios.post(archivePurchasedPhotosUrl, {
-            photos: purchasedItems,
-        });
+        const auth = new GoogleAuth();
+        const client = await auth.getClient();
+        const token = await client.getAccessToken();
+
+        const response = await axios.post(
+            archivePurchasedPhotosUrl,
+            {
+                photos: purchasedItems,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
 
         console.log(`Zip file URL: ${response.data.url}`);
     } catch (error) {

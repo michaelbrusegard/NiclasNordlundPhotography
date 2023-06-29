@@ -1,6 +1,6 @@
 // Get photos from google cloud bucket
 async function getPhotoCarouselBucket() {
-    const response = await fetch(`/getPhotoCarouselBucket`);
+    const response = await fetch(`/get-photo-carousel-bucket`);
     const data = await response.json();
     return data;
 }
