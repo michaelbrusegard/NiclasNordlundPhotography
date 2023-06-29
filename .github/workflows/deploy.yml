@@ -82,11 +82,10 @@ jobs:
                     --project=${{ secrets.PROJECT_ID }} \
                     --set-env-vars PHOTOS_BUCKET=${{ secrets.PHOTOS_BUCKET }},ARCHIVE_BUCKET=${{ secrets.ARCHIVE_BUCKET }} \
                     --service-account=${{ secrets.GCLOUD_ARCHIVE_PURCHASED_PHOTOS_SERV_ACC_EMAIL }}
-                    
+
             - name: Deploy website
               if: steps.filter.outputs.website == 'true'
               run: |
-                cd website
-                gcloud app deploy \ 
-                  --project ${{ secrets.PROJECT_ID }}
-
+                  cd website
+                  gcloud app deploy \ 
+                    --project ${{ secrets.PROJECT_ID }}
