@@ -3,38 +3,38 @@ runtime: nodejs18
 service: default
 
 handlers:
-  - url: /checkout-session
-    script: auto
+    - url: /checkout-session
+      script: auto
 
-  - url: /found-a-bug
-    script: auto
+    - url: /found-a-bug
+      script: auto
 
-  - url: /get-public-photos-bucket
-    script: auto
+    - url: /get-public-photos-bucket
+      script: auto
 
-  - url: /get-photo-carousel-bucket
-    script: auto
+    - url: /get-photo-carousel-bucket
+      script: auto
 
-  - url: /get-nature-showcase-bucket
-    script: auto
+    - url: /get-nature-showcase-bucket
+      script: auto
 
-  - url: /get-animals-showcase-bucket
-    script: auto
+    - url: /get-animals-showcase-bucket
+      script: auto
 
-  - url: /get-architectural-showcase-bucket
-    script: auto
+    - url: /get-architectural-showcase-bucket
+      script: auto
 
-  - url: /get-portrait-showcase-bucket
-    script: auto
+    - url: /get-portrait-showcase-bucket
+      script: auto
 
-  - url: /get-wedding-showcase-bucket
-    script: auto
+    - url: /get-wedding-showcase-bucket
+      script: auto
 
-  - url: /get-sport-showcase-bucket
-    script: auto
+    - url: /get-sport-showcase-bucket
+      script: auto
 
-  - url: /webhook
-    script: auto
+    - url: /webhook
+      script: auto
 
-  - url: /.*
-    script: auto
+    - url: /.*
+      script: auto
