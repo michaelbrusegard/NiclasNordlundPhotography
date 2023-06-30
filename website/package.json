@@ -20,6 +20,6 @@
     },
     "devDependencies": {
         "@google-cloud/functions-framework": "^1.8.0",
-        "nodemon": "^1.14.9"
+        "nodemon": "^2.0.22"
     }
 }
