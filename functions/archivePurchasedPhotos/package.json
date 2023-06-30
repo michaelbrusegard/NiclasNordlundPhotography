@@ -1,6 +1,5 @@
 {
     "name": "cloud_functions",
-    "version": "1.0.0",
     "description": "Function that archives purchased photos and retrieves a link to downlaod them.",
     "main": "createPhotosArchive.js",
     "author": "Michael Brusegard",

@@ -1,6 +1,5 @@
 {
     "name": "cloud_functions",
-    "version": "1.0.0",
     "description": "Function that deletes photos from a bucekt when they are deleted in another bucket.",
     "main": "deletePhoto.js",
     "author": "Michael Brusegard",

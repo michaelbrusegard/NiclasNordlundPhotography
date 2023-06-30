@@ -1,24 +1,15 @@
 {
     "name": "niclasnordlundphotography",
-    "description": "We aim to make a photography website for our client Niclas Photography!",
-    "version": "1.0.0",
+    "description": "Main showcase and shop website for Niclas Nordlund Photography.",
     "main": "server.js",
+    "author": "Michael Brusegard",
+    "license": "Apache-2.0",
     "scripts": {
         "format": "npx prettier .prettierrc --write",
-        "dev": "nodemon website/server.js",
+        "dev": "nodemon server.js",
         "stripe": "stripe listen --forward-to localhost:3000/webhook",
         "buy": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75.jpg\",\"aalands skaergaard 80 euro.jpg\",\"aaland vaestra hamnen vinter 180.jpg\"]'"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/michaelbrusegard/NiclasNordlundPhotography.git"
-    },
-    "author": "Michael Brusegard",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/michaelbrusegard/NiclasNordlundPhotography/issues"
-    },
-    "homepage": "https://github.com/michaelbrusegard/NiclasNordlundPhotography#readme",
     "dependencies": {
         "@google-cloud/storage": "^6.11.0",
         "archiver": "^5.3.1",
@@ -30,8 +21,8 @@
         "stripe": "^12.10.0"
     },
     "devDependencies": {
-        "@google-cloud/functions-framework": "^3.2.1",
-        "nodemon": "^2.0.22",
+        "@google-cloud/functions-framework": "^1.8.0",
+        "nodemon": "^1.14.9",
         "prettier": "^2.8.8"
     }
 }

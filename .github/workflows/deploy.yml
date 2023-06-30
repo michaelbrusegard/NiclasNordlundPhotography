@@ -74,7 +74,7 @@ jobs:
                   gcloud functions deploy archivePurchasedPhotos \
                     --gen2 \
                     --memory 512MB \
-                    --region=europe-north1 \
+                    --region=europe-north1 c
                     --runtime=nodejs18 \
                     --source=${{ github.workspace }}/functions/archivePurchasedPhotos \
                     --entry-point=createPhotosArchive \
@@ -87,4 +87,6 @@ jobs:
               if: steps.filter.outputs.website == 'true'
               run: |
                   cd website
-                  gcloud app deploy --project ${{ secrets.PROJECT_ID }}
+                  gcloud app deploy \
+                    --project ${{ secrets.PROJECT_ID }} \
+                    --max-versions=5
