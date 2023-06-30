@@ -30,7 +30,6 @@ const webhookMiddleware = bodyParser.raw({
 
 // Define a function to handle the webhook events
 const handleCheckoutSession = (req, res) => {
-    let purchasedPhotos = [];
     // Handle the Stripe webhook event
     const event = req.body;
 
