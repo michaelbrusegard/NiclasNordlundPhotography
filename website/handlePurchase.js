@@ -18,7 +18,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
         next();
     } catch (error) {
         console.error(error);
-        response.status(400).send("Webhook Error:" + err.message);
+        response.status(400).send(error.message);
     }
 };
 
