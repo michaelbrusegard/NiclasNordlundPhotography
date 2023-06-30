@@ -74,7 +74,7 @@ jobs:
                   gcloud functions deploy archivePurchasedPhotos \
                     --gen2 \
                     --memory 512MB \
-                    --region=europe-north1 c
+                    --region=europe-north1 \
                     --runtime=nodejs18 \
                     --source=${{ github.workspace }}/functions/archivePurchasedPhotos \
                     --entry-point=createPhotosArchive \
