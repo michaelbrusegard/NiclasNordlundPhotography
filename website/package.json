@@ -5,14 +5,12 @@
     "author": "Michael Brusegard",
     "license": "Apache-2.0",
     "scripts": {
-        "format": "npx prettier .prettierrc --write",
         "dev": "nodemon server.js",
         "stripe": "stripe listen --forward-to localhost:8080/webhook",
         "buy": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75.jpg\",\"aalands skaergaard 80 euro.jpg\",\"aaland vaestra hamnen vinter 180.jpg\"]'"
     },
     "dependencies": {
         "@google-cloud/storage": "^6.11.0",
-        "archiver": "^5.3.1",
         "axios": "^1.4.0",
         "body-parser": "^1.20.2",
         "dotenv": "^16.3.1",
@@ -22,7 +20,6 @@
     },
     "devDependencies": {
         "@google-cloud/functions-framework": "^1.8.0",
-        "nodemon": "^1.14.9",
-        "prettier": "^2.8.8"
+        "nodemon": "^1.14.9"
     }
 }
