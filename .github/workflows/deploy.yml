@@ -88,5 +88,4 @@ jobs:
               run: |
                   cd website
                   gcloud app deploy \
-                    --project ${{ secrets.PROJECT_ID }} \
-                    --max-versions=5
+                    --project ${{ secrets.PROJECT_ID }}
