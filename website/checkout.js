@@ -53,8 +53,8 @@ module.exports = async (request, response) => {
                 payment_method_types: ["card"],
                 mode: "payment",
                 line_items: lineItems,
-                success_url: `${process.env.SERVER_URL}/sucess.html`,
-                cancel_url: `${process.env.SERVER_URL}/shop.html`,
+                success_url: `${process.env.SERVER_URL}/sucess`,
+                cancel_url: `${process.env.SERVER_URL}/shop`,
                 metadata: {
                     purchasedItems: JSON.stringify(validatedItemsToPurchase),
                 },

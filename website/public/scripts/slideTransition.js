@@ -96,6 +96,6 @@ function redirectToLastLink(navigatedFromArray) {
         window.location.href = lastPage;
     } else {
         // Redirects to home
-        window.location.href = "home.html";
+        window.location.href = "/";
     }
 }

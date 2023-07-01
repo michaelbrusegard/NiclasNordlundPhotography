@@ -1,7 +1,7 @@
 // Variables for slide transition
 const nav = document.getElementById("nav");
 const shopNav = document.getElementById("shopNav");
-const navigatedFromShop = ["shop.html"];
+const navigatedFromShop = ["shop"];
 let navigatedFrom = document.referrer;
 
 // Variable for mobile menu

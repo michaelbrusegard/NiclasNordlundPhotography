@@ -61,15 +61,15 @@ const checkoutWidth = parseInt(
 const nav = document.getElementById("nav");
 const shopNav = document.getElementById("shopNav");
 const navigatedFromShowcaseOrHome = [
-    "home.html",
-    "nature.html",
-    "animals.html",
-    "architectural.html",
-    "portrait.html",
-    "sport.html",
-    "wedding.html",
-    "sucess.html",
-    "bug.html",
+    "/",
+    "nature",
+    "animals",
+    "architectural",
+    "portrait",
+    "sport",
+    "wedding",
+    "sucess",
+    "bug",
 ];
 let navigatedFrom = document.referrer;
 

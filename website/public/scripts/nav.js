@@ -115,16 +115,16 @@ function displayCopyrightFooter(scrollableElement) {
 function prerender() {
     quicklink
         .prerender([
-            "home.html",
-            "nature.html",
-            "animals.html",
-            "architectural.html",
-            "portrait.html",
-            "wedding.html",
-            "sport.html",
-            "shop.html",
-            "bug.html",
-            "sucess.html",
+            "/",
+            "nature",
+            "animals",
+            "architectural",
+            "portrait",
+            "wedding",
+            "sport",
+            "shop",
+            "bug",
+            "sucess",
         ])
         .catch((error) => {
             if (

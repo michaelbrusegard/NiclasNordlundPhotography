@@ -13,7 +13,14 @@ const app = express();
 const frontendPath = path.join(__dirname, "public");
 
 app.use(express.json());
-app.use(express.static(frontendPath, { index: "home.html" }));
+
+app.use(
+    express.static(frontendPath, {
+        index: "home.html",
+        extensions: ["html"],
+    })
+);
+
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/checkout-session", checkout);
