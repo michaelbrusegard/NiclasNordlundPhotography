@@ -44,7 +44,7 @@ async function initialisePhotoCarousel() {
             }
         });
 
-        prerender();
+        prefetch();
     } catch (error) {
         let div = document.createElement("div");
         div.id = "error";

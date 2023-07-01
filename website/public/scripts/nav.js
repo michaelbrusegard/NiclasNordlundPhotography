@@ -112,9 +112,9 @@ function displayCopyrightFooter(scrollableElement) {
     }
 }
 
-function prerender() {
+function prefetch() {
     quicklink
-        .prerender([
+        .prefetch([
             "/",
             "nature",
             "animals",
@@ -127,11 +127,6 @@ function prerender() {
             "sucess",
         ])
         .catch((error) => {
-            if (
-                error.message !==
-                "This browser does not support the speculation rules API. Falling back to prefetch."
-            ) {
-                console.error(error);
-            }
+            console.error(error);
         });
 }

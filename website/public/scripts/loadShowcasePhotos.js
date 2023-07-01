@@ -80,7 +80,7 @@ async function loadPhotos() {
             skipBigPhoto = true;
         }
 
-        prerender();
+        prefetch();
     } catch (error) {
         gallery.classList.add("error");
         gallery.classList.add("fadeInFromBottom");

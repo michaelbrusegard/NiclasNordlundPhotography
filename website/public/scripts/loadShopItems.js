@@ -3,7 +3,7 @@ function contentLoad() {
     rows = calculateRows();
     itemsToLoad = rows * colums + colums;
     loadItems().then(() => {
-        prerender();
+        prefetch();
     });
 }
 
