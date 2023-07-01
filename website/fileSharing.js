@@ -24,7 +24,6 @@ async function handlePhotos(purchasedItems) {
         );
 
         console.log(`Zip file URL: ${response.data.url}`);
-        console.log(`Zip file name: ${response.data.name}`);
     } catch (error) {
         console.error(`Failed to zip photos: ${error}`);
     }
