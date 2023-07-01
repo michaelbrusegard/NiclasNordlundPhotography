@@ -3,9 +3,9 @@ runtime: nodejs18
 service: website
 
 handlers:
-  - url: /.*
-    script: auto
+    - url: /.*
+      script: auto
 
 env_variables:
-  MY_VARIABLE: my_value
-  ANOTHER_VARIABLE: another_value
+    MY_VARIABLE: my_value
+    ANOTHER_VARIABLE: another_value
