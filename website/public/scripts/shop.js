@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
     slideTransition(shopNav, nav, navigatedFromShowcaseOrHome);
     retrieveCart();
     alignCheckout();
-    displayCopyrightFooter(document.documentElement);
     contentLoad();
 });
 
