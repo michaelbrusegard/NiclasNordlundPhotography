@@ -39,7 +39,7 @@ const photoCarousel = document.querySelector("#photoCarousel");
 
 // Interval time for the carousel in ms and which photo is displayed
 const intervalTime = 4000;
-const fastIntervalTime = 1000;
+const fastIntervalTime = 800;
 let photoDisplayed = 0;
 
 // Text to be displayed on the home page
@@ -54,7 +54,7 @@ showing the beautiful landscapes, nature and animals of the Åland Islands.`,
 
 // Adjust the speed parameters of the typing animations
 const slowTyping = 40;
-const fastTyping = 10;
+const fastTyping = 8;
 let timeOutLength = slowTyping;
 let isFast = false;
 let isTyping = false;
