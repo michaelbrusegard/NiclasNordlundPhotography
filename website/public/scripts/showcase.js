@@ -22,7 +22,7 @@ let currentColumns = 0;
 let maxNumberColumns = 5;
 
 // Chosing array
-let page = window.location.pathname.split("/").pop().slice(0, -5);
+let page = window.location.pathname.split("/").pop();
 
 if (page === "nature" || page === "wedding") {
     columnSize *= 1.5;
