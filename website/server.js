@@ -29,7 +29,7 @@ app.get("/get-photo-carousel-bucket", (req, res) => {
 });
 
 app.get("/get-nature-showcase-bucket", (req, res) => {
-    res.json(process.env.NATURESHOWCASEBUCKET);
+    res.json(process.env.NATURE_SHOWCASE_BUCKET);
 });
 
 app.get("/get-animals-showcase-bucket", (req, res) => {

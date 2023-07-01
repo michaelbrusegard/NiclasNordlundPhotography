@@ -1,7 +1,11 @@
 runtime: nodejs18
 
-service: default
+service: website
 
 handlers:
-    - url: /.*
-      script: auto
+  - url: /.*
+    script: auto
+
+env_variables:
+  MY_VARIABLE: my_value
+  ANOTHER_VARIABLE: another_value
