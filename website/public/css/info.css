@@ -99,6 +99,10 @@ form button:focus {
     background-color: var(--hoverPageColor);
 }
 
+a {
+    color: var(--fontColor);
+}
+
 /* Adaptive Size */
 
 @media (min-width: 1100px) {
