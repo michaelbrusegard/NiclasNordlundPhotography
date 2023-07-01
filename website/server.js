@@ -25,7 +25,6 @@ app.get("/get-public-photos-bucket", (req, res) => {
 });
 
 app.get("/get-photo-carousel-bucket", (req, res) => {
-    console.log(process.env.PHOTO_CAROUSEL_BUCKET);
     res.json(process.env.PHOTO_CAROUSEL_BUCKET);
 });
 
