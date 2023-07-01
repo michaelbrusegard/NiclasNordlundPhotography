@@ -5,6 +5,7 @@ service: default
 handlers:
     - url: /.*
       script: auto
+      secure: always
 
 env_variables:
     SERVER_URL: $SERVER_URL
