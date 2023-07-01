@@ -23,12 +23,12 @@ jobs:
               run: npm install --save-dev prettier
 
             - name: Format code with Prettier
-              run: npx prettier .prettierrc.js --check .
+              run: npx prettier --config .prettierrc.js "website/**/*.js" "functions/archivePurchasedPhotos/**/*.js" "functions/compressPublicPhotos/**/*.js" "functions/deletePublicPhotos/**/*.js" --check
 
             - name: Commit changes if needed
               if: failure()
               run: |
-                  npx prettier .prettierrc.js --write .
+                  npx prettier --config .prettierrc.js "website/**/*.js" "functions/archivePurchasedPhotos/**/*.js" "functions/compressPublicPhotos/**/*.js" "functions/deletePublicPhotos/**/*.js" --write
                   git config --local user.email "action@github.com"
                   git config --local user.name "GitHub Action"
                   git commit -am "style: :art: format code with Prettier"

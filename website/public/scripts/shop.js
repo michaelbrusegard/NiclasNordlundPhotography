@@ -11,16 +11,19 @@ async function getPricesArray(publicPhotosBucket) {
         `https://storage.googleapis.com/storage/v1/b/${publicPhotosBucket}/o?fields=items(name)&delimiter=/`
     );
     const data = await response.json();
-    const pricesArray = data.items.map((item) => {
-        const name = item.name;
-        let price;
-        try {
-            price = parseInt(name.match(/\d+(?=e\.jpg$)/i)[0]);
-        } catch (error) {
-            console.error("Error: Unable to get price from " + name + ".");
-        }
-        return [name, price];
-    });
+    const pricesArray = data.items
+        .map((item) => {
+            const name = item.name;
+            let price;
+            try {
+                price = parseInt(name.match(/\d+(?=e\.jpg$)/i)[0]);
+            } catch (error) {
+                console.error("Error: Unable to get price from " + name + ".");
+                return; // Skip adding the item to the pricesArray
+            }
+            return [name, price];
+        })
+        .filter(Boolean); // Remove undefined items from the pricesArray
     return pricesArray;
 }
 
