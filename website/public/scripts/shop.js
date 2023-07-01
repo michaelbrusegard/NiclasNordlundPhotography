@@ -13,8 +13,12 @@ async function getPricesArray(publicPhotosBucket) {
     const data = await response.json();
     const pricesArray = data.items.map((item) => {
         const name = item.name;
-        console.log(name);
-        const price = parseInt(name.match(/\d+(?=e\.jpg$)/i)[0]);
+        let price;
+        try {
+            price = parseInt(name.match(/\d+(?=e\.jpg$)/i)[0]);
+        } catch (error) {
+            console.error("Error: Unable to get price from " + name + ".");
+        }
         return [name, price];
     });
     return pricesArray;
