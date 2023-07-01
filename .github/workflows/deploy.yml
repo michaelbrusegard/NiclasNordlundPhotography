@@ -87,20 +87,21 @@ jobs:
               with:
                   project_id: ${{ secrets.PROJECT_ID }}
                   working_directory: website
-                  build_env_vars: SERVER_URL=${{ secrets.SERVER_URL }}\n\
-                      PERSONAL_ACCESS_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }}\n\
-                      REPOSITORY=${{ secrets.REPOSITORY }}\n\
-                      USER_AGENT=${{ secrets.USER_AGENT }}\n\
-                      OWNER=${{ secrets.OWNER }}\n\
-                      ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL }}\n\
-                      PHOTOS_BUCKET=${{ secrets.PHOTOS_BUCKET }}\n\
-                      PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}\n\
-                      PHOTO_CAROUSEL_BUCKET=${{ secrets.PHOTO_CAROUSEL_BUCKET }}\n\
-                      NATURE_SHOWCASE_BUCKET=${{ secrets.NATURE_SHOWCASE_BUCKET }}\n\
-                      ANIMALS_SHOWCASE_BUCKET=${{ secrets.ANIMALS_SHOWCASE_BUCKET }}\n\
-                      ARCHITECTURAL_SHOWCASE_BUCKET=${{ secrets.ARCHITECTURAL_SHOWCASE_BUCKET }}\n\
-                      PORTRAIT_SHOWCASE_BUCKET=${{ secrets.PORTRAIT_SHOWCASE_BUCKET }}\n\
-                      WEDDING_SHOWCASE_BUCKET=${{ secrets.WEDDING_SHOWCASE_BUCKET }}\n\
-                      SPORT_SHOWCASE_BUCKET=${{ secrets.SPORT_SHOWCASE_BUCKET }}\n\
-                      SECRET_KEY=${{ secrets.SECRET_KEY }}\n\
-                      WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}\n\
+                  build_env_vars: |
+                      SERVER_URL=${{ secrets.SERVER_URL }}
+                      PERSONAL_ACCESS_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }}
+                      REPOSITORY=${{ secrets.REPOSITORY }}
+                      USER_AGENT=${{ secrets.USER_AGENT }}
+                      OWNER=${{ secrets.OWNER }}
+                      ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL }}
+                      PHOTOS_BUCKET=${{ secrets.PHOTOS_BUCKET }}
+                      PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
+                      PHOTO_CAROUSEL_BUCKET=${{ secrets.PHOTO_CAROUSEL_BUCKET }}
+                      NATURE_SHOWCASE_BUCKET=${{ secrets.NATURE_SHOWCASE_BUCKET }}
+                      ANIMALS_SHOWCASE_BUCKET=${{ secrets.ANIMALS_SHOWCASE_BUCKET }}
+                      ARCHITECTURAL_SHOWCASE_BUCKET=${{ secrets.ARCHITECTURAL_SHOWCASE_BUCKET }}
+                      PORTRAIT_SHOWCASE_BUCKET=${{ secrets.PORTRAIT_SHOWCASE_BUCKET }}
+                      WEDDING_SHOWCASE_BUCKET=${{ secrets.WEDDING_SHOWCASE_BUCKET }}
+                      SPORT_SHOWCASE_BUCKET=${{ secrets.SPORT_SHOWCASE_BUCKET }}
+                      SECRET_KEY=${{ secrets.SECRET_KEY }}
+                      WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}
