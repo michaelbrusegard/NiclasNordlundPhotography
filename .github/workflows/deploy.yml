@@ -40,6 +40,7 @@ jobs:
                   app_yaml_path: "website/app.yaml"
 
             - uses: dorny/paths-filter@v2
+              id: filter
               with:
                   filters: |
                       compressPublicPhotos:
