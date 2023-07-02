@@ -68,7 +68,7 @@ const checkoutWidth = parseInt(
 // Variables for slide transition
 const nav = document.getElementById("nav");
 const shopNav = document.getElementById("shopNav");
-const navigatedFromShowcaseOrHome = [
+const navigatedFromArray = [
     "",
     "nature",
     "animals",
@@ -79,11 +79,22 @@ const navigatedFromShowcaseOrHome = [
     "sucess",
     "bug",
 ];
+
+const navigatedBackArray = [
+    "",
+    "nature",
+    "animals",
+    "architectural",
+    "portrait",
+    "sport",
+    "wedding",
+    "bug",
+];
 let navigatedFrom = document.referrer;
 
 // When the DOM is done loading: loads new photo containers and aligns checkout menu
 document.addEventListener("DOMContentLoaded", () => {
-    slideTransition(shopNav, nav, navigatedFromShowcaseOrHome);
+    slideTransition(shopNav, nav, navigatedFromArray);
     retrieveCart();
     alignCheckout();
     contentLoad();
@@ -123,7 +134,7 @@ getLinkIcon(getCurrentNavElement(nav), "linkSignature").addEventListener(
 Array.from(shopNav.children).forEach((element) => {
     getLinkIcon(element, "linkBag").addEventListener("click", (event) => {
         event.preventDefault();
-        redirectToLastLink(navigatedFromShowcaseOrHome);
+        redirectToLastLink(navigatedBackArray);
     });
 });
 
@@ -230,7 +241,6 @@ async function purchaseItems() {
 
             if (response.ok) {
                 const { url } = await response.json();
-                sessionStorage.removeItem("cart");
                 window.location = url;
             } else {
                 const error = await response.json();

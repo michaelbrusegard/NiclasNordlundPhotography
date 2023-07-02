@@ -82,11 +82,11 @@ function getLinkIcon(nav, name) {
 }
 
 // Redirects to last link if it was on the site
-function redirectToLastLink(navigatedFromArray) {
+function redirectToLastLink(navigatedBackArray) {
     let cameFromSite = false;
     // Checks if navigatedFrom is in the array
-    for (let i = 1; i < navigatedFromArray.length; i++) {
-        if (navigatedFrom.endsWith(navigatedFromArray[i])) {
+    for (let i = 1; i < navigatedBackArray.length; i++) {
+        if (navigatedFrom.endsWith(navigatedBackArray[i])) {
             cameFromSite = true;
         }
     }
