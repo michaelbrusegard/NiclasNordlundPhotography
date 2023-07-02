@@ -3,6 +3,7 @@ async function getPhotos() {
     const files = await fetchBucketData(photoCarouselBucket);
     files.forEach((filename) => {
         let img = document.createElement("img");
+        img.loading = "lazy";
         img.src = `https://storage.googleapis.com/${photoCarouselBucket}/${filename}`;
         img.alt = filename;
         photoCarousel.appendChild(img);

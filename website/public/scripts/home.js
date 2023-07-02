@@ -75,7 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setNiclasPhotoLeftPos();
     textPosition();
     initialisePhotoCarousel();
-    observeHome();
+    setTimeout(() => {
+        observeHome();
+    }, intervalTime / 2);
 });
 
 document.addEventListener("keydown", (event) => {
