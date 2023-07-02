@@ -5,6 +5,19 @@ function mobileMenu(menu, nav) {
     nav.children[1].classList.toggle("active");
 }
 
+// Gets the server URL
+function getServerURL() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "/get-server-url", false); // The third parameter (false) makes it synchronous
+    xhr.send();
+
+    if (xhr.status === 200) {
+        return JSON.parse(xhr.responseText);
+    } else {
+        throw new Error("Failed to fetch server URL");
+    }
+}
+
 // Starts underline animation when menu is active
 function writeUnderline(path) {
     if (menuClick === 0) {

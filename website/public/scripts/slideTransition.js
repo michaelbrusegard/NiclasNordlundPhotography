@@ -10,6 +10,7 @@ function slideTransition(newNav, oldNav, navigatedFromArray) {
 
 // Function to go through array and check if it is navigated from
 function isNavigatedFrom(navigatedFromArray) {
+    const serverURL = getServerURL();
     // Gets the link the page is navigated from
     let lastSite = navigatedFrom;
 
@@ -20,7 +21,7 @@ function isNavigatedFrom(navigatedFromArray) {
 
     // Checks if the link that is navigated from is one of the array html pages
     for (let i = 0; i < navigatedFromArray.length; i++) {
-        if (lastSite.endsWith(navigatedFromArray[i])) {
+        if (lastSite === serverURL + "/" + navigatedFromArray[i]) {
             return true;
         }
     }

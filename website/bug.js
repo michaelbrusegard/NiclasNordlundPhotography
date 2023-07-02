@@ -4,8 +4,6 @@ const axios = require("axios");
 async function createGithubIssue(req, res) {
     try {
         let { title, body } = req.body;
-        title = "test";
-        body = "test";
 
         // Create a new GitHub issue using the provided data
         const response = await axios.post(

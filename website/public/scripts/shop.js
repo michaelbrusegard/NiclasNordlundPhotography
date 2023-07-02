@@ -69,7 +69,7 @@ const checkoutWidth = parseInt(
 const nav = document.getElementById("nav");
 const shopNav = document.getElementById("shopNav");
 const navigatedFromShowcaseOrHome = [
-    "/",
+    "",
     "nature",
     "animals",
     "architectural",

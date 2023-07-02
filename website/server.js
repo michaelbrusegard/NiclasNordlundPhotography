@@ -27,6 +27,10 @@ app.post("/checkout-session", checkout);
 
 app.post("/found-a-bug", bug);
 
+app.get("/get-server-url", (req, res) => {
+    res.json(process.env.SERVER_URL);
+});
+
 app.get("/get-public-photos-bucket", (req, res) => {
     res.json(process.env.PUBLIC_PHOTOS_BUCKET);
 });
