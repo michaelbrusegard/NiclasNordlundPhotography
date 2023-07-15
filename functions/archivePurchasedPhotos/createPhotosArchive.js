@@ -58,7 +58,7 @@ exports.createPhotosArchive = async (req, res) => {
                 } catch (err) {
                     console.error(
                         `Failed to delete zip file: ${zipFileName}`,
-                        err
+                        err,
                     );
                 }
             }, expirationDuration);

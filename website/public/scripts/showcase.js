@@ -7,7 +7,7 @@ async function getShowcaseBucket(page) {
 
 async function fetchBucketData(showcaseBucket) {
     const response = await fetch(
-        `https://storage.googleapis.com/storage/v1/b/${showcaseBucket}/o?fields=items(name)&delimiter=/`
+        `https://storage.googleapis.com/storage/v1/b/${showcaseBucket}/o?fields=items(name)&delimiter=/`,
     );
     const data = await response.json();
     const files = data.items.map((item) => item.name);
@@ -72,13 +72,13 @@ getLinkIcon(getCurrentNavElement(shopNav), "linkBag").addEventListener(
     "animationend",
     () => {
         animationEndOnNavElements(nav, shopNav);
-    }
+    },
 );
 getLinkIcon(getCurrentNavElement(shopNav), "linkSignature").addEventListener(
     "animationend",
     () => {
         removeAnimationEndOnNavElements(shopNav);
-    }
+    },
 );
 
 // Checks when menu is clicked

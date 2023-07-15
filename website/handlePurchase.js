@@ -13,7 +13,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
         stripe.webhooks.constructEvent(
             request.rawBody,
             sigHeader,
-            webhookSecret
+            webhookSecret,
         );
         next();
     } catch (error) {

@@ -8,7 +8,7 @@ async function getPublicPhotosBucket() {
 // Prices array
 async function getPricesArray(publicPhotosBucket) {
     const response = await fetch(
-        `https://storage.googleapis.com/storage/v1/b/${publicPhotosBucket}/o?fields=items(name)&delimiter=/`
+        `https://storage.googleapis.com/storage/v1/b/${publicPhotosBucket}/o?fields=items(name)&delimiter=/`,
     );
     const data = await response.json();
     const pricesArray = data.items
@@ -59,10 +59,10 @@ let checkoutTotal = 0;
 // Widths of the shopping cart button and checkout menu
 const style = getComputedStyle(document.body);
 const cartButtonWidth = parseInt(
-    style.getPropertyValue("--menuIconSize").slice(0, -2)
+    style.getPropertyValue("--menuIconSize").slice(0, -2),
 );
 const checkoutWidth = parseInt(
-    style.getPropertyValue("--checkoutWidth").slice(0, -2)
+    style.getPropertyValue("--checkoutWidth").slice(0, -2),
 );
 
 // Variables for slide transition
@@ -121,13 +121,13 @@ getLinkIcon(getCurrentNavElement(nav), "linkBag").addEventListener(
     "animationend",
     () => {
         animationEndOnNavElements(shopNav, nav);
-    }
+    },
 );
 getLinkIcon(getCurrentNavElement(nav), "linkSignature").addEventListener(
     "animationend",
     () => {
         removeAnimationEndOnNavElements(nav);
-    }
+    },
 );
 
 // Check when the current bag icons are clicked
@@ -165,12 +165,12 @@ cartButtons.forEach((element) =>
                 }
                 checkoutMenu.style.setProperty(
                     "--checkoutMenuZindex",
-                    `${style.getPropertyValue("--checkoutMenuZindex") * scale}`
+                    `${style.getPropertyValue("--checkoutMenuZindex") * scale}`,
                 );
             },
-            { once: true }
+            { once: true },
         );
-    })
+    }),
 );
 
 infoButton.addEventListener("click", () => {

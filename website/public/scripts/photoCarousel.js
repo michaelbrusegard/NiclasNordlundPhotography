@@ -80,7 +80,7 @@ function newPhoto(index, photos) {
         () => {
             photos[index].classList.remove("photoIn");
         },
-        { once: true }
+        { once: true },
     );
 }
 
@@ -94,6 +94,6 @@ function removePhoto(index, photos) {
             photos[index].classList.remove("photoOut");
             photos[index].style.visibility = "hidden";
         },
-        { once: true }
+        { once: true },
     );
 }

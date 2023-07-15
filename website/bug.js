@@ -17,7 +17,7 @@ async function createGithubIssue(req, res) {
                     Authorization: `Bearer ${process.env.PERSONAL_ACCESS_TOKEN}`,
                     "User-Agent": `${process.env.USER_AGENT}`,
                 },
-            }
+            },
         );
 
         const newIssueUrl = response.data.html_url;

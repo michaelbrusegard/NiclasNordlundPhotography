@@ -52,7 +52,7 @@ async function loadPhotos() {
             // Get current photo dimensions
             const dimensions = await getImageDimensions(
                 showcaseBucket,
-                files[i]
+                files[i],
             );
 
             // Get current photo
@@ -60,7 +60,7 @@ async function loadPhotos() {
                 showcaseBucket,
                 files[i],
                 dimensions,
-                i
+                i,
             );
             // Mark as big photo
             if (dimensions.width < dimensions.height) {
@@ -130,10 +130,10 @@ function createContainer(showcaseBucket, filename, dimensions, index) {
 
     // Attach event listeners to the div element
     div.addEventListener("click", (event) =>
-        handlePhotoClickAndEnter(event, img)
+        handlePhotoClickAndEnter(event, img),
     );
     div.addEventListener("keydown", (event) =>
-        handlePhotoClickAndEnter(event, img)
+        handlePhotoClickAndEnter(event, img),
     );
 
     // Set logical tabindex for photo order
