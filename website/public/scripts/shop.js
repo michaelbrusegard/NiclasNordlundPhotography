@@ -189,10 +189,10 @@ function toggleInfoText() {
     } else {
         if (addedItems.length > 1) {
             infoText.textContent =
-                "Upon purchase, you will receive an Email with a link to download the full quality digital copies of the photos. Contact me if you want to buy prints.";
+                "Upon purchase, you will receive an Email with a link to download the full quality digital copies of the photos. Contact me if you want to buy prints directly.";
         } else {
             infoText.textContent =
-                "Upon purchase, you will receive an Email with a link to download the full quality digital copy of the photo. Contact me if you want to buy prints.";
+                "Upon purchase, you will receive an Email with a link to download the full quality digital copy of the photo. Contact me if you want to buy prints directly.";
         }
         infoText.show();
     }
