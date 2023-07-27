@@ -17,7 +17,7 @@ async function writeText(element, quoteIndex) {
             () => {
                 scrollToNextQuote(currentIndex + 1);
             },
-            isFast ? fastIntervalTime : intervalTime
+            isFast ? fastIntervalTime : intervalTime,
         );
 
         isFast = false;

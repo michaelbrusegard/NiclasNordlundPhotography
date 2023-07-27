@@ -55,10 +55,10 @@ function cloneShopItemToCheckout(shopItem) {
 
     // Attach event listeners to the img element
     img.addEventListener("click", (event) =>
-        handlePhotoClickAndEnter(event, img)
+        handlePhotoClickAndEnter(event, img),
     );
     img.addEventListener("keydown", (event) =>
-        handlePhotoClickAndEnter(event, img)
+        handlePhotoClickAndEnter(event, img),
     );
 
     return checkoutItem;
@@ -111,7 +111,7 @@ function moveItemToCart(shopItem, itemPrice, removeAnimation) {
                 shopItem.style.display = "none";
                 checkoutLoad();
             },
-            { once: true }
+            { once: true },
         );
     }
 }
@@ -120,7 +120,7 @@ function moveItemToCart(shopItem, itemPrice, removeAnimation) {
 function isCartItemInCart(shopItem, itemPrice) {
     return cart.some(
         (item) =>
-            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice
+            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice,
     );
 }
 
@@ -144,7 +144,7 @@ function moveItemToShop(shopItem, y, addScroll) {
             shopItem.classList.remove("inCartAnimation");
             shopItem.style.animationDirection = "normal";
         },
-        { once: true }
+        { once: true },
     );
 }
 
@@ -156,7 +156,7 @@ function removeCheckoutItem(checkoutItem, shopItem, itemPrice) {
         () => {
             checkoutItem.remove();
         },
-        { once: true }
+        { once: true },
     );
     addedItems.pop();
 
@@ -167,7 +167,7 @@ function removeCheckoutItem(checkoutItem, shopItem, itemPrice) {
 function removeCartItem(shopItem, itemPrice) {
     const itemIndex = cart.findIndex(
         (item) =>
-            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice
+            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice,
     );
 
     if (itemIndex !== -1) {
@@ -216,12 +216,12 @@ function checkoutSystem(shopItem, itemPrice, removeAnimation) {
             const { addScroll, y } = calculateAnimationVariables(
                 shopItem,
                 itemX,
-                itemY
+                itemY,
             );
             moveItemToShop(shopItem, y, addScroll);
             removeCheckoutItem(checkoutItem, shopItem, itemPrice);
         },
-        { once: true }
+        { once: true },
     );
 
     button.addEventListener(
@@ -231,12 +231,12 @@ function checkoutSystem(shopItem, itemPrice, removeAnimation) {
                 const { addScroll, y } = calculateAnimationVariables(
                     shopItem,
                     itemX,
-                    itemY
+                    itemY,
                 );
                 moveItemToShop(shopItem, y, addScroll);
                 removeCheckoutItem(checkoutItem, shopItem, itemPrice);
             }
         },
-        { once: true }
+        { once: true },
     );
 }

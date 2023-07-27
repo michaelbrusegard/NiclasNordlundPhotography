@@ -79,20 +79,20 @@ function calculateRows() {
 
     // Container size
     const photoContainerSize = parseInt(
-        style.getPropertyValue("--photoContainerSize").slice(0, -2)
+        style.getPropertyValue("--photoContainerSize").slice(0, -2),
     );
     const shopMargin = parseInt(
-        style.getPropertyValue("--shopMargin").slice(0, -2)
+        style.getPropertyValue("--shopMargin").slice(0, -2),
     );
 
     // Nav height
     const navContainerHeight = parseInt(
-        style.getPropertyValue("--navContainerHeight").slice(0, -2)
+        style.getPropertyValue("--navContainerHeight").slice(0, -2),
     );
 
     return Math.floor(
         (window.innerHeight - navContainerHeight - shopMargin) /
-            (photoContainerSize + shopMargin)
+            (photoContainerSize + shopMargin),
     );
 }
 
@@ -134,15 +134,16 @@ async function createContainer(publicPhotosBucket, shopItemInfo) {
 
     // Attach event listeners to the img element
     img.addEventListener("click", (event) =>
-        handlePhotoClickAndEnter(event, img)
+        handlePhotoClickAndEnter(event, img),
     );
     img.addEventListener("keydown", (event) =>
-        handlePhotoClickAndEnter(event, img)
+        handlePhotoClickAndEnter(event, img),
     );
 
     if (
         cart.some(
-            (item) => item[0] === shopItemInfo[0] && item[1] === shopItemInfo[1]
+            (item) =>
+                item[0] === shopItemInfo[0] && item[1] === shopItemInfo[1],
         )
     ) {
         checkoutSystem(div, shopItemInfo[1], true);

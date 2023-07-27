@@ -50,7 +50,7 @@ function highlightPhoto(photo) {
     highlightPhoto.style.left = "50%";
     highlightPhoto.style.transform = "translate(-50%, -50%)";
     highlightPhoto.style.borderRadius = style.getPropertyValue(
-        "--photoBorderRadius"
+        "--photoBorderRadius",
     );
     highlightPhoto.style.boxShadow = style.getPropertyValue("--shadow");
 

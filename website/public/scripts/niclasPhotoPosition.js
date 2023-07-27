@@ -4,7 +4,7 @@ function setNiclasPhotoLeftPos() {
 
     // Get nav bar size
     const desktopNavSize = parseInt(
-        style.getPropertyValue("--desktopNavSize").slice(0, -2)
+        style.getPropertyValue("--desktopNavSize").slice(0, -2),
     );
 
     const photoWidth = (80 * screenWidth) / 100;

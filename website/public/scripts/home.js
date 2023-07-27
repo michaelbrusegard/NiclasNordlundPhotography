@@ -7,7 +7,7 @@ async function getPhotoCarouselBucket() {
 
 async function fetchBucketData(bucket) {
     const response = await fetch(
-        `https://storage.googleapis.com/storage/v1/b/${bucket}/o?fields=items(name)&delimiter=/`
+        `https://storage.googleapis.com/storage/v1/b/${bucket}/o?fields=items(name)&delimiter=/`,
     );
     const data = await response.json();
     const files = data.items.map((item) => item.name);
@@ -114,13 +114,13 @@ getLinkIcon(getCurrentNavElement(shopNav), "linkBag").addEventListener(
     "animationend",
     () => {
         animationEndOnNavElements(nav, shopNav);
-    }
+    },
 );
 getLinkIcon(getCurrentNavElement(shopNav), "linkCart").addEventListener(
     "animationend",
     () => {
         removeAnimationEndOnNavElements(shopNav);
-    }
+    },
 );
 
 // Checks when menu is clicked
