@@ -1,6 +1,21 @@
 version: 2
 updates:
-    - package-ecosystem: "npm"
-      directory: "/"
-      schedule:
-          interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "website"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm"
+    directory: "functions/archivePurchasedPhotos"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm"
+    directory: "functions/compressPublicPhotos"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm"
+    directory: "functions/deletePublicPhotos"
+    schedule:
+      interval: "weekly"
