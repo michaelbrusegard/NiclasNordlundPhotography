@@ -19,7 +19,7 @@
         "stripe": "^12.10.0"
     },
     "devDependencies": {
-        "@google-cloud/functions-framework": "^1.8.0",
+        "@google-cloud/functions-framework": "^3.3.0",
         "nodemon": "^2.0.22"
     }
 }
