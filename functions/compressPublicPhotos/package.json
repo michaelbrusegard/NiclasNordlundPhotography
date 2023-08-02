@@ -1,5 +1,5 @@
 {
-    "name": "cloud_functions",
+    "name": "cloud_function_compress_photo",
     "description": "Function that compresses photos uploaded to a bucket and saves them to a new bucket.",
     "main": "compressPhoto.js",
     "author": "Michael Brusegard",
