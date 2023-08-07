@@ -5,6 +5,6 @@
     "author": "Michael Brusegard",
     "license": "Apache-2.0",
     "dependencies": {
-        "@google-cloud/storage": "^6.9.5"
+        "@google-cloud/storage": "^7.0.0"
     }
 }
