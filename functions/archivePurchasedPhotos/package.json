@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "@google-cloud/storage": "^6.9.5",
-        "archiver": "^5.3.1",
+        "archiver": "^6.0.0",
         "moment": "^2.29.4",
         "uuid": "^9.0.0"
     }
