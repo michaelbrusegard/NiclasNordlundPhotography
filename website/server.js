@@ -12,13 +12,22 @@ const express = require("express");
 const app = express();
 const frontendPath = path.join(__dirname, "public");
 
+app.use((req, res, next) => {
+    if (
+        req.hostname === process.env.SERVER_URL.replace(/^https:\/\/www\./, "")
+    ) {
+        return res.redirect(301, process.env.SERVER_URL);
+    }
+    next();
+});
+
 app.use(express.json());
 
 app.use(
     express.static(frontendPath, {
         index: "home.html",
         extensions: ["html"],
-    }),
+    })
 );
 
 app.use(express.urlencoded({ extended: true }));
