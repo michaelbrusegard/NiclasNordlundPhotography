@@ -20,14 +20,14 @@ async function handlePhotos(purchasedItems) {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-            },
+            }
         );
 
         console.log(`Zip file URL: ${response.data.url}`);
         console.log(`Zip file name: ${response.data.name}`);
     } catch (error) {
         console.error(`Failed to zip photos: ${error}`);
-        console.log("test");
+        console.log("test deploying of website");
     }
 }
 
