@@ -17,6 +17,7 @@ exports.createPhotosArchive = async (req, res) => {
     }
 
     try {
+        // Create a zip file with the photos
         const sourceBucket = storage.bucket(SOURCE_BUCKET_NAME);
         const destinationBucket = storage.bucket(DESTINATION_BUCKET_NAME);
 
@@ -58,7 +59,7 @@ exports.createPhotosArchive = async (req, res) => {
                 } catch (err) {
                     console.error(
                         `Failed to delete zip file: ${zipFileName}`,
-                        err,
+                        err
                     );
                 }
             }, expirationDuration);
