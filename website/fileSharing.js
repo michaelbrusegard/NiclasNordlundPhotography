@@ -20,7 +20,7 @@ async function handlePhotos(purchasedItems) {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-            }
+            },
         );
 
         console.log(`Zip file URL: ${response.data.url}`);
