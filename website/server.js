@@ -27,7 +27,7 @@ app.use(
     express.static(frontendPath, {
         index: "home.html",
         extensions: ["html"],
-    })
+    }),
 );
 
 app.use(express.urlencoded({ extended: true }));
