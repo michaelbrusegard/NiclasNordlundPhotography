@@ -81,7 +81,8 @@ jobs:
                     --trigger-http \
                     --project=${{ secrets.PROJECT_ID }} \
                     --set-env-vars PHOTOS_BUCKET=${{ secrets.PHOTOS_BUCKET }},ARCHIVE_BUCKET=${{ secrets.ARCHIVE_BUCKET }} \
-                    --service-account=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_SERV_ACC_EMAIL }}
+                    --service-account=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_SERV_ACC_EMAIL }} \
+                    --timeout=540s
 
             - name: Update environment variables for website
               if: steps.filter.outputs.website == 'true'

@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "nodemon server.js",
         "stripe": "stripe listen --forward-to localhost:8080/webhook",
-        "buy": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75.jpg\",\"aalands skaergaard 80 euro.jpg\",\"aaland vaestra hamnen vinter 180.jpg\"]'"
+        "buy": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75e.jpg\",\"aalands skaergaard 80e.jpg\",\"aaland vaestra hamnen vinter 180e.jpg\"]'"
     },
     "dependencies": {
         "@google-cloud/storage": "^7.1.0",
