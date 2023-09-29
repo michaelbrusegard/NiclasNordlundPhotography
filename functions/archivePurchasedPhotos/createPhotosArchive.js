@@ -5,7 +5,6 @@ const { v4: uuidv4 } = require("uuid");
 
 const SOURCE_BUCKET_NAME = process.env.PHOTOS_BUCKET;
 const DESTINATION_BUCKET_NAME = process.env.ARCHIVE_BUCKET;
-const expirationDuration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 const storage = new Storage();
 
@@ -52,17 +51,6 @@ exports.createPhotosArchive = async (req, res) => {
             const [url] = await zipFile.getSignedUrl(options);
 
             res.send({ url });
-
-            setTimeout(async () => {
-                try {
-                    await zipFile.delete();
-                } catch (err) {
-                    console.error(
-                        `Failed to delete zip file: ${zipFileName}`,
-                        err,
-                    );
-                }
-            }, expirationDuration);
         });
     } catch (err) {
         console.error(`Failed to zip photos: ${err}`);

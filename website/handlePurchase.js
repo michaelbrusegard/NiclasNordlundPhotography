@@ -13,7 +13,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
         stripe.webhooks.constructEvent(
             request.rawBody,
             sigHeader,
-            webhookSecret,
+            webhookSecret
         );
         next();
     } catch (error) {
@@ -38,9 +38,15 @@ const handleCheckoutSession = (req, res) => {
         case "checkout.session.completed":
             const checkoutSession = event.data.object;
             let purchasedItems = checkoutSession.metadata.purchasedItems;
+            const customerEmail = checkoutSession.customer_details.email;
+            const customerName = checkoutSession.customer_details.name;
             if (purchasedItems !== undefined) {
                 purchasedItems = JSON.parse(purchasedItems);
-                fileSharing.handlePhotos(purchasedItems);
+                fileSharing.handlePhotos(
+                    purchasedItems,
+                    customerEmail,
+                    customerName
+                );
             }
             break;
         default:
