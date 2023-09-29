@@ -55,7 +55,7 @@
     background-position: center 5%;
     background-repeat: no-repeat;
     width: calc(4 * var(--menuIconSize));
-    height: var(--menuIconSize);
+    height: calc(var(--menuIconSize) - 2px);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: calc(0.5 * var(--navPadding));

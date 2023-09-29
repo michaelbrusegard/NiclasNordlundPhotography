@@ -105,6 +105,9 @@ jobs:
                   SPORT_SHOWCASE_BUCKET: ${{ secrets.SPORT_SHOWCASE_BUCKET }}
                   SECRET_KEY: ${{ secrets.SECRET_KEY }}
                   WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+                  EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+                  EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+                  SUPPORT_EMAIL_ADDRESS: ${{ secrets.SUPPORT_EMAIL_ADDRESS }}
               with:
                   app_yaml_path: "website/app.yaml"
 
