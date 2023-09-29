@@ -34,7 +34,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
                 headers: {
                     Authorization: `Bearer ${idToken}`,
                 },
-            }
+            },
         );
 
         console.log(`Zip file URL: ${response.data.url}`);
