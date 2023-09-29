@@ -27,7 +27,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
             headers: {
                 Authorization: `Bearer ${idToken}`,
             },
-        }
+        },
     );
     return response.data.url;
 }
@@ -36,7 +36,7 @@ async function sendEmail(
     photosUrl,
     customerEmail,
     customerName,
-    purchasedItems
+    purchasedItems,
 ) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
