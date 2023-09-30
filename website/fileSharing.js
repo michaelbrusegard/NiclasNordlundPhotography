@@ -28,7 +28,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
             headers: {
                 Authorization: `Bearer ${idToken}`,
             },
-        },
+        }
     );
     return response.data.url;
 }
@@ -37,7 +37,7 @@ async function sendEmail(
     photosUrl,
     customerEmail,
     customerName,
-    purchasedItems,
+    purchasedItems
 ) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -53,6 +53,7 @@ async function sendEmail(
 
     const photoWord = purchasedItems.length === 1 ? "Photo" : "Photos";
 
+    // Email message content
     const mailOptions = {
         from: process.env.EMAIL_ADDRESS,
         to: customerEmail,
@@ -100,7 +101,7 @@ function sendErrorEmails(
     customerEmail,
     customerName,
     error,
-    retries = 5,
+    retries = 5
 ) {
     // Email configuration
     const transporter = nodemailer.createTransport({
@@ -154,7 +155,7 @@ function sendErrorEmails(
                 if (err) {
                     console.error(
                         `Error sending error email (attempt ${attempts}):`,
-                        err,
+                        err
                     );
                     if (attempts < retries) {
                         setTimeout(() => {
@@ -162,13 +163,13 @@ function sendErrorEmails(
                         }, 20000);
                     } else {
                         console.error(
-                            "Max retry attempts reached. Email not sent.",
+                            "Max retry attempts reached. Email not sent."
                         );
                     }
                 } else {
                     console.log("Error emails sent:", info.response);
                 }
-            },
+            }
         );
     }
 
