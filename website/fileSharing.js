@@ -28,7 +28,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
             headers: {
                 Authorization: `Bearer ${idToken}`,
             },
-        },
+        }
     );
     return response.data.url;
 }
@@ -37,7 +37,7 @@ async function sendEmail(
     photosUrl,
     customerEmail,
     customerName,
-    purchasedItems,
+    purchasedItems
 ) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -100,7 +100,7 @@ function sendErrorEmails(
     customerEmail,
     customerName,
     error,
-    retries = 5,
+    retries = 5
 ) {
     // Email configuration
     const transporter = nodemailer.createTransport({
@@ -118,8 +118,20 @@ function sendErrorEmails(
 
     const photoWord = purchasedItems.length === 1 ? "Photo" : "Photos";
     const errorMessage = error.message;
-    const emailSubject = "Error in Purchase Processing";
-    const emailHtml = `
+    const recipients = [
+        customerEmail,
+        process.env.SUPPORT_EMAIL_ADDRESS,
+        process.env.DEV_EMAIL_ADDRESS,
+    ].join(", "); // Send to multiple recipients
+
+    // Define a function to send the email with retries
+    function sendEmailWithRetry(attempts) {
+        transporter.sendMail(
+            {
+                from: process.env.EMAIL_ADDRESS,
+                to: recipients,
+                subject: "Error in Purchase Processing",
+                html: `
             <p>Dear ${xss(customerName)},</p>
             <p>I apologize for the inconvenience. An error occurred while processing your purchase. Our team has been notified, and I will manually retrieve your purchased ${photoWord.toLowerCase()}.</p>
             <br />
@@ -135,29 +147,14 @@ function sendErrorEmails(
             <br />
             <p>Best regards,</p>
             <p>Niclas Nordlund Photography</p>
-        `;
-
-    const recipients = [
-        customerEmail,
-        process.env.SUPPORT_EMAIL_ADDRESS,
-        process.env.DEV_EMAIL_ADDRESS,
-    ].join(", "); // Send to multiple recipients
-
-    // Define a function to send the email with retries
-    function sendEmailWithRetry(attempts) {
-        transporter.sendMail(
-            {
-                from: process.env.EMAIL_ADDRESS,
-                to: recipients,
-                subject: emailSubject,
-                html: emailHtml,
+        `,
                 replyTo: process.env.SUPPORT_EMAIL_ADDRESS,
             },
             (err, info) => {
                 if (err) {
                     console.error(
                         `Error sending error email (attempt ${attempts}):`,
-                        err,
+                        err
                     );
                     if (attempts < retries) {
                         setTimeout(() => {
@@ -165,13 +162,13 @@ function sendErrorEmails(
                         }, 20000);
                     } else {
                         console.error(
-                            "Max retry attempts reached. Email not sent.",
+                            "Max retry attempts reached. Email not sent."
                         );
                     }
                 } else {
                     console.log("Error emails sent:", info.response);
                 }
-            },
+            }
         );
     }
 
