@@ -62,7 +62,7 @@ function isMobileNav() {
     // Gets the css variable for mobile size
     const style = getComputedStyle(document.body);
     const mobileNavSize = parseInt(
-        style.getPropertyValue("--mobileNavSize").slice(0, -2)
+        style.getPropertyValue("--mobileNavSize").slice(0, -2),
     );
     // Gets the screen width
     const screenWidth = window.innerWidth;
@@ -111,7 +111,7 @@ function displayCopyrightFooter(scrollableElement) {
                 parseInt(
                     getComputedStyle(document.documentElement)
                         .getPropertyValue("--navContainerHeight")
-                        .slice(0, -2)
+                        .slice(0, -2),
                 )
     ) {
         if (isMobileNav()) {
