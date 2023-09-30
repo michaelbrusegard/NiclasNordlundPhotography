@@ -1,4 +1,5 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const stripe = require("stripe")(process.env.SECRET_KEY);
 const { Storage } = require("@google-cloud/storage");

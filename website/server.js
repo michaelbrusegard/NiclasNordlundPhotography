@@ -1,4 +1,6 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+
 const checkout = require("./checkout.js");
 const bug = require("./bug");
 const {
@@ -6,7 +8,6 @@ const {
     handleCheckoutSession,
 } = require("./handlePurchase.js");
 
-const path = require("path");
 const express = require("express");
 
 const app = express();
@@ -27,7 +28,7 @@ app.use(
     express.static(frontendPath, {
         index: "home.html",
         extensions: ["html"],
-    }),
+    })
 );
 
 app.use(express.urlencoded({ extended: true }));

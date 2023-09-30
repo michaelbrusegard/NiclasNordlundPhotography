@@ -1,0 +1,22 @@
+{
+    "name": "admin_niclasnordlundphotography",
+    "description": "Admin website for Niclas Nordlund Photography.",
+    "main": "server.js",
+    "author": "Michael Brusegard",
+    "license": "Apache-2.0",
+    "scripts": {
+        "dev": "nodemon server.js"
+    },
+    "dependencies": {
+        "@google-cloud/storage": "^7.1.0",
+        "axios": "^1.4.0",
+        "body-parser": "^1.20.2",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-rate-limit": "^7.0.2"
+    },
+    "devDependencies": {
+        "@google-cloud/functions-framework": "^3.3.0",
+        "nodemon": "^3.0.1"
+    }
+}

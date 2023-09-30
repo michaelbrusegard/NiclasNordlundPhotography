@@ -1,4 +1,5 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const axios = require("axios");
 
 async function createGithubIssue(req, res) {
@@ -17,7 +18,7 @@ async function createGithubIssue(req, res) {
                     Authorization: `Bearer ${process.env.PERSONAL_ACCESS_TOKEN}`,
                     "User-Agent": `${process.env.USER_AGENT}`,
                 },
-            },
+            }
         );
 
         const newIssueUrl = response.data.html_url;

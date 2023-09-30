@@ -1,4 +1,5 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const fileSharing = require("./fileSharing");
 
 const bodyParser = require("body-parser");
@@ -13,7 +14,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
         stripe.webhooks.constructEvent(
             request.rawBody,
             sigHeader,
-            webhookSecret,
+            webhookSecret
         );
         next();
     } catch (error) {
@@ -46,7 +47,7 @@ const handleCheckoutSession = (req, res) => {
                 fileSharing.handlePhotos(
                     purchasedItems,
                     customerEmail,
-                    customerName,
+                    customerName
                 );
 
                 res.json({ received: true });
@@ -55,7 +56,7 @@ const handleCheckoutSession = (req, res) => {
                     purchasedItems,
                     customerEmail,
                     customerName,
-                    error,
+                    error
                 );
                 res.status(500).json({ error: e.message });
                 console.error(error);
