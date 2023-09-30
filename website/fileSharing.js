@@ -1,5 +1,6 @@
 require("dotenv").config();
 const path = require("path");
+const xss = require("xss");
 const axios = require("axios");
 const nodemailer = require("nodemailer");
 const { GoogleAuth } = require("google-auth-library");
@@ -27,7 +28,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
             headers: {
                 Authorization: `Bearer ${idToken}`,
             },
-        },
+        }
     );
     return response.data.url;
 }
@@ -36,7 +37,7 @@ async function sendEmail(
     photosUrl,
     customerEmail,
     customerName,
-    purchasedItems,
+    purchasedItems
 ) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -47,7 +48,7 @@ async function sendEmail(
     });
 
     const itemHTMLList = purchasedItems
-        .map((item) => `<li>${item}</li>`)
+        .map((item) => `<li>${xss(item)}</li>`)
         .join("");
 
     const photoWord = purchasedItems.length === 1 ? "Photo" : "Photos";
@@ -61,10 +62,9 @@ async function sendEmail(
                 .signature {
                     width: 200px;
                     height: 60px;
-                    margin-left: 20px;
                 }
             </style>
-            <p>Dear ${customerName},</p>
+            <p>Dear ${xss(customerName)},</p>
             <p>Thank you for your purchase. You can download your ${photoWord.toLowerCase()} by clicking the link below:</p>
             <a href="${photosUrl}">Download Your ${photoWord}</a>
             <br />
@@ -99,7 +99,7 @@ function sendErrorEmails(
     customerEmail,
     customerName,
     error,
-    retries = 5,
+    retries = 5
 ) {
     // Email configuration
     const transporter = nodemailer.createTransport({
@@ -112,14 +112,14 @@ function sendErrorEmails(
 
     // Email message content
     const itemHTMLList = purchasedItems
-        .map((item) => `<li>${item}</li>`)
+        .map((item) => `<li>${xss(item)}</li>`)
         .join("");
 
     const photoWord = purchasedItems.length === 1 ? "Photo" : "Photos";
     const errorMessage = error.message;
     const emailSubject = "Error in Purchase Processing";
     const emailHtml = `
-            <p>Dear ${customerName},</p>
+            <p>Dear ${xss(customerName)},</p>
             <p>I apologize for the inconvenience. An error occurred while processing your purchase. Our team has been notified, and I will manually retrieve your purchased ${photoWord.toLowerCase()}.</p>
             <br />
             <p>Error Message:</p> 
@@ -156,7 +156,7 @@ function sendErrorEmails(
                 if (err) {
                     console.error(
                         `Error sending error email (attempt ${attempts}):`,
-                        err,
+                        err
                     );
                     if (attempts < retries) {
                         setTimeout(() => {
@@ -164,13 +164,13 @@ function sendErrorEmails(
                         }, 20000);
                     } else {
                         console.error(
-                            "Max retry attempts reached. Email not sent.",
+                            "Max retry attempts reached. Email not sent."
                         );
                     }
                 } else {
                     console.log("Error emails sent:", info.response);
                 }
-            },
+            }
         );
     }
 

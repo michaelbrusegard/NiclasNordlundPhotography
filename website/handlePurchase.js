@@ -13,7 +13,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
         stripe.webhooks.constructEvent(
             request.rawBody,
             sigHeader,
-            webhookSecret,
+            webhookSecret
         );
         next();
     } catch (error) {
@@ -46,15 +46,15 @@ const handleCheckoutSession = (req, res) => {
                 fileSharing.handlePhotos(
                     purchasedItems,
                     customerEmail,
-                    customerName,
+                    customerName
                 );
             } catch (error) {
-                fileSharing.sendErrorEmails(
-                    purchasedItems,
-                    customerEmail,
-                    customerName,
-                    error,
-                );
+                // fileSharing.sendErrorEmails(
+                //     purchasedItems,
+                //     customerEmail,
+                //     customerName,
+                //     error,
+                // );
                 res.status(500).send(error.message);
                 console.error(error);
             }
