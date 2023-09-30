@@ -16,6 +16,7 @@ menu.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     slideTransition(nav, shopNav, navigatedFromShop);
     prefetch();
+    displayCopyrightFooter(document.documentElement);
 });
 
 // Adds ending part of animation
@@ -23,13 +24,13 @@ getLinkIcon(getCurrentNavElement(shopNav), "linkBag").addEventListener(
     "animationend",
     () => {
         animationEndOnNavElements(nav, shopNav);
-    },
+    }
 );
 getLinkIcon(getCurrentNavElement(shopNav), "linkCart").addEventListener(
     "animationend",
     () => {
         removeAnimationEndOnNavElements(shopNav);
-    },
+    }
 );
 
 window.addEventListener("scroll", () => {

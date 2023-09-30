@@ -21,9 +21,9 @@ function alignCheckout() {
 }
 
 function retrieveCart() {
-    // Loads the cart from sessionStorage
-    if (sessionStorage.getItem("cart")) {
-        cartString = sessionStorage.getItem("cart");
+    // Loads the cart from localStorage
+    if (localStorage.getItem("cart")) {
+        cartString = localStorage.getItem("cart");
         cart = JSON.parse(cartString);
     }
 }
@@ -55,10 +55,10 @@ function cloneShopItemToCheckout(shopItem) {
 
     // Attach event listeners to the img element
     img.addEventListener("click", (event) =>
-        handlePhotoClickAndEnter(event, img),
+        handlePhotoClickAndEnter(event, img)
     );
     img.addEventListener("keydown", (event) =>
-        handlePhotoClickAndEnter(event, img),
+        handlePhotoClickAndEnter(event, img)
     );
 
     return checkoutItem;
@@ -93,7 +93,7 @@ function moveItemToCart(shopItem, itemPrice, removeAnimation) {
 
     if (!isCartItemInCart(shopItem, itemPrice)) {
         cart.push([shopItem.lastChild.textContent, itemPrice]);
-        updateSessionStorage();
+        updatelocalStorage();
     }
 
     if (removeAnimation) {
@@ -111,7 +111,7 @@ function moveItemToCart(shopItem, itemPrice, removeAnimation) {
                 shopItem.style.display = "none";
                 checkoutLoad();
             },
-            { once: true },
+            { once: true }
         );
     }
 }
@@ -120,14 +120,14 @@ function moveItemToCart(shopItem, itemPrice, removeAnimation) {
 function isCartItemInCart(shopItem, itemPrice) {
     return cart.some(
         (item) =>
-            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice,
+            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice
     );
 }
 
-// Function to update session storage with cart items
-function updateSessionStorage() {
+// Function to update local storage with cart items
+function updateLocalStorage() {
     const cartString = JSON.stringify(cart);
-    sessionStorage.setItem("cart", cartString);
+    localStorage.setItem("cart", cartString);
 }
 
 // Function to move shop item back to the shop
@@ -144,7 +144,7 @@ function moveItemToShop(shopItem, y, addScroll) {
             shopItem.classList.remove("inCartAnimation");
             shopItem.style.animationDirection = "normal";
         },
-        { once: true },
+        { once: true }
     );
 }
 
@@ -156,7 +156,7 @@ function removeCheckoutItem(checkoutItem, shopItem, itemPrice) {
         () => {
             checkoutItem.remove();
         },
-        { once: true },
+        { once: true }
     );
     addedItems.pop();
 
@@ -167,12 +167,12 @@ function removeCheckoutItem(checkoutItem, shopItem, itemPrice) {
 function removeCartItem(shopItem, itemPrice) {
     const itemIndex = cart.findIndex(
         (item) =>
-            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice,
+            item[0] === shopItem.lastChild.textContent && item[1] === itemPrice
     );
 
     if (itemIndex !== -1) {
         cart.splice(itemIndex, 1);
-        updateSessionStorage();
+        updateLocalStorage();
     }
 
     itemNumber -= 1;
@@ -216,12 +216,12 @@ function checkoutSystem(shopItem, itemPrice, removeAnimation) {
             const { addScroll, y } = calculateAnimationVariables(
                 shopItem,
                 itemX,
-                itemY,
+                itemY
             );
             moveItemToShop(shopItem, y, addScroll);
             removeCheckoutItem(checkoutItem, shopItem, itemPrice);
         },
-        { once: true },
+        { once: true }
     );
 
     button.addEventListener(
@@ -231,12 +231,12 @@ function checkoutSystem(shopItem, itemPrice, removeAnimation) {
                 const { addScroll, y } = calculateAnimationVariables(
                     shopItem,
                     itemX,
-                    itemY,
+                    itemY
                 );
                 moveItemToShop(shopItem, y, addScroll);
                 removeCheckoutItem(checkoutItem, shopItem, itemPrice);
             }
         },
-        { once: true },
+        { once: true }
     );
 }

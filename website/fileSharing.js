@@ -50,6 +50,8 @@ async function sendEmail(
         .map((item) => `<li>${item}</li>`)
         .join("");
 
+    const photoWord = purchasedItems.length === 1 ? "Photo" : "Photos";
+
     const mailOptions = {
         from: process.env.SUPPORT_EMAIL_ADDRESS,
         to: customerEmail,
@@ -63,12 +65,12 @@ async function sendEmail(
                 }
             </style>
             <p>Dear ${customerName},</p>
-            <p>Thank you for your purchase. You can download your photos by clicking the link below:</p>
-            <a href="${photosUrl}">Download Your Photos</a>
+            <p>Thank you for your purchase. You can download your ${photoWord.toLowerCase()} by clicking the link below:</p>
+            <a href="${photosUrl}">Download Your ${photoWord}</a>
             <br />
             <p>The link will expire in 24 hours.</p> 
             <br />
-            <p>For verification, here is a list over the photos you have purchased:</p>
+            <p>For verification, here is a list with the ${photoWord.toLowerCase()} you have purchased:</p>
             <ul>
                 ${itemHTMLList}
             </ul>
