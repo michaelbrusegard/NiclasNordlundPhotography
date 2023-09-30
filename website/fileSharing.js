@@ -136,7 +136,7 @@ function sendErrorEmails(
             <p>I apologize for the inconvenience. An error occurred while processing your purchase. Our team has been notified, and I will manually retrieve your purchased ${photoWord.toLowerCase()}.</p>
             <br />
             <p>Error Message:</p> 
-            <p>${errorMessage}</p> 
+            <p>${xss(errorMessage)}</p> 
             <br />
             <p>Your purchased ${photoWord.toLowerCase()}:</p>
             <ol>
