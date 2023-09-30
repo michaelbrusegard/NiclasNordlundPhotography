@@ -48,7 +48,8 @@ const handleCheckoutSession = (req, res) => {
                     customerEmail,
                     customerName
                 );
-                res.status(200);
+
+                res.json({ received: true });
             } catch (error) {
                 fileSharing.sendErrorEmails(
                     purchasedItems,
