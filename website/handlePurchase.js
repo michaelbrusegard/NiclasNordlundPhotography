@@ -13,7 +13,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
         stripe.webhooks.constructEvent(
             request.rawBody,
             sigHeader,
-            webhookSecret,
+            webhookSecret
         );
         next();
     } catch (error) {
@@ -32,7 +32,6 @@ const webhookMiddleware = bodyParser.raw({
 const handleCheckoutSession = (req, res) => {
     // Handle the Stripe webhook event
     const event = req.body;
-
     // Check the type of the received event
     switch (event.type) {
         case "checkout.session.completed":
@@ -42,19 +41,27 @@ const handleCheckoutSession = (req, res) => {
             const customerName = checkoutSession.customer_details.name;
             if (purchasedItems !== undefined) {
                 purchasedItems = JSON.parse(purchasedItems);
+            }
+            try {
                 fileSharing.handlePhotos(
                     purchasedItems,
                     customerEmail,
-                    customerName,
+                    customerName
                 );
+            } catch (error) {
+                fileSharing.sendErrorEmails(
+                    purchasedItems,
+                    customerEmail,
+                    customerName,
+                    error
+                );
+                res.status(500).send(error.message);
+                console.error(error);
             }
             break;
         default:
             break;
     }
-
-    // Send a response to acknowledge receipt of the event
-    res.json({ received: true });
 };
 
 // Export modules

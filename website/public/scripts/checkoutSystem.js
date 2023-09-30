@@ -93,7 +93,7 @@ function moveItemToCart(shopItem, itemPrice, removeAnimation) {
 
     if (!isCartItemInCart(shopItem, itemPrice)) {
         cart.push([shopItem.lastChild.textContent, itemPrice]);
-        updatelocalStorage();
+        updateLocalStorage();
     }
 
     if (removeAnimation) {
