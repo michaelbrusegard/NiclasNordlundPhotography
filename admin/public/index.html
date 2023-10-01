@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin | Niclas Nordlund Photography</title>
+        <script defer src="script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                font-family: "Poppins", sans-serif;
+            }
+            p,
+            ol,
+            label {
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Admin Panel</h1>
+        <label for="sectionSelect">Select section:</label>
+        <select id="sectionSelect">
+            <option value="showcase">Showcase</option>
+            <option value="shop">Shop</option>
+        </select>
+        <button id="sectionButton">Load</button>
+        <div id="sectionContent"></div>
+    </body>
+</html>
