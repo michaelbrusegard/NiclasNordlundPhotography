@@ -8,7 +8,7 @@ sectionButton.addEventListener("click", () => {
     if (selectedSection === "showcase") {
         const paragraph = document.createElement("p");
         paragraph.textContent =
-            'Showcase photos should be of "facebook" quality and contain your watermark. You can name them whatever you want, they are sorted alphabetically on the website. They should also be in the ".jpg" format. Make sure to replace swedish letters like å, ä, ö, with aa, ae, oe.';
+            'Showcase photos should be of "facebook" quality and contain your watermark. You can name them whatever you want, they are sorted alphabetically on the website. They should also be in the ".jpg" format. Make sure to replace swedish letters like å, ä, ö, with aa, ae, oe. Don\'t use any special characters.';
         const label = document.createElement("label");
         label.textContent = "Select a Page:";
         label.setAttribute("for", "bucketSelect");
@@ -50,9 +50,13 @@ sectionButton.addEventListener("click", () => {
     } else if (selectedSection === "shop") {
         const paragraph = document.createElement("p");
         paragraph.textContent =
-            'Shop photos should be of the highest quality. When you name them make sure to include the price at then end of the name after a space with the letter "e" behind (e.g., "blommor 200e.jpg" or "glass 95e.jpg"). They should also be in the ".jpg" format. The shop photos are also sorted alphabetically on the website. Make sure to replace swedish letters like å, ä, ö, with aa, ae, oe.';
+            'Shop photos should be of the highest quality. When you name them make sure to include the price at then end of the name after a space with the letter "e" behind (e.g., "blommor 200e.jpg" or "glass 95e.jpg"). They should also be in the ".jpg" format. The shop photos are also sorted alphabetically on the website. Make sure to replace swedish letters like å, ä, ö, with aa, ae, oe. Don\'t use any special characters.';
+        const paragraph2 = document.createElement("p");
+        paragraph2.textContent =
+            "The photos will be compressed after upload to be displayed on the website. You may need to wait and click the load button again to see the uploaded photos. This takes longer when uploading multiple photos.";
         const shopContent = document.createElement("div");
         sectionContent.appendChild(paragraph);
+        sectionContent.appendChild(paragraph2);
         sectionContent.appendChild(shopContent);
         loadItemsFromBucket("shop", shopContent);
     }
@@ -69,7 +73,7 @@ function loadItemsFromBucket(bucket, bucketContent) {
             sectionContent.appendChild(title);
             const list = document.createElement("ol");
             bucketContent.appendChild(title);
-            uploadPhoto(bucketContent);
+            uploadPhotos(bucketContent, bucket);
             bucketContent.appendChild(list);
 
             // Iterate through the items in the data array
@@ -152,17 +156,66 @@ function loadItemsFromBucket(bucket, bucketContent) {
         });
 }
 
-function uploadPhoto(parentElement) {
+function uploadPhotos(parentElement, bucket) {
     const label = document.createElement("label");
-    label.textContent = "Upload photo:";
-    label.setAttribute("for", "file");
+    label.textContent = "Upload photos:";
+    label.setAttribute("for", "files");
     const input = document.createElement("input");
     input.type = "file";
+    input.name = "files[]";
+    input.setAttribute("multiple", true);
     input.accept = ".jpg";
     const uploadButton = document.createElement("button");
     uploadButton.textContent = "Upload";
+    uploadButton.addEventListener("click", () => {
+        const files = input.files;
+        if (files.length === 0) {
+            alert("Please select one or more files to upload.");
+            return;
+        }
+
+        for (const file of files) {
+            if (!isValidFileName(file.name, bucket)) {
+                alert("Invalid file name: " + file.name);
+                return;
+            }
+        }
+
+        const formData = new FormData();
+        for (const file of files) {
+            formData.append("files", file, file.name);
+        }
+        fetch(`/upload-photos?bucket=${bucket}`, {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                if (data === "OK") {
+                    if (bucket === "shop") {
+                        // Delay to wait for photo compression
+                        setTimeout(() => {
+                            loadItemsFromBucket(bucket, parentElement);
+                        }, 3000);
+                    } else {
+                        loadItemsFromBucket(bucket, parentElement);
+                    }
+                }
+            });
+    });
 
     parentElement.appendChild(label);
     parentElement.appendChild(input);
     parentElement.appendChild(uploadButton);
+}
+
+function isValidFileName(fileName, bucket) {
+    let pattern;
+    if (bucket === "shop") {
+        pattern = /^[a-zA-Z0-9\s]+ \d+e\.jpg$/;
+    } else {
+        // Regular expression pattern to allow only letters (a-z), numbers (0-9), spaces, and .jpg extension
+        pattern = /^[a-zA-Z0-9\s]+\.jpg$/;
+    }
+    return pattern.test(fileName);
 }

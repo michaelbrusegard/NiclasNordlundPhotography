@@ -3,6 +3,8 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const express = require("express");
 const bodyParser = require("body-parser");
 const rateLimit = require("express-rate-limit");
+const multer = require("multer");
+const upload = multer({ storage: multer.memoryStorage() });
 const { Storage } = require("@google-cloud/storage");
 const app = express();
 
@@ -186,6 +188,52 @@ app.delete("/delete-photo", async (req, res) => {
     } catch (error) {
         console.error("Error deleting item:", error);
         res.status(500).json({ error: "Error deleting item" });
+    }
+});
+
+app.post("/upload-photos", upload.array("files"), async (req, res) => {
+    const { bucket: requestedBucket } = req.query;
+
+    try {
+        const bucketName = getBucketName(requestedBucket, true);
+        const bucket = storage.bucket(bucketName);
+
+        if (!req.files || req.files.length === 0) {
+            res.status(400).send("No files were uploaded.");
+            return;
+        }
+
+        const uploadPromises = req.files.map((file) => {
+            if (!file.buffer) {
+                console.error(
+                    "File buffer is undefined for",
+                    file.originalname
+                );
+                return Promise.resolve();
+            }
+
+            const blob = bucket.file(file.originalname);
+            return new Promise((resolve, reject) => {
+                const blobStream = blob.createWriteStream();
+                blobStream
+                    .on("error", (error) => {
+                        console.error("Error writing to GCS:", error);
+                        reject(error);
+                    })
+                    .on("finish", () => {
+                        resolve();
+                    });
+
+                blobStream.end(file.buffer);
+            });
+        });
+
+        await Promise.all(uploadPromises);
+
+        res.status(200).send("OK");
+    } catch (error) {
+        console.error("Error uploading photos:", error);
+        res.status(500).json({ error: "Error uploading photos" });
     }
 });
 
