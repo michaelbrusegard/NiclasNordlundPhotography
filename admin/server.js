@@ -82,7 +82,7 @@ const limiter = rateLimit({
     ),
 });
 
-app.get("/", (req, res) => {
+app.get("/", limiter, (req, res) => {
     if (req.session && req.session.userid) {
         res.sendFile(path.join(__dirname, "index.html"));
     } else res.send(loginHtml);
