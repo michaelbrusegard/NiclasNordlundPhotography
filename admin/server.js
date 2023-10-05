@@ -5,6 +5,7 @@ const express = require("express");
 const rateLimit = require("express-rate-limit");
 const sessions = require("express-session");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
@@ -20,6 +21,9 @@ bcrypt.hash(process.env.ADMIN_PASSWORD, 10, (err, hash) => {
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(
     sessions({
         secret: process.env.SESSION_SECRET,
@@ -27,20 +31,18 @@ app.use(
         cookie: {
             maxAge: 60 * 1000 * 15,
             secure: process.env.SERVE_ONLY_HTTPS === "true",
+            sameSite: "strict",
+            httpOnly: true,
         },
         resave: false,
     })
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-let session;
 const loginHtml = `
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=10" />
         <title>Admin | Niclas Nordlund Photography</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,6 +66,7 @@ const loginHtml = `
     </head>
     <body>
         <form method="POST">
+            <input type="hidden" id="csrfToken" name="csrfToken" value="" />
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" />
             <button type="submit">Submit</button>
@@ -75,7 +78,7 @@ const loginHtml = `
 
 const limiter = rateLimit({
     windowMs: 60 * 1000 * 15, // 15 minutes
-    max: 5, // 5 failed attempts allowed in that window
+    max: 10, // 10 failed attempts allowed in that window
     message: loginHtml.replace(
         "<p></p>",
         "<p>Too many login attempts, try again in 15 minutes.</p>"
@@ -84,8 +87,12 @@ const limiter = rateLimit({
 
 app.get("/", limiter, (req, res) => {
     if (req.session && req.session.userid) {
-        res.sendFile(path.join(__dirname, "index.html"));
-    } else res.send(loginHtml);
+        const token = crypto.randomBytes(64).toString("hex");
+        req.session.csrfToken = token;
+        res.render("index", { csrfToken: token });
+    } else {
+        res.send(loginHtml);
+    }
 });
 
 app.post("/", limiter, (req, res) => {
@@ -110,31 +117,14 @@ app.post("/", limiter, (req, res) => {
         }
     );
 });
-app.post("/", limiter, (req, res) => {
-    bcrypt.compare(
-        req.body.password,
-        process.env.ADMIN_PASSWORD,
-        (err, result) => {
-            if (err) {
-                console.error("Error comparing passwords:", err);
-                res.status(500).send("Internal Server Error");
-            } else if (result) {
-                req.session.userid = "admin";
-                res.redirect("/");
-            } else {
-                res.send(
-                    loginHtml.replace(
-                        "<p></p>",
-                        "<p>Incorrect password. Please try again.</p>"
-                    )
-                );
-            }
-        }
-    );
-});
 
 function authenticate(req, res, next) {
-    if (req.session && req.session.userid) {
+    if (
+        req.session &&
+        req.session.userid &&
+        req.session.csrfToken === req.headers["csrf-token"]
+    ) {
+        console.log("Authenticated");
         next();
     } else {
         res.status(401).send("Unauthorized");

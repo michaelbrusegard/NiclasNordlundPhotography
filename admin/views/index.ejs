@@ -30,6 +30,7 @@
         <button id="sectionButton">Load</button>
         <div id="sectionContent"></div>
         <script>
+            const token = "<%= csrfToken %>";
             const sectionSelect = document.getElementById("sectionSelect");
             const sectionButton = document.getElementById("sectionButton");
             const sectionContent = document.getElementById("sectionContent");
@@ -95,7 +96,11 @@
             });
 
             function loadItemsFromBucket(bucket, bucketContent) {
-                fetch(`/get-photos?bucket=${bucket}`)
+                fetch(`/get-photos?bucket=${bucket}`, {
+                    headers: {
+                        "csrf-token": token,
+                    },
+                })
                     .then((response) => {
                         if (response.status === 401) {
                             // Refresh the browser on a 401 error
@@ -152,33 +157,42 @@
                                 document.createElement("button");
                             downloadButton.textContent = "Download";
                             downloadButton.addEventListener("click", () => {
-                                const downloadLink =
-                                    document.createElement("a");
-                                downloadLink.style.display = "none";
-                                const downloadUrl = `/download-photo?bucket=${bucket}&name=${item.name}`;
-                                downloadLink.setAttribute("href", downloadUrl);
-                                downloadLink.setAttribute(
-                                    "download",
-                                    item.name
-                                );
-                                downloadLink.addEventListener(
-                                    "error",
-                                    (errorEvent) => {
-                                        if (errorEvent.target.status === 401) {
-                                            // Handle a 401 error (Unauthorized) here
-                                            location.reload();
-                                        } else {
-                                            alert(
-                                                "Error downloading photo: " +
-                                                    errorEvent.target.statusText
-                                            );
-                                            console.error(errorEvent.target);
-                                        }
+                                fetch(
+                                    `/download-photo?bucket=${bucket}&name=${item.name}`,
+                                    {
+                                        method: "GET",
+                                        headers: {
+                                            "csrf-token": token,
+                                        },
                                     }
-                                );
-                                document.body.appendChild(downloadLink);
-                                downloadLink.click();
-                                document.body.removeChild(downloadLink);
+                                )
+                                    .then((response) => {
+                                        if (response.status === 401) {
+                                            location.reload();
+                                        }
+                                        return response.text();
+                                    })
+                                    .then((response) => {
+                                        if (response.ok) {
+                                            response.text().then((url) => {
+                                                const a =
+                                                    document.createElement("a");
+                                                a.style.display = "none";
+                                                a.href = url;
+                                                a.download = item.name;
+                                                document.body.appendChild(a);
+                                                a.click();
+                                                document.body.removeChild(a);
+                                            });
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        alert(
+                                            "Error downloading photo: " +
+                                                error.message
+                                        );
+                                        console.error(error);
+                                    });
                             });
 
                             const deleteButton =
@@ -196,11 +210,13 @@
                                         `/delete-photo?bucket=${bucket}&name=${item.name}`,
                                         {
                                             method: "DELETE",
+                                            headers: {
+                                                "csrf-token": token,
+                                            },
                                         }
                                     )
                                         .then((response) => {
                                             if (response.status === 401) {
-                                                // Refresh the browser on a 401 error
                                                 location.reload();
                                             }
                                             return response.text();
@@ -227,7 +243,7 @@
                         });
                     })
                     .catch((error) => {
-                        Alert("Error loading photos:", error.message);
+                        alert("Error loading photos:", error.message);
                         console.error(error);
                     });
             }
@@ -263,6 +279,9 @@
                     }
                     fetch(`/upload-photos?bucket=${bucket}`, {
                         method: "POST",
+                        headers: {
+                            "csrf-token": token,
+                        },
                         body: formData,
                     })
                         .then((response) => {
