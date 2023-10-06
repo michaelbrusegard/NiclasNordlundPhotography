@@ -137,16 +137,6 @@ jobs:
                     --project=${{ secrets.PROJECT_ID }} \
                     --version admin-v1
 
-            - name: Update environment variable domains for dispatch
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' }}
-              uses: 73h/gae-app-yaml-replace-env-variables@v0.3
-              env:
-                  DOMAIN: ${{ secrets.DOMAIN }}
-                  WEBSITE_DOMAIN: ${{ secrets.WEBSITE_DOMAIN }}
-                  ADMIN_DOMAIN: ${{ secrets.ADMIN_DOMAIN }}
-              with:
-                  app_yaml_path: 'dispatch.yaml'
-
             - name: Deploy dispatch
               if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' }}
               run: |

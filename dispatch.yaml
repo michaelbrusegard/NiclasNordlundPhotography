@@ -1,9 +1,3 @@
 dispatch:
-    - url: $WEBSITE_DOMAIN
-      service: website
-
-    - url: $DOMAIN
-      service: website
-
-    - url: $ADMIN_DOMAIN
+    - url: '*/admin/*'
       service: admin
