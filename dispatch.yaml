@@ -4,6 +4,3 @@ dispatch:
 
     - url: 'www/*'
       service: default
-
-    - url: '/*'
-      service: default
