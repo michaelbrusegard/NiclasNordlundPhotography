@@ -135,4 +135,4 @@ jobs:
               run: |
                   gcloud app deploy ${{ github.workspace }}/admin/app.yaml \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --version admin-panel-v1
+                    --version admin-v1
