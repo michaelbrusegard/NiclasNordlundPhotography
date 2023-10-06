@@ -1,5 +1,6 @@
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const rateLimit = require("express-rate-limit");
 
 const checkout = require("./checkout.js");
 const bug = require("./bug");
@@ -28,14 +29,22 @@ app.use(
     express.static(frontendPath, {
         index: "home.html",
         extensions: ["html"],
-    }),
+    })
 );
 
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/checkout-session", checkout);
 
-app.post("/found-a-bug", bug);
+const limitBug = rateLimit({
+    windowMs: 60 * 1000 * 15,
+    max: 3,
+    message: (req, res) => {
+        res.redirect("/");
+    },
+});
+
+app.post("/found-a-bug", limitBug, bug);
 
 app.get("/get-server-url", (req, res) => {
     res.json(process.env.SERVER_URL);
