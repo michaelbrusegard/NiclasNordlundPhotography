@@ -1,6 +1,3 @@
 dispatch:
-    - url: 'admin/*'
+    - url: 'admin.niclasnordlund.com/*'
       service: admin
-
-    - url: 'www/*'
-      service: default
