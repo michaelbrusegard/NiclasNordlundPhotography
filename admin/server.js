@@ -36,7 +36,7 @@ app.use(
             httpOnly: true,
         },
         resave: false,
-    })
+    }),
 );
 
 const limiter = rateLimit({
