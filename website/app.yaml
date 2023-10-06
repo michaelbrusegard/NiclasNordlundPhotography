@@ -7,9 +7,6 @@ handlers:
       script: auto
       secure: always
 
-automatic_scaling:
-    min_num_instances: 1
-
 env_variables:
     SERVER_URL: $SERVER_URL
     PERSONAL_ACCESS_TOKEN: $PERSONAL_ACCESS_TOKEN
