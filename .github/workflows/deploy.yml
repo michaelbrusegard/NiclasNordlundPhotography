@@ -2,13 +2,26 @@ name: Deploy to Google Cloud
 
 on:
     push:
-        branches:
-            - main
+        workflow_dispatch:
+            inputs:
+                deploy-component:
+                    description: "Select the component to deploy"
+                    required: true
+                    options:
+                        - "all"
+                        - "website"
+                        - "admin"
+                        - "archivePurchasedPhotos"
+                        - "compressPublicPhotos"
+                        - "deletePublicPhotos"
+        workflow_run:
+            workflows: ["Code formatting check"]
+            types:
+                - completed
 
 jobs:
     Deploy:
         runs-on: ubuntu-latest
-        if: "!(contains(github.event.head_commit.message, 'style: :art: format code with Prettier'))"
         permissions:
             contents: "read"
             id-token: "write"
@@ -31,6 +44,8 @@ jobs:
                         - 'functions/archivePurchasedPhotos/**'
                       website:
                         - 'website/**'
+                      admin:
+                        - 'admin/**'
 
             - name: Authenticate with Google Cloud
               uses: google-github-actions/auth@v1
@@ -41,7 +56,7 @@ jobs:
               uses: google-github-actions/setup-gcloud@v1
 
             - name: Deploy compressPublicPhotos
-              if: steps.filter.outputs.compressPublicPhotos == 'true'
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'compressPublicPhotos' || steps.filter.outputs.compressPublicPhotos == 'true'
               run: |
                   gcloud functions deploy compressPublicPhotos \
                     --gen2 \
@@ -55,7 +70,7 @@ jobs:
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy deletePublicPhotos
-              if: steps.filter.outputs.deletePublicPhotos == 'true'
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'deletePublicPhotos' || steps.filter.outputs.deletePublicPhotos == 'true'
               run: |
                   gcloud functions deploy deletePublicPhotos \
                     --gen2 \
@@ -69,7 +84,7 @@ jobs:
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy archivePurchasedPhotos
-              if: steps.filter.outputs.archivePurchasedPhotos == 'true'
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'archivePurchasedPhotos' || steps.filter.outputs.archivePurchasedPhotos == 'true'
               run: |
                   gcloud functions deploy archivePurchasedPhotos \
                     --gen2 \
@@ -85,7 +100,7 @@ jobs:
                     --timeout=540s
 
             - name: Update environment variables for website
-              if: steps.filter.outputs.website == 'true'
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'website' || steps.filter.outputs.website == 'true'
               uses: 73h/gae-app-yaml-replace-env-variables@v0.3
               env:
                   SERVER_URL: ${{ secrets.SERVER_URL }}
@@ -112,8 +127,34 @@ jobs:
                   app_yaml_path: "website/app.yaml"
 
             - name: Deploy website
-              if: steps.filter.outputs.website == 'true'
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'website' || steps.filter.outputs.website == 'true'
               run: |
                   gcloud app deploy ${{ github.workspace }}/website/app.yaml \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --version v1
+                    --version website
+
+            - name: Update environment variables for admin panel
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'admin' || steps.filter.outputs.admin == 'true'
+              uses: 73h/gae-app-yaml-replace-env-variables@v0.3
+              env:
+                  ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+                  SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+                  SERVE_ONLY_HTTPS: ${{ secrets.SERVE_ONLY_HTTPS }}
+                  PHOTOS_BUCKET: ${{ secrets.PHOTOS_BUCKET }}
+                  PUBLIC_PHOTOS_BUCKET: ${{ secrets.PUBLIC_PHOTOS_BUCKET }}
+                  PHOTO_CAROUSEL_BUCKET: ${{ secrets.PHOTO_CAROUSEL_BUCKET }}
+                  NATURE_SHOWCASE_BUCKET: ${{ secrets.NATURE_SHOWCASE_BUCKET }}
+                  ANIMALS_SHOWCASE_BUCKET: ${{ secrets.ANIMALS_SHOWCASE_BUCKET }}
+                  ARCHITECTURAL_SHOWCASE_BUCKET: ${{ secrets.ARCHITECTURAL_SHOWCASE_BUCKET }}
+                  PORTRAIT_SHOWCASE_BUCKET: ${{ secrets.PORTRAIT_SHOWCASE_BUCKET }}
+                  WEDDING_SHOWCASE_BUCKET: ${{ secrets.WEDDING_SHOWCASE_BUCKET }}
+                  SPORT_SHOWCASE_BUCKET: ${{ secrets.SPORT_SHOWCASE_BUCKET }}
+              with:
+                  app_yaml_path: "admin/app.yaml"
+
+            - name: Deploy admin panel
+              if: github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'admin' || steps.filter.outputs.admin == 'true'
+              run: |
+                  gcloud app deploy ${{ github.workspace }}/admin/app.yaml \
+                    --project=${{ secrets.PROJECT_ID }} \
+                    --version admin

@@ -22,6 +22,7 @@
     </head>
     <body>
         <h1>Admin Panel</h1>
+        <p id="sectionParagraph"></p>
         <label for="sectionSelect">Select section:</label>
         <select id="sectionSelect">
             <option value="showcase">Showcase</option>
@@ -31,6 +32,74 @@
         <div id="sectionContent"></div>
         <script>
             const token = "<%= csrfToken %>";
+
+            const sectionParagraph =
+                document.getElementById("sectionParagraph");
+            const kindMessages = [
+                "Du gör ett fantastiskt jobb!",
+                "Ditt arbete är verkligen inspirerande!",
+                "Håll det fantastiska arbetet uppe!",
+                "Din fotografi är enastående!",
+                "Ditt talang känner inga gränser!",
+                "Din kreativitet är imponerande!",
+                "Din passion för fotografi är beundransvärd!",
+                "Du fångar ögonblicken på ett underbart sätt!",
+                "Ditt arbete sprider glädje och skönhet!",
+                "Din fotografiska skicklighet är en gåva!",
+                "Din skapande förmåga är oöverträffad!",
+                "Dina bilder berättar fantastiska historier!",
+                "Du har en unik talang inom fotografi!",
+                "Din känsla för komposition är fantastisk!",
+                "Ditt öga för detaljer är imponerande!",
+                "Dina bilder är som konstverk!",
+                "Ditt arbete förevigar ögonblick på bästa sätt!",
+                "Du fångar magiska stunder med din kamera!",
+                "Din skaparkraft är en förebild!",
+                "Ditt fotografi är en glädje för ögat!",
+                "Din dedikation till konsten är beundransvärd!",
+                "Din passion för fotografi strålar igenom dina bilder!",
+                "Du är en mästare av ljus och skugga!",
+                "Ditt arbete är en inspirationskälla!",
+                "Du lyfter fram det vackra i vardagen!",
+                "Dina bilder är fulla av liv och känsla!",
+                "Din skicklighet inom fotografi är fenomenal!",
+                "Ditt arbete är en glädje att betrakta!",
+                "Dina bilder är en resa genom skönhet och kreativitet!",
+                "Du skapar magi med din kamera!",
+                "Din passion för fotografi är smittsam!",
+                "Ditt fotografi fångar känslor på ett unikt sätt!",
+                "Din skaparglädje är en förebild!",
+                "Din förmåga att se skönhet i det vardagliga är beundransvärd!",
+                "Ditt arbete är en konstnärlig bedrift!",
+                "Du fångar ögonblickens magi med din kamera!",
+                "Dina bilder berör hjärtat och själen!",
+                "Ditt fotografiska öga är en skatt!",
+                "Ditt arbete är en hyllning till livet!",
+                "Ditt fotografi är en resa genom tid och rum!",
+                "Dina bilder talar ett universellt språk!",
+                "Ditt bidrag till fotografiets värld är ovärderligt!",
+                "Din kreativa vision är en gåva!",
+                "Din tekniska skicklighet är imponerande!",
+                "Din förmåga att fånga ögonblickets essens är unik!",
+                "Ditt arbete är en källa till glädje och inspiration!",
+                "Din talang är en skatt som berikar oss alla!",
+                "Dina bilder förmedlar djup och betydelse!",
+                "Ditt fotografi belyser skönheten i livet!",
+                "Ditt arbete är en hyllning till naturen och människan!",
+                "Din känsla för ljus och färg är enastående!",
+                "Din passion för att utforska nya perspektiv är beundransvärd!",
+                "Dina bilder berättar berörande historier!",
+                "Du har en unik förmåga att fånga ögonblickets flyktighet!",
+                "Ditt fotografi skapar minnen som varar för evigt!",
+                "Din skaparkraft är en oändlig källa till inspiration!",
+                "Ditt arbete är en konstant källa till glädje och förundran!",
+                "Dina bilder är som musik för ögat!",
+                "Din förmåga att skapa konst med ljus är fantastisk!",
+                "Ditt arbete förenar människor genom skönhet!",
+            ];
+            sectionParagraph.textContent =
+                kindMessages[Math.floor(Math.random() * kindMessages.length)];
+
             const sectionSelect = document.getElementById("sectionSelect");
             const sectionButton = document.getElementById("sectionButton");
             const sectionContent = document.getElementById("sectionContent");
