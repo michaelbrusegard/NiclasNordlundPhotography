@@ -19,12 +19,9 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
             contents: "read"
-            id-token: "write"
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
-              with:
-                  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
             - name: Authenticate with Google Cloud
               uses: google-github-actions/auth@v1
@@ -46,6 +43,7 @@ jobs:
                     --trigger-event-filters=bucket=${{ secrets.PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
                     --project=${{ secrets.PROJECT_ID }} \
+                    --clear-deployed \
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy deletePublicPhotos
@@ -60,6 +58,7 @@ jobs:
                     --trigger-event-filters=bucket=${{ secrets.PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
                     --project=${{ secrets.PROJECT_ID }} \
+                    --clear-deployed \
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy archivePurchasedPhotos
@@ -74,6 +73,7 @@ jobs:
                     --entry-point=createPhotosArchive \
                     --trigger-http \
                     --project=${{ secrets.PROJECT_ID }} \
+                    --clear-deployed \
                     --set-env-vars PHOTOS_BUCKET=${{ secrets.PHOTOS_BUCKET }},ARCHIVE_BUCKET=${{ secrets.ARCHIVE_BUCKET }} \
                     --service-account=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_SERV_ACC_EMAIL }} \
                     --timeout=540s
