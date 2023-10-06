@@ -10,9 +10,10 @@ on:
                 options:
                     - 'all'
                     - 'app engine'
-                    - 'functions'
                     - 'website'
                     - 'admin'
+                    - 'dispatch'
+                    - 'functions'
                     - 'archivePurchasedPhotos'
                     - 'compressPublicPhotos'
                     - 'deletePublicPhotos'
@@ -138,7 +139,7 @@ jobs:
                     --version admin-v1
 
             - name: Deploy dispatch
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'dispatch' }}
               run: |
                   gcloud app deploy dispatch.yaml \
                     --project=${{ secrets.PROJECT_ID }}
