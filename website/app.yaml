@@ -1,11 +1,14 @@
 runtime: nodejs18
 
-service: default
+service: website
 
 handlers:
     - url: /.*
       script: auto
       secure: always
+
+automatic_scaling:
+    min_num_instances: 1
 
 env_variables:
     SERVER_URL: $SERVER_URL
