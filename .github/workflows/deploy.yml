@@ -9,6 +9,8 @@ on:
                 type: choice
                 options:
                     - 'all'
+                    - 'app engine'
+                    - 'functions'
                     - 'website'
                     - 'admin'
                     - 'archivePurchasedPhotos'
@@ -32,7 +34,7 @@ jobs:
               uses: google-github-actions/setup-gcloud@v1
 
             - name: Deploy compressPublicPhotos
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'compressPublicPhotos' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'functions' || github.event.inputs.deploy-component == 'compressPublicPhotos' }}
               run: |
                   gcloud functions deploy compressPublicPhotos \
                     --gen2 \
@@ -46,7 +48,7 @@ jobs:
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy deletePublicPhotos
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'deletePublicPhotos' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'functions' || github.event.inputs.deploy-component == 'deletePublicPhotos' }}
               run: |
                   gcloud functions deploy deletePublicPhotos \
                     --gen2 \
@@ -60,7 +62,7 @@ jobs:
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy archivePurchasedPhotos
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'archivePurchasedPhotos' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'functions' || github.event.inputs.deploy-component == 'archivePurchasedPhotos' }}
               run: |
                   gcloud functions deploy archivePurchasedPhotos \
                     --gen2 \
@@ -76,7 +78,7 @@ jobs:
                     --timeout=540s
 
             - name: Update environment variables for website
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'website' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'website' }}
               uses: 73h/gae-app-yaml-replace-env-variables@v0.3
               env:
                   SERVER_URL: ${{ secrets.SERVER_URL }}
@@ -103,14 +105,14 @@ jobs:
                   app_yaml_path: 'website/app.yaml'
 
             - name: Deploy website
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'website' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'website' }}
               run: |
                   gcloud app deploy ${{ github.workspace }}/website/app.yaml \
                     --project=${{ secrets.PROJECT_ID }} \
                     --version website-v1
 
             - name: Update environment variables for admin panel
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'admin' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'admin' }}
               uses: 73h/gae-app-yaml-replace-env-variables@v0.3
               env:
                   ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
@@ -129,7 +131,7 @@ jobs:
                   app_yaml_path: 'admin/app.yaml'
 
             - name: Deploy admin panel
-              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'admin' }}
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'admin' }}
               run: |
                   gcloud app deploy ${{ github.workspace }}/admin/app.yaml \
                     --project=${{ secrets.PROJECT_ID }} \
