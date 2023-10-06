@@ -38,64 +38,36 @@ app.use(
     })
 );
 
-const loginHtml = `
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=10" />
-        <title>Admin | Niclas Nordlund Photography</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-            rel="stylesheet"
-        />
-        <style>
-            * {
-                font-family: "Poppins", sans-serif;
-            }
-
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: #f0f0f0;
-                font-size: 18px;
-            }
-        </style>
-    </head>
-    <body>
-        <form method="POST">
-            <input type="hidden" id="csrfToken" name="csrfToken" value="" />
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" />
-            <button type="submit">Submit</button>
-            <p></p>
-        </form>
-    </body>
-</html>
-`;
-
 const limiter = rateLimit({
     windowMs: 60 * 1000 * 15, // 15 minutes
     max: 10, // 10 failed attempts allowed in that window
-    message: loginHtml.replace(
-        "<p></p>",
-        "<p>Too many login attempts, try again in 15 minutes.</p>"
-    ),
+    message: (req, res) => {
+        res.render("login", {
+            csrfToken: req.session.csrfToken,
+            errorMessage: "Too many requests. Please try again in 15 minutes.",
+        });
+    },
 });
 
 app.get("/", limiter, (req, res) => {
+    const token = crypto.randomBytes(64).toString("hex");
+    req.session.csrfToken = token;
     if (req.session && req.session.userid) {
-        const token = crypto.randomBytes(64).toString("hex");
-        req.session.csrfToken = token;
         res.render("index", { csrfToken: token });
     } else {
-        res.send(loginHtml);
+        res.render("login", {
+            csrfToken: token,
+            errorMessage: "",
+        });
     }
 });
 
 app.post("/", limiter, (req, res) => {
+    if (req.session.csrfToken !== req.body.csrfToken) {
+        res.status(401).send("Unauthorized");
+        return;
+    }
+
     bcrypt.compare(
         req.body.password,
         process.env.ADMIN_PASSWORD,
@@ -107,12 +79,10 @@ app.post("/", limiter, (req, res) => {
                 req.session.userid = "admin";
                 res.redirect("/");
             } else {
-                res.send(
-                    loginHtml.replace(
-                        "<p></p>",
-                        "<p>Incorrect password. Please try again.</p>"
-                    )
-                );
+                res.render("login", {
+                    csrfToken: req.session.csrfToken,
+                    errorMessage: "Incorrect password. Please try again.",
+                });
             }
         }
     );
@@ -124,7 +94,6 @@ function authenticate(req, res, next) {
         req.session.userid &&
         req.session.csrfToken === req.headers["csrf-token"]
     ) {
-        console.log("Authenticated");
         next();
     } else {
         res.status(401).send("Unauthorized");
@@ -168,15 +137,14 @@ app.get("/download-photo", async (req, res) => {
             version: "v4",
             action: "read",
             expires: Date.now() + 5 * 60 * 1000,
+            responseDisposition: 'attachment; filename="' + name + "",
         };
         const [signedUrl] = await storage
             .bucket(bucketName)
             .file(name)
             .getSignedUrl(options);
 
-        res.setHeader("Content-Type", "image/jpeg");
-        res.setHeader("Content-Disposition", `attachment; filename="${name}"`);
-        res.redirect(signedUrl);
+        res.status(200).json({ signedUrl });
     } catch (error) {
         console.error("Error generating signed URL:", error);
         res.status(500).send("Error generating URL for photo to download");

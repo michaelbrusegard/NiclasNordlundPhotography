@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=10" />
+        <title>Admin | Niclas Nordlund Photography</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                font-family: "Poppins", sans-serif;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+                font-size: 18px;
+                height: 80vh;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="POST">
+            <input type="hidden" name="csrfToken" value="<%= csrfToken %>" />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" />
+            <button type="submit">Submit</button>
+            <p><%= errorMessage %></p>
+        </form>
+    </body>
+</html>
