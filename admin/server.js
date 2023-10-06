@@ -30,13 +30,12 @@ app.use(
         saveUninitialized: true,
         proxy: process.env.SERVE_ONLY_HTTPS === 'true',
         cookie: {
-            maxAge: 60 * 1000 * 15,
             secure: process.env.SERVE_ONLY_HTTPS === 'true',
             sameSite: 'strict',
             httpOnly: true,
         },
         resave: false,
-    }),
+    })
 );
 
 const limiter = rateLimit({
