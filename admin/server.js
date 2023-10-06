@@ -28,6 +28,7 @@ app.use(
     sessions({
         secret: process.env.SESSION_SECRET,
         saveUninitialized: true,
+        proxy: process.env.SERVE_ONLY_HTTPS === 'true',
         cookie: {
             maxAge: 60 * 1000 * 15,
             secure: process.env.SERVE_ONLY_HTTPS === 'true',
@@ -35,7 +36,7 @@ app.use(
             httpOnly: true,
         },
         resave: false,
-    }),
+    })
 );
 
 const limiter = rateLimit({
