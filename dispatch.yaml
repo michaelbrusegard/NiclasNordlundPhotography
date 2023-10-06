@@ -1,6 +1,9 @@
 dispatch:
-    - url: '*/admin/*'
+    - url: 'admin/*'
       service: admin
 
-    - url: '*/www/*'
+    - url: 'www/*'
+      service: default
+
+    - url: '/*'
       service: default
