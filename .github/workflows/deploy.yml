@@ -107,7 +107,7 @@ jobs:
               run: |
                   gcloud app deploy ${{ github.workspace }}/website/app.yaml \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --version website
+                    --version website-v1
 
             - name: Update environment variables for admin panel
               if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'admin' }}
@@ -133,4 +133,4 @@ jobs:
               run: |
                   gcloud app deploy ${{ github.workspace }}/admin/app.yaml \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --version admin
+                    --version admin-panel-v1
