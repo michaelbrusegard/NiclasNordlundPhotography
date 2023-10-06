@@ -1,8 +1,8 @@
-const { Storage } = require("@google-cloud/storage");
-const { createReadStream, createWriteStream } = require("fs");
-const { pipeline } = require("stream");
-const { promisify } = require("util");
-const sharp = require("sharp");
+const { Storage } = require('@google-cloud/storage');
+const { createReadStream, createWriteStream } = require('fs');
+const { pipeline } = require('stream');
+const { promisify } = require('util');
+const sharp = require('sharp');
 
 const DESTINATION_BUCKET_NAME = process.env.PUBLIC_PHOTOS_BUCKET;
 const MAX_WIDTH = 1024; // The maximum width of the low-quality photos
@@ -23,12 +23,10 @@ exports.compressPhoto = async (event) => {
     const destinationStream = destinationFile.createWriteStream();
 
     // Use Sharp to convert the photo to low quality and resize it
-    const transformStream = sharp()
-        .jpeg({ quality: QUALITY })
-        .resize(MAX_WIDTH, MAX_HEIGHT, {
-            fit: "inside", // Resize only if the photo is larger than the maximum size
-            withoutEnlargement: true, // Do not enlarge the photo if it is smaller than the maximum size
-        });
+    const transformStream = sharp().jpeg({ quality: QUALITY }).resize(MAX_WIDTH, MAX_HEIGHT, {
+        fit: 'inside', // Resize only if the photo is larger than the maximum size
+        withoutEnlargement: true, // Do not enlarge the photo if it is smaller than the maximum size
+    });
 
     // Use pipeline to stream the photo through Sharp and upload to destination bucket
     await promisify(pipeline)(sourceStream, transformStream, destinationStream);

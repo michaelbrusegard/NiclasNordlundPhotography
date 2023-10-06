@@ -2,13 +2,13 @@ async function getPhotos() {
     const photoCarouselBucket = await getPhotoCarouselBucket();
     const files = await fetchBucketData(photoCarouselBucket);
     files.forEach((filename) => {
-        let img = document.createElement("img");
-        img.loading = "lazy";
+        let img = document.createElement('img');
+        img.loading = 'lazy';
         img.src = `https://storage.googleapis.com/${photoCarouselBucket}/${filename}`;
         img.alt = filename;
         photoCarousel.appendChild(img);
     });
-    return document.querySelectorAll("#photoCarousel img");
+    return document.querySelectorAll('#photoCarousel img');
 }
 
 // Function to run the carousel
@@ -22,7 +22,7 @@ async function initialisePhotoCarousel() {
             swapPhoto(photos);
         }, intervalTime);
         // Checking for clicks on carousel
-        photoCarousel.addEventListener("click", () => {
+        photoCarousel.addEventListener('click', () => {
             // Restarting the timer and runnign the photo swapping function
             clearInterval(timer);
             swapPhoto(photos);
@@ -31,12 +31,8 @@ async function initialisePhotoCarousel() {
             }, 1.5 * intervalTime);
         });
 
-        document.addEventListener("keydown", (event) => {
-            if (
-                event.key === "Enter" ||
-                (event.key === "ArrowDown" &&
-                    currentIndex === quotesContainer.length)
-            ) {
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || (event.key === 'ArrowDown' && currentIndex === quotesContainer.length)) {
                 clearInterval(timer);
                 swapPhoto(photos);
                 timer = setInterval(function () {
@@ -47,10 +43,10 @@ async function initialisePhotoCarousel() {
 
         prefetch();
     } catch (error) {
-        let div = document.createElement("div");
-        div.id = "error";
-        div.textContent = "Error: Unable to load photos.";
-        photoCarousel.style.cursor = "auto";
+        let div = document.createElement('div');
+        div.id = 'error';
+        div.textContent = 'Error: Unable to load photos.';
+        photoCarousel.style.cursor = 'auto';
         photoCarousel.appendChild(div);
         console.error(error);
     }
@@ -72,13 +68,13 @@ function swapPhoto(photos) {
 // Displaying a new photo
 function newPhoto(index, photos) {
     // Mark the photo as visible and toggle animation
-    photos[index].style.visibility = "visible";
-    photos[index].classList.add("photoIn");
+    photos[index].style.visibility = 'visible';
+    photos[index].classList.add('photoIn');
     // Remove animation after it is finished running
     photos[index].addEventListener(
-        "animationend",
+        'animationend',
         () => {
-            photos[index].classList.remove("photoIn");
+            photos[index].classList.remove('photoIn');
         },
         { once: true },
     );
@@ -86,13 +82,13 @@ function newPhoto(index, photos) {
 
 function removePhoto(index, photos) {
     // Toggle the out animation
-    photos[index].classList.add("photoOut");
+    photos[index].classList.add('photoOut');
     // When animation is done set it to hidden and remove animation
     photos[index].addEventListener(
-        "animationend",
+        'animationend',
         () => {
-            photos[index].classList.remove("photoOut");
-            photos[index].style.visibility = "hidden";
+            photos[index].classList.remove('photoOut');
+            photos[index].style.visibility = 'hidden';
         },
         { once: true },
     );

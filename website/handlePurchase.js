@@ -1,21 +1,17 @@
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
-const fileSharing = require("./fileSharing");
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const fileSharing = require('./fileSharing');
 
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 
 // Define a function to verify the webhook signature
 const webhookVerifyMiddleware = (request, response, next) => {
-    const sigHeader = request.headers["stripe-signature"];
+    const sigHeader = request.headers['stripe-signature'];
     const webhookSecret = process.env.WEBHOOK_SECRET;
 
     try {
         request.rawBody = Buffer.from(JSON.stringify(request.body));
-        stripe.webhooks.constructEvent(
-            request.rawBody,
-            sigHeader,
-            webhookSecret,
-        );
+        stripe.webhooks.constructEvent(request.rawBody, sigHeader, webhookSecret);
         next();
     } catch (error) {
         console.error(error);
@@ -25,7 +21,7 @@ const webhookVerifyMiddleware = (request, response, next) => {
 
 // Configure body-parser to parse the webhook payload as a Buffer
 const webhookMiddleware = bodyParser.raw({
-    type: "application/json",
+    type: 'application/json',
     verify: webhookVerifyMiddleware,
 });
 
@@ -35,7 +31,7 @@ const handleCheckoutSession = (req, res) => {
     const event = req.body;
     // Check the type of the received event
     switch (event.type) {
-        case "checkout.session.completed":
+        case 'checkout.session.completed':
             const checkoutSession = event.data.object;
             let purchasedItems = checkoutSession.metadata.purchasedItems;
             const customerEmail = checkoutSession.customer_details.email;
@@ -44,20 +40,11 @@ const handleCheckoutSession = (req, res) => {
                 purchasedItems = JSON.parse(purchasedItems);
             }
             try {
-                fileSharing.handlePhotos(
-                    purchasedItems,
-                    customerEmail,
-                    customerName,
-                );
+                fileSharing.handlePhotos(purchasedItems, customerEmail, customerName);
 
                 res.json({ received: true });
             } catch (error) {
-                fileSharing.sendErrorEmails(
-                    purchasedItems,
-                    customerEmail,
-                    customerName,
-                    error,
-                );
+                fileSharing.sendErrorEmails(purchasedItems, customerEmail, customerName, error);
                 res.status(500).json({ error: e.message });
                 console.error(error);
             }

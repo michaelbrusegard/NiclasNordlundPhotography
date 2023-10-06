@@ -1,8 +1,8 @@
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-const stripe = require("stripe")(process.env.SECRET_KEY);
-const { Storage } = require("@google-cloud/storage");
+const stripe = require('stripe')(process.env.SECRET_KEY);
+const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage();
 
@@ -22,22 +22,16 @@ async function getStoreItems() {
 
 module.exports = async (request, response) => {
     const storeItems = await getStoreItems();
-    const itemsToPurchase = request.body.map((item) => [
-        item[0],
-        parseInt(item[1]),
-    ]);
+    const itemsToPurchase = request.body.map((item) => [item[0], parseInt(item[1])]);
     let validatedItemsToPurchase = [];
     let lineItems = [];
     for (i in itemsToPurchase) {
         for (j in storeItems) {
-            if (
-                JSON.stringify(itemsToPurchase[i]) ===
-                JSON.stringify(storeItems[j])
-            ) {
+            if (JSON.stringify(itemsToPurchase[i]) === JSON.stringify(storeItems[j])) {
                 validatedItemsToPurchase.push(storeItems[j][0]);
                 lineItems.push({
                     price_data: {
-                        currency: "eur",
+                        currency: 'eur',
                         product_data: {
                             name: storeItems[j][0],
                         },
@@ -51,8 +45,8 @@ module.exports = async (request, response) => {
     if (lineItems.length > 0) {
         try {
             const session = await stripe.checkout.sessions.create({
-                payment_method_types: ["card"],
-                mode: "payment",
+                payment_method_types: ['card'],
+                mode: 'payment',
                 line_items: lineItems,
                 success_url: `${process.env.SERVER_URL}/sucess`,
                 cancel_url: `${process.env.SERVER_URL}/shop`,

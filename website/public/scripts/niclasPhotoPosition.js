@@ -3,23 +3,20 @@ function setNiclasPhotoLeftPos() {
     const screenWidth = window.innerWidth;
 
     // Get nav bar size
-    const desktopNavSize = parseInt(
-        style.getPropertyValue("--desktopNavSize").slice(0, -2),
-    );
+    const desktopNavSize = parseInt(style.getPropertyValue('--desktopNavSize').slice(0, -2));
 
     const photoWidth = (80 * screenWidth) / 100;
     // Calculate and set value
-    const niclasLeftPxBig =
-        desktopNavSize - photoWidth / 2 + (screenWidth - desktopNavSize) / 2;
+    const niclasLeftPxBig = desktopNavSize - photoWidth / 2 + (screenWidth - desktopNavSize) / 2;
     const niclasLeftPxSmall = screenWidth / 2 - photoWidth / 2;
 
     // Sets photo position based on screen size and orientation
     if (screenWidth > desktopNavSize + photoWidth) {
-        niclasPhoto.style.left = String(niclasLeftPxBig) + "px";
+        niclasPhoto.style.left = String(niclasLeftPxBig) + 'px';
     } else if (isMobileNav() && isPortraitOrientation()) {
-        niclasPhoto.style.left = String(niclasLeftPxSmall) + "px";
+        niclasPhoto.style.left = String(niclasLeftPxSmall) + 'px';
     } else {
-        niclasPhoto.style.left = "auto";
+        niclasPhoto.style.left = 'auto';
     }
 }
 

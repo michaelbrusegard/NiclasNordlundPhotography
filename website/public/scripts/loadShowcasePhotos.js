@@ -35,13 +35,13 @@ async function loadPhotos() {
 
         // Creates new column
         for (let i = 0; i < currentColumns; i++) {
-            const newColumn = document.createElement("div");
-            newColumn.classList.add("column");
+            const newColumn = document.createElement('div');
+            newColumn.classList.add('column');
             gallery.appendChild(newColumn);
         }
 
         // Gets all the new columns
-        const columns = document.getElementsByClassName("column");
+        const columns = document.getElementsByClassName('column');
 
         // Variables to skip big photos when placing into columns
         let bigPhotoIndexArray = [];
@@ -50,28 +50,17 @@ async function loadPhotos() {
 
         for (let i = 0; i < totalPhotos; i++) {
             // Get current photo dimensions
-            const dimensions = await getImageDimensions(
-                showcaseBucket,
-                files[i],
-            );
+            const dimensions = await getImageDimensions(showcaseBucket, files[i]);
 
             // Get current photo
-            const photo = createContainer(
-                showcaseBucket,
-                files[i],
-                dimensions,
-                i,
-            );
+            const photo = createContainer(showcaseBucket, files[i], dimensions, i);
             // Mark as big photo
             if (dimensions.width < dimensions.height) {
                 bigPhotoIndexArray.push(i % currentColumns);
                 skipBigPhoto = false;
             }
             // If we are at the big photo index from the previous iteration, go one column further
-            if (
-                bigPhotoIndexArray.includes(i % currentColumns) &&
-                skipBigPhoto
-            ) {
+            if (bigPhotoIndexArray.includes(i % currentColumns) && skipBigPhoto) {
                 bigPhotoIndexArray.shift();
                 extraValue += 1;
             }
@@ -82,11 +71,10 @@ async function loadPhotos() {
 
         prefetch();
     } catch (error) {
-        gallery.classList.add("error");
-        gallery.classList.add("fadeInFromBottom");
-        gallery.classList.remove("gallery");
-        gallery.textContent =
-            "Error: Unable to load showcase photos, please try again later.";
+        gallery.classList.add('error');
+        gallery.classList.add('fadeInFromBottom');
+        gallery.classList.remove('gallery');
+        gallery.textContent = 'Error: Unable to load showcase photos, please try again later.';
         console.error(error);
     }
 }
@@ -108,15 +96,15 @@ function getColumns() {
 // Modified lazyload function to adapt to multiple columns
 function createContainer(showcaseBucket, filename, dimensions, index) {
     // Added creation of a div to hold the photos
-    let div = document.createElement("div");
-    let img = document.createElement("img");
+    let div = document.createElement('div');
+    let img = document.createElement('img');
 
     // Loads photos from showcase, sets alt and lazy
     // Assigning a class to the new div in order for css to be added
     img.src = `https://storage.googleapis.com/${showcaseBucket}/${filename}`;
     img.alt = filename;
-    img.loading = "lazy";
-    div.classList.add("photo");
+    img.loading = 'lazy';
+    div.classList.add('photo');
 
     // Sets the html height and width so the photo takes the same amount of space before it is loaded
     img.width = dimensions.width;
@@ -129,12 +117,8 @@ function createContainer(showcaseBucket, filename, dimensions, index) {
     addPhotosFadeOnScroll.observe(div);
 
     // Attach event listeners to the div element
-    div.addEventListener("click", (event) =>
-        handlePhotoClickAndEnter(event, img),
-    );
-    div.addEventListener("keydown", (event) =>
-        handlePhotoClickAndEnter(event, img),
-    );
+    div.addEventListener('click', (event) => handlePhotoClickAndEnter(event, img));
+    div.addEventListener('keydown', (event) => handlePhotoClickAndEnter(event, img));
 
     // Set logical tabindex for photo order
     div.tabIndex = index + 1;
@@ -143,15 +127,15 @@ function createContainer(showcaseBucket, filename, dimensions, index) {
 }
 
 // Button that scrolls the window to the top
-const scrollTopButtons = document.querySelectorAll(".arrow");
+const scrollTopButtons = document.querySelectorAll('.arrow');
 
 // Eventlistener for scroll-back-to-top button
 scrollTopButtons.forEach((element) => {
-    element.addEventListener("click", (event) => {
+    element.addEventListener('click', (event) => {
         event.preventDefault();
         document.documentElement.scrollTo({
             top: 0,
-            behavior: "smooth",
+            behavior: 'smooth',
         });
     });
 });

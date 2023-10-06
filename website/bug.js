@@ -1,6 +1,6 @@
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
-const axios = require("axios");
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const axios = require('axios');
 
 async function createGithubIssue(req, res) {
     try {
@@ -16,7 +16,7 @@ async function createGithubIssue(req, res) {
             {
                 headers: {
                     Authorization: `Bearer ${process.env.PERSONAL_ACCESS_TOKEN}`,
-                    "User-Agent": `${process.env.USER_AGENT}`,
+                    'User-Agent': `${process.env.USER_AGENT}`,
                 },
             },
         );
@@ -27,7 +27,7 @@ async function createGithubIssue(req, res) {
         res.redirect(newIssueUrl);
     } catch (error) {
         res.status(500).json({
-            error: "Failed to create GitHub issue. Please try again later.",
+            error: 'Failed to create GitHub issue. Please try again later.',
         });
         console.error(error);
     }

@@ -15,13 +15,13 @@ function isNavigatedFrom(navigatedFromArray) {
     let lastSite = navigatedFrom;
 
     // If the page is reloaded asigns navigatedFrom to something else to avoid playing the animation
-    if (getNavigationType() === "reload") {
-        lastSite = "";
+    if (getNavigationType() === 'reload') {
+        lastSite = '';
     }
 
     // Checks if the link that is navigated from is one of the array html pages
     for (let i = 0; i < navigatedFromArray.length; i++) {
-        if (lastSite === serverURL + "/" + navigatedFromArray[i]) {
+        if (lastSite === serverURL + '/' + navigatedFromArray[i]) {
             return true;
         }
     }
@@ -33,12 +33,12 @@ function animationStartOnNavElements(nav) {
     for (let i = 0; i < nav.childElementCount; i++) {
         const navElement = nav.children[i];
         // Set the elements in the old navigation bar to visible (They are default hidden to prevent popping on fast refresh)
-        navElement.firstElementChild.style.visibility = "visible";
+        navElement.firstElementChild.style.visibility = 'visible';
         // Add bag icon animation and animation to the rest of the elements
-        if (navElement.firstElementChild.className.endsWith("linkBag")) {
-            navElement.firstElementChild.classList.add("linkBagAnimation");
+        if (navElement.firstElementChild.className.endsWith('linkBag')) {
+            navElement.firstElementChild.classList.add('linkBagAnimation');
         } else {
-            navElement.firstElementChild.classList.add("fadeOutAnimation");
+            navElement.firstElementChild.classList.add('fadeOutAnimation');
         }
     }
 }
@@ -51,8 +51,8 @@ function animationEndOnNavElements(newNav, oldNav) {
     for (let i = 0; i < nav.childElementCount; i++) {
         const navElement = nav.children[i];
         // Add a fade in animation except for bag icon
-        if (!navElement.firstElementChild.className.endsWith("linkBag")) {
-            navElement.firstElementChild.classList.add("fadeInAnimation");
+        if (!navElement.firstElementChild.className.endsWith('linkBag')) {
+            navElement.firstElementChild.classList.add('fadeInAnimation');
         }
     }
 }
@@ -63,8 +63,8 @@ function removeAnimationEndOnNavElements(newNav) {
     for (let i = 0; i < nav.childElementCount; i++) {
         const navElement = nav.children[i];
         // Remove fade in animation except for bag icon
-        if (!navElement.firstElementChild.className.endsWith("linkBag")) {
-            navElement.firstElementChild.classList.remove("fadeInAnimation");
+        if (!navElement.firstElementChild.className.endsWith('linkBag')) {
+            navElement.firstElementChild.classList.remove('fadeInAnimation');
         }
     }
 }
@@ -92,11 +92,11 @@ function redirectToLastLink(navigatedBackArray) {
     }
     if (cameFromSite) {
         // Redirects to last page
-        const splittedLink = navigatedFrom.split("/");
-        const lastPage = navigatedFrom.split("/")[splittedLink.length - 1];
+        const splittedLink = navigatedFrom.split('/');
+        const lastPage = navigatedFrom.split('/')[splittedLink.length - 1];
         window.location.href = lastPage;
     } else {
         // Redirects to home
-        window.location.href = "/";
+        window.location.href = '/';
     }
 }

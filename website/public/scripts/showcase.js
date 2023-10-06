@@ -14,7 +14,7 @@ async function fetchBucketData(showcaseBucket) {
     return files;
 }
 
-const gallery = document.querySelector(".gallery");
+const gallery = document.querySelector('.gallery');
 
 // Column variables
 let columnSize = 384;
@@ -22,9 +22,9 @@ let currentColumns = 0;
 let maxNumberColumns = 5;
 
 // Chosing array
-let page = window.location.pathname.split("/").pop();
+let page = window.location.pathname.split('/').pop();
 
-if (page === "nature" || page === "wedding") {
+if (page === 'nature' || page === 'wedding') {
     columnSize *= 1.5;
 }
 
@@ -32,17 +32,17 @@ if (page === "nature" || page === "wedding") {
 const addPhotosFadeOnScroll = new IntersectionObserver(showcaseFadeOnscroll);
 
 // Variables for slide transition
-const nav = document.getElementById("nav");
-const shopNav = document.getElementById("shopNav");
-const navigatedFromShop = ["shop"];
+const nav = document.getElementById('nav');
+const shopNav = document.getElementById('shopNav');
+const navigatedFromShop = ['shop'];
 let navigatedFrom = document.referrer;
 
 // Variable for mobile menu
-const menu = document.querySelector(".linkMenu");
+const menu = document.querySelector('.linkMenu');
 let menuClick = 0;
 
 // Loads photos into columns
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     slideTransition(nav, shopNav, navigatedFromShop);
     loadPhotos();
 });
@@ -63,26 +63,20 @@ function debounce(func, delay) {
     };
 }
 
-window.addEventListener("resize", debounce(loadPhotos, 200));
+window.addEventListener('resize', debounce(loadPhotos, 200));
 
-window.addEventListener("orientationChange", debounce(loadPhotos, 200));
+window.addEventListener('orientationChange', debounce(loadPhotos, 200));
 
 // Adds ending part of animation
-getLinkIcon(getCurrentNavElement(shopNav), "linkBag").addEventListener(
-    "animationend",
-    () => {
-        animationEndOnNavElements(nav, shopNav);
-    },
-);
-getLinkIcon(getCurrentNavElement(shopNav), "linkSignature").addEventListener(
-    "animationend",
-    () => {
-        removeAnimationEndOnNavElements(shopNav);
-    },
-);
+getLinkIcon(getCurrentNavElement(shopNav), 'linkBag').addEventListener('animationend', () => {
+    animationEndOnNavElements(nav, shopNav);
+});
+getLinkIcon(getCurrentNavElement(shopNav), 'linkSignature').addEventListener('animationend', () => {
+    removeAnimationEndOnNavElements(shopNav);
+});
 
 // Checks when menu is clicked
-menu.addEventListener("click", () => {
+menu.addEventListener('click', () => {
     mobileMenu(menu, nav);
-    writeUnderline(document.querySelector(".underline .path"));
+    writeUnderline(document.querySelector('.underline .path'));
 });

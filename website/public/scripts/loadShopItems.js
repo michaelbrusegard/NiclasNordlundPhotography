@@ -57,20 +57,17 @@ async function loadItems() {
         }
         itemsLoaded = itemsToLoad;
     } catch (error) {
-        gridWrapper.id = "errorWrapper";
-        gridWrapper.style.setProperty("--variedScaleFadeIn", 1);
-        gridWrapper.classList.add("scaleFadeIn");
-        gridWrapper.textContent =
-            "Error: Unable to load shop items, please try again later.";
+        gridWrapper.id = 'errorWrapper';
+        gridWrapper.style.setProperty('--variedScaleFadeIn', 1);
+        gridWrapper.classList.add('scaleFadeIn');
+        gridWrapper.textContent = 'Error: Unable to load shop items, please try again later.';
         console.error(error);
     }
 }
 
 // Functions that calculates how many colums there are
 function calculateColums() {
-    return getComputedStyle(gridWrapper)
-        .getPropertyValue("grid-template-columns")
-        .split(" ").length;
+    return getComputedStyle(gridWrapper).getPropertyValue('grid-template-columns').split(' ').length;
 }
 
 // Function that calculates how many rows there is space for given the innerHeight
@@ -78,85 +75,64 @@ function calculateRows() {
     const style = getComputedStyle(document.body);
 
     // Container size
-    const photoContainerSize = parseInt(
-        style.getPropertyValue("--photoContainerSize").slice(0, -2),
-    );
-    const shopMargin = parseInt(
-        style.getPropertyValue("--shopMargin").slice(0, -2),
-    );
+    const photoContainerSize = parseInt(style.getPropertyValue('--photoContainerSize').slice(0, -2));
+    const shopMargin = parseInt(style.getPropertyValue('--shopMargin').slice(0, -2));
 
     // Nav height
-    const navContainerHeight = parseInt(
-        style.getPropertyValue("--navContainerHeight").slice(0, -2),
-    );
+    const navContainerHeight = parseInt(style.getPropertyValue('--navContainerHeight').slice(0, -2));
 
-    return Math.floor(
-        (window.innerHeight - navContainerHeight - shopMargin) /
-            (photoContainerSize + shopMargin),
-    );
+    return Math.floor((window.innerHeight - navContainerHeight - shopMargin) / (photoContainerSize + shopMargin));
 }
 
 // Function that creates the div container for the shop
 async function createContainer(publicPhotosBucket, shopItemInfo) {
     // Photos
-    let img = document.createElement("img");
+    let img = document.createElement('img');
     img.src = `https://storage.googleapis.com/${publicPhotosBucket}/${shopItemInfo[0]}`;
-    img.loading = "lazy";
+    img.loading = 'lazy';
     img.alt = shopItemInfo[0];
-    img.classList.add("photos");
+    img.classList.add('photos');
     img.tabIndex = 0;
 
     // Price
-    let h2 = document.createElement("h2");
-    h2.textContent = shopItemInfo[1] + "€";
-    h2.classList.add("price");
+    let h2 = document.createElement('h2');
+    h2.textContent = shopItemInfo[1] + '€';
+    h2.classList.add('price');
     // Add button
-    let addButton = document.createElement("div");
-    addButton.classList.add("addButton");
+    let addButton = document.createElement('div');
+    addButton.classList.add('addButton');
     addButton.tabIndex = 0;
     h2.appendChild(addButton);
 
     // Name
-    let p = document.createElement("p");
+    let p = document.createElement('p');
     p.textContent = shopItemInfo[0];
-    p.classList.add("name");
+    p.classList.add('name');
 
     // Container
-    let div = document.createElement("div");
+    let div = document.createElement('div');
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(p);
-    div.classList.add("container");
+    div.classList.add('container');
     gridWrapper.appendChild(div);
 
     // Add observer for fade on scroll effect
     observeGridItems.observe(div);
 
     // Attach event listeners to the img element
-    img.addEventListener("click", (event) =>
-        handlePhotoClickAndEnter(event, img),
-    );
-    img.addEventListener("keydown", (event) =>
-        handlePhotoClickAndEnter(event, img),
-    );
+    img.addEventListener('click', (event) => handlePhotoClickAndEnter(event, img));
+    img.addEventListener('keydown', (event) => handlePhotoClickAndEnter(event, img));
 
-    if (
-        cart.some(
-            (item) =>
-                item[0] === shopItemInfo[0] && item[1] === shopItemInfo[1],
-        )
-    ) {
+    if (cart.some((item) => item[0] === shopItemInfo[0] && item[1] === shopItemInfo[1])) {
         checkoutSystem(div, shopItemInfo[1], true);
     }
 
     // Apply checkout system interaction to the div item
-    addButton.addEventListener("click", () => {
-        if (!addedItems.includes(div))
-            checkoutSystem(div, shopItemInfo[1], false);
+    addButton.addEventListener('click', () => {
+        if (!addedItems.includes(div)) checkoutSystem(div, shopItemInfo[1], false);
     });
-    addButton.addEventListener("keydown", (event) => {
-        if (event.key === "Enter")
-            if (!addedItems.includes(div))
-                checkoutSystem(div, shopItemInfo[1], false);
+    addButton.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') if (!addedItems.includes(div)) checkoutSystem(div, shopItemInfo[1], false);
     });
 }
