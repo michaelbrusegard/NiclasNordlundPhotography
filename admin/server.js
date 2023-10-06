@@ -40,7 +40,7 @@ app.use(
 
 const limiter = rateLimit({
     windowMs: 60 * 1000 * 15, // 15 minutes
-    max: 10, // 10 failed attempts allowed in that window
+    max: 6, // 6 failed attempts allowed in that window
     message: (req, res) => {
         res.render("login", {
             csrfToken: req.session.csrfToken,
@@ -49,20 +49,26 @@ const limiter = rateLimit({
     },
 });
 
-app.get("/", limiter, (req, res) => {
-    const token = crypto.randomBytes(64).toString("hex");
-    req.session.csrfToken = token;
+app.get("/", (req, res) => {
     if (req.session && req.session.userid) {
+        const token = crypto.randomBytes(64).toString("hex");
+        req.session.csrfToken = token;
         res.render("index", { csrfToken: token });
     } else {
-        res.render("login", {
-            csrfToken: token,
-            errorMessage: "",
-        });
+        res.redirect("/login");
     }
 });
 
-app.post("/", limiter, (req, res) => {
+app.get("/login", limiter, (req, res) => {
+    const token = crypto.randomBytes(64).toString("hex");
+    req.session.csrfToken = token;
+    res.render("login", {
+        csrfToken: token,
+        errorMessage: "",
+    });
+});
+
+app.post("/login", limiter, (req, res) => {
     if (req.session.csrfToken !== req.body.csrfToken) {
         res.status(401).send("Unauthorized");
         return;
