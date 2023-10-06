@@ -1,12 +1,23 @@
 name: Deploy to Google Cloud
 
 on:
-    push:
-        workflow_dispatch:
-        workflow_run:
-            workflows: ["Code formatting check"]
-            types:
-                - completed
+    workflow_dispatch:
+        inputs:
+            deploy-component:
+                description: "Select the component to deploy"
+                required: true
+                type: choice
+                options:
+                    - "all"
+                    - "website"
+                    - "admin"
+                    - "archivePurchasedPhotos"
+                    - "compressPublicPhotos"
+                    - "deletePublicPhotos"
+    workflow_run:
+        workflows: ["Code formatting check"]
+        types:
+            - completed
 
 jobs:
     Deploy:
