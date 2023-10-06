@@ -1,6 +1,6 @@
 runtime: nodejs18
 
-service: admin
+service: admin1
 
 handlers:
     - url: /.*
