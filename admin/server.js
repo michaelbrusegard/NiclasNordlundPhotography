@@ -35,7 +35,7 @@ app.use(
             httpOnly: true,
         },
         resave: false,
-    }),
+    })
 );
 
 const limiter = rateLimit({
@@ -60,19 +60,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', limiter, (req, res) => {
-    // const token = crypto.randomBytes(64).toString('hex');
-    // req.session.csrfToken = token;
+    const token = crypto.randomBytes(64).toString('hex');
+    req.session.csrfToken = token;
     res.render('login', {
-        csrfToken: '',
+        csrfToken: token,
         errorMessage: '',
     });
 });
 
 app.post('/login', limiter, (req, res) => {
-    // if (req.session.csrfToken !== req.body.csrfToken) {
-    //     res.status(401).send('Unauthorized');
-    //     return;
-    // }
+    if (req.session.csrfToken !== req.body.csrfToken) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
 
     bcrypt.compare(req.body.password, process.env.ADMIN_PASSWORD, (err, result) => {
         if (err) {
@@ -83,7 +83,7 @@ app.post('/login', limiter, (req, res) => {
             res.redirect('/');
         } else {
             res.render('login', {
-                csrfToken: '',
+                csrfToken: req.session.csrfToken,
                 errorMessage: 'Incorrect password. Please try again.',
             });
         }
