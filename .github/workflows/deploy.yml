@@ -4,21 +4,21 @@ on:
     workflow_dispatch:
         inputs:
             deploy-component:
-                description: "Select the component to deploy"
+                description: 'Select the component to deploy'
                 required: true
                 type: choice
                 options:
-                    - "all"
-                    - "website"
-                    - "admin"
-                    - "archivePurchasedPhotos"
-                    - "compressPublicPhotos"
-                    - "deletePublicPhotos"
+                    - 'all'
+                    - 'website'
+                    - 'admin'
+                    - 'archivePurchasedPhotos'
+                    - 'compressPublicPhotos'
+                    - 'deletePublicPhotos'
 jobs:
     Deploy:
         runs-on: ubuntu-latest
         permissions:
-            contents: "read"
+            contents: 'read'
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
@@ -43,7 +43,6 @@ jobs:
                     --trigger-event-filters=bucket=${{ secrets.PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.finalized \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --clear-deployed \
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy deletePublicPhotos
@@ -58,7 +57,6 @@ jobs:
                     --trigger-event-filters=bucket=${{ secrets.PHOTOS_BUCKET }} \
                     --trigger-event-filters=type=google.cloud.storage.object.v1.deleted \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --clear-deployed \
                     --set-env-vars PUBLIC_PHOTOS_BUCKET=${{ secrets.PUBLIC_PHOTOS_BUCKET }}
 
             - name: Deploy archivePurchasedPhotos
@@ -73,7 +71,6 @@ jobs:
                     --entry-point=createPhotosArchive \
                     --trigger-http \
                     --project=${{ secrets.PROJECT_ID }} \
-                    --clear-deployed \
                     --set-env-vars PHOTOS_BUCKET=${{ secrets.PHOTOS_BUCKET }},ARCHIVE_BUCKET=${{ secrets.ARCHIVE_BUCKET }} \
                     --service-account=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_SERV_ACC_EMAIL }} \
                     --timeout=540s
@@ -103,7 +100,7 @@ jobs:
                   EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
                   SUPPORT_EMAIL_ADDRESS: ${{ secrets.SUPPORT_EMAIL_ADDRESS }}
               with:
-                  app_yaml_path: "website/app.yaml"
+                  app_yaml_path: 'website/app.yaml'
 
             - name: Deploy website
               if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'website' }}
@@ -129,7 +126,7 @@ jobs:
                   WEDDING_SHOWCASE_BUCKET: ${{ secrets.WEDDING_SHOWCASE_BUCKET }}
                   SPORT_SHOWCASE_BUCKET: ${{ secrets.SPORT_SHOWCASE_BUCKET }}
               with:
-                  app_yaml_path: "admin/app.yaml"
+                  app_yaml_path: 'admin/app.yaml'
 
             - name: Deploy admin panel
               if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'admin' }}
