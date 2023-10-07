@@ -2,7 +2,7 @@
 
 Live: [niclasnordlund.com](https://niclasnordlund.com)
 
-This is the source code to Niclas Nordlund's photography website. The website showcases his photos and provides a way for potential clients to contact him. It also has a shop to sell digital copies of his photos. The website is built with HTML, CSS, and JavaScript and deployed on Google Cloud Platform. It uses App Engine to host the website + the admin panel and cloud storage buckets for handling photos and other assets. It is responsive and works with keyboard navigation. Purchases are handled using Stripe, and there is also a bug reporting site for users ([www.niclasnordlund.com/bug](https://www.niclasnordlund.com/bug)) that implements with GitHub issues.
+This is the source code to Niclas Nordlund's photography website. The website showcases his photos and provides a way for potential clients to contact him. It also has a shop to sell digital copies of his photos. The website is built with HTML, CSS, and JavaScript and deployed on Google Cloud Platform. It uses App Engine to host the website + the admin panel and cloud storage buckets + cloud functions for handling photos and other assets. It is responsive and works with keyboard navigation. Purchases are handled using Stripe, and there is also a bug reporting site for users ([www.niclasnordlund.com/bug](https://www.niclasnordlund.com/bug)) that implements with GitHub issues.
 
 ## Table of Contents
 
@@ -50,6 +50,16 @@ I would not recommend for anybody to use this code for their own website. It is 
 
 ## Screenshots
 
-### Website
+### Home
+![home-min](https://github.com/michaelbrusegard/NiclasNordlundPhotography/assets/56915010/d1e87f4c-ea4c-46db-9112-2100a97acc51)
+
+### Showcase
+![showcase-min](https://github.com/michaelbrusegard/NiclasNordlundPhotography/assets/56915010/ac2e174e-e27b-4a32-ab9f-0f27e37f6f80)
+
+### Shop
+![shop-min](https://github.com/michaelbrusegard/NiclasNordlundPhotography/assets/56915010/721adb32-92cc-4ec3-b17d-2050f2ef61fe)
+
+### Admin
+![admin-min](https://github.com/michaelbrusegard/NiclasNordlundPhotography/assets/56915010/2b2cba26-eb4a-4b1b-9e7b-0c425be689b0)
 
 ## What I have Learned
