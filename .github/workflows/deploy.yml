@@ -83,7 +83,7 @@ jobs:
               if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'staging website' }}
               uses: 73h/gae-app-yaml-replace-env-variables@v0.3
               env:
-                  SERVER_URL: ${{ secrets.SERVER_URL }}
+                  SERVER_URL: ${{ secrets.TEST_SERVER_URL }}
                   PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
                   REPOSITORY: ${{ secrets.REPOSITORY }}
                   USER_AGENT: ${{ secrets.USER_AGENT }}
