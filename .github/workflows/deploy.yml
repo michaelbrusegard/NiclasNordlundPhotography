@@ -10,6 +10,7 @@ on:
                 options:
                     - 'all'
                     - 'app engine'
+                    - 'staging website'
                     - 'website'
                     - 'admin'
                     - 'dispatch'
@@ -78,6 +79,41 @@ jobs:
                     --service-account=${{ secrets.ARCHIVE_PURCHASED_PHOTOS_SERV_ACC_EMAIL }} \
                     --timeout=540s
 
+            - name: Update environment variables for staging website
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'staging website' }}
+              uses: 73h/gae-app-yaml-replace-env-variables@v0.3
+              env:
+                  SERVER_URL: ${{ secrets.SERVER_URL }}
+                  PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+                  REPOSITORY: ${{ secrets.REPOSITORY }}
+                  USER_AGENT: ${{ secrets.USER_AGENT }}
+                  OWNER: ${{ secrets.OWNER }}
+                  ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL: ${{ secrets.ARCHIVE_PURCHASED_PHOTOS_FUNCTION_URL }}
+                  PHOTOS_BUCKET: ${{ secrets.PHOTOS_BUCKET }}
+                  PUBLIC_PHOTOS_BUCKET: ${{ secrets.PUBLIC_PHOTOS_BUCKET }}
+                  PHOTO_CAROUSEL_BUCKET: ${{ secrets.PHOTO_CAROUSEL_BUCKET }}
+                  NATURE_SHOWCASE_BUCKET: ${{ secrets.NATURE_SHOWCASE_BUCKET }}
+                  ANIMALS_SHOWCASE_BUCKET: ${{ secrets.ANIMALS_SHOWCASE_BUCKET }}
+                  ARCHITECTURAL_SHOWCASE_BUCKET: ${{ secrets.ARCHITECTURAL_SHOWCASE_BUCKET }}
+                  PORTRAIT_SHOWCASE_BUCKET: ${{ secrets.PORTRAIT_SHOWCASE_BUCKET }}
+                  WEDDING_SHOWCASE_BUCKET: ${{ secrets.WEDDING_SHOWCASE_BUCKET }}
+                  SPORT_SHOWCASE_BUCKET: ${{ secrets.SPORT_SHOWCASE_BUCKET }}
+                  SECRET_KEY: ${{ secrets.TEST_SECRET_KEY }}
+                  WEBHOOK_SECRET: ${{ secrets.TEST_WEBHOOK_SECRET }}
+                  EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+                  EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+                  SUPPORT_EMAIL_ADDRESS: ${{ secrets.DEV_EMAIL_ADDRESS }}
+                  DEV_EMAIL_ADDRESS: ${{ secrets.DEV_EMAIL_ADDRESS }}
+              with:
+                  app_yaml_path: 'website/staging-app.yaml'
+
+            - name: Deploy staging website
+              if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'staging website' }}
+              run: |
+                  gcloud app deploy ${{ github.workspace }}/website/staging-app.yaml \
+                    --project=${{ secrets.PROJECT_ID }} \
+                    --version staging-website-v1
+
             - name: Update environment variables for website
               if: ${{ github.event.inputs.deploy-component == 'all' || github.event.inputs.deploy-component == 'app engine' || github.event.inputs.deploy-component == 'website' }}
               uses: 73h/gae-app-yaml-replace-env-variables@v0.3
@@ -102,6 +138,7 @@ jobs:
                   EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
                   EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
                   SUPPORT_EMAIL_ADDRESS: ${{ secrets.SUPPORT_EMAIL_ADDRESS }}
+                  DEV_EMAIL_ADDRESS: ${{ secrets.DEV_EMAIL_ADDRESS }}
               with:
                   app_yaml_path: 'website/app.yaml'
 

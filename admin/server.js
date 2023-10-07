@@ -40,7 +40,7 @@ app.use(
 
 const limiter = rateLimit({
     windowMs: 60 * 1000 * 15, // 15 minutes
-    max: 6, // 6 failed attempts allowed in that window
+    max: 10, // 10 failed attempts allowed in that window
     message: (req, res) => {
         res.render('login', {
             csrfToken: req.session.csrfToken,
@@ -99,6 +99,17 @@ function authenticate(req, res, next) {
 }
 
 app.use(authenticate);
+
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+            res.status(500).send('Error destroying session');
+        } else {
+            res.status(200).send('Logout successful');
+        }
+    });
+});
 
 const storage = new Storage();
 

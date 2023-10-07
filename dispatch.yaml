@@ -1,3 +1,6 @@
 dispatch:
     - url: 'admin.niclasnordlund.com/*'
       service: admin
+
+    - url: 'staging.niclasnordlund.com/*'
+      service: staging
