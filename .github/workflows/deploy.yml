@@ -104,6 +104,7 @@ jobs:
                   EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
                   SUPPORT_EMAIL_ADDRESS: ${{ secrets.DEV_EMAIL_ADDRESS }}
                   DEV_EMAIL_ADDRESS: ${{ secrets.DEV_EMAIL_ADDRESS }}
+                  DISABLE_CHECKOUT: ${{ secrets.TEST_DISABLE_CHECKOUT }}
               with:
                   app_yaml_path: 'website/staging-app.yaml'
 
@@ -139,6 +140,7 @@ jobs:
                   EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
                   SUPPORT_EMAIL_ADDRESS: ${{ secrets.SUPPORT_EMAIL_ADDRESS }}
                   DEV_EMAIL_ADDRESS: ${{ secrets.DEV_EMAIL_ADDRESS }}
+                  DISABLE_CHECKOUT: ${{ secrets.DISABLE_CHECKOUT }}
               with:
                   app_yaml_path: 'website/app.yaml'
 
