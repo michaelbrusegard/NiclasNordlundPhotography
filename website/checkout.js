@@ -21,6 +21,10 @@ async function getStoreItems() {
 }
 
 module.exports = async (request, response) => {
+    if (process.env.DISABLE_CHECKOUT === 'true') {
+        response.status(403).json({ error: 'Checkout is disabled' });
+        return;
+    }
     const storeItems = await getStoreItems();
     const itemsToPurchase = request.body.map((item) => [item[0], parseInt(item[1])]);
     let validatedItemsToPurchase = [];

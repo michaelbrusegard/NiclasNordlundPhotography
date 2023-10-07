@@ -8,7 +8,7 @@ async function getPublicPhotosBucket() {
 // Prices array
 async function getPricesArray(publicPhotosBucket) {
     const response = await fetch(
-        `https://storage.googleapis.com/storage/v1/b/${publicPhotosBucket}/o?fields=items(name)&delimiter=/`,
+        `https://storage.googleapis.com/storage/v1/b/${publicPhotosBucket}/o?fields=items(name)&delimiter=/`
     );
     const data = await response.json();
     const pricesArray = data.items
@@ -136,12 +136,12 @@ cartButtons.forEach((element) =>
                 }
                 checkoutMenu.style.setProperty(
                     '--checkoutMenuZindex',
-                    `${style.getPropertyValue('--checkoutMenuZindex') * scale}`,
+                    `${style.getPropertyValue('--checkoutMenuZindex') * scale}`
                 );
             },
-            { once: true },
+            { once: true }
         );
-    }),
+    })
 );
 
 infoButton.addEventListener('click', () => {
@@ -213,6 +213,9 @@ async function purchaseItems() {
             if (response.ok) {
                 const { url } = await response.json();
                 window.location = url;
+            } else if (response.status === 403) {
+                errorText.textContent = 'Error: Checkout is disabled. Try again later.';
+                errorText.show();
             } else {
                 const error = await response.json();
                 throw new Error(error.error);
