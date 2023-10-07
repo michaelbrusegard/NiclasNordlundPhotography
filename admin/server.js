@@ -147,6 +147,7 @@ app.get('/download-photo', async (req, res) => {
             action: 'read',
             expires: Date.now() + 5 * 60 * 1000,
             responseDisposition: 'attachment; filename="' + name + '"',
+            contentType: 'image/jpeg',
         };
         const [signedUrl] = await storage.bucket(bucketName).file(name).getSignedUrl(options);
 
