@@ -5,21 +5,18 @@ Live: [niclasnordlund.com](https://niclasnordlund.com)
 This is the source code to Niclas Nordlund's photography website. The website showcases his photos and provides a way for potential clients to contact him. It also has a shop to sell digital copies of his photos. The website is built with HTML, CSS, and JavaScript and deployed on Google Cloud Platform. It uses App Engine to host the website + the admin panel and cloud storage buckets + cloud functions for handling photos and other assets. It is responsive and works with keyboard navigation. Purchases are handled using Stripe, and there is also a bug reporting site for users ([www.niclasnordlund.com/bug](https://www.niclasnordlund.com/bug)) that implements with GitHub issues.
 
 ## Table of Contents
-
--   [Niclas Nordlund Photography](#niclas-nordlund-photography)
-    -   [Table of Contents](#table-of-contents)
-    -   [Project Structure](#project-structure)
-        -   [How everything works together](#how-everything-works-together)
-    -   [How to run](#how-to-run)
-    -   [Screenshots](#screenshots)
-        -   [Home](#home)
-        -   [Showcase](#showcase)
-        -   [Shop](#shop)
-        -   [Admin](#admin)
-    -   [What I have Learned](#what-i-have-learned)
-    -   [Credits](#credits)
-    -   [Contributing](#contributing)
-    -   [License](#license)
+-   [Project Structure](#project-structure)
+    -   [How everything works together](#how-everything-works-together)
+-   [How to run](#how-to-run)
+-   [Screenshots](#screenshots)
+    -   [Home](#home)
+    -   [Showcase](#showcase)
+    -   [Shop](#shop)
+    -   [Admin](#admin)
+-   [What I have Learned](#what-i-have-learned)
+-   [Credits](#credits)
+-   [Contributing](#contributing)
+-   [License](#license)
 
 ## Project Structure
 
@@ -77,9 +74,9 @@ I would not recommend for anybody to use this code for their own website. It is 
 1. **There is a reason why JavaScript Frameworks exist.**
     - When starting this project it was part of a university course teaching basic web technologies with HTML, CSS and JavaScript. We were not allowed to use any frameworks and the website was meant to be a very simple static website. After that this project evolved into something completely different and a lot of headaches and time spent on this project could have been spared if I had used a framework. I would recommend using a framework for any project that is not a very simple static website. On the other side, I have learned a lot about how the web works and how to build a website from scratch.
 2. **Databases are great and I should have used one.**
-    - I have learned that databases are great and that I should have used one for this project. It would simplify a lot of the logic to have a database entry for each shop item that references the price, the compressed photo and the original photo. It would also make it easier to add more information to each shop item. For instacne adding keywords for a search function.
+    - I have learned that databases are great and that I should have used one for this project. It would simplify a lot of the logic to have a database entry for each shop item that references the price, the compressed photo and the original photo. It would also make it easier to add more information to each shop item. For instance adding keywords for a search function.
 3. **I should have used less Storage Buckets.**
-    - Using a seperate storage bucket for eveyr page is very unneccesary. It creates a bunch of environment variables that need to be set and it makes it harder to add new pages. It would have been jsut as simple to use a single STorage bucket for the showcase pages that has a directorys tructure referencing the different pages.
+    - Using a seperate storage bucket for every page is very unneccesary. It creates a bunch of environment variables that needs to be set and it makes it harder to add new pages. It would have been just as simple to use a single storage bucket for the showcase pages that has a directory structure referencing the different pages.
 4. **Security is very interesting.**
     - Setting up a secure website with user authentication and authorization for the admin panel has been very fun. I have learned a lot about how to secure a website and how to handle user authentication and authorization. I used sessions and cookies to authenticate Niclas and I used a middleware to authorize. I had to use CSRF tokens to prevent CSRF attacks. For the next project I will look into having multiple users and token based authentication.
 5. **Using Google Cloud Platform was overkill.**
