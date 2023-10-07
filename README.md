@@ -5,21 +5,18 @@ Live: [niclasnordlund.com](https://niclasnordlund.com)
 This is the source code to Niclas Nordlund's photography website. The website showcases his photos and provides a way for potential clients to contact him. It also has a shop to sell digital copies of his photos. The website is built with HTML, CSS, and JavaScript and deployed on Google Cloud Platform. It uses App Engine to host the website + the admin panel and cloud storage buckets + cloud functions for handling photos and other assets. It is responsive and works with keyboard navigation. Purchases are handled using Stripe, and there is also a bug reporting site for users ([www.niclasnordlund.com/bug](https://www.niclasnordlund.com/bug)) that implements with GitHub issues.
 
 ## Table of Contents
-
--   [Niclas Nordlund Photography](#niclas-nordlund-photography)
-    -   [Table of Contents](#table-of-contents)
-    -   [Project Structure](#project-structure)
-        -   [How everything works together](#how-everything-works-together)
-    -   [How to run](#how-to-run)
-    -   [Screenshots](#screenshots)
-        -   [Home](#home)
-        -   [Showcase](#showcase)
-        -   [Shop](#shop)
-        -   [Admin](#admin)
-    -   [What I have Learned](#what-i-have-learned)
-    -   [Credits](#credits)
-    -   [Contributing](#contributing)
-    -   [License](#license)
+-   [Project Structure](#project-structure)
+    -   [How everything works together](#how-everything-works-together)
+-   [How to run](#how-to-run)
+-   [Screenshots](#screenshots)
+    -   [Home](#home)
+    -   [Showcase](#showcase)
+    -   [Shop](#shop)
+    -   [Admin](#admin)
+-   [What I have Learned](#what-i-have-learned)
+-   [Credits](#credits)
+-   [Contributing](#contributing)
+-   [License](#license)
 
 ## Project Structure
 
