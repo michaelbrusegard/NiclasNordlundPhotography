@@ -21,5 +21,6 @@ env_variables:
     WEDDING_SHOWCASE_BUCKET: $WEDDING_SHOWCASE_BUCKET
     SPORT_SHOWCASE_BUCKET: $SPORT_SHOWCASE_BUCKET
 
-basic_scaling:
+automatic_scaling:
+    min_instances: 0
     max_instances: 1
