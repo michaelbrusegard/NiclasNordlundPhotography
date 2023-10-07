@@ -22,7 +22,7 @@ bcrypt.hash(process.env.ADMIN_PASSWORD, 10, (err, hash) => {
 const app = express();
 
 if (process.env.SERVE_ONLY_HTTPS === 'true') {
-    app.set('trust proxy', true);
+    app.set('trust proxy', 1);
 }
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -38,7 +38,7 @@ app.use(
             httpOnly: true,
         },
         resave: false,
-    }),
+    })
 );
 
 const limiter = rateLimit({
