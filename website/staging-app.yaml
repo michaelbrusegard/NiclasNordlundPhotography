@@ -30,3 +30,7 @@ env_variables:
     SUPPORT_EMAIL_ADDRESS: $SUPPORT_EMAIL_ADDRESS
     DEV_EMAIL_ADDRESS: $DEV_EMAIL_ADDRESS
     DISABLE_CHECKOUT: $DISABLE_CHECKOUT
+
+automatic_scaling:
+    min_instances: 0
+    max_instances: 1
