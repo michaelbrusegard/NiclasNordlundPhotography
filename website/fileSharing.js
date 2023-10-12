@@ -27,7 +27,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
             headers: {
                 Authorization: `Bearer ${idToken}`,
             },
-        },
+        }
     );
     return response.data.url;
 }
@@ -48,7 +48,7 @@ async function sendEmail(photosUrl, customerEmail, customerName, purchasedItems)
     // Email message content
     const mailOptions = {
         from: process.env.EMAIL_ADDRESS,
-        to: customerEmail,
+        to: [customerEmail, process.env.SUPPORT_EMAIL_ADDRESS].join(', '),
         subject: customerName + ', here are your photos!',
         html: `
             <style>
@@ -103,7 +103,7 @@ function sendErrorEmails(purchasedItems, customerEmail, customerName, error, ret
 
     const photoWord = purchasedItems.length === 1 ? 'Photo' : 'Photos';
     const errorMessage = error.message;
-    const recipients = [customerEmail, process.env.SUPPORT_EMAIL_ADDRESS, process.env.DEV_EMAIL_ADDRESS].join(', '); // Send to multiple recipients
+    const recipients = [customerEmail, process.env.SUPPORT_EMAIL_ADDRESS, process.env.DEV_EMAIL_ADDRESS].join(', ');
 
     // Define a function to send the email with retries
     function sendEmailWithRetry(attempts) {
@@ -144,7 +144,7 @@ function sendErrorEmails(purchasedItems, customerEmail, customerName, error, ret
                 } else {
                     console.log('Error emails sent:', info.response);
                 }
-            },
+            }
         );
     }
 
