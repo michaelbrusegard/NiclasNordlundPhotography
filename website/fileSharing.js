@@ -27,7 +27,7 @@ async function getArchivedPhotosUrl(purchasedItems) {
             headers: {
                 Authorization: `Bearer ${idToken}`,
             },
-        }
+        },
     );
     return response.data.url;
 }
@@ -144,7 +144,7 @@ function sendErrorEmails(purchasedItems, customerEmail, customerName, error, ret
                 } else {
                     console.log('Error emails sent:', info.response);
                 }
-            }
+            },
         );
     }
 
