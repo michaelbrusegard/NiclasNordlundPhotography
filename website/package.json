@@ -10,7 +10,7 @@
         "buy": "stripe trigger checkout.session.completed --add checkout_session:metadata.purchasedItems='[\"aalands hav 150e.jpg\",\"aengsull 75e.jpg\",\"aalands skaergaard 80e.jpg\",\"aaland vaestra hamnen vinter 180e.jpg\"]'"
     },
     "dependencies": {
-        "@google-cloud/storage": "^7.2.0",
+        "@google-cloud/storage": "^7.3.0",
         "axios": "^1.5.1",
         "body-parser": "^1.20.2",
         "dotenv": "^16.3.1",
