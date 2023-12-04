@@ -21,6 +21,6 @@
     },
     "devDependencies": {
         "@google-cloud/functions-framework": "^3.3.0",
-        "nodemon": "^3.0.1"
+        "nodemon": "^3.0.2"
     }
 }
