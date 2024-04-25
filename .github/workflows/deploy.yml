@@ -41,7 +41,7 @@ jobs:
                   gcloud functions deploy compressPublicPhotos \
                     --gen2 \
                     --region=europe-north1 \
-                    --runtime=nodejs18 \
+                    --runtime=nodejs20 \
                     --source=${{ github.workspace }}/functions/compressPublicPhotos \
                     --entry-point=compressPhoto \
                     --trigger-event-filters=bucket=${{ secrets.PHOTOS_BUCKET }} \
@@ -55,7 +55,7 @@ jobs:
                   gcloud functions deploy deletePublicPhotos \
                     --gen2 \
                     --region=europe-north1 \
-                    --runtime=nodejs18 \
+                    --runtime=nodejs20 \
                     --source=${{ github.workspace }}/functions/deletePublicPhotos \
                     --entry-point=deletePhoto \
                     --trigger-event-filters=bucket=${{ secrets.PHOTOS_BUCKET }} \
@@ -70,7 +70,7 @@ jobs:
                     --gen2 \
                     --memory 512MB \
                     --region=europe-north1 \
-                    --runtime=nodejs18 \
+                    --runtime=nodejs20 \
                     --source=${{ github.workspace }}/functions/archivePurchasedPhotos \
                     --entry-point=createPhotosArchive \
                     --trigger-http \
