@@ -35,6 +35,9 @@ async function getArchivedPhotosUrl(purchasedItems) {
 async function sendEmail(photosUrl, customerEmail, customerName, purchasedItems) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: process.env.EMAIL_ADDRESS,
             pass: process.env.EMAIL_PASSWORD,
@@ -92,6 +95,9 @@ function sendErrorEmails(purchasedItems, customerEmail, customerName, error, ret
     // Email configuration
     const transporter = nodemailer.createTransport({
         service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: process.env.EMAIL_ADDRESS,
             pass: process.env.EMAIL_PASSWORD,
